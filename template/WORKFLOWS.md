@@ -1,6 +1,6 @@
 # WORKFLOWS — 工作流派發器
 
-← [CLAUDE.md](CLAUDE.md)｜專案地圖 [INDEX.md](INDEX.md)
+← [AGENTS.md](AGENTS.md)｜專案地圖 [INDEX.md](INDEX.md)
 
 你（使用者）說要做某件事 → **從這張表選對應工作流 → 讀它的「入口檔」→ 就知道要做什麼**。每個工作流的細節都在它自己的入口檔，不在這裡。
 

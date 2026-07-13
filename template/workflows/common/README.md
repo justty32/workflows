@@ -1,6 +1,6 @@
 # common — 跨工作流共享（入口）
 
-← [INDEX](../../INDEX.md)｜[CLAUDE.md](../../CLAUDE.md)
+← [INDEX](../../INDEX.md)｜[AGENTS.md](../../AGENTS.md)
 
 不專屬任一工作流、各工作流共用的東西。這是本區的**入口**。
 

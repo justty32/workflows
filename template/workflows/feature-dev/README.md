@@ -1,8 +1,8 @@
 # 功能開發（feature-dev）— 工作流入口
 
-← [INDEX](../../INDEX.md)｜[CLAUDE.md](../../CLAUDE.md)
+← [INDEX](../../INDEX.md)｜[AGENTS.md](../../AGENTS.md)
 
-新增 / 修改 {{專案名}} 功能的工作流。這是本工作流的**入口**：先讀本檔，再往下深入。always-on 鐵律見 [CLAUDE.md](../../CLAUDE.md)；要整理結構時參考 [DEV-GUIDE](../../DEV-GUIDE.md)（被動）；**程式碼慣例 + 導航 index 維護鏈**見 [common/conventions](../common/conventions.md)。
+新增 / 修改 {{專案名}} 功能的工作流。這是本工作流的**入口**：先讀本檔，再往下深入。always-on 鐵律見 [AGENTS.md](../../AGENTS.md)；要整理結構時參考 [DEV-GUIDE](../../DEV-GUIDE.md)（被動）；**程式碼慣例 + 導航 index 維護鏈**見 [common/conventions](../common/conventions.md)。
 
 > 〔模板說明〕本資料夾是「資料夾型工作流」的範例。流程請改成你專案的實況；`landed/`、`gotchas.md`、`session-log.md` 都是**長出來才建**（見 DEV-GUIDE 四級成長軌跡），不要預先建空檔。
 

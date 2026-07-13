@@ -2,7 +2,7 @@
 
 ← [common/README](README.md)｜[INDEX](../../INDEX.md)
 
-碰原始碼的工作流（feature-dev / refactor / specs / plans…）共用這套規矩。純文檔/調查類工作流用不到。結構整理原則（被動、按需取用）在 [DEV-GUIDE](../../DEV-GUIDE.md)；always-on 鐵律在 [CLAUDE.md](../../CLAUDE.md)。
+碰原始碼的工作流（feature-dev / refactor / specs / plans…）共用這套規矩。純文檔/調查類工作流用不到。結構整理原則（被動、按需取用）在 [DEV-GUIDE](../../DEV-GUIDE.md)；always-on 鐵律在 [AGENTS.md](../../AGENTS.md)。
 
 > 〔模板說明〕本檔是給「有程式碼的專案」用的骨架；純文檔專案整檔刪除（並從 common/README 移除該列）。
 

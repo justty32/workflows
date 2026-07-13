@@ -1,6 +1,6 @@
 # SESSION-LOG — 進度日誌（hub）
 
-← [CLAUDE.md](CLAUDE.md)｜[INDEX](INDEX.md)
+← [AGENTS.md](AGENTS.md)｜[INDEX](INDEX.md)
 
 **只放「還沒完成」的活狀態**（in-flight / open）。完成的不留這裡——過程細節交給 git log（若有「已落地功能目錄」則濃縮一句進去）。待**使用者**親自驗證／做的另見 [WAIT_USER.md](WAIT_USER.md)。
 

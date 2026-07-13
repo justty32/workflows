@@ -4,7 +4,7 @@
 
 這是一份**被動參考**，**不貫穿日常每個動作**——只在你要**重構 / 整理結構**（拆大檔、分類雜亂資料夾、長出新子工作流）時拿出來用。內容＝**結構整理原則**（含四級成長軌跡），docs / code / 任何資料夾通用。
 
-> **always-on 的鐵律**（行為不變、未經確認不 push/不開新工作、各工作流具體流程在自己入口檔）常駐在 [CLAUDE.md](CLAUDE.md)，**不在本檔重複**——被動參考裡放 always-on 規則等於讓它失效。「要做什麼」由 [WORKFLOWS.md](WORKFLOWS.md) 派發。
+> **always-on 的鐵律**（行為不變、未經確認不 push/不開新工作、各工作流具體流程在自己入口檔）常駐在 [AGENTS.md](AGENTS.md)，**不在本檔重複**——被動參考裡放 always-on 規則等於讓它失效。「要做什麼」由 [WORKFLOWS.md](WORKFLOWS.md) 派發。
 > 只在**碰原始碼**時才適用的程式碼慣例與導航 index 維護鏈放在 [common/conventions.md](workflows/common/conventions.md)。
 
 ---
