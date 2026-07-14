@@ -24,7 +24,7 @@ AGENTS.md（本檔，最頂）→ WORKFLOWS.md / INDEX.md → 各工作流入口
   2. **未經確認不 push、不開新工作**（commit 到主分支是慣例，push 先確認）。
   3. 各工作流的**具體流程在它自己的入口檔**，不在頂層。
   > 〔模板說明〕鐵律控制在 3–5 條，且必須是「任何時刻都適用」的才夠格放這裡；只在特定場景適用的規矩一律下放到該工作流。
-- **[DEV-GUIDE.md](DEV-GUIDE.md) 是被動參考**（結構整理原則 + 四級成長軌跡）——**只在你要重構/整理結構時才取用**，不貫穿日常每個動作。只在**碰原始碼**時適用的**程式碼慣例 + 導航 index 維護鏈**在 [common/conventions](workflows/common/conventions.md)。
+- **[DEV-GUIDE.md](DEV-GUIDE.md) 是被動參考**（結構整理原則 + 四級成長軌跡）——**只在你要重構/整理結構時才取用**，不貫穿日常每個動作。只在**碰原始碼**時適用的**程式碼慣例 + 導航 index 維護鏈**在 [common/conventions](workflows/common/conventions.md);只在**產出給人讀的文字**時適用的**寫作風格**在 [common/writing](workflows/common/writing.md)。
 
 ## 開發環境
 

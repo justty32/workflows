@@ -24,7 +24,7 @@
 
 | 路徑 | 內容 |
 |------|------|
-| [common/README](workflows/common/README.md) | 跨工作流共通：[gotchas](workflows/common/gotchas.md) 踩坑 + [conventions](workflows/common/conventions.md) 程式碼慣例 |
+| [common/README](workflows/common/README.md) | 跨工作流共通：[gotchas](workflows/common/gotchas.md) 踩坑 + [conventions](workflows/common/conventions.md) 程式碼慣例 + [writing](workflows/common/writing.md) 寫作風格 |
 
 ## 活狀態（只列還沒完成的）
 

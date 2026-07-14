@@ -33,7 +33,7 @@
 | [DEV-GUIDE.md](template/DEV-GUIDE.md) | 被動結構整理參考：膨脹即拆／雜亂即分類 + 四級成長軌跡 |
 | [SESSION-LOG.md](template/SESSION-LOG.md) | 進度 hub（open-only）|
 | [WAIT_USER.md](template/WAIT_USER.md) | 待使用者親自做/驗證的事（open-only）|
-| [workflows/common/](template/workflows/common/README.md) | 跨工作流共享：conventions（碰原始碼才需要）+ gotchas（踩坑）|
+| [workflows/common/](template/workflows/common/README.md) | 跨工作流共享：conventions（碰原始碼才需要）+ writing（產出散文才需要）+ gotchas（踩坑）|
 | [workflows/feature-dev/](template/workflows/feature-dev/README.md) | **資料夾型**工作流範例（功能開發）|
 | [workflows/testing.md](template/workflows/testing.md) | **單檔型**工作流範例（跑測試）|
 

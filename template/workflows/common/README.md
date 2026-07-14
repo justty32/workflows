@@ -7,6 +7,7 @@
 | 路徑 | 內容 |
 |------|------|
 | [conventions.md](conventions.md) | **程式碼慣例 + 導航 index 維護鏈**（碰原始碼的工作流共用；純文檔專案可刪）|
+| [writing.md](writing.md) | **寫作風格**（產出給人讀的文字時共用；幾乎不產出散文的專案可刪）|
 | [gotchas.md](gotchas.md) | 跨工作流共通踩坑 |
 
 > **archive**：過時的共通文檔封存進 `common/archive/`。本入口檔若膨脹，照[結構整理原則](../../DEV-GUIDE.md)拆。
