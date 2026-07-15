@@ -1,0 +1,4 @@
+# routines 常駐精靈的執行期狀態（見 state/README.md）——runtime 狀態、非 durable，不入版控。
+# 只保留說明用的 state/README.md，其餘 inbox.md / *.json 等一律忽略。
+state/*
+!state/README.md

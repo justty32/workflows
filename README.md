@@ -36,6 +36,7 @@
 | [workflows/common/](template/workflows/common/README.md) | 跨工作流共享：conventions（碰原始碼才需要）+ writing（產出散文才需要）+ gotchas（踩坑）|
 | [workflows/feature-dev/](template/workflows/feature-dev/README.md) | **資料夾型**工作流範例（功能開發）|
 | [workflows/testing.md](template/workflows/testing.md) | **單檔型**工作流範例（跑測試）|
+| [workflows/routines/](template/workflows/routines/README.md) | **常駐精靈型**工作流範例（例行事務 / 定期待辦）：配套 [`.claude/commands/`](template/.claude/commands/)（`/tick`、`/wrapup`）、[`notifier/`](template/notifier/README.md) 通知 daemon、[`state/`](template/state/README.md) 執行期通道、[`launchers/`](template/launchers/README.md) 啟動器——不需要就整組刪 |
 
 ## 這套為什麼有效（設計理由）
 

@@ -10,6 +10,7 @@
 |--------------|--------|-------------------|
 | 「我想開發 / 修改某個功能」「**修 bug**」 | **feature-dev** | [workflows/feature-dev/README.md](workflows/feature-dev/README.md) |
 | 「跑測試 / 驗證」 | **testing** | [workflows/testing.md](workflows/testing.md) |
+| 「**例行事務 / 定期待辦 / 常駐精靈**」 | **routines** | [workflows/routines/README.md](workflows/routines/README.md) |
 | 「**記 / 查踩坑**」 | **gotchas** | [workflows/common/gotchas.md](workflows/common/gotchas.md) |
 
 > 〔模板說明〕上表只先給三個最通用的；以下是常見工作流菜單，**需要哪個才加哪列**（入口檔在第一次用到時才建，從單檔開始長——見 [DEV-GUIDE](DEV-GUIDE.md) 四級成長軌跡）：

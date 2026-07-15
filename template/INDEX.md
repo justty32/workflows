@@ -10,9 +10,13 @@
 |------|------|
 | `{{src/ 或主要產出目錄}}` | {{描述；若有程式碼導航 index，連過去}} |
 | `workflows/` | 開發工作流（入口見 [WORKFLOWS.md](WORKFLOWS.md)）|
+| `.claude/commands/` | 自訂 slash command（如 `/tick`、`/wrapup`）|
+| `launchers/` | 雙擊即開 Claude Code / notifier 的 `.bat`（入口 [launchers/README](launchers/README.md)）|
+| `notifier/` | routines 通知 daemon（笨程式非 agent，網頁版 `notifier-web.ps1` / terminal 版 `notifier.ps1`；入口 [notifier/README](notifier/README.md)）|
+| `state/` | routines 常駐精靈的執行期狀態（非 durable、不入版控；入口 [state/README](state/README.md)）|
 | `{{其他頂層目錄…}}` | {{…}} |
 
-> 〔模板說明〕照實填你的 repo 頂層目錄，每列一句話。某目錄內部複雜就在該目錄放它自己的 README / INDEX，這裡只留一句話＋連結——本檔永遠只描述「頂層」。
+> 〔模板說明〕照實填你的 repo 頂層目錄，每列一句話。某目錄內部複雜就在該目錄放它自己的 README / INDEX，這裡只留一句話＋連結——本檔永遠只描述「頂層」。上面 `.claude/commands/`、`launchers/`、`notifier/`、`state/` 四列是 **routines 常駐精靈子系統**（見 [routines](workflows/routines/README.md)）；用不到就連同這些目錄一起刪。
 
 ## 開發工作流
 
