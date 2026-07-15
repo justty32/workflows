@@ -1,0 +1,6 @@
+# 讓跨平台腳本的行尾穩定：POSIX 腳本永遠 LF（CRLF 會讓 bash / python shebang 爆掉），
+# Windows 腳本永遠 CRLF。用不到常駐精靈刪掉這些行也無妨。
+*.sh  text eol=lf
+*.py  text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf

@@ -4,7 +4,7 @@
 
 **做什麼**：記錄「在某個**時機 / 週期**下該做的事」——上班時、下班前、會議前後、改完程式、每週、每隔幾天……。目的有二：① 怕忘記；② 能交給 **agent 代勞**的就標出來、之後自動化。本檔是工作流**入口**（先讀本檔）；daemon 的架構與演化在 [design](design.md)。
 
-> 〔模板說明〕「有常駐精靈的例行事務」通用骨架，配套 [`.claude/commands/`](../../.claude/commands/tick.md)（`/tick`、`/wrapup`）、[`notifier/`](../../notifier/README.md)、[`state/`](../../state/README.md)、[`launchers/`](../../launchers/README.md)。機制與檔案協定都通用；你只要填**自己的時機分區與間隔登記表**（下面兩段）＋全域 `{{時區}}` / `{{repo 絕對路徑}}` 佔位符。用不到就整組刪。
+> 〔模板說明〕「有常駐精靈的例行事務」通用骨架，配套 [`.claude/commands/`](../../.claude/commands/tick.md)（`/tick`、`/wrapup`）、[`notifier/`](../../notifier/README.md)、[`state/`](../../state/README.md)、[`launchers/`](../../launchers/README.md)。**跨平台**：Windows 走 `.bat` + PowerShell notifier、Linux/macOS 走 `.sh` + Python notifier（見 [launchers](../../launchers/README.md) / [notifier](../../notifier/README.md)）。機制與檔案協定兩邊通用；你只要填**自己的時機分區與間隔登記表**（下面兩段）＋全域 `{{repo 絕對路徑}}` 與時區佔位符（Windows 時區 ID + IANA 名，見各檔）。用不到就整組刪。
 
 **怎麼組織**：依**觸發時機**分區（下面「時機分區」）。每個項目標三件事：**執行者**（我 / agent）、**內容**、**（間隔型才需要）上次執行日期**。間隔型靠登記表「上次執行」欄判到期，做完就更新那格。
 
@@ -16,7 +16,7 @@
 
 ## 心跳迴圈（`/tick` 每次喚醒照這做）
 
-daemon 的核心迴圈，**刻意簡單、輕量可拋棄**：只做「判斷 + 短動作 + 提醒」，重活一律外包（寫進 inbox / 提醒另開 session），好讓 session 能隨意關掉重開。`/tick` 是薄殼，實際步驟在這。執行期通道都在 [`state/`](../../state/README.md)（不入版控）；取當地時間（`{{時區}}`）用 PowerShell（見 [`/tick`](../../.claude/commands/tick.md)）。
+daemon 的核心迴圈，**刻意簡單、輕量可拋棄**：只做「判斷 + 短動作 + 提醒」，重活一律外包（寫進 inbox / 提醒另開 session），好讓 session 能隨意關掉重開。`/tick` 是薄殼，實際步驟在這。執行期通道都在 [`state/`](../../state/README.md)（不入版控）；取當地時間（`{{時區}}`）Windows 用 PowerShell、Linux/macOS 用 `date`（見 [`/tick`](../../.claude/commands/tick.md)）。
 
 1. **判當前時間（`{{時區}}`）**：取現在的當地時間。
 2. **時間感知**：讀 `state/last-seen.json`（上次 tick 的時間戳 + 當天已觸發的鬧鐘）。算距上次多久——
