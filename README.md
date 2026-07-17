@@ -22,20 +22,32 @@
 3. 打開 `WORKFLOWS.md` 派發表：**刪掉用不到的列、加上你需要的**。新工作流一律從**單檔**開始長（見 DEV-GUIDE 四級成長軌跡），不要預先建資料夾。
 4. 也可以直接讓 Claude 代勞：把本 repo 路徑給 Claude Code，說「照這套模板幫我的專案建立工作流」。
 
+## 兩種 flavor（開發 / 非開發）
+
+核心思想（分層樹、durable 歸層、活狀態 open-only、膨脹即拆、`Done when:`）**領域中立**，兩種 flavor 共用同一套 kernel——差別只在**保留哪組工作流**。導入時保留你用得到的那組、刪掉另一組的列與檔（[WORKFLOWS.md](template/WORKFLOWS.md) 兩張表分別對應）。混合型專案兩組都留。
+
+| | 開發 flavor | 非開發 / 知識工作 flavor |
+|--|-------------|--------------------------|
+| 典型工作流 | feature-dev、testing、refactor、spec、plan… | write、digest、plan-a-thing、decide、learn、organize |
+| 共用產出規範 | [conventions](template/workflows/common/conventions.md)（程式碼慣例）| [writing](template/workflows/common/writing.md)（文風）|
+| 導航 index | code map（程式碼結構）| INFO_MAP（材料結構，見 [organize](template/workflows/organize.md)）|
+| 「完成」怎麼驗 | 測試 / build / lint 綠燈 | `Done when:` 可觀察的完成條件 |
+
 ## template/ 內容
 
 | 檔案 | 角色 |
 |------|------|
 | [AGENTS.md](template/AGENTS.md) | 最頂層路由器：專案一句話 + 鐵律 + 指向 WORKFLOWS / INDEX / 活狀態 |
 | [CLAUDE.md](template/CLAUDE.md) | 相容用轉址：一句話指回 AGENTS.md（Claude Code 會讀它） |
-| [WORKFLOWS.md](template/WORKFLOWS.md) | 派發器：使用者意圖 → 工作流 → 入口檔；工作流統一形式規範 |
+| [WORKFLOWS.md](template/WORKFLOWS.md) | 派發器：使用者意圖 → 工作流 → 入口檔；兩種 flavor 各一張派發表 |
 | [INDEX.md](template/INDEX.md) | repo 頂層結構地圖 |
 | [DEV-GUIDE.md](template/DEV-GUIDE.md) | 被動結構整理參考：膨脹即拆／雜亂即分類 + 四級成長軌跡 |
 | [SESSION-LOG.md](template/SESSION-LOG.md) | 進度 hub（open-only）|
 | [WAIT_USER.md](template/WAIT_USER.md) | 待使用者親自做/驗證的事（open-only）|
 | [workflows/common/](template/workflows/common/README.md) | 跨工作流共享：conventions（碰原始碼才需要）+ writing（產出散文才需要）+ gotchas（踩坑）|
-| [workflows/feature-dev/](template/workflows/feature-dev/README.md) | **資料夾型**工作流範例（功能開發）|
-| [workflows/testing.md](template/workflows/testing.md) | **單檔型**工作流範例（跑測試）|
+| [workflows/feature-dev/](template/workflows/feature-dev/README.md) | 開發 flavor：**資料夾型**工作流範例（功能開發）|
+| [workflows/testing.md](template/workflows/testing.md) | 開發 flavor：**單檔型**工作流範例（跑測試）|
+| [workflows/write.md](template/workflows/write.md) 等六個 | 非開發 flavor：write / digest / plan-a-thing / decide / learn / organize（單檔型）|
 
 ## 這套為什麼有效（設計理由）
 

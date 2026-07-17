@@ -14,9 +14,9 @@
 
 > 〔模板說明〕照實填你的 repo 頂層目錄，每列一句話。某目錄內部複雜就在該目錄放它自己的 README / INDEX，這裡只留一句話＋連結——本檔永遠只描述「頂層」。
 
-## 開發工作流
+## 工作流
 
-工作流的**選擇與入口**見 **[WORKFLOWS.md](WORKFLOWS.md)**——依「你想做什麼」派發。每個工作流的 durable 知識歸在 `workflows/<該工作流>/`（入口＝該夾 README 或主檔，含 `archive/` 封存過時文檔），具體流程在各自入口檔。
+工作流的**選擇與入口**見 **[WORKFLOWS.md](WORKFLOWS.md)**——依「你想做什麼」派發（分**開發**與**非開發 / 知識工作**兩套 flavor，保留你用得到的那套）。每個工作流的 durable 知識歸在 `workflows/<該工作流>/` 或單檔 `workflows/<該工作流>.md`（含 `archive/` 封存過時文檔），具體流程在各自入口檔。
 
 [DEV-GUIDE](DEV-GUIDE.md) 是**被動的結構整理參考**（結構整理原則 + 四級成長軌跡）——**只在要重構/整理結構時取用**。always-on 的**鐵律**在 [AGENTS.md](AGENTS.md)；碰原始碼的**程式碼慣例 + 導航 index 維護鏈**在 [common/conventions](workflows/common/conventions.md)。
 
