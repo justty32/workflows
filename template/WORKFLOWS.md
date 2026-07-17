@@ -6,43 +6,13 @@
 
 ## 你想做什麼 → 用哪個工作流
 
-> 〔模板說明〕本模板附**兩套 flavor**（同一套核心思想，只換工作流）：**開發**與**非開發 / 知識工作**。**保留你專案用得到的那套、刪掉另一套的列與檔**（見 [README](../README.md) 的 flavor 說明）。兩套可並存，混合型專案兩張表都留。
+> 〔模板說明〕**派發表由你選的 flavor 包提供，不在 kernel。** 本模板的工作流分成兩個 flavor 包（同一套核心思想，只換工作流）：**開發**與**知識工作**。導入時把你選的 flavor 包底下的檔案合進 `workflows/`，並把該包的 `WORKFLOWS.<flavor>.md` 派發表**貼到下面這個區塊**。混合型專案可兩包都合、兩張表都貼。各 flavor 包的內容與合併步驟見 [README](../README.md) 的導航。
 
-### 開發 flavor
+<!-- ↓↓↓ 把你選的 flavor 包的 WORKFLOWS.<flavor>.md 派發表貼在這裡 ↓↓↓ -->
 
-| 觸發（你說…）| 工作流 | 入口檔（先讀這個）|
-|--------------|--------|-------------------|
-| 「我想開發 / 修改某個功能」「**修 bug**」 | **feature-dev** | [workflows/feature-dev/README.md](workflows/feature-dev/README.md) |
-| 「跑測試 / 驗證」 | **testing** | [workflows/testing.md](workflows/testing.md) |
-| 「**記 / 查踩坑**」 | **gotchas** | [workflows/common/gotchas.md](workflows/common/gotchas.md) |
+〔佔位〕尚未貼入任何 flavor 派發表。到 flavor 包（`flavors/dev/` 或 `flavors/knowledge/`）把 `WORKFLOWS.<flavor>.md` 的內容貼到這裡，然後刪掉本行。
 
-碰原始碼的工作流共用 [common/conventions](workflows/common/conventions.md)（程式碼慣例 + code map）。
-
-### 非開發 / 知識工作 flavor
-
-規劃、寫作、閱讀消化、學習、決策、整理——借同一套分層思想，把「code map / testing」換成「導航 index / `Done when:` 驗收」。產出文字的工作流共用 [common/writing](workflows/common/writing.md)（文風）。
-
-| 觸發（你說…）| 工作流 | 入口檔（先讀這個）|
-|--------------|--------|-------------------|
-| 「寫一篇東西：文章 / 筆記 / 文件 / 翻譯 / 貼文」 | **write** | [workflows/write.md](workflows/write.md) |
-| 「讀長文 / 影片 / 一堆資料，做摘要與索引」 | **digest** | [workflows/digest.md](workflows/digest.md) |
-| 「規劃一件事：活動 / 旅行 / 流程 / 任意非開發專案」 | **plan-a-thing** | [workflows/plan-a-thing.md](workflows/plan-a-thing.md) |
-| 「在幾個選項間做決定」 | **decide** | [workflows/decide.md](workflows/decide.md) |
-| 「學一個主題，建立可延續學習筆記」 | **learn** | [workflows/learn.md](workflows/learn.md) |
-| 「整理一堆資訊 / 檔案 / 筆記的結構」 | **organize** | [workflows/organize.md](workflows/organize.md) |
-
-> 〔模板說明〕以下是常見工作流菜單，**需要哪個才加哪列**（入口檔在第一次用到時才建，從單檔開始長——見 [DEV-GUIDE](DEV-GUIDE.md) 四級成長軌跡）：
-> - **refactor**（重構 / 拆檔 / 整理結構）
-> - **investigation**（調查 / 解讀外部系統 / 可行性研究）
-> - **spec**（把一個 idea 討論成設計方案）
-> - **plan**（把設計方案展開成動工計畫）
-> - **idea**（記一個奇思妙想，不確定要不要做）
-> - **roadmap**（記一件確定會做、不確定何時的事）
-> - **tooling**（外部工具設定 / env var / 依賴）
-> - **dev-env**（開發環境、fresh clone 後要做什麼、打包出貨）
->
-> 若採用規劃類工作流，建議保留這條**規劃管線**（一個想法的成熟過程）：
-> idea（要不要做？）→ roadmap（會做，何時？）→ spec（討論後方案）→ plan（動工前詳規）→ build（feature-dev）。
+<!-- ↑↑↑ 派發表結束 ↑↑↑ -->
 
 **都不符 → 看 [INDEX.md](INDEX.md)**（repo 頂層結構地圖）。
 

@@ -16,15 +16,15 @@
 
 ## 工作流
 
-工作流的**選擇與入口**見 **[WORKFLOWS.md](WORKFLOWS.md)**——依「你想做什麼」派發（分**開發**與**非開發 / 知識工作**兩套 flavor，保留你用得到的那套）。每個工作流的 durable 知識歸在 `workflows/<該工作流>/` 或單檔 `workflows/<該工作流>.md`（含 `archive/` 封存過時文檔），具體流程在各自入口檔。
+工作流的**選擇與入口**見 **[WORKFLOWS.md](WORKFLOWS.md)** 的派發表——它由你導入時選的 **flavor 包**（開發 / 知識工作）提供並貼入。每個工作流的 durable 知識歸在 `workflows/<該工作流>/` 或單檔 `workflows/<該工作流>.md`（含 `archive/` 封存過時文檔），具體流程在各自入口檔。
 
-[DEV-GUIDE](DEV-GUIDE.md) 是**被動的結構整理參考**（結構整理原則 + 四級成長軌跡）——**只在要重構/整理結構時取用**。always-on 的**鐵律**在 [AGENTS.md](AGENTS.md)；碰原始碼的**程式碼慣例 + 導航 index 維護鏈**在 [common/conventions](workflows/common/conventions.md)。
+[DEV-GUIDE](DEV-GUIDE.md) 是**被動的結構整理參考**（結構整理原則 + 四級成長軌跡）——**只在要重構/整理結構時取用**。always-on 的**鐵律**在 [AGENTS.md](AGENTS.md)；碰原始碼的**程式碼慣例 + 導航 index 維護鏈**在 `common/conventions`（由開發 flavor 包提供）。
 
 ## 通用（跨工作流共享）
 
 | 路徑 | 內容 |
 |------|------|
-| [common/README](workflows/common/README.md) | 跨工作流共通：[gotchas](workflows/common/gotchas.md) 踩坑 + [conventions](workflows/common/conventions.md) 程式碼慣例 + [writing](workflows/common/writing.md) 寫作風格 |
+| [common/README](workflows/common/README.md) | 跨工作流共通：[gotchas](workflows/common/gotchas.md) 踩坑（kernel 內建）+ `conventions` 程式碼慣例（開發 flavor 提供）+ `writing` 寫作風格（知識 flavor 提供）|
 
 ## 活狀態（只列還沒完成的）
 
