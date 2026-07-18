@@ -57,6 +57,7 @@ flavors/
 | [DEV-GUIDE.md](template/DEV-GUIDE.md) | 被動結構整理參考：膨脹即拆／雜亂即分類 + 四級成長軌跡 |
 | [SESSION-LOG.md](template/SESSION-LOG.md) | 進度 hub（open-only）|
 | [WAIT_USER.md](template/WAIT_USER.md) | 待使用者親自做/驗證的事（open-only）|
+| `inbox/` + [workflows/inbox/](template/workflows/inbox/README.md) | agent 之間的**信件**：`inbox/` 是放信處（保持乾淨）、`workflows/inbox/` 是使用方式＋通訊錄＋模板（可選；活狀態第三軸，像 email——狀態靠位置、寄失敗/不回都無妨）|
 | [workflows/common/](template/workflows/common/README.md) | 跨工作流共享：gotchas（踩坑，kernel 內建）；conventions / writing 由 flavor 包合入 |
 
 ## 這套為什麼有效（設計理由）

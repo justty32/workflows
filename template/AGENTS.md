@@ -30,9 +30,12 @@ AGENTS.md（本檔，最頂）→ WORKFLOWS.md / INDEX.md → 各工作流入口
 
 > 〔模板說明〕可選段。若專案有跨機開發、特殊 build / 測試 / 部署環境，在 `workflows/` 下開 `dev-env.md` 收納細節，本段只留一句話＋連結（例：「跨機開發：A 機（完整）與 B 機（離線）。指令與各機能做什麼全在 [workflows/dev-env.md](workflows/dev-env.md)」）。環境單純就整段刪除。
 
-## 主工作流（進度與待測）
+## 主工作流（活狀態：進度 / 待測 / 信件）
 
 事情告一段落、因應需求結束、或臨時中止時 → 把**還沒完成**的活狀態記到進度；需要**使用者親自做／驗證**的（實機環境、外部工具實跑、需權限/本機環境）→ 記到待使用者。兩者都**只列 open**，完成即移除、不留已完成清單。
 
-- **進度** → [SESSION-LOG.md](SESSION-LOG.md)
-- **待使用者** → [WAIT_USER.md](WAIT_USER.md)
+- **進度**（我自己的 open in-flight）→ [SESSION-LOG.md](SESSION-LOG.md)
+- **待使用者**（等使用者親自做/驗證）→ [WAIT_USER.md](WAIT_USER.md)
+- **信件**（agent 之間的訊息交換，像 email；放信處是 repo 根的 `inbox/`）→ 使用方式見 [workflows/inbox/](workflows/inbox/README.md)（可選；單方專案不需要就整包刪）
+
+> 三軸各管一種「還沒完的事」：進度＝我手上的、待使用者＝卡在人、信件＝agent 之間收發（寄失敗/不回都無妨）。使用者說「**看看信箱**」＝掃自己的 inbox 待辦。

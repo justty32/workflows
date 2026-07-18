@@ -35,5 +35,8 @@
 
 ## 跨工作流的活狀態（repo 根）
 
-- **進度**（還沒完成的 in-flight / open）→ [SESSION-LOG.md](SESSION-LOG.md)
+三軸各管一種「還沒完成的事」，都**只列 open**、完成即移除：
+
+- **進度**（我自己還沒完成的 in-flight / open）→ [SESSION-LOG.md](SESSION-LOG.md)
 - **待使用者親自做 / 驗證的**（實機環境 / 外部工具 / env / 權限）→ [WAIT_USER.md](WAIT_USER.md)
+- **信件**（agent 之間的訊息交換，像 email——寄失敗/不回都無妨；放信處是 repo 根的 `inbox/`）→ 使用方式見 [workflows/inbox/](workflows/inbox/README.md)（可選；單方專案不需要就整包刪）

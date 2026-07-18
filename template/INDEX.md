@@ -10,6 +10,7 @@
 |------|------|
 | `{{src/ 或主要產出目錄}}` | {{描述；若有程式碼導航 index，連過去}} |
 | `workflows/` | 開發工作流（入口見 [WORKFLOWS.md](WORKFLOWS.md)）|
+| `inbox/` | agent 之間的**信件**收件匣（放信處，保持乾淨；使用方式見 [workflows/inbox/](workflows/inbox/README.md)。可選）|
 | `{{其他頂層目錄…}}` | {{…}} |
 
 > 〔模板說明〕照實填你的 repo 頂層目錄，每列一句話。某目錄內部複雜就在該目錄放它自己的 README / INDEX，這裡只留一句話＋連結——本檔永遠只描述「頂層」。
@@ -28,7 +29,10 @@
 
 ## 活狀態（只列還沒完成的）
 
+三軸：進度＝我手上的、待使用者＝卡在人、信件＝agent 之間收發（像 email）。
+
 | 檔案 | 用途 |
 |------|------|
 | [SESSION-LOG](SESSION-LOG.md) | 進度 hub（repo 根）→ 各工作流 session-log（open-only）|
 | [WAIT_USER](WAIT_USER.md) | 待**使用者**親自做/驗證的入口（repo 根；膨脹後拆 `wait_todo/` 分類檔）|
+| `inbox/`（放信處）+ [workflows/inbox/](workflows/inbox/README.md)（使用方式）| agent 之間的**信件**（可選；像 email，狀態靠位置：inbox 頂層＝未處理、`done/`＝已處理）|
