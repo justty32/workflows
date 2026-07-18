@@ -10,6 +10,7 @@
 |------|------|
 | `{{src/ 或主要產出目錄}}` | {{描述；若有程式碼導航 index，連過去}} |
 | `workflows/` | 開發工作流（入口見 [WORKFLOWS.md](WORKFLOWS.md)）|
+| `.claude/commands/` | slash 指令（如 [`/wf-tick`](.claude/commands/wf-tick.md) 驅動定期心跳）|
 | `inbox/` | agent 之間的**信件**收件匣（放信處，保持乾淨；使用方式見 [workflows/inbox/](workflows/inbox/README.md)。可選）|
 | `{{其他頂層目錄…}}` | {{…}} |
 

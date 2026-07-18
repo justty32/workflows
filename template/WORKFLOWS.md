@@ -16,6 +16,20 @@
 
 **都不符 → 看 [INDEX.md](INDEX.md)**（repo 頂層結構地圖）。
 
+## 定期喚醒（kernel 內建，與上面 flavor 派發表分開）
+
+一套定期工作流，**不屬任一 flavor、kernel 一律有**。**兩種進入**：
+1. **循環執行**：[`/wf-tick`](.claude/commands/wf-tick.md) 每隔週期喚醒 tick → tick 派發下面各工作流，判時間、**做**到期項。
+2. **使用者登記**：你直接請求 →「**幫我登記行程**」進 schedule、「**加個常規事務**」進 routines，只寫進清單、不當場做（等 tick 到點才做）。
+
+| 工作流 | 入口 | 做什麼 |
+|--------|------|--------|
+| **tick** | [workflows/tick.md](workflows/tick.md) | 定期心跳的**單次**執行——當**派發器**依序跑各定期工作流（routines → schedule）。由 `/wf-tick [週期]` 每隔週期喚醒。 |
+| **routines** | [workflows/routines.md](workflows/routines.md) | **固定例行**清單（不常變動）：判當地時間 → 對照時機分區 / 間隔登記表 → 到期的唯讀事務就做。 |
+| **schedule** | [workflows/schedule.md](workflows/schedule.md) | **一次性**定時請求（心血來潮，如「17:00 重啟 XXX」）：判時間 → 到點的就做、做完刪。 |
+
+**tick 只派發、不判斷**；「什麼時間該做什麼」的判斷與清單各歸 routines / schedule。整套用不到就把 `tick` 連同 [`/wf-tick`](.claude/commands/wf-tick.md) 一起刪。
+
 ## 工作流的統一形式（規範）
 
 所有工作流照同一套形式（細則見 [DEV-GUIDE](DEV-GUIDE.md)）：
