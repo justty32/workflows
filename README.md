@@ -44,6 +44,8 @@ flavors/
 3. 全域搜尋 `{{` 把佔位符填成你專案的實況；讀到的 **`〔模板說明〕`** 區塊照它說的做，做完刪除該區塊。
 4. 也可以直接讓 Claude 代勞：把本 repo 路徑給 Claude Code，說「照這套模板、用 dev（或 knowledge）flavor 幫我的專案建立工作流」。
 
+> **非侵入式導入（推薦用於既有專案）**：不想讓一堆 `.md` 攤在專案頂層？改成**頂層只留 `AGENTS.md`、`CLAUDE.md`，其餘全部收進單一子資料夾（如 `wf/`）**，並視需求決定要不要把它們 git ignore。完整佈局、連結修正與 ignore 取捨見 [non-invasive-import.md](non-invasive-import.md)。
+
 > **關於連結**：flavor 包裡工作流的向上導覽連結（`← [WORKFLOWS](../WORKFLOWS.md)` 等）是**照「合併後」的佈局**寫的——合進 kernel、落位到專案的 `workflows/` 後才會全部解析。在本 repo 裡從 `flavors/` 直接點會指不到 kernel 檔，這是預期的，不是壞連結。
 
 ## template/（kernel）內容
