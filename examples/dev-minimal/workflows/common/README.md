@@ -1,0 +1,16 @@
+# common — 跨工作流共享（入口）
+
+[INDEX](../../INDEX.md)
+
+不專屬任一工作流、各工作流共用的東西。
+
+| 路徑 | 內容 | 來源 |
+|------|------|------|
+| [gotchas.md](gotchas.md) | 共通踩坑（門檻：第二次撞到才記）| kernel |
+| [user.md](user.md) | 使用者偏好、確認邊界、分支慣例 | kernel |
+| `glossary.md`（長出來才建）| 領域詞彙：`詞 \| 意思 \| 別名`；術語多到 agent 常猜錯時才建 | kernel |
+| [conventions.md](conventions.md) | 程式碼慣例；碰原始碼的工作流共用 | dev 包 |
+| [code-map.md](code-map.md) | 程式碼導航 index：`領域 \| 檔案 \| 職責 \| 測試在哪` ＋ 維護鏈 | dev 包 |
+<!-- wf-insert:COMMON -->
+
+> 過時的共通文檔封存進 `common/archive/`（規則見 [STRUCTURE](../../STRUCTURE.md)）。

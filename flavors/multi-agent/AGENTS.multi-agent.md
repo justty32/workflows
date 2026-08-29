@@ -1,0 +1,1 @@
+- 開場也 `ls inbox/*.md`：有信就先讀（信件軸，見 [workflows/inbox/](workflows/inbox/README.md)）。

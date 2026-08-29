@@ -2,29 +2,70 @@
 
 ← [repo README](../../README.md)（導航中樞）
 
-非開發 / 知識工作專案用的工作流包（寫作、閱讀消化、規劃、決策、學習、整理）。搭配 [`template/`](../../template/) 這個**共用 kernel** 一起用：kernel 提供分層樹的骨架，本包只提供**知識類工作流**——把開發 flavor 的「code map / testing」換成「導航 index / `Done when:` 可觀察驗收」。
+**非開發的知識工作**用的工作流包：寫作、閱讀消化、規劃、決策、學習、整理。搭配 [`template/`](../../template/) 這個**共用 kernel** 一起用——kernel 提供分層樹骨架（AGENTS / WORKFLOWS 派發器 / INDEX / STRUCTURE / 活狀態 / planning / decisions / common），本包只提供**知識類工作流**：把開發 flavor 的「code map / testing」換成「info-map / 可觀察的 `Done when`」。
 
 ## 這個包有什麼
 
 | 路徑 | 角色 |
 |------|------|
-| [WORKFLOWS.knowledge.md](WORKFLOWS.knowledge.md) | 知識 flavor 的**派發表片段**（貼進 kernel 的 WORKFLOWS.md）|
-| [workflows/write.md](workflows/write.md) | 寫文章 / 筆記 / 文件 / 翻譯 / 貼文 |
-| [workflows/digest.md](workflows/digest.md) | 讀長文 / 影片 / 一堆資料，做摘要與索引 |
-| [workflows/plan-a-thing.md](workflows/plan-a-thing.md) | 規劃活動 / 旅行 / 流程 / 任意非開發專案 |
-| [workflows/decide.md](workflows/decide.md) | 在幾個選項間做決定 |
-| [workflows/learn.md](workflows/learn.md) | 學一個主題，建立可延續學習筆記 |
-| [workflows/organize.md](workflows/organize.md) | 整理一堆資訊 / 檔案 / 筆記的結構 |
-| [workflows/common/writing.md](workflows/common/writing.md) | 寫作風格；產出給人讀的文字時共用 |
+| [WORKFLOWS.knowledge.md](WORKFLOWS.knowledge.md) | **派發表片段**（六列 + 「分辨」欄），貼進 kernel 的 `WORKFLOWS.md` |
+| [COMMON.knowledge.md](COMMON.knowledge.md) | **common 表片段**（兩列），貼進 kernel 的 `workflows/common/README.md` |
+| [workflows/write.md](workflows/write.md) | 內容產出：文章 / 筆記 / 文件 / 翻譯 / 貼文 |
+| [workflows/digest.md](workflows/digest.md) | 讀懂一份材料，產出摘要與出處索引 |
+| [workflows/plan-a-thing.md](workflows/plan-a-thing.md) | 規劃一件非開發的事 |
+| [workflows/decide.md](workflows/decide.md) | 結構化決策，結論落到 kernel 的 decisions |
+| [workflows/learn.md](workflows/learn.md) | 長期吸收一個主題，長出可回訪的筆記樹 |
+| [workflows/organize.md](workflows/organize.md) | 把一堆資訊整理成好導航的結構 |
+| [workflows/common/writing.md](workflows/common/writing.md) | 寫作風格（＋ [writing/zh-tw.md](workflows/common/writing/zh-tw.md) 繁中用字），產出給人讀的文字時共用 |
+| [workflows/common/info-map.md](workflows/common/info-map.md) | 材料導航 index：`材料 \| 位置 \| 負責什麼 \| 衍生產物` |
 
-六個工作流是**菜單**，用不到的整列＋整檔刪掉——不必全留。
+## 怎麼合進 kernel
 
-## 怎麼合進 kernel（導入步驟）
+```
+tools/wf-init.sh --target <專案> --flavor knowledge
+```
 
-1. 把 [`template/`](../../template/) 整包複製到你專案根目錄。
-2. 把本包 **`workflows/` 底下你要的檔案**複製進專案的 `workflows/`（用不到的工作流別複製；`common/writing.md` 併入 `workflows/common/`）。
-3. 打開專案的 `WORKFLOWS.md`，把 [WORKFLOWS.knowledge.md](WORKFLOWS.knowledge.md) 的內容**貼到那個 `〔佔位〕` 派發表區塊**（刪掉你沒複製的工作流那幾列），再刪掉佔位提示。
-4. 全域搜尋 `{{` 填佔位符；讀到 `〔模板說明〕` 照做後刪除該區塊。
-5. 混合型專案（同時要開發類工作流）→ 再合 [dev 包](../dev/README.md)，兩張派發表都貼。
+腳本做的事（手動導入就照著做）：
 
-也可以直接把本 repo 路徑給 Claude Code，說「用知識 flavor 幫我的專案建立工作流」。
+1. 把 [`template/`](../../template/) 整包複製到專案根。
+2. 把本包 `workflows/` 底下的檔案複製進專案的 `workflows/`（`common/writing.md`、`common/writing/`、`common/info-map.md` 併入 `workflows/common/`）。
+3. 把 [WORKFLOWS.knowledge.md](WORKFLOWS.knowledge.md) 插到專案 `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 標記之前，把 [COMMON.knowledge.md](COMMON.knowledge.md) 插到 `workflows/common/README.md` 的 `<!-- wf-insert:COMMON -->` 之前。
+4. 全域搜尋 `{{` 填成專案實況；讀到 `〔模板說明〕` 照做後刪除該段；讀到 `〔導入判斷〕` 依條件決定做不做，做完刪除該段。
+5. 跑一次 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）收尾。
+
+## 可選工作流菜單
+
+上表六個工作流是**菜單、不是套餐**：一個知識工作專案通常只用得到其中兩三個（例：只寫作 → write + writing；只研讀 → digest + learn + info-map）。
+
+- 導入時只複製你要的那幾個工作流檔，派發表也只貼對應的列。
+- 已經導入、事後才決定不要某個 → 照下面「移除某工作流要動的地方」表拆乾淨。
+- 六個都不夠用時，複製 kernel 的 `workflows/TEMPLATE.workflow.md` 開新的，在派發表加一列。
+
+idea / roadmap / 詳規這條**規劃管線**不在本包——它與領域無關，收在 kernel 的 `workflows/planning.md`。plan-a-thing 是那條管線的「非開發執行段」。
+
+## 混合型專案（同時合 dev 包）
+
+兩包都合、兩張派發表都貼時，會有三處需要人工裁決：
+
+| 撞到的地方 | 怎麼分 |
+|-----------|--------|
+| dev 的 **spec / plan** vs 本包的 **plan-a-thing** | 以「**產出是不是程式碼**」分流：是 → spec / plan；不是 → plan-a-thing。這條已寫進派發表的「分辨」欄。 |
+| dev 的 **conventions** vs 本包的 **writing** | conventions 管**原始碼**（拆檔、命名、breaking change 同步）；writing 管**給人讀的文字**。寫 README、設計說明、commit 訊息這類**文字**時以 writing 為準。 |
+| 兩包的 **gotchas** | 沒有衝突：gotchas 是 kernel 內建、只有一份（`workflows/common/gotchas.md`），兩包的派發表都不重複列它。 |
+
+info-map（材料結構）與 code map（程式碼結構）可以並存，各管各的，不必合成一份。
+
+## 移除某工作流要動的地方
+
+移除一個工作流，四個位置都要動；動完跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有 `BROKEN`。
+
+| 工作流 | 檔案 | 派發表列 | 還被誰引用（要一併改掉那句）|
+|--------|------|---------|---------------------------|
+| write | `workflows/write.md` | 「寫一篇東西…」 | digest、learn、organize 的「交接」；plan-a-thing 交接 |
+| digest | `workflows/digest.md` | 「幫我讀懂這份材料…」 | write「何時不用」；learn 的開頭與「何時不用」、交接 |
+| plan-a-thing | `workflows/plan-a-thing.md` | 「規劃一件事…」 | digest 交接；decide 交接；kernel `planning.md` 階段表 |
+| decide | `workflows/decide.md` | 「在幾個選項間做決定」 | plan-a-thing「何時不用」與交接；kernel `decisions.md`「何時不用」 |
+| learn | `workflows/learn.md` | 「學一個主題…」 | digest「何時不用」與交接 |
+| organize | `workflows/organize.md` | 「整理一堆資訊…」 | write 交接；learn 交接；`common/info-map.md` 開頭 |
+| （共用）writing | `workflows/common/writing.md`＋`writing/` | — | `common/README.md` 一列；write 的 Done when 與流程 |
+| （共用）info-map | `workflows/common/info-map.md` | — | `common/README.md` 一列；organize「導航 index」段與 Done when；digest 交接 |

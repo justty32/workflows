@@ -1,31 +1,44 @@
-# 功能開發（feature-dev）— 工作流入口
+# feature-dev — 功能開發 / 修 bug（工作流入口）
 
-← [INDEX](../../INDEX.md)｜[AGENTS.md](../../AGENTS.md)
+[WORKFLOWS](../../WORKFLOWS.md)｜[INDEX](../../INDEX.md)
 
-新增 / 修改 {{專案名}} 功能的工作流。這是本工作流的**入口**：先讀本檔，再往下深入。always-on 鐵律見 [AGENTS.md](../../AGENTS.md)；要整理結構時參考 [DEV-GUIDE](../../DEV-GUIDE.md)（被動）；**程式碼慣例 + 導航 index 維護鏈**見 [common/conventions](../common/conventions.md)。
+改變行為的工作：加一個功能、修一個 bug，從動手到 commit。碰原始碼前先讀 [common/conventions](../common/conventions.md) 與 [common/code-map](../common/code-map.md)。
 
-> 〔模板說明〕本資料夾是「資料夾型工作流」的範例。流程請改成你專案的實況；`landed/`、`gotchas.md`、`session-log.md` 都是**長出來才建**（見 DEV-GUIDE 四級成長軌跡），不要預先建空檔。
+**何時用**：使用者說「我想開發／修改某個功能」「這裡壞了，修一下」——**修 bug 也走這條**，產出一樣是「行為改變＋驗證綠燈」。
+**何時不用**：只是要查清楚原因、還不動碼 → [investigation](../investigation.md)；行為不變、只重排結構 → [refactor](../refactor.md)；還在討論要不要做、方案長怎樣 → [planning](../planning.md)。
+
+## Done when
+
+- [testing](../testing.md) 標「改完必跑」的驗證指令回傳 0。
+- [common/code-map](../common/code-map.md) 中該領域的列已更新（新增／刪除的檔、職責變動、測試位置）。
+- 要使用者實機驗證的在 [WAIT_USER](../../WAIT_USER.md) 有一行；跨 session 沒收尾的在 [SESSION-LOG](../../SESSION-LOG.md) 有一行。
 
 ## 流程
 
 ```
-修改（增量）
-  → 跑自動驗證（{{測試 / build / lint 指令}}）綠燈
-  → 交使用者驗證（若需實機/實環境）→ 回報問題 → 修 → 重複
-  → 全數通過後：補齊 code map → 補文檔 → commit
+讀 code map 找到相關領域（只讀清單裡的檔）
+  → 增量修改（守 conventions）
+  → 跑 testing 的自動驗證，綠燈
+  → 要實機／實環境的交使用者驗證 → 回報問題 → 修 → 重複
+  → 全數通過後：更新 code map → 補文檔 → commit
 ```
 
-- **自動驗證是你（Claude）自己跑**的把關（鐵律：改完跑驗證）。
-- **Claude 跑不了的驗證一律由使用者做**——先靠自動驗證＋結構性檢查把握到極限再交付；需使用者驗證的記到 [WAIT_USER](../../WAIT_USER.md)。
-- 測試迭代期間，code map / 文檔可暫時落後；**commit 前必須對齊**。
-- 跨 session 時在本工作流 `session-log.md` 補一行 `[功能名] 文檔/code map 待同步`，下個 session 不會誤判已同步。
+- 自動驗證是 agent 自己跑的把關；跑不了的一律交使用者（見 [testing](../testing.md) 的「誰跑」欄）。
+- 迭代期間 code map / 文檔可暫時落後，**commit 前必須對齊**。
+- 跨 session 時在本工作流 `session-log.md` 補一行 `[功能名] 文檔 / code map 待同步`，下個 session 才不會誤判已同步。
 
 ## 內容
 
 | 檔案 | 內容 |
 |------|------|
-| `landed/`（長出來才建）| 已落地功能目錄（時間序；功能在哪、實作細節指標）|
-| `gotchas.md`（長出來才建）| 本工作流專屬踩坑 |
-| `session-log.md`（長出來才建）| 本工作流 open / in-flight 進度（hub 在 repo 根 [SESSION-LOG](../../SESSION-LOG.md)）|
+| `landed/`（長出來才建）| 已落地功能目錄：功能在哪、實作細節指標 |
+| `gotchas.md`（長出來才建）| 本工作流專屬踩坑（共通的在 [common/gotchas](../common/gotchas.md)）|
+| `session-log.md`（長出來才建）| 本工作流 open 進度（hub 在 [SESSION-LOG](../../SESSION-LOG.md)）|
+| `archive/`（長出來才建）| 過時文檔封存（規則見 [STRUCTURE](../../STRUCTURE.md)）|
 
-> **archive**：過時/被取代的文檔封存進 `feature-dev/archive/`（保留歷史、不污染現役）。本入口檔若膨脹，照 [DEV-GUIDE「結構整理原則」](../../DEV-GUIDE.md) 拆。
+> 〔模板說明〕本資料夾是「資料夾型工作流」的範例：入口只有這個 README，上表各檔都是長出來才建（見 [STRUCTURE](../../STRUCTURE.md) 四級成長軌跡），不要預先建空檔。流程區塊改成你專案的實況後刪除本段。
+
+## 交接
+
+- 驗證怎麼跑 → [testing](../testing.md)；改到一半發現該先整理結構 → [refactor](../refactor.md)。
+- 為什麼選這個做法 → [decisions](../decisions.md)；卡在使用者 → [WAIT_USER](../../WAIT_USER.md)。
