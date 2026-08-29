@@ -62,6 +62,10 @@ flavors/
 | `inbox/` + [workflows/inbox/](template/workflows/inbox/README.md) | agent 之間的**信件**：`inbox/` 是放信處（保持乾淨）、`workflows/inbox/` 是使用方式＋通訊錄＋模板（可選；活狀態第三軸，像 email——狀態靠位置、寄失敗/不回都無妨）|
 | [workflows/common/](template/workflows/common/README.md) | 跨工作流共享：gotchas（踩坑，kernel 內建）；conventions / writing 由 flavor 包合入 |
 
+## 本 repo 的改進提案
+
+多角度審視後的改進清單（含五份原始討論記錄）收在 [docs/](docs/README.md)，入口是 [docs/improvement-proposals-2026-08-29.md](docs/improvement-proposals-2026-08-29.md)。
+
 ## 這套為什麼有效（設計理由）
 
 - **AI agent 的 context 有限**：薄入口 + 層層派發，agent 每次只載入當前任務需要的知識，而不是把整包文檔塞進 context。
