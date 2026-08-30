@@ -4,11 +4,13 @@
 
 不專屬任一工作流、各工作流共用的東西。
 
+<!-- wf-nav -->
 | 路徑 | 內容 | 來源 |
 |------|------|------|
 | [gotchas.md](gotchas.md) | 共通踩坑（門檻：第二次撞到才記）| kernel |
 | [user.md](user.md) | 使用者偏好、確認邊界、分支慣例 | kernel |
 | `glossary.md`（長出來才建）| 領域詞彙：`詞 \| 意思 \| 別名`；術語多到 agent 常猜錯時才建 | kernel |
+| [data-files.md](data-files.md) | 資料檔契約 `wf-table/1`：給 AI 消化的條列 >1 KB 抽 `.json`／`.csv`、`tabledb.py` 讀寫；給人導航的連結表留 md | kernel |
 | [writing.md](writing.md) | 寫作風格：兩種模式、AI 味自檢表、標點條款（繁中用字在 [writing/zh-tw.md](writing/zh-tw.md)）| knowledge 包 |
 | [info-map.md](info-map.md) | 材料導航 index：`材料 \| 位置 \| 負責什麼 \| 衍生產物` | knowledge 包 |
 <!-- wf-insert:COMMON -->

@@ -14,7 +14,7 @@
   inbox/               ← 只有合 multi-agent 包才有；它是對外介面（別的 agent 往這投遞），留根
   wf/                  ← 其餘全部（名稱自取：wf、.workflow、ops…）
     WORKFLOWS.md  INDEX.md  STRUCTURE.md  SESSION-LOG.md  WAIT_USER.md
-    workflows/    tools/wf-lint.sh
+    workflows/    tools/（wf-lint.sh、tabledb.py、tabledb_links.py、find_big_lists.py、fix_moved_links.py）
   …（專案原本的檔案不動）
 ```
 
@@ -45,4 +45,4 @@ tools/wf-init.sh --target <專案根> --flavor <a,b> --non-invasive wf
 
 ## 升級
 
-`wf/` 內 kernel-owned 的檔（`STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`tools/wf-lint.sh`）可整檔覆蓋，其餘讀 [CHANGELOG](../CHANGELOG.md) 手動套；分類見 [IMPORT.md](../IMPORT.md)。
+`wf/` 內 kernel-owned 的檔（`STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/tidy.md`、`tools/wf-lint.sh`、`tools/*.py`）可整檔覆蓋，其餘讀 [CHANGELOG](../CHANGELOG.md) 手動套；分類見 [IMPORT.md](../IMPORT.md)。

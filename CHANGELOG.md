@@ -2,6 +2,20 @@
 
 每次 kernel（`template/`）或導入契約變動記一節：改了哪檔、**既有專案要不要跟**。版本戳在 `template/AGENTS.md` 尾端 `<!-- wf-kernel vX.Y (日期) -->`，導入後 `grep wf-kernel AGENTS.md` 查自己是哪一版。kernel-owned / project-owned 分類見 [IMPORT.md](IMPORT.md)。
 
+## v0.3 (2026-08-30)
+
+文件整理工具進 kernel：同質記錄表 >1 KB 走資料檔、新增 `tidy` 工作流；**考慮使用者**——連結表另計，給人導航的留 md、給 AI 消化的才抽。既有專案要跟的話：
+
+- 新增 `workflows/common/data-files.md`（契約 `wf-table/1`：同質記錄表 >1 KB 抽 `.json`／`.csv`；連結表不看 bytes，>10 條才考慮，給人導航的留 md 走一般 8 KB 上限，給 AI 消化的才抽）→ kernel-owned，直接加。
+- 新增 `workflows/tidy.md`（盤點 → 交接書 → 派工 → 核驗的整理流程）→ kernel-owned，直接加；`WORKFLOWS.md` kernel 內建表加 tidy 列 → project-owned。
+- 新增 `tools/tabledb.py`、`tabledb_links.py`、`find_big_lists.py`、`fix_moved_links.py` → kernel-owned，複製到專案 `tools/`（非侵入式 `wf/tools/`）；`wf-init.sh` 現在自動複製。
+- `tools/wf-lint.sh` → kernel-owned 整檔覆蓋：新增 `BIGLIST`（呼叫 `find_big_lists.py --min 1024`；同質記錄表 `--strict` 才算失敗）與 `BIGLIST-LINKS`（純連結表超過十條，**只 warning，永不影響結束碼**）；資料檔 `tabledb.py check` 壞連結計入 `broken`。**行為變更**：`--strict` 時 `oversize` 與 `biglist`（同質記錄表）也算失敗（原本 oversize 只報）。
+- `STRUCTURE.md` → kernel-owned 整檔覆蓋：整理原則加「同質記錄表 >1 KB」「連結表 >10 條另計（考慮使用者：給人導航留 md、給 AI 消化才抽）」「<1 KB 小檔合併」「同類可放鬆」「原路徑保留當入口」；archive 規則改「連結拿掉、當它不存在」「`archive/README.md` 索引是唯一可連進去的地方（原本寫不放 README）」；新增「資料檔慣例」三行。
+- `AGENTS.md` → project-owned：加鐵律「條列走資料檔、導航留 md」、版本戳 v0.3。
+- `INDEX.md` `tools/` 列、`workflows/common/README.md` data-files 列 → project-owned。
+- `.claude/commands/wf-lint.md` → kernel-owned 覆蓋：說明 `BIGLIST` 與 `BIGLIST-LINKS`（後者只 warning）的差別。
+- `README.md`／`IMPORT.md`／`docs/` 同步（本 repo 自己的）。
+
 ## v0.2 (2026-08-29)
 
 依 2026-08-29 的 31 條改進提案全面重構（提案原文：`git show 025f8a2:docs/improvement-proposals-2026-08-29.md`）。既有專案（v0.1）要跟的話：

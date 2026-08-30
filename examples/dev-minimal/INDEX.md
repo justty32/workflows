@@ -10,6 +10,7 @@ todo-cli = **命令列待辦工具（Node.js + TypeScript），待辦資料存�
 | `tests/` | vitest 測試，子目錄對應 `src/` 的三個領域；怎麼跑見 [testing](workflows/testing.md) |
 | `workflows/` | 工作流（派發見 [WORKFLOWS.md](WORKFLOWS.md)；共享區 [workflows/common/](workflows/common/README.md)）|
 | `.claude/commands/` | slash 指令適配層（可選）：`/wf-lint` 等薄殼。Claude Code 為例，只讀專案根的這個目錄；沒有 slash 機制的工具忽略本目錄，直接跑 `tools/wf-lint.sh` |
+| `tools/` | kernel 工具：`wf-lint.sh`（檢查）、`tabledb.py`（資料檔 CRUD／連結）、`find_big_lists.py`、`fix_moved_links.py`；資料檔契約見 [workflows/common/data-files.md](workflows/common/data-files.md) |
 <!-- wf-insert:INDEX -->
 
 ## 頂層文件

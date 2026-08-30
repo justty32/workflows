@@ -10,7 +10,7 @@
 2. **檔名語意**：**README**＝進資料夾先讀的入口；**INDEX**＝該資料夾頂層結構的索引。小資料夾兩者合一。
 3. **durable 知識歸層**：長期知識歸到所屬工作流／那一層，**絕不往上堆**——AGENTS.md 因此永遠很薄。
 4. **活狀態只列 open**：進度記 `SESSION-LOG.md`、等使用者的記 `WAIT_USER.md`，**完成即刪**；「改了什麼」交給 git log，「為什麼」記 `workflows/decisions.md`。
-5. **膨脹即拆、雜亂即分類**：整理原則與四級成長收在 `STRUCTURE.md`——**被動參考**，整理結構時才取用。
+5. **膨脹即拆、雜亂即分類**：整理原則與四級成長收在 `STRUCTURE.md`——**被動參考**，整理結構時才取用；同質記錄表 >1 KB 進資料檔（`wf-table/1`），給人導航的連結表留 md。
 6. **鐵律極少而 always-on**：3–5 條任何時刻都適用的鐵律常駐 AGENTS.md（不改原意、不可逆動作要有授權來源…）。
 
 這六條只在這裡與 [`template/STRUCTURE.md`](template/STRUCTURE.md) 各寫一次。
@@ -22,7 +22,7 @@
 ```
 template/   共用 kernel（整包拿走）
 flavors/    七個領域包（見下表）
-tools/      wf-init.sh（導入）、wf-lint.sh（連結／大小／殘留）
+tools/      wf-init.sh（導入）、wf-lint.sh（連結／大小／條列／資料檔／殘留）、tabledb.py／find_big_lists.py／fix_moved_links.py（資料檔與整理）
 examples/   合併成品（dev / knowledge）
 docs/       本 repo 的文件
 ```
@@ -73,8 +73,20 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 | [workflows/TEMPLATE.workflow.md](template/workflows/TEMPLATE.workflow.md) | 新工作流入口檔骨架 |
 | [workflows/planning.md](template/workflows/planning.md) | idea → roadmap → 詳規 → 執行 管線 |
 | [workflows/decisions.md](template/workflows/decisions.md) | 為什麼選 A 不選 B |
-| [workflows/common/](template/workflows/common/README.md) | 共享：gotchas、user、glossary |
+| [workflows/tidy.md](template/workflows/tidy.md) | 文件整理：封存／分類／合併小檔／抽資料檔／拆大檔 |
+| [workflows/common/](template/workflows/common/README.md) | 共享：gotchas、user、glossary、data-files |
+| [workflows/common/data-files.md](template/workflows/common/data-files.md) | 資料檔契約 `wf-table/1` |
 | [.claude/commands/wf-lint.md](template/.claude/commands/wf-lint.md) | `/wf-lint` 薄殼（Claude Code 適配層）|
+
+## tools/
+
+| 工具 | 做什麼 |
+|------|--------|
+| `wf-init.sh` | 導入：複製 kernel、合入 flavor 包、非侵入式改寫連結 |
+| `wf-lint.sh` | 檢查：壞連結／超標檔／條列／資料檔連結／殘留 |
+| `tabledb.py` | 資料檔 CRUD 與連結查驗 |
+| `find_big_lists.py` | 列出超標的表／清單，附連結數判斷是不是連結表 |
+| `fix_moved_links.py` | 搬檔後照 `moves.tsv` 重寫連結 |
 
 ## 不只 Claude
 
@@ -93,4 +105,4 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 
 ## 這套為什麼有效
 
-**省 context**：薄入口＋層層派發，agent 只載入當前任務要的知識。**不腐化又跟著長**：知識有唯一歸屬層、活狀態完成即刪、過時進 `archive/`。**機械兜底**：`wf-lint` 抓壞連結、超標檔、佔位殘留，CI 對每包合併後再檢查。
+**省 context**：薄入口＋層層派發，agent 只載入當前任務要的知識。**不腐化又跟著長**：知識有唯一歸屬層、活狀態完成即刪、過時進 `archive/`。**機械兜底**：`wf-lint` 抓壞連結、超標檔、>1 KB 條列與資料檔壞連結、佔位殘留，CI 對每包合併後再檢查。

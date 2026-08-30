@@ -8,7 +8,8 @@
 #                    其餘收進 <子資料夾>（預設 wf）；連結自動改寫
 #   --redirect       逗號分隔的轉址檔名（預設只產 CLAUDE.md）：把轉址內容另存成其他 agent 工具讀的
 #                    入口檔名，例 GEMINI.md、.github/copilot-instructions.md
-#   結束時印出殘留清單（{{ 佔位、〔導入判斷〕）並跑 wf-lint。
+#   工具（wf-lint.sh 與 tabledb.py／tabledb_links.py／find_big_lists.py／fix_moved_links.py，
+#   不含測試）一併複製到 <wfroot>/tools/。結束時印出殘留清單（{{ 佔位、〔導入判斷〕）並跑 wf-lint。
 # 無法自動化的只有兩件事：填 {{}}（要專案事實）與判斷〔導入判斷〕——交給人或 agent 收尾（見 IMPORT.md）。
 set -u
 
@@ -24,7 +25,7 @@ while [[ $# -gt 0 ]]; do
       shift ;;
     --redirect|--redirects) redirects=$2; shift 2 ;;
     --quiet|-q) quiet=1; shift ;;
-    -h|--help) sed -n '2,14p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,15p' "$0"; exit 0 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
@@ -58,7 +59,12 @@ for entry in "$repo"/template/* "$repo"/template/.claude; do
   for r in "${root_items[@]}"; do [[ $name == "$r" ]] && dest=$target; done
   if [[ -d $entry ]]; then copy_tree "$entry" "$dest/$name"; else cp "$entry" "$dest/$name"; fi
 done
-mkdir -p "$wfroot/tools"; cp "$repo/tools/wf-lint.sh" "$wfroot/tools/wf-lint.sh"; chmod +x "$wfroot/tools/wf-lint.sh"
+mkdir -p "$wfroot/tools"
+cp "$repo/tools/wf-lint.sh" "$wfroot/tools/wf-lint.sh"; chmod +x "$wfroot/tools/wf-lint.sh"
+for py in "$repo"/tools/*.py; do
+  case "$(basename "$py")" in test_*) continue ;; esac
+  cp "$py" "$wfroot/tools/"
+done
 say "kernel → $wfroot${wfdir:+ (AGENTS.md / CLAUDE.md / .claude/ → $target)}"
 
 # 轉址檔：其他 agent 工具的入口檔名（內容同 CLAUDE.md，都只是指回 AGENTS.md）

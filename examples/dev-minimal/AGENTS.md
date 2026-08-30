@@ -15,6 +15,7 @@ todo-cli = **一個用 Node.js（TypeScript）寫的命令列待辦工具，資�
 
 1. 重構 / 整理**不改原意**：開發＝行為不變且驗證綠燈（`npm test`、`npm run lint`、`npm run build`）；非開發＝內容原意不變，對照 `Done when:` 驗收。
 2. **不可逆或對外的動作**（push、刪除、對外送出、動使用者真實的 `~/.todo.json`）必須有**授權來源**：使用者當場確認，或使用者**親自登記**在清單裡的項目（如 routines / schedule）。兩者都沒有就先問。
-3. 各工作流的**具體流程在它自己的入口檔**，不在頂層。
+3. **條列走資料檔、導航留 md**：給 AI 消化的表／清單 >1 KB 存 `.json`／`.csv`（契約 `wf-table/1`，見 [data-files](workflows/common/data-files.md)），用 `tools/tabledb.py` 讀寫、不整份讀進 context；給人點的導航連結留 md。
+4. 各工作流的**具體流程在它自己的入口檔**，不在頂層。
 
-<!-- wf-kernel v0.2 (2026-08-29) -->
+<!-- wf-kernel v0.3 (2026-08-30) -->
