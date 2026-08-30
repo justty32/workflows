@@ -15,6 +15,7 @@
 - `workflows/common/data-files.md`／`data-files-fmt.md` → kernel-owned 覆蓋：改 tidy 路徑、補錨點檢查契約，並把 `git-top` 說明去專案化。
 - `.claude/commands/wf-lint.md` → kernel-owned 覆蓋：新增 `BROKEN-ANCHOR` 說明。
 - `tools/check_anchors.py`＋`tools/wf-lint.sh` → kernel-owned 覆蓋；**行為變更**：壞錨點計入 `broken`，原本綠燈的專案可能變紅，應修連結而不是關檢查。
+- `tools/wf-lint.sh`＋`tools/check_anchors.py` → kernel-owned 覆蓋；修正 `broken` 透過 0–255 exit status 傳值造成的計數溢位（例如顯示 517 而非實際 `BROKEN` 行數），並讓 Markdown／資料檔掃描排除 `archive/`、reference/vendor 與 `.gitmodules` 宣告的 submodule；既有專案覆蓋後總數會回復精確且通常大幅下降。
 - `tools/wf-init.sh` → kernel-owned 覆蓋：複製清單納入 `check_anchors.py`；本 repo 另加 `tools/test_check_anchors.py`。
 - `AGENTS.md` 版本戳 → v0.5，project-owned 手動套；既有專案要跟。
 - dev `workflows/refactor/`＋`moving-things.md` → flavor 檔直接覆蓋，既有專案刪 `refactor.md`、複製整夾並重寫連結。
@@ -43,4 +44,4 @@ json 資料檔的路徑值可寫成 `$fmt` 代號（`${fileDirname}`／`${gitRoo
 
 ## v0.2 (2026-08-29) 與更早
 
-v0.2 依 2026-08-29 的 31 條改進提案全面重構：`DEV-GUIDE.md` 改名 `STRUCTURE.md`；tick／routines／schedule 與 `inbox/` 移出 kernel 成 `flavors/{heartbeat,multi-agent}`；鐵律 2 改成「不可逆或對外動作要有**授權來源**」；`AGENTS.md` 縮到 ≈1.5 KB 並加版本戳；新增 `wf-init.sh`／`wf-lint.sh`、`workflows/{TEMPLATE.workflow,planning,decisions}.md`、`common/user.md` 與 teaching／research／ops 三個 flavor；文件改為 agent 工具中立（`CLAUDE.md`／`.claude/` 降級成適配層）。v0.1（2026-08-28 以前）是 `template/` + `flavors/{dev,knowledge}`，kernel 還含 tick／routines／schedule 與 inbox，無版本戳。**完整條列**：`git show a2a4077:CHANGELOG.md`。
+v0.2 全面重構分層、flavor、授權與工具中立契約；v0.1 是未拆 heartbeat／multi-agent 的早期 kernel。**完整條列**：`git show a2a4077:CHANGELOG.md`。

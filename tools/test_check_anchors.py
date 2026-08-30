@@ -75,6 +75,27 @@ class CheckAnchorsTest(unittest.TestCase):
             (root / "a.md").write_text("[x](missing.md#frag)\n", encoding="utf-8")
             self.assertEqual(run(directory), (0, ""))
 
+    def test_excluded_roots_and_gitmodules_are_not_scanned(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for relative in (
+                "archive/old.md",
+                "reference/source.md",
+                "vendor/package.md",
+                "components/arbitrary-child/child.md",
+            ):
+                path = root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("[x](target.md#missing)\n", encoding="utf-8")
+                (path.parent / "target.md").write_text("# present\n", encoding="utf-8")
+            (root / ".gitmodules").write_text(
+                '[submodule "dynamic"]\n'
+                "\tpath = components/arbitrary-child\n"
+                "\turl = https://example.invalid/child.git\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(run(directory), (0, ""))
+
 
 if __name__ == "__main__":
     unittest.main()
