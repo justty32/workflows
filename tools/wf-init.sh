@@ -8,7 +8,7 @@
 #                    其餘收進 <子資料夾>（預設 wf）；連結自動改寫
 #   --redirect       逗號分隔的轉址檔名（預設只產 CLAUDE.md）：把轉址內容另存成其他 agent 工具讀的
 #                    入口檔名，例 GEMINI.md、.github/copilot-instructions.md
-#   工具（wf-lint.sh 與 tabledb.py／tabledb_links.py／find_big_lists.py／fix_moved_links.py，
+#   工具（wf-lint.sh 與 tabledb.py／tabledb_links.py／tabledb_fmt.py／tabledb_fmt_vars.py／find_big_lists.py／fix_moved_links.py／fix_moved_links_fmt.py 與 fmt-vars.json，
 #   不含測試）一併複製到 <wfroot>/tools/。結束時印出殘留清單（{{ 佔位、〔導入判斷〕）並跑 wf-lint。
 # 無法自動化的只有兩件事：填 {{}}（要專案事實）與判斷〔導入判斷〕——交給人或 agent 收尾（見 IMPORT.md）。
 set -u
@@ -61,6 +61,7 @@ for entry in "$repo"/template/* "$repo"/template/.claude; do
 done
 mkdir -p "$wfroot/tools"
 cp "$repo/tools/wf-lint.sh" "$wfroot/tools/wf-lint.sh"; chmod +x "$wfroot/tools/wf-lint.sh"
+cp "$repo/tools/fmt-vars.json" "$wfroot/tools/fmt-vars.json"
 for py in "$repo"/tools/*.py; do
   case "$(basename "$py")" in test_*) continue ;; esac
   cp "$py" "$wfroot/tools/"

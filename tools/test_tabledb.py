@@ -78,6 +78,17 @@ class TableDBTest(unittest.TestCase):
         self.assertEqual(run(self.json_path)["count"], 2)
         self.assertEqual(run(self.json_path, "--slice", "0", "1")[0]["index"], 0)
 
+    def test_kv_stores_fmt_directive_as_object(self):
+        # k=v 的 v 恰好是合法 $fmt 指示詞 JSON 才存成物件，其他（含別的 JSON）一律字串
+        run(self.json_path, "add", "id=9", 'name={"$fmt": "${gitRoot}/a.md"}',
+            'body={"a": 1}', "extra=$fmt")
+        r = run(self.json_path, "get", "2")
+        self.assertEqual(r["name"], {"$fmt": "${gitRoot}/a.md"})
+        self.assertEqual((r["body"], r["extra"]), ('{"a": 1}', "$fmt"))
+        run(self.json_path, "update", "2", 'body={"$fmt": "見 [a](a.md)"}', 'name=["y"]')
+        r = run(self.json_path, "get", "2")
+        self.assertEqual((r["body"], r["name"]), ({"$fmt": "見 [a](a.md)"}, '["y"]'))
+
     def test_legacy_file_without_contract(self):
         # 舊檔沒有 contract 也要能開，只是 contract 報 null
         self.assertIsNone(run(self.json_path)["contract"])

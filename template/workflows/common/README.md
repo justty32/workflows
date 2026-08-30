@@ -11,6 +11,7 @@
 | [user.md](user.md) | 使用者偏好、確認邊界、分支慣例 | kernel |
 | `glossary.md`（長出來才建）| 領域詞彙 `詞 \| 意思 \| 別名`；常猜錯的術語多才建 | kernel |
 | [data-files.md](data-files.md) | 資料檔契約 `wf-table/1`：給 AI 消化的條列 >1 KB 抽 `.json`／`.csv`、`tabledb.py` 讀寫；給人導航的連結表留 md | kernel |
+| [data-files-fmt.md](data-files-fmt.md) | json 值裡跨層路徑用 `$fmt` 代號展開，省 `../../../` | kernel |
 <!-- wf-insert:COMMON -->
 
 > 過時文檔封存進 `common/archive/`（見 [STRUCTURE](../../STRUCTURE.md)）。

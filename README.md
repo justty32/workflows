@@ -76,6 +76,7 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 | [workflows/tidy.md](template/workflows/tidy.md) | 文件整理：封存／分類／合併小檔／抽資料檔／拆大檔 |
 | [workflows/common/](template/workflows/common/README.md) | 共享：gotchas、user、glossary、data-files |
 | [workflows/common/data-files.md](template/workflows/common/data-files.md) | 資料檔契約 `wf-table/1` |
+| [data-files-fmt.md](template/workflows/common/data-files-fmt.md) | `$fmt` 代號 |
 | [.claude/commands/wf-lint.md](template/.claude/commands/wf-lint.md) | `/wf-lint` 薄殼（Claude Code 適配層）|
 
 ## tools/

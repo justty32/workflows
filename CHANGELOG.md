@@ -2,6 +2,19 @@
 
 每次 kernel（`template/`）或導入契約變動記一節：改了哪檔、**既有專案要不要跟**。版本戳在 `template/AGENTS.md` 尾端 `<!-- wf-kernel vX.Y (日期) -->`，導入後 `grep wf-kernel AGENTS.md` 查自己是哪一版。kernel-owned / project-owned 分類見 [IMPORT.md](IMPORT.md)。
 
+## v0.4 (2026-08-30)
+
+json 資料檔的路徑值可以寫成 `$fmt` 代號模板（讀取時展開），省去深層 `../../../`；md 連結與 `.csv` 不受影響，契約名仍 `wf-table/1`。既有專案要不要跟：既有 json 不必改，跨兩層以上（≥ 2 個 `../`）的路徑建議改成 `$fmt`。
+
+- 新增 `workflows/common/data-files-fmt.md`（`$fmt` 代號寫法、`${fileDirname}`／`${gitRoot}`／`${gitParent}`／`${gitTop}`／`${env:NAME}` 變數，契約 `wf-table/1` 附錄）→ kernel-owned，直接加。
+- `workflows/common/data-files.md` 連結段加一條指向它 → kernel-owned，整檔覆蓋。
+- `tools/tabledb.py`（新指令 `fmt FILE`；`links`／`check`／`open`／`resolve` 展開 `$fmt`、`get`／`find`／`grep` 原樣回傳）、`tabledb_links.py`、`fix_moved_links.py`（搬檔時 `$fmt` 值以同一代號重寫）與新模組（如 `tabledb_fmt.py`、`fix_moved_links_fmt.py`）→ kernel-owned，複製到專案 `tools/`；`wf-init.sh` 自動複製。
+- 新增 `tools/fmt-vars.json`（契約 `wf-fmt-vars/1`：變數名→算法、說明、aliases；**解析器不寫死變數名**，名字之後可換）→ kernel-owned，隨 `wf-init.sh` 複製；專案自加變數放 `tools/fmt-vars.local.json` → project-owned，升級不碰；`tabledb.py fmt --vars` 印合併後的表。**手動覆蓋 .py 升級的專案要記得一併複製 `fmt-vars.json`**，缺它一用 `$fmt` 就報 missing。
+- `STRUCTURE.md` 資料檔慣例一句補充 `$fmt` 代號 → kernel-owned，整檔覆蓋。
+- `AGENTS.md` 版本戳 → v0.4 → project-owned。
+- `workflows/common/README.md` 加 data-files-fmt 列 → project-owned。
+- `README.md`／`IMPORT.md`／`examples/` 同步（本 repo 自己的）。
+
 ## v0.3 (2026-08-30)
 
 文件整理工具進 kernel：同質記錄表 >1 KB 走資料檔、新增 `tidy` 工作流；**考慮使用者**——連結表另計，給人導航的留 md、給 AI 消化的才抽。既有專案要跟的話：

@@ -53,5 +53,5 @@ kernel 改版時（見 [CHANGELOG.md](CHANGELOG.md)；版本戳在 `AGENTS.md` �
 
 | 類別 | 檔案 | 升級方式 |
 |------|------|---------|
-| **kernel-owned**（無佔位、可整檔覆蓋）| `STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/tidy.md`、`.claude/commands/wf-lint.md`、`tools/wf-lint.sh`、`tools/*.py`；flavor 的 `TEMPLATE.*`、`quality-gates.md`、`PROTOCOL.md`、`tools/inbox_*.sh` | 從新版直接覆蓋 |
+| **kernel-owned**（無佔位、可整檔覆蓋）| `STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/common/data-files-fmt.md`、`workflows/tidy.md`、`.claude/commands/wf-lint.md`、`tools/wf-lint.sh`、`tools/*.py`、`tools/fmt-vars.json`（專案自加變數放 `tools/fmt-vars.local.json`，project-owned）；flavor 的 `TEMPLATE.*`、`quality-gates.md`、`PROTOCOL.md`、`tools/inbox_*.sh` | 從新版直接覆蓋 |
 | **project-owned**（填過佔位、貼過片段）| `AGENTS.md`、`INDEX.md`、`WORKFLOWS.md`、`SESSION-LOG.md`、`WAIT_USER.md`、`workflows/common/user.md`、各工作流清單（routines、ROSTER、planning 表…）| 讀 CHANGELOG 該版那幾行手動套 |
