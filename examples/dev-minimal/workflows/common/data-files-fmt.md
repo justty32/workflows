@@ -25,7 +25,7 @@
 | `file-dir` | 本 json 所在目錄 |
 | `git-self` | 從 json 目錄往上第一個含 `.git`（檔或目錄）的目錄（＝`git rev-parse --show-toplevel`）|
 | `git-parent` | 從 `git-self` 再往上第一個含 `.git` 的目錄；沒有就＝`git-self` |
-| `git-top` | 往上最後一個含 `.git` 的目錄；沒有上層就＝`git-self`（Skyrim 工作區永遠是母 repo）|
+| `git-top` | 往上最後一個含 `.git` 的目錄；沒有上層就＝`git-self`（單層 repo 三者相同）|
 | `env` | namespace 型 `${prefix:NAME}`：環境變數；**不存在 → 錯誤**、存在但空 → 空字串 |
 
 當下快照（kernel 版 `fmt-vars.json`）：`${fileDirname}`＝file-dir、`${gitRoot}`＝git-self、`${gitParent}`＝git-parent、`${gitTop}`＝git-top、`${env:NAME}`＝env。本檔其他地方用這些名字只是舉例，**以工具輸出為準**。

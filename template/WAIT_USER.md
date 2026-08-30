@@ -6,7 +6,7 @@
 
 條目格式：`- [工作流] 請使用者做什麼 → 做完我接著做什麼`，做完即刪。等別的 session / agent 不記這裡（判別表見 [WORKFLOWS](WORKFLOWS.md)）。
 
-> 膨脹就拆：堆多了就開 `wait_todo/` 按類別拆檔，只留導航（照 [STRUCTURE](STRUCTURE.md)）。
+> 膨脹就拆：堆多了就開 `wait-user/` 按類別拆檔，本檔只留一張 `| 類別 | open | 清單 |` 導航表，每列連到 `wait-user/<類別>.md`（照 [STRUCTURE](STRUCTURE.md)）。
 
 ## 待使用者項
 

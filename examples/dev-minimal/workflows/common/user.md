@@ -10,7 +10,7 @@ agent 每次不用重猜的事。always-on 鐵律在 AGENTS.md；這裡是**這�
 | 分支慣例 | 單人開發，直接 commit main，不開 branch、不走 PR |
 | 直接做、不用問 | 改文件、加／改測試、跑 `npm test` / `npm run lint` / `npm run build` 這類唯讀或本地指令 |
 | 一定先問 | 刪檔、加新的 npm 相依、改 `package.json` 的 scripts、動使用者真實的 `~/.todo.json`（push 與對外動作依鐵律 2）|
-| 回覆風格 | 短、先結論；不要每段都 bullet |
+| 回覆風格 | 短、先結論；不要每段都 bullet；使用者問「要不要」時附**可執行判準**（門檻數字）與後果，讓他能改數字 |
 | 時區 | Asia/Taipei |
 
 ## 領域詞彙（長出來才建）

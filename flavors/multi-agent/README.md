@@ -8,7 +8,7 @@
 |---|---|
 | **通訊**——誰跟誰說什麼 | [inbox](workflows/inbox/README.md) |
 | **資源**——誰現在可以動螢幕／那台裝置 | [resources](workflows/resources.md) |
-| **分工**——誰負責哪塊、誰驗收 | [dispatch](workflows/dispatch.md) |
+| **分工**——誰負責哪塊、誰驗收 | [dispatch](workflows/dispatch/README.md) |
 
 其中 inbox 補上 kernel 缺的**活狀態第三軸**：等**別資料夾的 agent**（kernel 只有「我自己的進度」`SESSION-LOG.md` 與「等使用者」`WAIT_USER.md`）。
 
@@ -42,11 +42,13 @@
 | [WORKFLOWS.multi-agent.md](WORKFLOWS.multi-agent.md) | 派發表片段（貼進專案的 `WORKFLOWS.md`）|
 | [AGENTS.multi-agent.md](AGENTS.multi-agent.md) | 開場 bullet 片段（貼進專案的 `AGENTS.md`「開場與入口」）|
 | [INDEX.multi-agent.md](INDEX.multi-agent.md) | 佈局表列片段（貼進專案的 `INDEX.md`「Repo 佈局」）|
-| [workflows/inbox/](workflows/inbox/README.md) | 通訊工作流：流程、[協議](workflows/inbox/PROTOCOL.md)、[身份簿](workflows/inbox/ROSTER.md)、信件模板 |
+| [workflows/inbox/](workflows/inbox/README.md) | 通訊工作流：流程、[協議](workflows/inbox/PROTOCOL.md)、[醒鐘策略](workflows/inbox/wake-policy.md)、[身份簿](workflows/inbox/ROSTER.md)、信件模板 |
 | [workflows/resources.md](workflows/resources.md) | 獨佔資源鎖：`mkdir` 鎖、取得順序、限流、資源表 |
-| [workflows/dispatch.md](workflows/dispatch.md) | 派線／領地／監看／收線（調度者用）|
+| [workflows/dispatch/](workflows/dispatch/README.md) | 派線工作流（資料夾型）：入口 [README](workflows/dispatch/README.md)＝流程／六條最容易錯的／兩層派線／領地表 |
+| ↳ [dispatch/driving-cli-agents.md](workflows/dispatch/driving-cli-agents.md) | 啟動、驅動、監看一條外部 CLI agent 線，與收線七步 |
+| ↳ [dispatch/lessons.md](workflows/dispatch/lessons.md) | 派線踩過的坑：預掃範圍、線推翻交接書、交接書自相矛盾、整檔改寫 |
 | [workflows/TEMPLATE.handoff.md](workflows/TEMPLATE.handoff.md) | 交接書骨架（驗收條數寫死）|
-| [tools/](tools/) | `inbox_send.sh`（原子投遞）、`inbox_read.sh`（唯讀輪詢）、`hook-settings-snippet.json`（hook 範例，Claude Code 格式）|
+| [tools/](tools/) | 單一收件匣：`inbox_send.sh`（原子投遞）、`inbox_read.sh`（唯讀輪詢）；五通道升級後才需要的：`inbox_mail.sh`（點對點／團隊／主題／`--up` 上游路由）、`inbox_poll.sh`（輪詢個人信箱＋團隊信箱＋訂閱主題＋自己的 orders，含 `--wait` 醒鐘）、`inbox_team.sh`（開團隊／加人／收線）、`notify_watch.sh`（長駐監看 `new/`）、`test_inbox.sh`（腳本自測）；`hook-settings-snippet.json`（hook 範例，Claude Code 格式）|
 | `inbox/`、`inbox/done/` | **放信處**（空資料夾）：頂層＝未處理、`done/`＝已處理 |
 
 ## 怎麼合進 kernel
@@ -79,8 +81,8 @@ tools/wf-init.sh --target <專案> --flavor multi-agent
 | 檔案 | 動作 |
 |------|------|
 | `inbox/`（專案根）| 整個刪掉（先確認頂層沒未辦的信）|
-| `tools/inbox_send.sh`、`tools/inbox_read.sh`、`tools/hook-settings-snippet.json` | 刪掉；若曾把 hook 合進工具設定檔（Claude Code 為例：`settings.json`），一併移除那段 |
-| `workflows/inbox/`、`workflows/resources.md`、`workflows/dispatch.md`、`workflows/TEMPLATE.handoff.md` | 刪掉（只移除其中一個工作流就刪對應那幾個）|
+| `tools/inbox_send.sh`、`tools/inbox_read.sh`、`tools/inbox_mail.sh`、`tools/inbox_poll.sh`、`tools/inbox_team.sh`、`tools/notify_watch.sh`、`tools/test_inbox.sh`、`tools/hook-settings-snippet.json` | 刪掉；若曾把 hook 合進工具設定檔（Claude Code 為例：`settings.json`），一併移除那段 |
+| `workflows/inbox/`、`workflows/resources.md`、`workflows/dispatch/`、`workflows/TEMPLATE.handoff.md` | 刪掉（只移除其中一個工作流就刪對應那幾個）|
 | `WORKFLOWS.md` | 刪「multi-agent flavor」表裡對應的列；整包移除就刪整節 |
 | `AGENTS.md` | 刪「開場與入口」裡 `ls inbox/*.md` 那行 bullet |
 | `INDEX.md` | 刪「Repo 佈局」表裡 `inbox/` 與 `tools/` 那兩列 |

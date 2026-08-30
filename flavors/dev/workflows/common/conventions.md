@@ -2,7 +2,7 @@
 
 [common/README](README.md)｜[INDEX](../../INDEX.md)
 
-碰原始碼的工作流（feature-dev / refactor / investigation）共用這套規矩：**寫碼時要遵守什麼**。哪個檔負責什麼領域、測試在哪 → [code-map](code-map.md)；結構整理原則 → [STRUCTURE](../../STRUCTURE.md)。
+碰原始碼的工作流（feature-dev / refactor / investigation）共用這套規矩：**寫碼時要遵守什麼**。哪個檔負責什麼領域、測試在哪 → [code-map](code-map.md)；真相層優先序也在 [code-map](code-map.md)。結構整理原則 → [STRUCTURE](../../STRUCTURE.md)。
 
 > 〔模板說明〕一條一行，寫得出「怎麼檢查」的才留；寫不出檢查方式的（「程式碼要乾淨」）不是慣例，別放。填完刪除本段。
 

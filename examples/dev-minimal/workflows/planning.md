@@ -32,3 +32,7 @@
 | 事項 | 何時 / 順序 | 前提條件 |
 |------|------------|---------|
 | `todo list --json` 輸出 | 下一個小版本，接在 `done` 的結束碼修好之後 | `Todo` 型別欄位定案（動到就得同時改輸出格式與 `tests/cli` 的 fixture）|
+
+## 交接
+
+- 決定「為什麼選 A 不選 B」 → [decisions](decisions.md)。卡在使用者 → [WAIT_USER](../WAIT_USER.md) 一行；跨 session → [SESSION-LOG](../SESSION-LOG.md) 一行。

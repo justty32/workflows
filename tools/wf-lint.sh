@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
-# wf-lint.sh — 工作流文檔的機械檢查（bash + grep/sed/awk/find，資料檔部分借 python3）
-#
+# wf-lint.sh — 工作流文檔的機械檢查（bash + grep/sed/awk/find，部分借 python3）
 #   wf-lint.sh [--strict] [--quiet] <dir>...   檢查一個（導入後的）專案目錄
 #   wf-lint.sh --self                          在模板 repo 內：template/ + examples/ + 各 flavor 合併模擬
 #
-# 檢查項：① 相對連結（.md / 目錄 / 任何檔）是否存在  ② workflows/ 下單檔 > 8192 bytes
-#         ③ {{ / 〔模板說明〕 / 〔導入判斷〕 殘留  ④ inbox/ 頂層未辦信數
-#         ⑤ BIGLIST：md 裡 > 1 KB 的條列式區塊（該抽成資料檔，見 workflows/common/data-files.md）；
-#            每列都有連結的當導航表印 BIGLIST-LINKS，只 warning
-#         ⑥ 資料檔（有 "contract": "wf-table/ 的 .json 與所有 .csv）的連結：跑 tabledb.py check
-#         ⑦ QUERYCMD：md 殘留的資料檔查詢指令（契約：md 不寫指令、不寫工具路徑）
+# 檢查：① 相對連結 ② workflows/ 單檔 >8192 bytes ③ 模板標記殘留 ④ inbox/ 未辦信
+#       ⑤ BIGLIST（>1 KB 條列；導航表印 BIGLIST-LINKS）⑥ 資料檔連結（tabledb.py check）
+#       ⑦ QUERYCMD（md 殘留查詢指令）⑧ BROKEN-ANCHOR（#錨點不存在，計入 broken）
 # 結束碼：BROKEN > 0 → 1；--strict 時 residue / oversize / biglist / querycmd > 0 也 → 1。
 set -u
 
@@ -20,7 +16,7 @@ for a in "$@"; do
     --strict) strict=1 ;;
     --self) self=1 ;;
     --quiet|-q) quiet=1 ;;
-    -h|--help) sed -n '2,15p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,9p' "$0"; exit 0 ;;
     *) dirs+=("$a") ;;
   esac
 done
@@ -69,6 +65,14 @@ lint_dir() {
   [[ $quiet -eq 1 ]] || echo "== $label"
   list_md "$root" | check_links "$root"; broken=$?
 
+  if [[ $have_py -eq 1 ]]; then
+    out=$(python3 "$tools/check_anchors.py" "$root" 2>/dev/null)
+    if [[ -n $out ]]; then
+      printf '%s\n' "$out"
+      broken=$((broken + $(printf '%s\n' "$out" | grep -c '^BROKEN-ANCHOR ')))
+    fi
+  fi
+
   while IFS= read -r f; do
     echo "OVERSIZE ${f#$root/} ($(wc -c <"$f") bytes > 8192)"
     oversize=$((oversize + 1))
@@ -109,7 +113,7 @@ lint_dir() {
   # ⑦ QUERYCMD：md 不該教查法；免掃 archive/、wf/、AGENTS.md、契約檔
   while IFS= read -r f; do
     rel=${f#$root/}
-    case "$rel" in wf/*|*/wf/*|archive/*|*/archive/*) continue ;; esac
+    case "$f" in */archive/*|*/wf/*|*/workflows/tidy/*) continue ;; esac
     case "${f##*/}" in AGENTS.md|data-files.md|data-files-fmt.md|tidy.md) continue ;; esac
     while IFS= read -r ln; do
       echo "QUERYCMD $rel:$ln"; querycmd=$((querycmd + 1))

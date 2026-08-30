@@ -12,6 +12,19 @@
 | store | `src/store/*` | 讀寫 `~/.todo.json`（`TODO_FILE` 可覆寫）、`Todo` 型別與 schema 遷移；唯一碰檔案系統的一層 | `tests/store/` |
 | commands | `src/commands/*` | 一個子指令一檔（`add` / `list` / `done` / `rm`）：把解析好的參數轉成對 store 的操作並回傳要印的資料 | `tests/commands/` |
 
+## 真相層優先序
+
+本專案的優先序：
+
+```text
+code/tests > schema/examples/fixtures > code map > docs > generated
+```
+
+- 上層與下層衝突時，**以上層為準並修正下層**。
+- generated（產生出來的檔、html）永遠不是唯一真相。
+- 原始來源與摘要衝突時，以**原始來源**為準。
+- code map 是**導航不是規格**；行為以 code/tests 為準。
+
 ## 維護鏈：程式碼 > code map > 文檔
 
 **優先級**（衝突或時間不夠時，依序保持一致）：程式碼 > code map > 文檔。

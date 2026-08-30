@@ -2,7 +2,7 @@
 
 [common/README](README.md)｜[INDEX](../../INDEX.md)
 
-碰原始碼的工作流（feature-dev / refactor）共用這套規矩：**寫碼時要遵守什麼**。哪個檔負責什麼領域、測試在哪 → [code-map](code-map.md)；結構整理原則 → [STRUCTURE](../../STRUCTURE.md)。
+碰原始碼的工作流（feature-dev / refactor）共用這套規矩：**寫碼時要遵守什麼**。哪個檔負責什麼領域、測試在哪 → [code-map](code-map.md)；真相層優先序也在 [code-map](code-map.md)。結構整理原則 → [STRUCTURE](../../STRUCTURE.md)。
 
 ## 慣例
 

@@ -5,7 +5,7 @@
 改變行為的工作：加一個功能、修一個 bug，從動手到 commit。碰原始碼前先讀 [common/conventions](../common/conventions.md) 與 [common/code-map](../common/code-map.md)。
 
 **何時用**：使用者說「我想開發／修改某個功能」「這裡壞了，修一下」——**修 bug 也走這條**，產出一樣是「行為改變＋驗證綠燈」。
-**何時不用**：行為不變、只重排結構 → [refactor](../refactor.md)；還在討論要不要做、方案長怎樣 → [planning](../planning.md)。
+**何時不用**：行為不變、只重排結構 → [refactor](../refactor/README.md)；還在討論要不要做、方案長怎樣 → [planning](../planning.md)。
 
 ## Done when
 
@@ -39,5 +39,5 @@
 
 ## 交接
 
-- 驗證怎麼跑 → [testing](../testing.md)；改到一半發現該先整理結構 → [refactor](../refactor.md)。
+- 驗證怎麼跑 → [testing](../testing.md)；改到一半發現該先整理結構 → [refactor](../refactor/README.md)。
 - 為什麼選這個做法 → [decisions](../decisions.md)；卡在使用者 → [WAIT_USER](../../WAIT_USER.md)。

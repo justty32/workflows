@@ -12,6 +12,19 @@
 
 > 〔模板說明〕一列一個**領域**、不是一列一個檔；檔案欄可用 glob。表大到難讀就按領域拆成 `common/code-map/` 資料夾＋一個 index（照 [STRUCTURE](../../STRUCTURE.md) 四級成長軌跡）。填完刪除本段。
 
+## 真相層優先序
+
+各專案可以改自己的優先序，但必須明確。預設：
+
+```text
+code/tests > schema/examples/fixtures > code map > docs > generated
+```
+
+- 上層與下層衝突時，**以上層為準並修正下層**。
+- generated（產生出來的檔、html）永遠不是唯一真相。
+- 原始來源與摘要衝突時，以**原始來源**為準。
+- code map 是**導航不是規格**；行為以 code/tests 為準。
+
 ## 維護鏈：程式碼 > code map > 文檔
 
 **優先級**（衝突或時間不夠時，依序保持一致）：程式碼 > code map > 文檔。

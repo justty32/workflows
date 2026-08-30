@@ -27,7 +27,18 @@
 
 > 〔導入判斷〕部分測試需要特殊環境（本機資產、外部服務、實機）→ 在驗證表補列，並在下方寫明離線可跑的子集（例：以標籤 `RequiresXxx` 區分，離線跑 `Category!=RequiresXxx`）。同步：`workflows/dev-env.md` 的「跨機 / 離線差異」表、`workflows/feature-dev/README.md` 的驗證步驟。
 
-- {{分類方式與各環境能跑的子集}}
+- `fast`：本專案自己的 unit／source gate；每次小改都跑。
+- `contract`：跨元件的真實 CLI／process 邊界；改 producer、consumer 或協定時跑。
+- `full`：README 指定的完整離線 suite；commit 前或大改後跑。
+- `external`：需要實機、外部服務、素材、帳號或人工感官驗收；agent 代跑不了的記到 [WAIT_USER](../WAIT_USER.md)。
+
+## 綠燈不等於有檢查
+
+**一道檢查通過，可能是因為它根本沒在檢查。** 這不是假設：曾在一天內抓到四個恆真檢查——結構稽核、「鎖已釋放」的檢查指向已刪目錄、連結檢查器走到子 repo 指標就停、自製字元偵測。
+
+**規則：新增或修改一道檢查時，要證明它能變紅。** 先餵一個**應該被擋**的輸入，確認 exit ≠ 0；再餵正確的輸入，確認 exit = 0。**沒做過這個雙向驗證的綠燈不算證據。**
+
+兩個推論：檢查器的**涵蓋範圍要跟著結構走**——拆出子 repo、搬走目錄之後，回頭確認檢查器還看得到那些地方（見 [refactor/moving-things.md](refactor/moving-things.md)）；**靜態全過不等於畫面上是對的**，方框、亂碼、截斷、手感只有人眼看得出來，這類記到 [WAIT_USER](../WAIT_USER.md)，不要自己宣稱通過。
 
 ## 交接
 

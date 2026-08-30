@@ -45,4 +45,4 @@ tools/wf-init.sh --target <專案根> --flavor <a,b> --non-invasive wf
 
 ## 升級
 
-`wf/` 內 kernel-owned 的檔（`STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/tidy.md`、`tools/wf-lint.sh`、`tools/*.py`）可整檔覆蓋，其餘讀 [CHANGELOG](../CHANGELOG.md) 手動套；分類見 [IMPORT.md](../IMPORT.md)。
+`wf/` 內 kernel-owned 的檔（`STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/tidy/`、`tools/wf-lint.sh`、`tools/*.py`）可整檔覆蓋，其餘讀 [CHANGELOG](../CHANGELOG.md) 手動套；分類見 [IMPORT.md](../IMPORT.md)。

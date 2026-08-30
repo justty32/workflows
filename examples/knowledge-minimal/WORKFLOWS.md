@@ -4,6 +4,8 @@
 
 使用者說要做某件事 → **從派發表選工作流 → 讀它的入口檔**。細節都在入口檔，不在這裡。
 
+**可以跳流程**：單行或小範圍、低風險、不跨 session 的修正；純查詢或一次性回答，不留 durable 知識；使用者明確要求快速處理；既有工作流只會增加同步成本而不降低風險。跳流程不等於跳過工程規矩——仍要讀必要上下文、不破壞使用者改動、能測就測。
+
 ## 派發表
 
 ### 知識工作 flavor
@@ -24,7 +26,7 @@
 | 觸發（你說…）| 工作流 | 入口檔（先讀這個）|
 |--------------|--------|-------------------|
 | 「記 / 查踩坑」 | **gotchas** | [workflows/common/gotchas.md](workflows/common/gotchas.md) |
-| 「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」 | **tidy** | [workflows/tidy.md](workflows/tidy.md) |
+| 「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」 | **tidy** | [workflows/tidy/README.md](workflows/tidy/README.md) |
 | 「記一個想法」「這件事以後要做」「排進 roadmap」「幫我規劃」 | **planning** | [workflows/planning.md](workflows/planning.md) |
 | 「記一個決定」「當初為什麼選 A 不選 B」 | **decisions** | [workflows/decisions.md](workflows/decisions.md) |
 | 「我的偏好是…」「以後這種事直接做 / 先問」 | **user** | [workflows/common/user.md](workflows/common/user.md) |

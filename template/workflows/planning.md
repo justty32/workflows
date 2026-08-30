@@ -5,7 +5,7 @@
 從萌芽到動工的四階段收在**同一條管線**，不拆成四個工作流——免得卡在「這算 idea 還是 roadmap」。
 
 **何時用**：使用者說「記個想法」「以後要做」「排進 roadmap」「幫我規劃」。
-**何時不用**：三兩步的小事直接做；已有 spec / plan 且在動工 → 執行工作流。
+**何時不用**：三兩步的小事直接做；已有 spec / plan 且在動工 → 執行工作流；只是要調查清楚 → investigation（dev 包）。
 
 ## Done when
 
@@ -30,3 +30,7 @@
 
 | 事項 | 何時 / 順序 | 前提 |
 |------|------------|---------|
+
+## 交接
+
+- 決定「為什麼選 A 不選 B」 → [decisions](decisions.md)。卡在使用者 → [WAIT_USER](../WAIT_USER.md) 一行；跨 session → [SESSION-LOG](../SESSION-LOG.md) 一行。

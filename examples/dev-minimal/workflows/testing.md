@@ -24,9 +24,18 @@
 
 ## 測試分類
 
-- 全部是 vitest 單元測試，放在 `tests/`，子目錄對應 `src/` 的三個領域（`tests/cli`、`tests/store`、`tests/commands`）。沒有環境差異，任何機器都跑得動全集。
-- store 的測試不碰真實的 `~/.todo.json`：每個測試用 `mkdtemp` 開自己的暫存檔並以 `TODO_FILE` 指過去（見 [dev-env](dev-env.md) 的 env var 表）。
-- 只想跑一個領域：`npx vitest run tests/store`。
+- `fast`：`npm test` 跑全部 vitest 單元測試；放在 `tests/`，子目錄對應 `src/` 的三個領域。store 測試用 `mkdtemp` 與 `TODO_FILE`，不碰真實的 `~/.todo.json`。
+- `contract`：`tests/cli/` 驗 argv、輸出與結束碼的 CLI 邊界；改 cli、commands 或輸出格式時跑。
+- `full`：`npm test && npm run build && npm run lint`；commit 前或大改後跑。
+- `external`：目前沒有；全部測試都不需實機、外部服務、素材、帳號或人工感官驗收。之後若新增，交給使用者並記到 [WAIT_USER](../WAIT_USER.md)。
+
+## 綠燈不等於有檢查
+
+**一道檢查通過，可能是因為它根本沒在檢查。** 這不是假設：曾在一天內抓到四個恆真檢查——結構稽核、「鎖已釋放」的檢查指向已刪目錄、連結檢查器走到子 repo 指標就停、自製字元偵測。
+
+**規則：新增或修改一道檢查時，要證明它能變紅。** 先餵一個**應該被擋**的輸入，確認 exit ≠ 0；再餵正確的輸入，確認 exit = 0。**沒做過這個雙向驗證的綠燈不算證據。**
+
+兩個推論：檢查器的**涵蓋範圍要跟著結構走**——拆出子 repo、搬走目錄之後，回頭確認檢查器還看得到那些地方（見 [refactor/moving-things.md](refactor/moving-things.md)）；**靜態全過不等於畫面上是對的**，方框、亂碼、截斷、手感只有人眼看得出來，這類記到 [WAIT_USER](../WAIT_USER.md)，不要自己宣稱通過。
 
 ## 交接
 

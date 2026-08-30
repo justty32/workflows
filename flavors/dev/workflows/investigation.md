@@ -5,12 +5,21 @@
 只讀不改，查清楚「這怎麼運作／可不可行」，產出可歸檔的筆記。
 
 **何時用**：看懂外部系統或別人的碼、評估可行性、查 bug 成因。
-**何時不用**：已知道怎麼改 → [feature-dev](feature-dev/README.md)；只搬結構 → [refactor](refactor.md)。
+**何時不用**：已知道怎麼改 → [feature-dev](feature-dev/README.md)；只搬結構 → [refactor](refactor/README.md)。
 
 ## Done when
 
 - `{{筆記位置，如 docs/investigations/}}<主題>.md` 存在，且下列五段非空。
 - 結論是「要動手」→ [planning](planning.md) 有接手列。
+
+## 流程
+
+1. **收集事實**：只讀不改，一條一則，附出處。
+2. **對照現有能力**：這件事現在能不能做、靠什麼做。
+3. **分類**：可直接做／有缺口／不值得做／需使用者驗證。
+4. **產出 finding**：照下方筆記模板寫成一份可歸檔的筆記；缺口進 [planning](planning.md)，踩到的坑進 [common/gotchas](common/gotchas.md)，需使用者驗證的進 [WAIT_USER](../WAIT_USER.md)。
+
+**不把未驗證的猜測寫成結論**——不確定就寫「缺什麼證據」，不要補完。
 
 ## 筆記模板
 

@@ -4,6 +4,8 @@
 
 使用者說要做某件事 → **從派發表選工作流 → 讀它的入口檔**。細節都在入口檔，不在這裡。
 
+**可以跳流程**：單行或小範圍、低風險、不跨 session 的修正；純查詢或一次性回答，不留 durable 知識；使用者明確要求快速處理；既有工作流只會增加同步成本而不降低風險。跳流程不等於跳過工程規矩——仍要讀必要上下文、不破壞使用者改動、能測就測。
+
 ## 派發表
 
 ### 開發 flavor
@@ -14,7 +16,8 @@
 |--------------|--------|-------------------|
 | 「開發 / 修改某個功能」「**修 bug**」 | **feature-dev** | [workflows/feature-dev/README.md](workflows/feature-dev/README.md) |
 | 「跑測試 / 驗證」「這樣改有沒有壞」 | **testing** | [workflows/testing.md](workflows/testing.md) |
-| 「重構 / 拆檔 / 整理結構」（行為不變）| **refactor** | [workflows/refactor.md](workflows/refactor.md) |
+| 「重構 / 拆檔 / 整理結構」（行為不變）| **refactor** | [workflows/refactor/README.md](workflows/refactor/README.md) |
+| 「搬檔案 / 改目錄名 / 拆 repo」 | **refactor**（搬移專章）| [workflows/refactor/moving-things.md](workflows/refactor/moving-things.md) |
 | 「環境怎麼裝」「fresh clone 後要做什麼」「指令是什麼」 | **dev-env** | [workflows/dev-env.md](workflows/dev-env.md) |
 | 「討論方案」「寫動工計畫」（spec / plan）| **planning**（kernel 管線的後兩段）| [workflows/planning.md](workflows/planning.md) |
 <!-- wf-insert:WORKFLOWS -->
@@ -24,7 +27,7 @@
 | 觸發（你說…）| 工作流 | 入口檔（先讀這個）|
 |--------------|--------|-------------------|
 | 「記 / 查踩坑」 | **gotchas** | [workflows/common/gotchas.md](workflows/common/gotchas.md) |
-| 「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」 | **tidy** | [workflows/tidy.md](workflows/tidy.md) |
+| 「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」 | **tidy** | [workflows/tidy/README.md](workflows/tidy/README.md) |
 | 「記一個想法」「這件事以後要做」「排進 roadmap」「幫我規劃」 | **planning** | [workflows/planning.md](workflows/planning.md) |
 | 「記一個決定」「當初為什麼選 A 不選 B」 | **decisions** | [workflows/decisions.md](workflows/decisions.md) |
 | 「我的偏好是…」「以後這種事直接做 / 先問」 | **user** | [workflows/common/user.md](workflows/common/user.md) |
