@@ -60,7 +60,9 @@ for entry in "$repo"/template/* "$repo"/template/.claude; do
   if [[ -d $entry ]]; then copy_tree "$entry" "$dest/$name"; else cp "$entry" "$dest/$name"; fi
 done
 mkdir -p "$wfroot/tools"
-cp "$repo/tools/wf-lint.sh" "$wfroot/tools/wf-lint.sh"; chmod +x "$wfroot/tools/wf-lint.sh"
+# wf-lint-checks.sh 是被 source 的函式庫，跟著 wf-lint.sh 一起複製
+for sh in wf-lint.sh wf-lint-checks.sh; do cp "$repo/tools/$sh" "$wfroot/tools/$sh"; done
+chmod +x "$wfroot/tools/wf-lint.sh"
 cp "$repo/tools/fmt-vars.json" "$wfroot/tools/fmt-vars.json"
 for py in "$repo"/tools/*.py; do
   case "$(basename "$py")" in test_*) continue ;; esac

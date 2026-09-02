@@ -16,7 +16,7 @@
 bash <本 repo>/tools/wf-init.sh --target <專案根> --flavor <a,b,c> [--non-invasive wf] [--redirect GEMINI.md]
 ```
 
-腳本會：複製 kernel（含 `tools/` 的 `wf-lint.sh` 與三支 `.py`）→ 合入各包 `workflows/` 與頂層項目（`inbox/`、`.claude/commands/`）→ 把各包片段貼進 `AGENTS.md` / `WORKFLOWS.md` / `INDEX.md` / `workflows/common/README.md` 的 `<!-- wf-insert:… -->` 標記前 → 非侵入式時改寫斷掉的連結 → 印殘留清單並跑 lint。目標已有 `AGENTS.md` 時腳本拒絕執行（不覆蓋既有導入）。`--redirect` 逗號可多個，把 `CLAUDE.md` 的轉址內容另存成各工具的檔名。
+腳本會：複製 kernel（含 `tools/` 的 `wf-lint.sh`、`wf-lint-checks.sh` 與各支 `.py`）→ 合入各包 `workflows/` 與頂層項目（`inbox/`、`.claude/commands/`）→ 把各包片段貼進 `AGENTS.md` / `WORKFLOWS.md` / `INDEX.md` / `workflows/common/README.md` 的 `<!-- wf-insert:… -->` 標記前 → 非侵入式時改寫斷掉的連結 → 印殘留清單並跑 lint。目標已有 `AGENTS.md` 時腳本拒絕執行（不覆蓋既有導入）。`--redirect` 逗號可多個，把 `CLAUDE.md` 的轉址內容另存成各工具的檔名。
 
 ## 2. 逐檔填 `{{}}`
 
@@ -53,5 +53,5 @@ kernel 改版時（見 [CHANGELOG.md](CHANGELOG.md)；版本戳在 `AGENTS.md` �
 
 | 類別 | 檔案 | 升級方式 |
 |------|------|---------|
-| **kernel-owned**（無佔位、可整檔覆蓋）| `STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/common/data-files-fmt.md`、`workflows/tidy/`（整夾）、`.claude/commands/wf-lint.md`、`tools/wf-lint.sh`、`tools/*.py`（含 `tools/check_anchors.py`）、`tools/fmt-vars.json`（專案自加變數放 `tools/fmt-vars.local.json`，project-owned）；flavor 的 `TEMPLATE.*`、`quality-gates.md`、`PROTOCOL.md`、`workflows/inbox/wake-policy.md`、`tools/inbox_*.sh`、`tools/inbox_team.sh`、`tools/test_inbox.sh`、`tools/notify_watch.sh`、`workflows/dispatch/driving-cli-agents.md`、`workflows/dispatch/lessons.md` | 從新版直接覆蓋 |
+| **kernel-owned**（無佔位、可整檔覆蓋）| `STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/common/data-files-fmt.md`、`workflows/tidy/`（整夾）、`.claude/commands/wf-lint.md`、`tools/wf-lint.sh`＋`tools/wf-lint-checks.sh`、`tools/*.py`（含 `tools/check_anchors.py`）、`tools/fmt-vars.json`（專案自加變數放 `tools/fmt-vars.local.json`，project-owned）；flavor 的 `TEMPLATE.*`、`quality-gates.md`、`PROTOCOL.md`、`workflows/inbox/wake-policy.md`、`tools/inbox_*.sh`、`tools/inbox_team.sh`、`tools/test_inbox.sh`、`tools/notify_watch.sh`、`workflows/dispatch/driving-cli-agents.md`、`workflows/dispatch/lessons.md` | 從新版直接覆蓋 |
 | **project-owned**（填過佔位、貼過片段）| `AGENTS.md`、`INDEX.md`、`WORKFLOWS.md`、`SESSION-LOG.md`、`WAIT_USER.md`、`workflows/common/user.md`、各工作流清單（routines、ROSTER、planning 表、team-model 分級表與逐模型指揮心得表…）| 讀 CHANGELOG 該版那幾行手動套 |

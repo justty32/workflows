@@ -30,18 +30,10 @@
 - inbox 五通道（＋`teams/<團隊>/`）：`inbox_mail.sh` 加 `--up`（依 `teams/*/members` 自動投領導，工人不必知道上游名）、`--team`（僅成員、頂層可投）；`inbox_poll.sh` 自動發現團隊信箱，加 `--wait [--timeout N]` 醒鐘（有信 exit 0、逾時 exit 3 靜默）；dispatcher 多掃 new/。新增 `tools/inbox_team.sh`（create／add／close；收線搬至 `done/<日期>/teams/`）、`tools/test_inbox.sh`（14 條）。`workflows/inbox/PROTOCOL.md` 改五通道佈局，拆 `wake-policy.md`（各層醒鐘策略、`--wait`、領導轉發三規矩）→ kernel-owned 覆蓋。`inbox_send.sh` 路徑定址簽名不變，未升級專案不受影響。
 - `workflows/inbox/ROSTER.md` 加「團隊」欄；上游改「有團隊就是 `members` 第一行」；註明團隊信箱自動發現、不列訂閱主題。`TEMPLATE.handoff.md` 回報並列「基本佈局 `inbox_send.sh <上游 inbox 路徑>`／升級後佈局 `inbox_mail.sh <我> --up`」，加「本線團隊」欄 → ROSTER project-owned 手動套、handoff 範本 kernel-owned 覆蓋。
 
-## v0.4.1 (2026-08-30)
+- `tools/wf-lint.sh`＋新增 `tools/wf-lint-checks.sh` → kernel-owned 覆蓋。修 percent-encoding 誤判：連結目標含空白或括號要寫成 `%20`／`%28`，原本拿原樣字串判存在，存在的檔會被重複報 `BROKEN`；新增 `link_exists()`，原樣找不到且含 `%` 才解碼再判，只判存在、不改寫文件。母檔已抵 8 KB，檢查函式與 `lint_dir` 同時拆到 `wf-lint-checks.sh` 由 `source` 載入——**既有專案要一併複製這支新檔**，`wf-init.sh` 與下表 kernel-owned 清單已納入。`test_wf_lint.py` 加 4 條。
+- `workflows/tidy/gotchas.md` → kernel-owned 覆蓋，加「執行環境」段：`command -v` 只判存在不判可執行，假 `python3` shim 會讓 BIGLIST／錨點／資料檔靜默跳過卻仍綠燈；CRLF 的 `.sh` 在 Linux／WSL 跑不動、`wc -c` 每行多 1 byte，8 KB 上限在 Windows 工作區會誤報。
+- multi-agent `workflows/team-model.md` 二、三節兩張表 → 預填默認值並標「2026/09/02 由 justty32 給出的個人判斷」，`{{}}` 清空；表仍 project-owned，換自己的模型清單就整張改掉。
 
-**md 不再教查法。** 資料檔契約拿掉三行查法。`wf-lint` 新增 `QUERYCMD`，`--strict` 時算失敗。既有專案套完清掉所報行。**完整條列**：`git show a104604:CHANGELOG.md`。
+## v0.4.1 (2026-08-30) 與更早
 
-## v0.4 (2026-08-30)
-
-json 資料檔的路徑值可寫成 `$fmt` 代號（`${fileDirname}`／`${gitRoot}`／`${gitParent}`／`${gitTop}`／`${env:NAME}`，讀取時展開），省去深層 `../../../`；契約仍 `wf-table/1`，附錄 `workflows/common/data-files-fmt.md`。`tabledb.py`（新指令 `fmt`）、`tabledb_links.py`、`fix_moved_links.py` 與 `tabledb_fmt*.py`、`tools/fmt-vars.json`（契約 `wf-fmt-vars/1`，解析器不寫死變數名）→ kernel-owned；專案自加變數放 `tools/fmt-vars.local.json`（project-owned）。**手動覆蓋 .py 升級的專案要一併複製 `fmt-vars.json`**。既有 json 不必改，≥ 2 個 `../` 的路徑建議改 `$fmt`。**完整條列**：`git show a104604:CHANGELOG.md`。
-
-## v0.3 (2026-08-30)
-
-文件整理工具進 kernel：`wf-table/1` 資料檔契約、tidy 工作流、`tabledb.py`／`find_big_lists.py`／`fix_moved_links.py`；同質記錄表 >1 KB 才抽，導航連結表留 md。完整條列：`git show a104604:CHANGELOG.md`。
-
-## v0.2 (2026-08-29) 與更早
-
-v0.2 全面重構分層、flavor、授權與工具中立契約；v0.1 是未拆 heartbeat／multi-agent 的早期 kernel。**完整條列**：`git show a2a4077:CHANGELOG.md`。
+見 [docs/CHANGELOG-history.md](docs/CHANGELOG-history.md)。

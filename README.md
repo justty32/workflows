@@ -84,7 +84,7 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 | 工具 | 做什麼 |
 |------|--------|
 | `wf-init.sh` | 導入：複製 kernel、合入 flavor 包、非侵入式改寫連結 |
-| `wf-lint.sh` | 檢查：壞連結與錨點／超標檔／條列／資料檔連結／殘留 |
+| `wf-lint.sh` | 檢查：壞連結與錨點／超標檔／條列／資料檔連結／殘留；檢查函式在 `wf-lint-checks.sh` |
 | `check_anchors.py` | 驗 md 連結的 `#錨點`（heading slug 與顯式 id）在目標檔存不存在 |
 | `tabledb.py` | 資料檔 CRUD 與連結查驗 |
 | `find_big_lists.py` | 列出超標的表／清單，附連結數判斷是不是連結表 |

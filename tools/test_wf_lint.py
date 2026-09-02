@@ -128,5 +128,45 @@ class LinkScopeAndCountTest(unittest.TestCase):
         self.assertIn("residue={{=0", r.stdout)
 
 
+class PercentEncodedLinkTest(unittest.TestCase):
+    """連結目標含空白／括號時必須 percent-encode，檢查器要解碼後再判存在。"""
+
+    def setUp(self):
+        self.d = tempfile.TemporaryDirectory()
+        self.root = self.d.name
+
+    def tearDown(self):
+        self.d.cleanup()
+
+    def test_encoded_link_to_existing_file_is_not_broken(self):
+        write(self.root, "raws/BFCO - Framework (SSE AE VR).txt", "x\n")
+        write(self.root, "notes/a.md",
+              "[raw](../raws/BFCO%20-%20Framework%20%28SSE%20AE%20VR%29.txt)\n")
+        r = run(self.root)
+        self.assertNotIn("BROKEN", r.stdout)
+        self.assertIn("TOTAL broken=0", r.stdout)
+        self.assertEqual(r.returncode, 0)
+
+    def test_encoded_link_to_missing_file_is_still_broken(self):
+        write(self.root, "notes/a.md", "[raw](../raws/No%20Such%20File.txt)\n")
+        r = run(self.root)
+        self.assertIn("BROKEN notes/a.md -> ../raws/No%20Such%20File.txt", r.stdout)
+        self.assertIn("TOTAL broken=1", r.stdout)
+
+    def test_unencoded_link_still_judged_on_the_literal_path(self):
+        write(self.root, "raws/plain.txt", "x\n")
+        write(self.root, "notes/a.md",
+              "[ok](../raws/plain.txt)\n\n[bad](../raws/absent.txt)\n")
+        r = run(self.root)
+        self.assertEqual(r.stdout.count("BROKEN "), 1)
+        self.assertIn("BROKEN notes/a.md -> ../raws/absent.txt", r.stdout)
+
+    def test_malformed_percent_escape_is_broken_not_a_crash(self):
+        write(self.root, "notes/a.md", "[bad](../raws/100%25%ZZ.txt)\n")
+        r = run(self.root)
+        self.assertIn("BROKEN notes/a.md -> ../raws/100%25%ZZ.txt", r.stdout)
+        self.assertIn("TOTAL broken=1", r.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()
