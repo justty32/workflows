@@ -1,6 +1,6 @@
 # CHANGELOG — 舊版本（v0.4.1 及更早）
 
-本檔由 [CHANGELOG](../CHANGELOG.md) 拆出（母檔抵 8 KB 上限）；現行版本一節留在母檔。**本檔是 kernel repo 自用的變動記錄，不隨導入複製到專案。**
+本檔由 [CHANGELOG](../CHANGELOG.md) 拆出（母檔只留每版摘要與去向）；現行版本的完整條列在 [CHANGELOG-v0.5](CHANGELOG-v0.5.md)。**本檔是 kernel repo 自用的變動記錄，不隨導入複製到專案。**
 
 ## v0.4.1 (2026-08-30)
 

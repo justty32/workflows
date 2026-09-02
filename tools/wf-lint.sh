@@ -32,7 +32,7 @@ if [[ $self -eq 1 ]]; then
   cd "$repo" || exit 2
 
   echo "== repo root files"
-  check_links "$repo" < <(printf '%s\n' README.md AGENTS.md CLAUDE.md IMPORT.md CHANGELOG.md docs/README.md docs/non-invasive-import.md docs/CHANGELOG-history.md \
+  check_links "$repo" < <({ printf '%s\n' README.md AGENTS.md CLAUDE.md IMPORT.md CHANGELOG.md; ls docs/*.md 2>/dev/null; } \
     | while read -r f; do [[ -f $f ]] && echo "$repo/$f"; done)
   b=$checked_broken; total_broken=$((total_broken + b)); echo "SUMMARY root: broken=$b"
 
