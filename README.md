@@ -76,7 +76,7 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 
 ## 升級既有專案
 
-導入是複製後脫鉤。最新 **v0.5** 變動記在 [CHANGELOG.md](CHANGELOG.md)（改哪檔、要不要跟）；版本戳可查自己是哪版，升級分類見 [IMPORT.md](IMPORT.md)，repo 文件見 [docs/](docs/README.md)。
+導入是複製後脫鉤。最新 **v0.5.1** 變動記在 [CHANGELOG.md](CHANGELOG.md)（改哪檔、要不要跟）；版本戳可查自己是哪版，升級分類見 [IMPORT.md](IMPORT.md)，repo 文件見 [docs/](docs/README.md)。
 
 ## 這套為什麼有效
 

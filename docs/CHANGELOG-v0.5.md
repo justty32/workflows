@@ -2,7 +2,7 @@
 
 [docs](README.md)｜[CHANGELOG](../CHANGELOG.md)
 
-由 [CHANGELOG](../CHANGELOG.md) 拆出（母檔只留每版摘要與去向）：v0.5 改了哪些檔、**既有專案要不要跟**。更早的版本在 [CHANGELOG-history](CHANGELOG-history.md)。**本檔是 kernel repo 自用的變動記錄，不隨導入複製到專案。**
+由 [CHANGELOG](../CHANGELOG.md) 拆出（母檔只留每版摘要與去向）：v0.5 改了哪些檔、**既有專案要不要跟**。之後的修正版在 [CHANGELOG-v0.5.1](CHANGELOG-v0.5.1.md)。更早的版本在 [CHANGELOG-history](CHANGELOG-history.md)。**本檔是 kernel repo 自用的變動記錄，不隨導入複製到專案。**
 
 ## v0.5 (2026-08-30)
 
@@ -30,11 +30,3 @@
 ### multi-agent 包
 
 見 [CHANGELOG-v0.5-multi-agent.md](CHANGELOG-v0.5-multi-agent.md)（六條：dispatch 資料夾化、inbox 五通道與工具、team-model 四檔、ROSTER 團隊欄）。
-
-### 2026-09-02 補
-
-- `tools/wf-lint.sh`＋新增 `tools/wf-lint-checks.sh` → kernel-owned 覆蓋。修 percent-encoding 誤判：連結目標含空白或括號要寫成 `%20`／`%28`，原本拿原樣字串判存在，存在的檔會被重複報 `BROKEN`；新增 `link_exists()`，原樣找不到且含 `%` 才解碼再判，只判存在、不改寫文件。母檔已抵 8 KB，檢查函式與 `lint_dir` 同時拆到 `wf-lint-checks.sh` 由 `source` 載入——**既有專案要一併複製這支新檔**，`wf-init.sh` 與下表 kernel-owned 清單已納入。`test_wf_lint.py` 加 4 條。
-- `workflows/tidy/gotchas.md` → kernel-owned 覆蓋，加「執行環境」段：`command -v` 只判存在不判可執行，假 `python3` shim 會讓 BIGLIST／錨點／資料檔靜默跳過卻仍綠燈；CRLF 的 `.sh` 在 Linux／WSL 跑不動、`wc -c` 每行多 1 byte，8 KB 上限在 Windows 工作區會誤報。
-- multi-agent `workflows/team-model.md` 二、三節兩張表 → 預填默認值並標「2026/09/02 由 justty32 給出的個人判斷」，`{{}}` 清空；表仍 project-owned，換自己的模型清單就整張改掉。
-- `README.md`（8058→6033）與 `tools/wf-init.sh`（7922→6365）拆檔，兩者都是本 repo 自用、不隨導入複製：README 的 `template/` 逐檔表與 `tools/` 工具表移到新增的 `docs/kernel-contents.md`，母檔留一行去向；`wf-init.sh` 的非侵入式連結改寫（`normalize`／`relpath`／改寫迴圈）移到新增的 `tools/wf-init-relink.sh`，由母檔 `source`，缺檔 FATAL 並 exit 2。順手把 `wf-lint --self` 的 repo 根連結掃描從寫死清單改成掃整個 `docs/*.md`。
-- `tools/tabledb.py`（8133→5249）、`tabledb_fmt.py`（7979→6061）、`fix_moved_links.py`（7946→5373）→ kernel-owned 覆蓋。三支都貼著 8 KB 上限，各拆出一支同目錄模組：`Table` 資料模型 → 新增 `tabledb_table.py`；`$fmt` 的變數解析（`context`／`expand`／`names`／`canon`）→ 新增 `tabledb_fmt_expand.py`，`tabledb_fmt` 仍是對外門面；`fix_moved_links` 的掃描與搬移表（`git_root`／`files`／`load_moves`／`remap`／`old_dir_of`）→ 新增 `fix_moved_links_scan.py`，順手把 `scanned()`／`load_moves(specs)` 改成吃 `root` 參數、不再靠模組全域。**公開用法完全不變**（`from tabledb import load`、`tabledb.Table`、`tabledb_fmt.*`），三支新模組隨 `tools/*.py` 自動複製，既有專案覆蓋 `tools/` 時照舊整包拿。
