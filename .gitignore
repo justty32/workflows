@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# agent 用的臨時 git worktree（wf/ 本身要版控，不要 ignore）
+.claude/worktrees/

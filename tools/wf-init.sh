@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 # wf-init.sh — 把 kernel + 選定的 flavor 包合成到一個專案（純 bash + cp/sed/awk/grep）
 #
-#   tools/wf-init.sh --target <專案根> [--flavor a,b,c] [--non-invasive [子資料夾]] [--redirect f1,f2] [--quiet]
+#   tools/wf-init.sh --target <專案根> [--flavor a,b,c] [--non-invasive [子資料夾]] [--redirect f1,f2] [--skills a,b,c|all] [--quiet]
 #
 #   --flavor         逗號分隔的 flavor 名（flavors/ 底下的資料夾名）；可省略＝只裝 kernel
 #   --non-invasive   頂層只留 AGENTS.md / CLAUDE.md / .claude/（與各 flavor 的頂層項目如 inbox/），
 #                    其餘收進 <子資料夾>（預設 wf）；連結自動改寫
 #   --redirect       逗號分隔的轉址檔名（預設只產 CLAUDE.md）：把轉址內容另存成其他 agent 工具讀的
 #                    入口檔名，例 GEMINI.md、.github/copilot-instructions.md
+#   --skills         逗號分隔的技能名（skills/ 底下含 SKILL.md 的資料夾名）或 all＝全裝；
+#                    整包複製到 <wfroot>/skills/，並在 <target>/.claude/skills/<name>/ 產轉址
 #   工具（wf-lint.sh 與 check_anchors.py／tabledb.py／tabledb_links.py／tabledb_fmt.py／tabledb_fmt_vars.py／find_big_lists.py／fix_moved_links.py／fix_moved_links_fmt.py 與 fmt-vars.json，
 #   不含測試）一併複製到 <wfroot>/tools/。結束時印出殘留清單（{{ 佔位、〔導入判斷〕）並跑 wf-lint。
 # 無法自動化的只有兩件事：填 {{}}（要專案事實）與判斷〔導入判斷〕——交給人或 agent 收尾（見 IMPORT.md）。
 set -u
 
 repo=$(cd "$(dirname "$0")/.." && pwd)
-target="" flavors="" wfdir="" redirects="" quiet=0
+target="" flavors="" wfdir="" redirects="" skills="" quiet=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --target) target=$2; shift 2 ;;
@@ -24,8 +26,9 @@ while [[ $# -gt 0 ]]; do
       if [[ $# -ge 2 && $2 != --* ]]; then wfdir=$2; shift; fi
       shift ;;
     --redirect|--redirects) redirects=$2; shift 2 ;;
+    --skills|--skill) skills=$2; shift 2 ;;
     --quiet|-q) quiet=1; shift ;;
-    -h|--help) sed -n '2,15p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,17p' "$0"; exit 0 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
@@ -34,12 +37,22 @@ say() { [[ $quiet -eq 1 ]] || echo "$@"; }
 
 # 非侵入式的連結改寫拆到同目錄的 wf-init-relink.sh（母檔已到 8 KB 上限）。
 . "$repo/tools/wf-init-relink.sh" || { echo "FATAL missing $repo/tools/wf-init-relink.sh" >&2; exit 2; }
+# --skills 的複製與轉址拆到同目錄的 wf-init-skills.sh（母檔已到 8 KB 上限）。
+. "$repo/tools/wf-init-skills.sh" || { echo "FATAL missing $repo/tools/wf-init-skills.sh" >&2; exit 2; }
 
 # 驗 flavor 存在
 IFS=',' read -r -a flist <<< "$flavors"
 for fl in "${flist[@]}"; do
   [[ -z $fl ]] && continue
   [[ -d "$repo/flavors/$fl" ]] || { echo "no such flavor: $fl (see flavors/)" >&2; exit 2; }
+done
+
+# 驗 skills 存在（all＝skills/ 底下所有含 SKILL.md 的資料夾）
+[[ $skills == all ]] && skills=$(skills_all_names)
+IFS=',' read -r -a sklist <<< "$skills"
+for sk in "${sklist[@]}"; do
+  [[ -z $sk ]] && continue
+  [[ -f "$repo/skills/$sk/SKILL.md" ]] || { echo "no such skill: $sk (see skills/)" >&2; exit 2; }
 done
 
 mkdir -p "$target"
@@ -85,9 +98,18 @@ for rd in "${rdlist[@]}"; do
 done
 
 # ---------- 2. flavors ----------
+marker_candidates() { # 只在合法能持有 marker 的檔案裡找，避免 examples/ 之類的誤中
+  if [[ -n $wfdir ]]; then
+    find "$wfroot" -name '*.md' 2>/dev/null
+    for f in "$target"/*.md; do [[ -f $f ]] && echo "$f"; done
+  else
+    for f in "$target"/*.md; do [[ -f $f ]] && echo "$f"; done
+    [[ -d "$target/workflows/common" ]] && find "$target/workflows/common" -name '*.md' 2>/dev/null
+  fi
+}
 insert_fragment() { # $1 = marker name, $2 = fragment file
-  local marker="<!-- wf-insert:$1 -->" hit
-  hit=$(grep -rl --include='*.md' -F "$marker" "$target" | head -1)
+  local marker="<!-- wf-insert:$1 -->" hit=""
+  while IFS= read -r f; do grep -q -F "$marker" "$f" 2>/dev/null && { hit=$f; break; }; done < <(marker_candidates)
   [[ -z $hit ]] && { echo "  ! no marker $marker found for $(basename "$2")" >&2; return 1; }
   awk -v marker="$marker" -v frag="$2" '
     index($0, marker) { while ((getline line < frag) > 0) print line; close(frag) }
@@ -118,6 +140,9 @@ done
 
 # ---------- 3. 非侵入式：改寫因搬家而斷的相對連結（見 wf-init-relink.sh）----------
 [[ -n $wfdir ]] && rewrite_moved_links
+
+# ---------- 3.5 skills（見 wf-init-skills.sh；須排在非侵入式改寫之後，避免路徑被誤改）----------
+[[ -n $skills ]] && install_skills
 
 # ---------- 4. 殘留清單 + lint ----------
 if [[ $quiet -eq 0 ]]; then

@@ -33,20 +33,11 @@
 bash tools/wf-init.sh --target <專案> --flavor heartbeat
 ```
 
-腳本會做四件事：
+通用步驟見 [IMPORT.md](../../IMPORT.md)（多個 flavor 就多帶幾個 `--flavor`，派發表依序插入）。本包特有的三點：
 
-1. kernel（`template/`）落位到 `<專案>`；
-2. 本包 `workflows/*.md` 併進 `<專案>/workflows/`；
-3. `.claude/commands/wf-tick.md` 落到**專案根**的 `.claude/commands/`——以 Claude Code 為例，它只讀專案根那個目錄，**非侵入式佈局也一樣**（其餘檔進 `wf/`，指令仍留在根，腳本會把指令內指向 `../../workflows/tick.md` 的連結改寫成實際路徑）。用別的工具就忽略這個目錄；
-4. `WORKFLOWS.heartbeat.md` 插進 kernel `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 之前。
-
-接著人（或 agent）收尾：
-
-5. 填 `{{時區}}` 等佔位符，照 `〔導入判斷〕` 各段做選擇並刪除該段；
-6. 決定引擎（見上面分工表）——不管哪一種，語意都是「每隔 N 分鐘叫 agent 跑一次 tick 工作流」——把 routines / schedule 的清單換成自己的；
-7. 跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`），`0 BROKEN` 才算導入完成。
-
-多個 flavor 就多帶幾個 `--flavor`，派發表會依序插入。
+1. 片段檔只有一個 `WORKFLOWS.heartbeat.md`；`workflows/*.md` 併進 `<專案>/workflows/`。
+2. `.claude/commands/wf-tick.md` 落到**專案根**的 `.claude/commands/`——以 Claude Code 為例，它只讀專案根那個目錄，**非侵入式佈局也一樣**（其餘檔進 `wf/`，指令仍留在根，腳本會把指令內指向 `../../workflows/tick.md` 的連結改寫成實際路徑）。用別的工具就忽略這個目錄。
+3. 填完 `{{時區}}` 後**決定引擎**（見上面分工表）——不管哪一種，語意都是「每隔 N 分鐘叫 agent 跑一次 tick 工作流」——並把 routines / schedule 的清單換成自己的。
 
 ## 踩坑
 

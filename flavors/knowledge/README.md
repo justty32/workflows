@@ -25,13 +25,7 @@
 tools/wf-init.sh --target <專案> --flavor knowledge
 ```
 
-腳本做的事（手動導入就照著做）：
-
-1. 把 [`template/`](../../template/) 整包複製到專案根。
-2. 把本包 `workflows/` 底下的檔案複製進專案的 `workflows/`（`common/writing.md`、`common/writing/`、`common/info-map.md` 併入 `workflows/common/`）。
-3. 把 [WORKFLOWS.knowledge.md](WORKFLOWS.knowledge.md) 插到專案 `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 標記之前，把 [COMMON.knowledge.md](COMMON.knowledge.md) 插到 `workflows/common/README.md` 的 `<!-- wf-insert:COMMON -->` 之前。
-4. 全域搜尋 `{{` 填成專案實況；讀到 `〔模板說明〕` 照做後刪除該段；讀到 `〔導入判斷〕` 依條件決定做不做，做完刪除該段。
-5. 跑一次 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）收尾。
+通用步驟（複製 kernel → 併 `workflows/` → 貼片段 → 填 `{{}}`／處理〔導入判斷〕〔模板說明〕→ 跑 lint）見 [IMPORT.md](../../IMPORT.md)。本包特有的兩點：`common/writing.md`、`common/writing/`、`common/info-map.md` 併入 `workflows/common/`；片段檔兩個——[WORKFLOWS.knowledge.md](WORKFLOWS.knowledge.md) 貼進 `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 之前，[COMMON.knowledge.md](COMMON.knowledge.md) 貼進 `workflows/common/README.md` 的 `<!-- wf-insert:COMMON -->` 之前。
 
 ## 可選工作流菜單
 

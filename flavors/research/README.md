@@ -8,13 +8,7 @@
 
 ## 真相層 / 衍生層
 
-本包四個工作流都圍著同一條原則轉（細則見 [workflows/common/index-rules.md](workflows/common/index-rules.md)）：
-
-| 層 | 是什麼 | 規矩 |
-|----|--------|------|
-| **索引真相層** | `index/`：一件一列，狀態欄即進度 | 「有什麼、做到哪」只有這裡算數 |
-| **內容真相層** | 摘要 / 翻譯 / 筆記的 `.md` | 內容更新一律先改這裡 |
-| **衍生層** | 網頁、匯出檔、綜述呈現頁 | 由真相層產生、可後補；**改產生器不改產出** |
+本包四個工作流都圍著同一條原則轉：**索引真相層**（`index/`，「有什麼、做到哪」只有這裡算數）→ **內容真相層**（摘要／翻譯／筆記的 `.md`）→ **衍生層**（網頁、匯出檔、綜述呈現頁）。三層各管什麼、規矩是什麼在 [workflows/common/index-rules.md](workflows/common/index-rules.md)，本檔不重述。
 
 綜述（[survey](workflows/survey.md) 的產物）也算呈現層：它可以整份重寫，因為每個結論都用 `[[id]]` 連回內容真相層。
 
@@ -51,14 +45,11 @@ kernel 的活狀態（`SESSION-LOG.md` / `WAIT_USER.md`）**只列 open、完成
 tools/wf-init.sh --target <專案> --flavor research
 ```
 
-腳本做的事（手動導入就照著做）：
+通用步驟見 [IMPORT.md](../../IMPORT.md)。本包特有的三點：
 
-1. 把 [`template/`](../../template/) 整包複製到專案根。
-2. 本包 `workflows/` 底下的檔複製進專案 `workflows/`（`common/index-rules.md` 併入 `workflows/common/`）。
-3. 三個片段各插到對應標記之前：[WORKFLOWS.research.md](WORKFLOWS.research.md) → `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->`；[INDEX.research.md](INDEX.research.md) → `INDEX.md` 的 `<!-- wf-insert:INDEX -->`；[COMMON.research.md](COMMON.research.md) → `workflows/common/README.md` 的 `<!-- wf-insert:COMMON -->`。
-4. 建資料層目錄：`index/`（含 `index/README.md`：分類檔表＋狀態圖例＋維護規則指標）、`backlog/`（含 `README.md` 與 `archive/`）、`logs/`、內容真相層目錄（`{{摘要目錄，如 summaries/}}` 等）、抓取暫存 `raw/`（建議加進 `.gitignore`，並記住驗收前不清）。
-5. 全域搜 `{{` 填成專案實況；`〔模板說明〕` 照做後刪除，`〔導入判斷〕` 依條件決定做不做。
-6. 跑 `bash tools/wf-lint.sh <專案>`（Claude Code 可用 `/wf-lint`），`0 BROKEN` 才算導入完成。
+1. `common/index-rules.md` 併入 `workflows/common/`。
+2. 三個片段各插到對應標記之前：[WORKFLOWS.research.md](WORKFLOWS.research.md) → `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->`；[INDEX.research.md](INDEX.research.md) → `INDEX.md` 的 `<!-- wf-insert:INDEX -->`；[COMMON.research.md](COMMON.research.md) → `workflows/common/README.md` 的 `<!-- wf-insert:COMMON -->`。
+3. 另外建資料層目錄：`index/`（含 `index/README.md`：分類檔表＋狀態圖例＋維護規則指標）、`backlog/`（含 `README.md` 與 `archive/`）、`logs/`、內容真相層目錄（`{{摘要目錄，如 summaries/}}` 等）、抓取暫存 `raw/`（建議加進 `.gitignore`，並記住驗收前不清）。
 
 ## 移除某工作流要動的地方
 

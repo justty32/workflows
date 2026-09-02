@@ -27,14 +27,7 @@
 tools/wf-init.sh --target <專案> --flavor dev
 ```
 
-腳本做的事（要手動合就照這四步）：
-
-1. `template/` 整包複製到專案根。
-2. 本包 `workflows/` 底下全部複製進專案 `workflows/`（`common/*` 併入既有的 `workflows/common/`）。
-3. 四個片段檔貼進 kernel 的 `<!-- wf-insert:WORKFLOWS -->`／`AGENTS`／`COMMON` 標記**之前**（本包沒有 `INDEX.dev.md`）。
-4. 全域搜尋 `{{` 填佔位符；照〔導入判斷〕做決定、照〔模板說明〕做完後刪除該段。
-
-收尾跑 `tools/wf-lint.sh <專案>` 確認沒有壞連結與殘留。
+通用步驟（複製 kernel → 併 `workflows/` → 貼片段 → 填 `{{}}`／處理〔導入判斷〕〔模板說明〕→ 跑 lint）見 [IMPORT.md](../../IMPORT.md)。本包特有的兩點：`workflows/common/*` 併入既有的 `workflows/common/`；片段檔三個（`WORKFLOWS.dev.md`／`AGENTS.dev.md`／`COMMON.dev.md`，沒有 `INDEX.dev.md`）。
 
 ## 可選工作流菜單
 

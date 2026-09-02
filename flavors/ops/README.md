@@ -23,7 +23,7 @@
 tools/wf-init.sh --target <專案> --flavor ops
 ```
 
-手動等價於：① `template/` 複製到專案根；② 本包 `workflows/` 底下的檔複製進專案 `workflows/`；③ [WORKFLOWS.ops.md](WORKFLOWS.ops.md) 內容貼到專案 `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 之前；④ 全域搜 `{{` 填佔位符，`〔模板說明〕` / `〔導入判斷〕` 照做後刪除。
+通用步驟見 [IMPORT.md](../../IMPORT.md)。本包特有：只有一個片段檔 [WORKFLOWS.ops.md](WORKFLOWS.ops.md)（貼進專案 `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 之前），`workflows/` 底下的檔直接併進專案 `workflows/`。
 
 ## 移除某工作流要動的地方
 

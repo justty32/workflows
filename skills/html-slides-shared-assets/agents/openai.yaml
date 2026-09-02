@@ -1,0 +1,6 @@
+interface:
+  display_name: "HTML Slides Shared Assets"
+  short_description: "抽出多份 HTML 簡報的共用 CSS 與 JavaScript"
+  brand_color: "#2574F5"
+  default_prompt: "Use $html-slides-shared-assets to reduce this collection of HTML slide decks by extracting their common local assets."
+

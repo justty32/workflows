@@ -1,0 +1,12 @@
+[submodule "skills/external/archify"]
+	path = skills/external/archify
+	url = https://github.com/tt-a1i/archify
+	shallow = true
+[submodule "skills/external/dashi-ppt-skill"]
+	path = skills/external/dashi-ppt-skill
+	url = https://github.com/chuspeeism/dashi-ppt-skill
+	shallow = true
+[submodule "skills/external/Kami"]
+	path = skills/external/Kami
+	url = https://github.com/tw93/Kami
+	shallow = true

@@ -43,6 +43,7 @@
 | [AGENTS.multi-agent.md](AGENTS.multi-agent.md) | 開場 bullet 片段（貼進專案的 `AGENTS.md`「開場與入口」）|
 | [INDEX.multi-agent.md](INDEX.multi-agent.md) | 佈局表列片段（貼進專案的 `INDEX.md`「Repo 佈局」）|
 | [workflows/inbox/](workflows/inbox/README.md) | 通訊工作流：流程、[協議](workflows/inbox/PROTOCOL.md)、[醒鐘策略](workflows/inbox/wake-policy.md)、[身份簿](workflows/inbox/ROSTER.md)、信件模板 |
+| [workflows/team-model.md](workflows/team-model.md) | 誰來做：角色三層、聰明度分級、選人判準（子頁 [context](workflows/team-model/context.md)／[speed](workflows/team-model/speed.md)／[plans](workflows/team-model/plans.md)）|
 | [workflows/resources.md](workflows/resources.md) | 獨佔資源鎖：`mkdir` 鎖、取得順序、限流、資源表 |
 | [workflows/dispatch/](workflows/dispatch/README.md) | 派線工作流（資料夾型）：入口 [README](workflows/dispatch/README.md)＝流程／六條最容易錯的／兩層派線／領地表 |
 | ↳ [dispatch/driving-cli-agents.md](workflows/dispatch/driving-cli-agents.md) | 啟動、驅動、監看一條外部 CLI agent 線，與收線七步 |
@@ -61,7 +62,7 @@ tools/wf-init.sh --target <專案> --flavor multi-agent
 
 `inbox/` 與 `tools/` **一律留在專案根**，非侵入式佈局（其餘收進 `wf/`）也一樣——inbox 是給外部 agent 用的對外介面，位置要好猜；腳本要能被 hook 與別的 agent 直接呼叫。
 
-手動合就照上面四件事各做一遍，再全域搜尋 `{{` 填佔位符、讀完 `〔模板說明〕` 段後刪除。`hook-settings-snippet.json` **要不要啟用由使用者決定**，本模板不會自動改任何工具設定檔。
+通用步驟（含填 `{{}}`、處理〔模板說明〕、收尾 lint）見 [IMPORT.md](../../IMPORT.md)。`hook-settings-snippet.json` **要不要啟用由使用者決定**，本模板不會自動改任何工具設定檔。
 
 ## 版控取捨
 
@@ -82,7 +83,7 @@ tools/wf-init.sh --target <專案> --flavor multi-agent
 |------|------|
 | `inbox/`（專案根）| 整個刪掉（先確認頂層沒未辦的信）|
 | `tools/inbox_send.sh`、`tools/inbox_read.sh`、`tools/inbox_mail.sh`、`tools/inbox_poll.sh`、`tools/inbox_team.sh`、`tools/notify_watch.sh`、`tools/test_inbox.sh`、`tools/hook-settings-snippet.json` | 刪掉；若曾把 hook 合進工具設定檔（Claude Code 為例：`settings.json`），一併移除那段 |
-| `workflows/inbox/`、`workflows/resources.md`、`workflows/dispatch/`、`workflows/TEMPLATE.handoff.md` | 刪掉（只移除其中一個工作流就刪對應那幾個）|
+| `workflows/inbox/`、`workflows/resources.md`、`workflows/dispatch/`、`workflows/team-model.md`＋`workflows/team-model/`、`workflows/TEMPLATE.handoff.md` | 刪掉（只移除其中一個工作流就刪對應那幾個）|
 | `WORKFLOWS.md` | 刪「multi-agent flavor」表裡對應的列；整包移除就刪整節 |
 | `AGENTS.md` | 刪「開場與入口」裡 `ls inbox/*.md` 那行 bullet |
 | `INDEX.md` | 刪「Repo 佈局」表裡 `inbox/` 與 `tools/` 那兩列 |

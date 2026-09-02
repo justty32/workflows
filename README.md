@@ -22,6 +22,7 @@
 ```
 template/   共用 kernel（整包拿走）
 flavors/    七個領域包（見下表）
+skills/     可選的 agent skill 包（見下）
 tools/      導入／檢查／資料檔與整理工具
 examples/   合併成品（dev / knowledge）
 docs/       本 repo 的文件
@@ -43,12 +44,22 @@ docs/       本 repo 的文件
 
 > flavor 包的連結照**合併後**佈局寫，在本 repo 直接點會指不到 kernel（預期）；`wf-lint.sh --self` 合併後才檢查。
 
+### skills（可選）
+
+`skills/` 是可選的 agent skill 包，與 flavor 無關、**不進** `WORKFLOWS.md` 派發表。8 個：本 repo 自有兩個（`markdown-html-slides`、`html-slides-shared-assets`，CC0）＋ vendor 自 [effective-html](https://github.com/plannotator/effective-html)（MIT）六個（`html`、`design-artifact`、`html-wireframe`、`html-prototype`、`html-plan`、`html-diagram`）——因此 `skills/` 讓本 repo 變**混合授權**，授權全文見 `skills/LICENSES/`。清單見 [`skills/README.md`](skills/README.md)。
+
+```bash
+tools/wf-init.sh --target <專案根> --skills html,markdown-html-slides
+```
+
+不 vendor 的產品型 skill（`dashi-ppt-skill`、`archify`）以 git submodule 掛在 `skills/external/`，授權／相依／警語見 [`skills/README.md`](skills/README.md) 的 external 一節。`reply-style.md` 的想法受 [i-have-adhd](https://github.com/alexanderop/i-have-adhd) 啟發，措辭與例子是本 repo 自己寫的。
+
 ## 如何套用到新專案
 
 **Done when**：`{{` 為 0、〔模板說明〕為 0、〔導入判斷〕為 0、`wf-lint` 0 BROKEN。
 
 ```bash
-tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專案建議加 --non-invasive wf
+tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat [--skills <a,b>]   # 既有專案建議加 --non-invasive wf
 ```
 
 1. **合併**：腳本複製 kernel、合入 flavor、貼入派發片段並改寫非侵入式連結；手動步驟見各包 README 與 [non-invasive-import](docs/non-invasive-import.md)。
@@ -58,6 +69,8 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 5. **驗收**：`tools/wf-lint.sh --strict <專案根>`（Claude Code 可用 `/wf-lint`）。
 
 也可以讓 agent 代勞：把本 repo 路徑給它，說「照 [IMPORT.md](IMPORT.md) 用 dev flavor 幫我的專案建立工作流」。
+
+**本 repo 自己也用這套**：非侵入式導入在 [`wf/`](wf/INDEX.md)，調查筆記與決策記錄都在那裡。
 
 ## template/ 與 tools/ 的內容
 
@@ -76,7 +89,7 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat   # 既有專
 
 ## 升級既有專案
 
-導入是複製後脫鉤。最新 **v0.5.1** 變動記在 [CHANGELOG.md](CHANGELOG.md)（改哪檔、要不要跟）；版本戳可查自己是哪版，升級分類見 [IMPORT.md](IMPORT.md)，repo 文件見 [docs/](docs/README.md)。
+導入是複製後脫鉤。最新 **v0.6** 變動記在 [CHANGELOG.md](CHANGELOG.md)（改哪檔、要不要跟）；版本戳可查自己是哪版，升級分類見 [IMPORT.md](IMPORT.md)，repo 文件見 [docs/](docs/README.md)。
 
 ## 這套為什麼有效
 

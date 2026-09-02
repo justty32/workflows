@@ -5,6 +5,7 @@ import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LINT = os.path.join(HERE, "wf-lint.sh")
+CHECKS = os.path.join(HERE, "wf-lint-checks.sh")
 
 
 def write(root, rel, text):
@@ -62,6 +63,15 @@ class QueryCmdTest(unittest.TestCase):
         r = run(self.root)
         self.assertNotIn("QUERYCMD", r.stdout)
         self.assertIn("querycmd=0", r.stdout)
+
+    def test_skills_dir_exempt_but_sibling_dir_still_reported(self):
+        cmd = "python3 tools/tabledb.py x.json get 0\n"
+        write(self.root, "skills/foo/SKILL.md", cmd)
+        write(self.root, "notes/a.md", cmd)
+        r = run(self.root)
+        self.assertNotIn("skills/foo/SKILL.md", r.stdout)
+        self.assertIn("QUERYCMD notes/a.md:1", r.stdout)
+        self.assertIn("querycmd=1", r.stdout)
 
     def test_strict_fails_plain_warns(self):
         write(self.root, "notes/a.md", "# a\n\npython3 wf/tools/tabledb.py x.json\n")
@@ -166,6 +176,26 @@ class PercentEncodedLinkTest(unittest.TestCase):
         r = run(self.root)
         self.assertIn("BROKEN notes/a.md -> ../raws/100%25%ZZ.txt", r.stdout)
         self.assertIn("TOTAL broken=1", r.stdout)
+
+
+class OversizeSubmoduleTest(unittest.TestCase):
+    def setUp(self):
+        self.d = tempfile.TemporaryDirectory()
+        self.root = self.d.name
+
+    def tearDown(self):
+        self.d.cleanup()
+
+    def test_submodule_path_skipped_but_own_file_reported(self):
+        write(self.root, "ext/mod/big.txt", "x" * 9000)
+        write(self.root, "own/big.txt", "x" * 9000)
+        write(self.root, ".gitmodules", '[submodule "ext"]\n\tpath = ext/mod\n')
+        r = subprocess.run(
+            ["bash", "-c", f'. "{CHECKS}"; list_oversize_files "{self.root}"'],
+            capture_output=True, text=True,
+        )
+        self.assertIn("own/big.txt", r.stdout)
+        self.assertNotIn("ext/mod/big.txt", r.stdout)
 
 
 if __name__ == "__main__":

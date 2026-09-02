@@ -44,15 +44,28 @@ list_owned_files() {
     -path '*/.git' -o -path '*/node_modules' -o -path '*/__pycache__'
     -o -path '*/archive' -o -path '*/reference' -o -path '*/references' -o -path '*/vendor'
   )
+  # .gitmodules 在 git 頂層，$root 可能是子目錄（例 skills/）；宣告過的 submodule 路徑不論落在哪一層都不下鑽。
+  local top; top=$(git -C "$root" rev-parse --show-toplevel 2>/dev/null) || top=""
   while read -r _ rel; do
-    [[ -n $rel ]] && prunes+=( -o -path "$root/${rel%/}" )
-  done < <(git -C "$root" config --file .gitmodules --get-regexp '^submodule\..*\.path$' 2>/dev/null || true)
+    [[ -n $rel ]] && prunes+=( -o -path "$root/${rel%/}" -o -path "*/${rel%/}" )
+  done < <(git -C "${top:-$root}" config --file "${top:-$root}/.gitmodules" --get-regexp '^submodule\..*\.path$' 2>/dev/null || true)
   find "$root" \( -type d \( "${prunes[@]}" \) \) -prune \
     -o -type f \( "$@" \) -print | sort
 }
 
 list_md() { list_owned_files "$1" -name '*.md'; }
 list_data() { list_owned_files "$1" -name '*.json' -o -name '*.csv'; }
+
+# 全 repo 超標掃描：排除 .git／__pycache__、agent 工具的 worktree 暫存區（repo 的巢狀副本）
+# 與 .gitmodules 宣告的 submodule（上游 vendor 碼不受 8 KB 限制）。
+list_oversize_files() {
+  local root=${1%/} _ rel
+  local -a prunes=( -path '*/.git' -o -path '*/__pycache__' -o -path '*/.claude/worktrees' )
+  while read -r _ rel; do
+    [[ -n $rel ]] && prunes+=( -o -path "$root/${rel%/}" )
+  done < <(git -C "$root" config --file .gitmodules --get-regexp '^submodule\..*\.path$' 2>/dev/null || true)
+  find "$root" \( -type d \( "${prunes[@]}" \) \) -prune -o -type f -size +8192c -print | sort
+}
 
 count_literal() {
   local needle=$1
@@ -89,10 +102,15 @@ lint_dir() {
   done
 
   if [[ $have_py -eq 1 ]]; then
-    if [[ ${#md_files[@]} -gt 0 ]]; then
+    local -a bl_files=()
+    for f in "${md_files[@]}"; do
+      case "$f" in */skills/*) continue ;; esac
+      bl_files+=("$f")
+    done
+    if [[ ${#bl_files[@]} -gt 0 ]]; then
       out=$(python3 "$tools/find_big_lists.py" --min 1024 \
               --exempt-file AGENTS.md --exempt-file WORKFLOWS.md --exempt-file INDEX.md \
-              "${md_files[@]}" 2>/dev/null \
+              "${bl_files[@]}" 2>/dev/null \
             | awk -F'\t' -v p="$root/" '{
                 loc=$2; if (substr(loc,1,length(p))==p) loc=substr(loc,length(p)+1)
                 sub(/^links=/, "", $5)
@@ -122,7 +140,7 @@ lint_dir() {
 
   for f in "${md_files[@]}"; do
     rel=${f#$root/}
-    case "$f" in */archive/*|*/wf/*|*/workflows/tidy/*) continue ;; esac
+    case "$f" in */archive/*|*/wf/*|*/workflows/tidy/*|*/skills/*) continue ;; esac
     case "${f##*/}" in AGENTS.md|data-files.md|data-files-fmt.md|tidy.md) continue ;; esac
     while IFS= read -r ln; do
       echo "QUERYCMD $rel:$ln"; querycmd=$((querycmd + 1))

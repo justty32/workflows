@@ -6,17 +6,18 @@
 
 1. 專案根路徑。
 2. flavor：`dev` / `knowledge` / `teaching` / `research` / `ops` / `heartbeat` / `multi-agent`（可多選；定位見 [README](README.md) 的表）。使用者沒指定就依專案內容建議，不要全裝。
-3. 佈局：既有專案預設**非侵入式**（`--non-invasive wf`，頂層只留 `AGENTS.md` / `CLAUDE.md` / `.claude/`，見 [docs/non-invasive-import.md](docs/non-invasive-import.md)）；新專案用標準佈局。
-4. **用哪個 agent 工具**：`AGENTS.md` 是中立入口，多數工具直接讀；不讀的就用 `--redirect <該工具的指示檔名>` 產一行轉址（Claude Code 的 `CLAUDE.md` 預設就有；Gemini CLI 用 `GEMINI.md`，Copilot 用 `.github/copilot-instructions.md`）。適配表見 [README](README.md) 的「不只 Claude」。
-5. 專案一句話、驗證指令（測試 / build / lint）、時區、分支慣例——這四個是 `{{}}` 最常要的專案事實。
+3. **要不要裝 skills**（`--skills a,b`，`all` 全裝，省略＝不裝）：可選的 agent skill 包，與 flavor 無關、不進派發表；清單見 [skills/README.md](skills/README.md)。使用者沒指定就不要裝。
+4. 佈局：既有專案預設**非侵入式**（`--non-invasive wf`，頂層只留 `AGENTS.md` / `CLAUDE.md` / `.claude/`，見 [docs/non-invasive-import.md](docs/non-invasive-import.md)）；新專案用標準佈局。
+5. **用哪個 agent 工具**：`AGENTS.md` 是中立入口，多數工具直接讀；不讀的就用 `--redirect <該工具的指示檔名>` 產一行轉址（Claude Code 的 `CLAUDE.md` 預設就有；Gemini CLI 用 `GEMINI.md`，Copilot 用 `.github/copilot-instructions.md`）。適配表見 [README](README.md) 的「不只 Claude」。
+6. 專案一句話、驗證指令（測試 / build / lint）、時區、分支慣例——這四個是 `{{}}` 最常要的專案事實。
 
 ## 1. 跑 wf-init
 
 ```bash
-bash <本 repo>/tools/wf-init.sh --target <專案根> --flavor <a,b,c> [--non-invasive wf] [--redirect GEMINI.md]
+bash <本 repo>/tools/wf-init.sh --target <專案根> --flavor <a,b,c> [--non-invasive wf] [--redirect GEMINI.md] [--skills <a,b>]
 ```
 
-腳本會：複製 kernel（含 `tools/` 的 `wf-lint.sh`、`wf-lint-checks.sh` 與各支 `.py`）→ 合入各包 `workflows/` 與頂層項目（`inbox/`、`.claude/commands/`）→ 把各包片段貼進 `AGENTS.md` / `WORKFLOWS.md` / `INDEX.md` / `workflows/common/README.md` 的 `<!-- wf-insert:… -->` 標記前 → 非侵入式時改寫斷掉的連結 → 印殘留清單並跑 lint。目標已有 `AGENTS.md` 時腳本拒絕執行（不覆蓋既有導入）。`--redirect` 逗號可多個，把 `CLAUDE.md` 的轉址內容另存成各工具的檔名。
+腳本會：複製 kernel（含 `tools/` 的 `wf-lint.sh`、`wf-lint-checks.sh` 與各支 `.py`）→ 合入各包 `workflows/` 與頂層項目（`inbox/`、`.claude/commands/`）→ 把各包片段貼進 `AGENTS.md` / `WORKFLOWS.md` / `INDEX.md` / `workflows/common/README.md` 的 `<!-- wf-insert:… -->` 標記前 → 非侵入式時改寫斷掉的連結 → 有 `--skills` 就把整個技能目錄複製到 `<wfroot>/skills/`，並在目標專案根 `.claude/skills/<name>/SKILL.md` 產轉址檔（frontmatter 抄來源、正文連回真正的 `SKILL.md`）供 Claude Code 自動發現 → 印殘留清單並跑 lint。目標已有 `AGENTS.md` 時腳本拒絕執行（不覆蓋既有導入）。`--redirect` 逗號可多個，把 `CLAUDE.md` 的轉址內容另存成各工具的檔名。
 
 ## 2. 逐檔填 `{{}}`
 
@@ -53,5 +54,5 @@ kernel 改版時（見 [CHANGELOG.md](CHANGELOG.md)；版本戳在 `AGENTS.md` �
 
 | 類別 | 檔案 | 升級方式 |
 |------|------|---------|
-| **kernel-owned**（無佔位、可整檔覆蓋）| `STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/common/data-files-fmt.md`、`workflows/tidy/`（整夾）、`.claude/commands/wf-lint.md`、`tools/wf-lint.sh`＋`tools/wf-lint-checks.sh`、`tools/*.py`（含 `tools/check_anchors.py`）、`tools/fmt-vars.json`（專案自加變數放 `tools/fmt-vars.local.json`，project-owned）；flavor 的 `TEMPLATE.*`、`quality-gates.md`、`PROTOCOL.md`、`workflows/inbox/wake-policy.md`、`tools/inbox_*.sh`、`tools/inbox_team.sh`、`tools/test_inbox.sh`、`tools/notify_watch.sh`、`workflows/dispatch/driving-cli-agents.md`、`workflows/dispatch/lessons.md` | 從新版直接覆蓋；**`tools/` 要整包覆蓋**（拆檔後彼此相依，只挑一支會 `FATAL`／ImportError）|
+| **kernel-owned**（無佔位、可整檔覆蓋）| `STRUCTURE.md`、`workflows/TEMPLATE.workflow.md`、`workflows/common/data-files.md`、`workflows/common/data-files-fmt.md`、`workflows/common/reply-style.md`、`workflows/tidy/`（整夾）、`.claude/commands/wf-lint.md`、`tools/wf-lint.sh`＋`tools/wf-lint-checks.sh`、`tools/*.py`（含 `tools/check_anchors.py`）、`tools/fmt-vars.json`（專案自加變數放 `tools/fmt-vars.local.json`，project-owned）；flavor 的 `TEMPLATE.*`、`quality-gates.md`、`PROTOCOL.md`、`workflows/inbox/wake-policy.md`、`tools/inbox_*.sh`、`tools/inbox_team.sh`、`tools/test_inbox.sh`、`tools/notify_watch.sh`、`workflows/dispatch/driving-cli-agents.md`、`workflows/dispatch/lessons.md` | 從新版直接覆蓋；**`tools/` 要整包覆蓋**（拆檔後彼此相依，只挑一支會 `FATAL`／ImportError）|
 | **project-owned**（填過佔位、貼過片段）| `AGENTS.md`、`INDEX.md`、`WORKFLOWS.md`、`SESSION-LOG.md`、`WAIT_USER.md`、`workflows/common/user.md`、各工作流清單（routines、ROSTER、planning 表、team-model 分級表與逐模型指揮心得表…）| 讀 CHANGELOG 該版那幾行手動套 |

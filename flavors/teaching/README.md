@@ -38,11 +38,7 @@
 bash tools/wf-init.sh --target <專案> --flavor teaching
 ```
 
-腳本做三件事：kernel（`template/`）落位到 `<專案>`；本包 `workflows/` 併進 `<專案>/workflows/`（`plain-explain.md` 與 `study-site/` 整個資料夾）；`WORKFLOWS.teaching.md` 插進 `WORKFLOWS.md` 的 `<!-- wf-insert:WORKFLOWS -->` 之前。
-
-接著人（或 agent）收尾：填 `{{讀者基線}}` 等佔位符 → 照各檔 `〔導入判斷〕` 做選擇並刪除該段 → 讀完 `〔模板說明〕` 後刪除 → 跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`），`0 BROKEN` 才算導入完成。
-
-多個 flavor 就多帶幾個 `--flavor`，派發表依序插入。手動合的話照上面三件事各做一遍。
+通用步驟見 [IMPORT.md](../../IMPORT.md)（多個 flavor 就多帶幾個 `--flavor`，派發表依序插入）。本包特有：只有一個片段檔 [WORKFLOWS.teaching.md](WORKFLOWS.teaching.md)；併進 `workflows/` 的是 `plain-explain.md` 與 `study-site/` 整個資料夾；佔位符以 `{{讀者基線}}` 為主。
 
 ## 移除某工作流要動的地方
 
