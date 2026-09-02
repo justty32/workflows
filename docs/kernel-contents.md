@@ -31,6 +31,6 @@
 | `wf-init.sh` | 導入：複製 kernel、合入 flavor 包、非侵入式改寫連結（改寫那段在 `wf-init-relink.sh`）|
 | `wf-lint.sh` | 檢查：壞連結與錨點／超標檔／條列／資料檔連結／殘留；檢查函式在 `wf-lint-checks.sh` |
 | `check_anchors.py` | 驗 md 連結的 `#錨點`（heading slug 與顯式 id）在目標檔存不存在 |
-| `tabledb.py` | 資料檔 CRUD 與連結查驗 |
+| `tabledb.py` | 資料檔 CRUD 與連結查驗；`Table` 在 `tabledb_table.py`，連結在 `tabledb_links.py`，`$fmt` 在 `tabledb_fmt*.py` |
 | `find_big_lists.py` | 列出超標的表／清單，附連結數判斷是不是連結表 |
-| `fix_moved_links.py` | 搬檔後照 `moves.tsv` 重寫連結 |
+| `fix_moved_links.py` | 搬檔後照 `moves.tsv` 重寫連結；掃描與搬移表在 `fix_moved_links_scan.py`，`$fmt` 那半段在 `fix_moved_links_fmt.py` |
