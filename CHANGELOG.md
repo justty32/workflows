@@ -2,6 +2,10 @@
 
 每次 kernel（`template/`）或導入契約變動記一節：改了哪檔、**既有專案要不要跟**。本檔只留**每版摘要與去向**，完整條列拆在 `docs/`——變動記錄只會長不會短，留在母檔一定會撞 8 KB 上限。版本戳在 `template/AGENTS.md` 尾端 `<!-- wf-kernel vX.Y (日期) -->`，導入後 `grep wf-kernel AGENTS.md` 查自己是哪一版。kernel-owned / project-owned 分類見 [IMPORT.md](IMPORT.md)。
 
+## 未發布
+
+lint：`done/`／`superseded/` 與 `archive/` 同樣視為封存不下鑽；STRUCTURE archive 規則補一句（來自 paper_readings 導入回饋）。
+
 ## v0.6 (2026-09-02)
 
 `skills/` 進契約：新增頂層 agent skill 資料夾，與 `template/`／`flavors/` 平行，8 KB 上限一體適用。8 個技能——本 repo 自有兩個（CC0）＋ vendor 自 effective-html 六個（MIT），本 repo 因此變**混合授權**，授權全文在 `skills/LICENSES/`。不 vendor 的產品向外部技能（`dashi-ppt-skill`、`archify`）改以 git submodule 掛在 `skills/external/`，授權維持上游、豁免 8 KB 契約，`--skills`（含 `all`）不觸碰它，要用自己 `git submodule update --init`。`wf-init.sh` 加 `--skills a,b|all`：複製到 `<wfroot>/skills/`，並在專案根 `.claude/skills/<name>/` 產轉址 `SKILL.md` 供 Claude Code 自動發現；skills 可選、不進 `WORKFLOWS.md` 派發表。`wf-lint.sh --self` 加對 `skills/` 的連結／錨點檢查（BIGLIST／`$fmt` 檢查跳過該目錄）。kernel 新增 `workflows/common/reply-style.md`（對話回覆風格），`common/README.md` 導覽表與 `user.md` 回覆風格欄同步指向它。另**文檔精簡**（工作流語意沒動）：kernel 的 `tidy/README.md` 不再重述 STRUCTURE、`common/gotchas.md` 與 `common/user.md` 補齊 TEMPLATE 段落；七個 flavor README 的通用導入步驟改連 `IMPORT.md`。既有專案要跟的只有 kernel 那幾檔。

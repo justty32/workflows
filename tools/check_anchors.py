@@ -27,6 +27,8 @@ SKIP_PARTS = {
     "reference",
     "references",
     "vendor",
+    "done",
+    "superseded",
 }
 
 
