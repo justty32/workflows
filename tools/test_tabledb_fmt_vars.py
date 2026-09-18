@@ -99,7 +99,10 @@ class FmtVarsTest(unittest.TestCase):
 
     def test_vars_cli_without_file_uses_script_dir(self):
         got = run("fmt", "--vars")
-        self.assertEqual(got["files"], [os.path.join(HERE, "fmt-vars.json")])
+        # 沒給 FILE 就以腳本所在 repo 為準；repo 同時有 wf/tools/（非侵入式自用）與 tools/ 時 wf/tools/ 優先。
+        self.assertEqual(len(got["files"]), 1)
+        self.assertEqual(os.path.basename(got["files"][0]), "fmt-vars.json")
+        self.assertEqual(json.load(open(got["files"][0], encoding="utf-8")), KERNEL)
         self.assertEqual([v["name"] for v in got["vars"]],
                          ["fileDirname", "gitRoot", "gitParent", "gitTop"])
         self.assertTrue(all(v["source"] == "kernel" for v in got["vars"]))

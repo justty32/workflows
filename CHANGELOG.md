@@ -4,7 +4,7 @@
 
 ## 未發布
 
-lint：`done/`／`superseded/` 與 `archive/` 同樣視為封存不下鑽；STRUCTURE archive 規則補一句（來自 paper_readings 導入回饋）。
+lint：`done/`／`superseded/` 與放信的 `inbox/`（頂層＋`done/`；`workflows/inbox/` 照掃）比照 `archive/` 封存不下鑽——信件是寄件原文不該改，BIGLIST／壞連結／錨點都不掃，`inbox_pending` 照數；STRUCTURE archive 規則補一句；測試拆出 `test_wf_lint_scope.py`（掃描範圍）。來自 paper_readings、engineer_study 導入回饋。**既有專案要跟**：`tools/` 整包覆蓋（本 repo 自用的 `wf/tools/` 已同步），engineer_study 可拿掉自家 `lint.sh` 過濾 `^BIGLIST inbox/done/` 的包裝。
 
 ## v0.6 (2026-09-02)
 

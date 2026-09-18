@@ -9,7 +9,7 @@
 | 領域 | 檔案 | 職責 | 測試在哪 |
 |------|------|------|---------|
 | 導入 | `tools/wf-init.sh`、`tools/wf-init-relink.sh` | 把 kernel ＋ 選定 flavor 合成到一個專案：複製、貼片段、非侵入式改寫斷掉的相對連結（改寫那半段在 relink）| 無自動測試（手動跑 `--target` 到暫存目錄）|
-| 檢查 | `tools/wf-lint.sh`、`tools/wf-lint-checks.sh` | 掃壞連結／超標檔／超標條列／資料檔連結／佔位符與導入判斷段落的殘留；`--self` 是合併後檢查模板端，檢查函式在 checks | `tools/test_wf_lint.py` |
+| 檢查 | `tools/wf-lint.sh`、`tools/wf-lint-checks.sh` | 掃壞連結／超標檔／超標條列／資料檔連結／佔位符與導入判斷段落的殘留；`--self` 是合併後檢查模板端，檢查函式在 checks | `tools/test_wf_lint.py`、`tools/test_wf_lint_scope.py`（掃描範圍） |
 | 錨點 | `tools/check_anchors.py` | 驗 md 連結的 `#錨點`（heading slug 與顯式 id）在目標檔存不存在 | `tools/test_check_anchors.py` |
 | 資料檔 | `tabledb.py`、`tabledb_table.py`、`tabledb_links.py`（都在 `tools/`）| `wf-table/1` 契約的 CRUD 與連結查驗；`Table` 型別在 table、連結檢查在 links | `tools/test_tabledb.py` |
 | 資料檔 `$fmt` | `tools/tabledb_fmt.py`、`tabledb_fmt_expand.py`、`tabledb_fmt_vars.py`、`tools/fmt-vars.json` | json 值裡的跨層路徑代號展開；變數表在 `fmt-vars.json`（專案自加的放 `fmt-vars.local.json`）| `tools/test_tabledb_fmt.py`、`test_tabledb_fmt_vars.py` |

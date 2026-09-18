@@ -37,9 +37,10 @@ if [[ $self -eq 1 ]]; then
   b=$checked_broken; total_broken=$((total_broken + b)); echo "SUMMARY root: broken=$b"
 
   while IFS= read -r f; do echo "OVERSIZE ${f#$repo/} ($(wc -c <"$f") bytes > 8192)"; total_broken=$((total_broken + 1)); done \
-    < <(find "$repo" -type f -not -path '*/.git/*' -not -path '*/__pycache__/*' -size +8192c | sort)
+    < <(list_oversize_files "$repo")
 
   lint_dir "$repo/template" template
+  [[ -d "$repo/skills" ]] && lint_dir "$repo/skills" skills
 
   for ex in "$repo"/examples/*/; do
     [[ -d $ex ]] || continue
