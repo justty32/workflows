@@ -4,6 +4,8 @@
 
 ## 未發布
 
+multi-agent `workflows/team-model.md` 二、三節兩張預填表換成 2026/09/25 的模型清單：Opus 5.5 全面 A（不再分軟工／其他）、gpt-6-astra／gpt-6-sol 同放 A、gpt-6-luna D、gpt-terra 移除；消耗速度沿用「GPT 下移兩級」。表仍 project-owned，**既有專案不必跟**，自己的表自己改。
+
 lint：`list_owned_files`／`list_oversize_files` 的 prune 清單補 `.venv`／`venv`（Python 虛擬環境）不下鑽——`uv`／`venv` 專案根目錄下的 `.venv/lib/.../site-packages/**/*.md` 之前會被當成專案檔掃進去，報一堆假 BROKEN／OVERSIZE。來自 llmkit 導入回饋。**既有專案要跟**：`tools/` 整包覆蓋（本 repo 自用的 `wf/tools/` 已同步）。
 
 lint：`done/`／`superseded/` 與放信的 `inbox/`（頂層＋`done/`；`workflows/inbox/` 照掃）比照 `archive/` 封存不下鑽——信件是寄件原文不該改，BIGLIST／壞連結／錨點都不掃，`inbox_pending` 照數；STRUCTURE archive 規則補一句；測試拆出 `test_wf_lint_scope.py`（掃描範圍）。來自 paper_readings、engineer_study 導入回饋。**既有專案要跟**：`tools/` 整包覆蓋（本 repo 自用的 `wf/tools/` 已同步），engineer_study 可拿掉自家 `lint.sh` 過濾 `^BIGLIST inbox/done/` 的包裝。
