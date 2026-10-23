@@ -4,6 +4,8 @@
 
 ## 未發布
 
+lint：加 **project-local hook**——掃描目錄下有 `<dir>/wf/tools/wf-lint-local.sh` 就以 `bash <它> <dir> <strict>` 執行，它自己印 finding 行，結束碼非 0 計入新計數器 `local=N`（SUMMARY／TOTAL 都列），比照 biglist **只在 `--strict` 算失敗**；`--self`（模板 repo 自檢）不跑。那支是 project-owned，專案自訂檢查從此不必改 kernel 檔、也不會被 `tools/` 整包覆蓋清掉（來源：moddings/skyrim 要把自家 `brief_lint.py` 接進 wf-lint）。測試拆出 `test_wf_lint_local.py`（`test_wf_lint.py` 已到 8 KB 上限）。**既有專案要跟**：`tools/` 整包覆蓋（本 repo 自用的 `wf/tools/` 已同步），hook 本體各專案自理。
+
 multi-agent `workflows/team-model.md` 二、三節兩張預填表換成 2026/09/25 的模型清單：Opus 5.5 全面 A（不再分軟工／其他）、gpt-6-astra／gpt-6-sol 同放 A、gpt-6-luna D、gpt-terra 移除；消耗速度沿用「GPT 下移兩級」。表仍 project-owned，**既有專案不必跟**，自己的表自己改。
 
 lint：git repo 內 `.gitignore` 命中的路徑不掃（`list_owned_files` 與 `check_anchors.py` 都過一次 `git check-ignore`；tracked 檔照掃；非 repo、或明指的掃描根本身被 ignore 時照舊）——對整個 repo 跑 `wf-lint.sh .` 之前會掃進 ignore 掉的外部 clone，報上百筆假 RESIDUE／BIGLIST。測試加在 `test_wf_lint_scope.py`。來自 moddings/skyrim 導入回饋。**既有專案要跟**：`tools/` 整包覆蓋（本 repo 自用的 `wf/tools/` 已同步）。
