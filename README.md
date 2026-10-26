@@ -56,7 +56,7 @@ tools/wf-init.sh --target <專案根> --skills html,markdown-html-slides
 
 ## 如何套用到新專案
 
-**Done when**：`{{` 為 0、〔模板說明〕為 0、〔導入判斷〕為 0、`wf-lint` 0 BROKEN。
+**Done when**：`{{` 為 0、〔模板說明〕為 0、〔導入判斷〕為 0、`wf-lint` 0 BROKEN（lint 可選：預設不跑，使用者要求才跑，要跑才算此條）。
 
 ```bash
 tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat [--skills <a,b>]   # 既有專案建議加 --non-invasive wf
@@ -66,7 +66,7 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat [--skills <a,
 2. **填 `{{}}`**：搜尋 `{{` 填成專案實況（唯一需要專案事實的步驟）。
 3. **處理〔導入判斷〕**：每段是「條件 → 動作。同步：哪些檔」，決定後刪段並同步。**不要的工作流＝刪檔＋刪派發表那一列**（README／INDEX 提到它的列一併刪）。
 4. **刪〔模板說明〕**：純解說，讀完刪整段。
-5. **驗收**：`tools/wf-lint.sh --strict <專案根>`（Claude Code 可用 `/wf-lint`）。
+5. **驗收**（wf-lint 可選，預設不跑）：`tools/wf-lint.sh --strict <專案根>`（Claude Code 可用 `/wf-lint`）。
 
 也可以讓 agent 代勞：把本 repo 路徑給它，說「照 [IMPORT.md](IMPORT.md) 用 dev flavor 幫我的專案建立工作流」。
 

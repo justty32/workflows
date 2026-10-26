@@ -61,4 +61,4 @@ tools/wf-init.sh --target <專案> --flavor research
 | collide | `workflows/collide.md` | `WORKFLOWS.md` 該列；source-intake / backlog / survey 的交接段 |
 | （共用）index-rules | `workflows/common/index-rules.md` | `workflows/common/README.md` 該列；四個工作流引用它的那行；README 的「真相層 / 衍生層」段 |
 
-改完跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有壞連結與孤兒列。
+改完想確認連結時可選跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有壞連結與孤兒列。

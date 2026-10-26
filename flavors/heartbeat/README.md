@@ -56,4 +56,4 @@ bash tools/wf-init.sh --target <專案> --flavor heartbeat
 | schedule | `workflows/schedule.md` | 專案 `WORKFLOWS.md` 派發表 schedule 那列；`workflows/tick.md` 流程第 2 步 |
 | tick（連整包）| `workflows/{tick,routines,schedule}.md`、專案根 `.claude/commands/wf-tick.md`（若有）| 專案 `WORKFLOWS.md` 派發表整段「定期喚醒 flavor」 |
 
-改完跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有指向已刪檔的連結。
+改完想確認連結時可選跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有指向已刪檔的連結。

@@ -56,4 +56,4 @@ tools/wf-init.sh --target <專案> --flavor dev
 | dev-env | `workflows/dev-env.md` | `WORKFLOWS.md` 該列；`AGENTS.md` 那行 bullet；`testing.md` 的「何時不用」 |
 | conventions / code-map | `workflows/common/conventions.md`、`code-map.md` | `workflows/common/README.md` 對應列；`AGENTS.md` 那行 bullet；`WORKFLOWS.md` 表前那句；各工作流的 Done when 與流程裡的 code map 步驟 |
 
-動完跑 `tools/wf-lint.sh <專案>`：`BROKEN` 清單就是漏掉的地方。
+動完擔心連結壞掉才跑（可選）`tools/wf-lint.sh <專案>`：`BROKEN` 清單就是漏掉的地方。

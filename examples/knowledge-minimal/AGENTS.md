@@ -13,7 +13,7 @@ jp-notes = **一個人的日文學習筆記庫：文法、單字、閱讀三條�
 
 ## 鐵律（always-on，任何工作流任何時候都遵守）
 
-1. 重構 / 整理**不改原意**：本專案無自動驗證；對照該工作流的 `Done when:` 逐條驗收，再跑 `tools/wf-lint.sh` 檢查連結與檔案大小（Claude Code 可用 `/wf-lint`）。
+1. 重構 / 整理**不改原意**：本專案無自動驗證；對照該工作流的 `Done when:` 逐條驗收，需要時（可選，預設不跑）再跑 `tools/wf-lint.sh` 檢查連結與檔案大小（Claude Code 可用 `/wf-lint`）。
 2. **不可逆或對外的動作**（push、刪除、對外送出、動 DB）必須有**授權來源**：使用者當場確認，或使用者**親自登記**在清單裡的項目。兩者都沒有就先問。
 3. **條列走資料檔、導航留 md**：給 AI 消化的表／清單 >1 KB 存 `.json`／`.csv`（契約 `wf-table/1`，見 [data-files](workflows/common/data-files.md)），用 `tools/tabledb.py` 讀寫、不整份讀進 context；給人點的導航連結留 md。
 4. 各工作流的**具體流程在它自己的入口檔**，不在頂層。

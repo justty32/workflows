@@ -32,7 +32,7 @@ tools/wf-init.sh --target <專案根> --flavor <a,b> --non-invasive wf [--skills
 2. **改寫斷掉的連結**：搬家後解析不到的相對連結，若在另一邊找得到就改寫（根檔往 `wf/` 指、`wf/` 內指回根的 `.claude/`、`inbox/`）。kernel 與 flavor 內部**本來就不向上連 `AGENTS.md`**，`wf/` 內部彼此的連結因此全不受影響；實際會被改寫的只有三類：`AGENTS.md` / `CLAUDE.md` 的向下連結、`.claude/commands/*.md` 指向 `workflows/` 的連結、`workflows/inbox/` 指向根 `inbox/` 的連結。
 3. **改 AGENTS.md 開場那行的路徑**（`grep -c '^- \[' wf/SESSION-LOG.md wf/WAIT_USER.md`——它是 code span 不是連結）。
 
-做完跑 `bash wf/tools/wf-lint.sh <專案根>`，0 BROKEN 才算完成。
+做完可選跑 `bash wf/tools/wf-lint.sh <專案根>`（預設不跑；要跑則 0 BROKEN）。
 
 ## 是否 git ignore
 

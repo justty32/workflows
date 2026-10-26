@@ -50,4 +50,4 @@ bash tools/wf-init.sh --target <專案> --flavor teaching
 | publish | `workflows/study-site/publish.md` | 派發表該列；`study-site/README.md` 流程第 6 步與內容表 |
 | study-site（整條）| `workflows/study-site/` 整個資料夾 | 派發表 study-site 相關各列；`workflows/plain-explain.md` 交接段那句 |
 
-改完跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有指向已刪檔的連結。
+改完想確認連結時可選跑 `tools/wf-lint.sh`（Claude Code 可用 `/wf-lint`）確認沒有指向已刪檔的連結。

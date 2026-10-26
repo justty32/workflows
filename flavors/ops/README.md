@@ -33,4 +33,4 @@ tools/wf-init.sh --target <專案> --flavor ops
 | incident | `workflows/incident.md`；`WORKFLOWS.md` 該列；inventory / deploy 交接段指向它的那行 |
 | deploy | `workflows/deploy.md`；`WORKFLOWS.md` 該列；`WAIT_USER.md` 殘留的 `[deploy]` 列 |
 
-改完跑 `bash tools/wf-lint.sh <專案>`（Claude Code 可用 `/wf-lint`）確認沒有壞連結與孤兒列。
+改完想確認連結時可選跑 `bash tools/wf-lint.sh <專案>`（Claude Code 可用 `/wf-lint`）確認沒有壞連結與孤兒列。
