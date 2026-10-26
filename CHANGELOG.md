@@ -4,6 +4,8 @@
 
 ## 未發布
 
+tidy 加原則 5「**內容精簡**」：新增 `workflows/tidy/content-trim.md`——檔內只留現行結論、寫精簡；決策過程、改過幾版、為什麼這樣定、作廢方案、演變史都刪，靠 git 歷史找；使用者原文逐字留（被使用者後來的話推翻的舊原文可刪），附原文認法與 `LOST` 檢查指令；日誌每日檔、報告、`archive/`、`SESSION-LOG`／`WAIT_USER` 不適用，會議／評審的場次紀錄適用。`tidy/README.md` 改五條原則、Done when 加原文檢查、精簡另開一條線分開 commit；`tidy/gotchas.md` 照新規則精簡。對齊：`STRUCTURE.md` 分層原則 4 改成「決定記 decisions、檔內只留現行結論」，新增「**日誌寫法**」一節（每日檔每條一行＋連到結論所在處、總目錄每天一句「這天定下了什麼」、月結收成月摘要並封存每日檔），「工作流的統一形式」補兩句（入口檔下次動到再補齊、單檔型撐大照四級成長升級），並照 content-trim 刪掉說明句；`decisions.md` 欄位「未選方案與原因」改成「來源（使用者原文或誰定的）」，不再記比較過的方案與理由（knowledge 包 `decide.md` 的 Done when、`planning.md` 交接、`SESSION-LOG.md` 指向跟著改）；`WORKFLOWS.md` tidy 觸發加「只留結論」。兩個 `examples/` 同步。來源：aos 導入回饋。**既有專案要跟**：`workflows/tidy/` 整夾與 `STRUCTURE.md` 是 kernel-owned，直接覆蓋；`decisions.md` 是 project-owned，表頭自己改（舊列的理由欄可照 content-trim 精簡或留著）。
+
 lint：加 **project-local hook**——掃描目錄下有 `<dir>/wf/tools/wf-lint-local.sh` 就以 `bash <它> <dir> <strict>` 執行，它自己印 finding 行，結束碼非 0 計入新計數器 `local=N`（SUMMARY／TOTAL 都列），比照 biglist **只在 `--strict` 算失敗**；`--self`（模板 repo 自檢）不跑。那支是 project-owned，專案自訂檢查從此不必改 kernel 檔、也不會被 `tools/` 整包覆蓋清掉（來源：moddings/skyrim 要把自家 `brief_lint.py` 接進 wf-lint）。測試拆出 `test_wf_lint_local.py`（`test_wf_lint.py` 已到 8 KB 上限）。**既有專案要跟**：`tools/` 整包覆蓋（本 repo 自用的 `wf/tools/` 已同步），hook 本體各專案自理。
 
 multi-agent `workflows/team-model.md` 二、三節兩張預填表換成 2026/09/25 的模型清單：Opus 5.5 全面 A（不再分軟工／其他）、gpt-6-astra／gpt-6-sol 同放 A、gpt-6-luna D、gpt-terra 移除；消耗速度沿用「GPT 下移兩級」。表仍 project-owned，**既有專案不必跟**，自己的表自己改。
