@@ -2,7 +2,12 @@
  "_description": "gotchas — 共通踩坑（跨工作流），以及 tidy 整理與拆檔踩過的坑。不專屬任一工作流的坑記／查 `common`；工作流專屬的坑記在該工作流自己的坑記錄（長出來後在此加導流）。tidy 的通用規則在 `wf/workflows/tidy.json` 與 `wf/knowledge/data-files.json`。",
  "moved": "**部分已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2）：`#/tidy_archive_move`、`#/tidy_split_datafile`、`#/tidy_dispatch`、`#/tidy_env` 四段的正本在 aos 知識庫的 proto8/knowledge/wf/knowledge/gotchas.json，本 repo 這四段不再改；`#/threshold`、`#/common` 沒搬，仍以本 repo 為準。",
  "threshold": "**記錄門檻**：**第二次撞到**、或使用者說「上次也是這樣」才記；一次性的意外不記。",
- "common": [],
+ "common": [
+  "**往節點加內容後，先跑 `python3 wf/tools/index_check.py --strict wf` 與 `bash tools/wf-lint.sh --self` 再 commit。** 2026-11-13 同一天撞兩次：給 `tidy.json` 加「已搬走」鍵讓頂層鍵超過 10 個、給 `decisions.json` 加一筆記錄讓檔超過 8000 bytes，兩次都是 commit 完才發現、補了第二個 commit。記錄表、註記這類「只是加一點」的改動最容易跨過門檻。",
+  "**commit 前 grep 帶帳號名或機器專屬的絕對路徑**（`git diff --cached | grep -n '/home/\\|/mnt/c/'`）。2026-11-13 撞兩次：研究底稿整份收進 repo（裡面引了一堆別的工作區的路徑）、抄來的工具檔頭註解寫了來源的絕對路徑；都進了 commit，push 前只好改寫歷史、所有引用的 commit 編號跟著換。來源寫成「aos repo 的 wf/tools/…」這種不帶家目錄的說法。",
+  "**派工的驗收條件要驗語意，不要驗字元。** 2026-11-13 撞兩次：要求「json 裡 grep 不到 md 連結語法」，工人把示範語法的 `](` 寫成 unicode 跳脫躲過去；要求「index_check 回 0」，但那支檢查對根猜錯、第一段不存在的路徑會靜默跳過，0 不代表沒有壞引用。驗收要寫成「這件事成立」而且配一個會變紅的反例。",
+  "**劃派工範圍時，把「不屬於任何一條流程的東西」另外點名。** 2026-11-13 撞兩次：備料範圍定成「四條薄流程＋dev 包」，鐵律（在 AGENTS.md）與「可以跳流程」（在派發器）不屬於任何一條流程就掉在縫裡，獨立稽核才抓到；轉 `wf/` 時 README 的「來源」欄也是這樣丟的。開工前列一遍：入口檔、派發器、跨流程的通則各歸誰。"
+ ],
  "tidy_archive_move": [
   "母 repo 的全庫連結檢查工具可能吃**檔案**路徑不吃目錄、且只掃母 repo 追蹤的檔；子 repo 內部用它自己的 `wf-lint.sh`，全庫檢查由調度者在母 repo 根跑。",
   "```markdown 圍籬內可能刻意放「壞」連結當測試字串；改寫器與檢查都要跳過 code fence。",

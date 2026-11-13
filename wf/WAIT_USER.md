@@ -10,4 +10,5 @@
 
 ## 待使用者項
 
+- [planning] 請使用者確認：本 repo 之後幾乎不再更新，SESSION-LOG 裡凍結前的三條舊待辦（可組合單元未實作、精簡稽核待做、`wf-lint --exclude`）是不是都作廢 → 作廢我就刪掉那三條；要留的我標明留著的理由
 - [testing] 請使用者決定要不要在 WSL 裝 pytest（`python3 -m pip install pytest`；這台沒有 `python` 指令）→ 裝好我跑 `python3 -m pytest tools -q`，綠了刪 SESSION-LOG 的 [testing] 條

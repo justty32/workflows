@@ -14,6 +14,18 @@
  "records": [
   {
    "date": "2026-11-13",
+   "decision": "**push 前改寫未公開的歷史**：未 push 的 21 個 commit 內容含帶帳號名的絕對路徑，改寫掉（換成 `<user>`）再 push；之後另一個 commit 把內容裡引用的舊編號對到新編號。",
+   "rejected": "來源：使用者 2026-11-13 16:32「可以push」（先前我的建議是先改寫再 push，他看過後回的）。",
+   "premise": "只改寫還沒公開的 commit；已公開的歷史不改寫、不強制覆蓋。新舊對照在 repo 外的 ~/code/wf-agent-scratch-1113/hash-map-1113.txt，已寄給 repo-aos。commit 訊息裡的舊編號沒改。"
+  },
+  {
+   "date": "2026-11-13",
+   "decision": "**`wf/tools/` 今天新寫的檢查與檢視工具（index_check、wf-view、wfnode、json_text 副本）不帶進 aos，本 repo 維持現狀、不再修**；已知的假綠案例（根猜錯就靜默跳過、archive 被掃、幾類引用不驗、`$ref` 循環）已交給 repo-aos 測它那支。",
+   "rejected": "來源：使用者 2026-11-13 14:53「檢查工具，wf/的那邊就完全不留」（經 repo-aos 轉述）。",
+   "premise": "本 repo 之後幾乎不再更新；`python3 wf/tools/index_check.py wf` 回 0 在這個 repo 內仍可當收尾檢查，但不要當成沒有壞引用的保證（見 `wf/knowledge/gotchas.json#/common`）。"
+  },
+  {
+   "date": "2026-11-13",
    "decision": "**併入 aos 的範圍到 kernel 與 dev 兩批為止，其餘五包（knowledge／research／teaching／ops／multi-agent／heartbeat）不併**，留在本 repo，之後要用再回來翻。連帶：通用版不寫「被派出去的不 commit、push 先問」（留給各工作區自己的偏好與鐵律，feature-dev 尾端照模板原文）；預填的回覆風格算個人偏好、從骨架拿掉；patch 包放工作區的 wf/patches/；JSON 是推薦，md 等別的格式照樣可以（分析產物、PATCH、APPLY 留 md）。",
    "rejected": "來源：使用者 2026-11-13 16:13 在 repo-aos 的收工待裁頁作答（W21＝B、W12＝B、W15＝B、W14＝A、W22＝A、W16＝A、W20＝A），經 repo-aos 的 aos mail 轉述；逐題原文與落地表在 aos repo 的 proto8/thinking/2026-11/13/收工待裁-回覆落地.md（aos commit 3cb2cb267）。還沒裁的：W11、W13、W17、W18、W19。",
    "premise": "`aos-prep/` 不為這些裁定再改（本 repo commit 01959ce 為最終版）；少落的東西由 repo-aos 落檔時處理。若之後要用到沒併的包，從本 repo 的 `flavors/` 取。"
