@@ -6,5 +6,6 @@
  "- 一批一個夾；每批有 `_description.json`、`_index.json`（每格 `kind`：workflow／memory／knowledge）與 `prep-report.json`（對映、丟掉什麼、改寫什麼、與 aos 的重疊、拿不準的、要使用者裁的）。",
  "- 節點裡的路徑：「工作區的 `wf/…`」指專案工作區；`<批>/<名>.json` 指本夾的備料節點（落在 aos 的哪裡由 repo-aos 定）；說明是「aos 知識庫的」那些指 aos 的 knowledge。",
  "- 來源是 `template/` 與 `flavors/`（md 形態，沒有動）；每個節點的 `source` 記來源檔與 commit。",
+ "- 不在備料裡：kernel 的 tidy（整理／封存／拆檔）一組，另由 repo-aos 從本 repo 的 `wf/workflows/tidy.json` 一組併（連同 `wf/workflows/tidy/` 子檔與 `wf/workflows/tidy-manager-brief.json`）；兩批碰到 tidy 的地方都寫「kernel 的 tidy 工作流（另行併入）」。",
  "- 某一批被併進 aos 之後，在本檔與該批的 `_description.json` 標「已搬走」，之後不在這裡改。"
 ]

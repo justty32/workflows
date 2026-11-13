@@ -8,7 +8,7 @@
   "被分析專案的 README 指定的 build／run／test 指令回傳 0。"
  ],
  "steps": [
-  "1. 初始化工作區的 `wf/knowledge/analysis/<project>/` 與它底下的 `session_log.md`。",
+  "1. 初始化工作區的 `wf/knowledge/analysis/<project>/` 與它底下的 `session_log.md`（還沒有就建；夾的結構照 `dev/memory-analysis.json#/fields`）。",
   "2. Level 1 初始探索：README、頂層結構、依賴、入口點、build／run／test 指令。",
   "3. Level 2 核心模組職責：主要模組、權責劃分、耦合點、資料流。",
   "4. Level 3+ 依專案類型選模板深入（`#/level3_templates`）。",
@@ -50,11 +50,11 @@
  ],
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "flavors/dev/workflows/analysis.md",
    "flavors/dev/WORKFLOWS.dev.md"
   ],
-  "notes": "產物落點從 analysis/<project>/ 改成工作區的 wf/knowledge/analysis/<project>/（照 aos 知識庫 wf/layers.json）；產物結構表與寫作規則搬進 dev/memory-analysis.json；not_when 補上派發片段的分辨句。"
+  "notes": "產物落點從 analysis/<project>/ 改成工作區的 wf/knowledge/analysis/<project>/（照 aos 知識庫 wf/layers.json）；產物結構表與寫作規則搬進 dev/memory-analysis.json；not_when 補上派發片段的分辨句。（2026-11-13 稽核修正：第 1 步補產物夾的結構照 dev/memory-analysis.json）"
  }
 }

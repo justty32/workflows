@@ -1,12 +1,12 @@
 {
- "_description": "記使用者偏好與確認邊界：agent 不用重猜的事。記的是這位使用者的偏好；always-on 鐵律在工作區的 `AGENTS.md`，偏好改了改偏好、不改鐵律。偏好表長什麼樣在 `kernel/memory-user.json`。",
+ "_description": "記使用者偏好與確認邊界：agent 不用重猜的事。記的是這位使用者的偏好；always-on 鐵律在工作區的 `AGENTS.md`（條文見 `kernel/iron-rules.json#/rules`），偏好改了改偏好、不改鐵律。偏好表長什麼樣在 `kernel/memory-user.json`。",
  "when": [
   "使用者說「我的偏好是…」「以後直接做／先問」。",
   "使用者說了偏好、講定了確認邊界（哪些事可以直接做、哪些一定先問），或講定分支慣例、時區、語言。"
  ],
  "not_when": [
   "一次性的小事不記（例：「這次先不要跑測試」）——那是當下的指示，不是長期偏好。",
-  "要改的是任何時刻都適用的鐵律 → 那在工作區的 `AGENTS.md`，不在這裡。",
+  "要改的是任何時刻都適用的鐵律 → 那在工作區的 `AGENTS.md`（條文見 `kernel/iron-rules.json#/rules`，夠不夠格見 `kernel/iron-rules.json#/adopt`），不在這裡。",
   "長期知識該歸哪一層 → aos 知識庫的 `wf/layers.json#/layers`。"
  ],
  "done_when": [
@@ -22,12 +22,12 @@
  "handoff": "記完回到原本的工作。",
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "template/workflows/common/user.md",
    "template/WORKFLOWS.md",
    "template/workflows/common/README.md"
   ],
-  "notes": "偏好表與佔位改成記憶骨架；Done when 原句「對應的那一列已更新（或新開一列）」照意改寫；鐵律編號拿掉（只說在 AGENTS.md）；glossary 一句取自 common/README；handoff 是新寫的。"
+  "notes": "偏好表與佔位改成記憶骨架；Done when 原句「對應的那一列已更新（或新開一列）」照意改寫；鐵律編號拿掉（只說在 AGENTS.md）；glossary 一句取自 common/README；handoff 是新寫的。（2026-11-13 稽核修正：鐵律改成同時指到 kernel/iron-rules.json）"
  }
 }

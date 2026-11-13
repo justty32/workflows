@@ -1,29 +1,30 @@
 {
  "_description": "調查／解讀外部系統／可行性：只讀不改，查清楚「這怎麼運作／可不可行」，產出一篇可歸檔的筆記。筆記放工作區的 `wf/knowledge/notes/`（單篇形狀與索引寫法見 `dev/memory-notes.json`）。",
- "when": "看懂外部系統或別人的碼、評估可行性、查 bug 成因；使用者說「查清楚這是怎麼運作的」「這樣做可不可行」「為什麼會壞」。",
- "not_when": "已知道怎麼改 → `dev/feature-dev.json`；只搬結構 → `dev/refactor.json`；初次接觸陌生專案、要建立可延續的整套分析產物（「幫我分析這個 repo」）→ `dev/analysis.json`。分辨：investigation＝回答一個窄問題、留一篇筆記；analysis＝初次接觸、留整套產物。純查詢或一次性回答、不留 durable 知識的可以跳流程（`dev/dispatch.json#/skip`）。",
+ "when": "看懂外部系統或別人的碼、評估可行性、查 bug 成因；使用者說「查清楚這是怎麼運作的」「這樣做可不可行」。",
+ "not_when": "已知道怎麼改 → `dev/feature-dev.json`；只搬結構 → `dev/refactor.json`；初次接觸陌生專案、要建立可延續的整套分析產物（「幫我分析這個 repo」）→ `dev/analysis.json`。分辨：investigation＝回答一個窄問題、留一篇筆記；analysis＝初次接觸、留整套產物。純查詢或一次性回答、不留 durable 知識的可以跳流程（`kernel/dispatch.json#/skip`）。",
  "done_when": [
   "工作區的 `wf/knowledge/notes/<主題>.json` 存在，且 `dev/memory-notes.json#/fields` 的五段都非空。",
   "筆記夾有 `_index.json` 時，裡面有這篇的條目（寫法見 `dev/memory-notes.json#/index`）。",
   "結論是「要動手」→ 工作區的 `wf/knowledge/ideas.json` 的 `ideas` 或 `roadmap` 有接手的一條（流程 `kernel/planning.json`，骨架 `kernel/memory-ideas.json`）。"
  ],
  "steps": [
+  "0. 碰原始碼前先讀工作區的 `wf/knowledge/conventions.json`（寫碼慣例）與 `wf/knowledge/code-map.json`（哪個檔負責什麼）；環境與指令看 `wf/knowledge/dev-env.json`（`dev/dispatch.json#/before_code`）。工作區還沒有 → 照 `dev/memory-conventions.json#/skeleton`、`dev/memory-code-map.json#/skeleton` 建。（只讀不改也一樣，慣例與 code map 是讀碼的地圖。）",
   "1. **收集事實**：只讀不改，一條一則，附出處。",
   "2. **對照現有能力**：這件事現在能不能做、靠什麼做。",
   "3. **分類**：可直接做／有缺口／不值得做／需使用者驗證。",
-  "4. **產出 finding**：照 `dev/memory-notes.json` 寫成工作區的 `wf/knowledge/notes/<主題>.json`；缺口進 `kernel/planning.json`，踩到的坑進 `kernel/gotchas.json`，需使用者驗證的進工作區的 `wf/WAIT_USER.md`。",
+  "4. **產出 finding**：照 `dev/memory-notes.json#/skeleton` 寫成工作區的 `wf/knowledge/notes/<主題>.json`（筆記夾還沒有 → 用到才建，入口寫法見 `dev/memory-notes.json#/index`）；缺口進 `kernel/planning.json`，踩到的坑進 `kernel/gotchas.json`，需使用者驗證的進工作區的 `wf/WAIT_USER.md`。",
   "",
   "**不把未驗證的猜測寫成結論**——不確定就寫「缺什麼證據」，不要補完。"
  ],
  "handoff": "要動手 → `dev/feature-dev.json`；同一坑第二次 → `kernel/gotchas.json`。",
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "flavors/dev/workflows/investigation.md",
    "flavors/dev/WORKFLOWS.dev.md",
    "template/WORKFLOWS.md"
   ],
-  "notes": "佔位符「筆記位置」定成工作區的 wf/knowledge/notes/（aos 知識庫 wf/layers.json 把調查筆記列為 memory）；筆記模板搬進 dev/memory-notes.json，md 檔改 json 節點；索引條目是新加的（md 版沒有）；not_when 補 analysis 分辨與跳流程。"
+  "notes": "佔位符「筆記位置」定成工作區的 wf/knowledge/notes/（aos 知識庫 wf/layers.json 把調查筆記列為 memory）；筆記模板搬進 dev/memory-notes.json，md 檔改 json 節點；索引條目是新加的（md 版沒有）；not_when 補 analysis 分辨與跳流程。（2026-11-13 稽核修正：when 拿掉原文沒有的「為什麼會壞」；跳流程改指 kernel/dispatch.json；steps 開頭補碰原始碼前先讀；筆記檔與夾不存在時照骨架建）"
  }
 }

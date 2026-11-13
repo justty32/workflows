@@ -37,7 +37,7 @@
  {
   "here": "push／對外動作要有授權來源",
   "aos": "aos/rules.json",
-  "diff": "不重疊：aos 的 rules 管 definition、stack、refusal、刪除範圍，沒有 push 授權；仍指工作區 AGENTS.md 的鐵律（kernel 批）"
+  "diff": "不重疊：aos 的 rules 管 definition、stack、refusal、刪除範圍，沒有 push 授權；指 `kernel/iron-rules.json#/rules/authorization`（落地後在工作區 AGENTS.md 的鐵律段）"
  },
  {
   "here": "工作區的 wf/WAIT_USER.md（等使用者）",

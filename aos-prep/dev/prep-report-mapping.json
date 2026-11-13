@@ -21,7 +21,7 @@
  },
  {
   "from": "flavors/dev/AGENTS.dev.md",
-  "to": "dispatch.json#/before_code；feature-dev.json#/_description"
+  "to": "dispatch.json#/before_code；_description.json（always-on 一句）；feature-dev.json#/_description、#/steps 開頭；refactor.json、moving-things.json、investigation.json 的 #/steps 開頭"
  },
  {
   "from": "flavors/dev/COMMON.dev.md 兩列",
@@ -37,7 +37,7 @@
  },
  {
   "from": "flavors/dev/WORKFLOWS.dev.md planning 那列",
-  "to": "dispatch.json#/disambiguation；feature-dev.json#/not_when"
+  "to": "dispatch.json#/disambiguation；feature-dev.json#/not_when；kernel/planning.json#/when 與 kernel/_index.json（kernel 批）"
  },
  {
   "from": "flavors/dev/WORKFLOWS.dev.md 表後分辨句（analysis／investigation、patch）",
@@ -45,7 +45,7 @@
  },
  {
   "from": "template/WORKFLOWS.md「可以跳流程」",
-  "to": "dispatch.json#/skip；feature-dev.json、investigation.json 的 not_when 指過去"
+  "to": "kernel/dispatch.json#/skip（kernel 批）；feature-dev.json、investigation.json 的 not_when 指過去"
  },
  {
   "from": "template/STRUCTURE.md（dev 包指過去的原則）",
@@ -170,5 +170,9 @@
  {
   "from": "flavors/dev/workflows/common/code-map.md 維護鏈",
   "to": "code-map-rules.json#/maintenance_chain；memory-code-map.json#/rules 第 4 條"
+ },
+ {
+  "from": "template/WORKFLOWS.md tidy 那列的觸發說法",
+  "to": "refactor.json#/not_when（導到 kernel 的 tidy，另行併入）"
  }
 ]

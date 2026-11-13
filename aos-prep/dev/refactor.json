@@ -1,12 +1,13 @@
 {
  "_description": "重構／拆檔／整理結構：只改結構、不改行為。拆與分類的方法在 aos 知識庫的 `wf/tidying.json#/split_method`，本節點只管流程；搬檔、改目錄名、拆 repo 的專章在 `dev/moving-things.json`。",
  "when": "結構門檻超標（單檔過大、資料夾雜亂：aos 知識庫的 `wf/tidying.json#/split`；程式碼單檔的行數門檻是專案自己的，記在工作區的 `wf/knowledge/conventions.json`），或使用者說「重構」「拆檔」「整理結構」（行為不變）。",
- "not_when": "順手改了行為 → `dev/feature-dev.json`；還沒搞懂現況 → `dev/investigation.json`；整理的是工作文檔（不是程式碼）→ 拆檔／整理工作流（tidy，aos 知識庫 `wf/tidying.json` 的規則）。",
+ "not_when": "順手改了行為 → `dev/feature-dev.json`；還沒搞懂現況 → `dev/investigation.json`；使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」而對象是工作文檔（不是程式碼）→ kernel 的 tidy 工作流（另行併入；整理規則在 aos 知識庫的 `wf/tidying.json`）。",
  "done_when": [
   "工作區的 `wf/knowledge/verification.json#/checks` 的驗證指令綠燈，且與動手前結果相同。",
   "工作區的 `wf/knowledge/code-map.json#/domains` 中受影響領域的列已更新。"
  ],
  "steps": [
+  "0. 碰原始碼前先讀工作區的 `wf/knowledge/conventions.json`（寫碼慣例）與 `wf/knowledge/code-map.json`（哪個檔負責什麼）；環境與指令看 `wf/knowledge/dev-env.json`（`dev/dispatch.json#/before_code`）。工作區還沒有 → 照 `dev/memory-conventions.json#/skeleton`、`dev/memory-code-map.json#/skeleton` 建。驗證指令在工作區的 `wf/knowledge/verification.json`（還沒有 → 照 `dev/memory-verification.json#/skeleton` 建）。",
   "1. 先跑驗證指令記下基準；紅的先修掉，別和重構混在一起。",
   "2. 照 aos 知識庫的 `wf/tidying.json#/split_method` 按職責拆／分類，不等分硬切。",
   "3. 一次搬一塊，搬完就跑驗證（換位置、改名、拆 repo 照 `dev/moving-things.json`）。",
@@ -15,11 +16,12 @@
  "handoff": "結構就位後要加功能 → `dev/feature-dev.json`；為什麼這樣拆 → `kernel/decisions.json`。",
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "flavors/dev/workflows/refactor/README.md",
-   "flavors/dev/WORKFLOWS.dev.md"
+   "flavors/dev/WORKFLOWS.dev.md",
+   "template/WORKFLOWS.md"
   ],
-  "notes": "「方法在 STRUCTURE」改指 aos 知識庫 wf/tidying.json；STRUCTURE 的「程式碼單檔 > 300 行」aos 沒帶，改成專案自己在 conventions 定；「內容」表併進 _description；not_when 補 tidy 分流。"
+  "notes": "「方法在 STRUCTURE」改指 aos 知識庫 wf/tidying.json；STRUCTURE 的「程式碼單檔 > 300 行」aos 沒帶，改成專案自己在 conventions 定；「內容」表併進 _description；not_when 補 tidy 分流。（2026-11-13 稽核修正：steps 開頭補碰原始碼前先讀與記憶檔不存在時照骨架建；not_when 的 tidy 分流補觸發說法並寫明另行併入）"
  }
 }

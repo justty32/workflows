@@ -2,12 +2,12 @@
  {
   "where": "feature-dev.json#/steps",
   "from": "全數通過後：更新 code map → 補文檔 → commit",
-  "to": "照搬，另加一條：commit 方式照使用者偏好（工作區的 wf/knowledge/user.json）"
+  "to": "照搬；另加一條：怎麼 commit 看工作區的 wf/knowledge/user.json，那裡沒寫就照本流程 commit；push 不在本流程，要有授權來源（kernel/iron-rules.json#/rules/authorization）"
  },
  {
   "where": "feature-dev.json#/steps",
   "from": "在本工作流 `session-log.md` 補一行 `[功能名] 文檔 / code map 待同步`",
-  "to": "在工作區的 `wf/SESSION-LOG.md` 補一行 `[feature-dev] [功能名] 文檔／code map 待同步`"
+  "to": "在工作區的 `wf/SESSION-LOG.md` 補一行 `- [feature-dev] [功能名] 文檔／code map 待同步 → commit 前對齊`（格式照 kernel/live-lists.json#/session_log）"
  },
  {
   "where": "testing.json#/done_when",
@@ -42,7 +42,7 @@
  {
   "where": "moving-things.json#/iron_rule",
   "from": "清舊的之前先確認來源已 commit 且已 push",
-  "to": "照搬，加「push 是對外動作，要有授權來源」"
+  "to": "照搬，加「push 是對外動作，要有授權來源（kernel/iron-rules.json#/rules/authorization）」"
  },
  {
   "where": "investigation.json#/done_when",
@@ -67,12 +67,12 @@
  {
   "where": "dev-env.json#/done_when",
   "from": "（佔位：冒煙指令，如 `npm run build`） 回傳 0",
-  "to": "工作區 dev-env.json 的 `#/smoke` 記的冒煙指令回傳 0"
+  "to": "工作區的 `wf/knowledge/dev-env.json#/smoke` 記的冒煙指令回傳 0"
  },
  {
   "where": "dev-env.json#/steps 第 5 步",
   "from": "守鐵律 2（授權來源）",
-  "to": "要有授權來源（使用者當場確認，或他親自登記在清單裡；見工作區 AGENTS.md 的鐵律）"
+  "to": "要有授權來源（使用者當場確認，或他親自登記在清單裡；見 kernel/iron-rules.json#/rules/authorization）"
  },
  {
   "where": "memory-code-map.json#/rules",
@@ -93,5 +93,45 @@
   "where": "各骨架 rules",
   "from": "（md 表格）",
   "to": "記錄是物件陣列，用 json 工具讀寫（aos 知識庫 aos/packs.json#/json）"
+ },
+ {
+  "where": "feature-dev、refactor、moving-things、investigation 的 #/steps 開頭",
+  "from": "（AGENTS.dev.md 的 always-on 一行：碰原始碼前讀 conventions、code-map；環境與指令 → dev-env）",
+  "to": "每條 steps 開頭寫明這一步，並補「工作區還沒有 → 照骨架建」"
+ },
+ {
+  "where": "feature-dev、testing、refactor、dev-env、investigation、analysis 的 #/steps",
+  "from": "（md 形態下表格就在流程檔裡）",
+  "to": "「工作區還沒有 `wf/knowledge/<名>.json` → 照 `dev/memory-<名>.json#/skeleton` 建」，寫法同 kernel 四條"
+ },
+ {
+  "where": "testing.json#/steps 第 1 步、dev-env.json#/done_when、#/steps",
+  "from": "光禿的 #/checks、#/smoke 等（指工作區的檔，卻寫成同檔指標）",
+  "to": "工作區的 `wf/knowledge/verification.json#/checks`、`wf/knowledge/dev-env.json#/smoke` 等完整路徑"
+ },
+ {
+  "where": "refactor.json#/not_when",
+  "from": "整理的是工作文檔 → 拆檔／整理工作流（tidy，aos 知識庫 wf/tidying.json 的規則）",
+  "to": "使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」而對象是工作文檔 → kernel 的 tidy 工作流（另行併入）"
+ },
+ {
+  "where": "moving-things.json#/steps 第 4 步、#/done_when 第 4 條",
+  "from": "第 4 步漏了「可選，預設不跑」；done_when「連結歸零」無條件",
+  "to": "第 4 步補回「可選，預設不跑」；done_when 標「跑了第 4 步才適用」"
+ },
+ {
+  "where": "investigation.json#/when",
+  "from": "「…」「這樣做可不可行」「為什麼會壞」",
+  "to": "拿掉原文沒有的「為什麼會壞」（要修走 feature-dev，查成因的「查 bug 成因」原句仍在）"
+ },
+ {
+  "where": "memory-dev-env.json#/rules 第 2 條",
+  "from": "回頭看「誰跑」欄與 WAIT_USER 裡因環境而卡的條目是否還成立",
+  "to": "「誰跑」欄全部是 agent，並清掉 WAIT_USER 裡因環境而卡的條目（dev-env.md:40 原意）"
+ },
+ {
+  "where": "dispatch.json#/skip",
+  "from": "可以跳流程四條",
+  "to": "整段搬到 kernel/dispatch.json#/skip；本檔 _description 指過去"
  }
 ]

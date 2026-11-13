@@ -1,7 +1,8 @@
 {
  "_description": "想法成熟管線（idea → roadmap → 詳規 → 執行）：從萌芽到動工的四階段收在同一條管線，不拆成四個工作流——免得卡在「這算 idea 還是 roadmap」。想法表與 roadmap 表長什麼樣在 `kernel/memory-ideas.json`。",
  "when": [
-  "使用者說「記個想法」「以後要做」「排進 roadmap」「幫我規劃」。"
+  "使用者說「記個想法」「以後要做」「排進 roadmap」「幫我規劃」。",
+  "使用者說「討論方案」「寫動工計畫」（spec／plan，開發專案）→ 直接進詳規階段。"
  ],
  "not_when": [
   "三兩步的小事直接做。",
@@ -50,11 +51,12 @@
  ],
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "template/workflows/planning.md",
-   "template/WORKFLOWS.md"
+   "template/WORKFLOWS.md",
+   "flavors/dev/WORKFLOWS.dev.md"
   ],
-  "notes": "兩張表改成指到記憶骨架；spec／plan 的落點從「planning/specs/、plans/，第一份出現時升級成資料夾型」改成工作區 wf/knowledge/specs/、plans/（aos 知識庫 wf/layers.json 已定）；別包的工作流照備料名或寫「尚未備料」。"
+  "notes": "兩張表改成指到記憶骨架；spec／plan 的落點從「planning/specs/、plans/，第一份出現時升級成資料夾型」改成工作區 wf/knowledge/specs/、plans/（aos 知識庫 wf/layers.json 已定）；別包的工作流照備料名或寫「尚未備料」。（2026-11-13 稽核修正：when 補 dev 派發表 planning 那列的觸發說法）"
  }
 }

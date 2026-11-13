@@ -2,7 +2,7 @@
  "_description": "使用者偏好與確認邊界的骨架：agent 不用重猜的事。落點是工作區的 `wf/knowledge/user.json`；何時記、怎麼記在 `kernel/user.json`。",
  "holds": [
   "放：這位使用者的長期偏好——語言、分支慣例、哪些事直接做不用問、哪些一定先問、回覆風格的例外、時區。",
-  "不放：always-on 鐵律（在工作區的 `AGENTS.md`）；一次性的當下指示；通用回覆規則（在 `kernel/reply-style.json`）。"
+  "不放：always-on 鐵律（在工作區的 `AGENTS.md`，條文見 `kernel/iron-rules.json#/rules`）；一次性的當下指示；通用回覆規則（在 `kernel/reply-style.json`）。"
  ],
  "fields": [
   {
@@ -32,7 +32,7 @@
   },
   {
    "item": "一定先問",
-   "meaning": "動手前一定要問的事；push 與對外動作另由鐵律管。",
+   "meaning": "動手前一定要問的事；push 與對外動作另由鐵律管（`kernel/iron-rules.json#/rules/authorization`）。",
    "examples": "刪檔、動 DB、安裝依賴"
   },
   {
@@ -47,18 +47,18 @@
   }
  ],
  "defaults": {
-  "回覆風格": "通用風格見 `kernel/reply-style.json`（落地後的路徑由 repo-aos 定）；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。"
+  "reply_style": "通用風格見 `kernel/reply-style.json`（落地後的路徑由 repo-aos 定）；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。"
  },
  "rules": [
   "`prefs` 寫成物件陣列，用 json 工具讀寫；一項一筆，表外的長期偏好新增一筆。",
   "`items` 的 `examples` 只是常見寫法示範，不是事實；沒問過使用者就留空，不要照填。",
-  "`defaults` 是 kernel 原本預填在那一格的句子：建檔時放進對應那格，使用者另有說法就改。",
+  "`defaults` 記 kernel 出廠預填在偏好表那一格的句子（`reply_style`＝回覆風格那格），`skeleton` 已放進對應那格：這句是出廠預設，使用者說了別的就改。",
   "改一項時，同檔裡跟新偏好矛盾的舊值一併改掉。",
   "`skeleton` 裡的路徑是工作區裡的路徑。"
  ],
  "glossary": "領域詞彙常猜錯、術語多了 → 開工作區的 `wf/knowledge/glossary.json`（用到才建）：物件陣列，每筆 `term`（詞）、`meaning`（意思）、`aliases`（別名）；建了在工作區的 `wf/knowledge/_index.json` 加一條。",
  "skeleton": {
-  "_description": "使用者偏好與確認邊界：agent 不用重猜的事。always-on 鐵律在 `AGENTS.md`，這裡是這位使用者的偏好——改了改這裡，不改鐵律。怎麼記見 `wf/workflows/user.json`。",
+  "_description": "使用者偏好與確認邊界：agent 不用重猜的事。always-on 鐵律在 `AGENTS.md`，這裡是這位使用者的偏好——改了改這裡，不改鐵律。怎麼記見 `wf/workflows/user.json`。回覆風格那格是出廠預設，使用者說了別的就改。",
   "prefs": [
    {
     "item": "語言",
@@ -78,7 +78,7 @@
    },
    {
     "item": "回覆風格",
-    "setting": ""
+    "setting": "通用風格見回覆風格節點；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。（出廠預設，使用者說了別的就改）"
    },
    {
     "item": "時區",
@@ -88,11 +88,11 @@
  },
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "template/workflows/common/user.md",
    "template/workflows/common/README.md"
   ],
-  "notes": "佔位符的「例：…」移到 `items[].examples` 並標成示範；回覆風格格子裡非佔位的那句移到 `defaults`；glossary.md 改成工作區 wf/knowledge/glossary.json 物件陣列（欄 詞｜意思｜別名）。"
+  "notes": "佔位符的「例：…」移到 `items[].examples` 並標成示範；回覆風格格子裡非佔位的那句移到 `defaults`；glossary.md 改成工作區 wf/knowledge/glossary.json 物件陣列（欄 詞｜意思｜別名）。（2026-11-13 稽核修正：defaults 鍵改英文 reply_style；預設句放進 skeleton 回覆風格那格並標出廠預設；鐵律指到 kernel/iron-rules.json）"
  }
 }

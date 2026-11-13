@@ -6,10 +6,10 @@
   "逐檔比對已落地（size＋basename；刻意不搬的已明確列出）。",
   "六類斷裂已掃（`#/breakages` 每類的掃描都跑過）。",
   "每支搬過的工具冒煙測試過（`#/steps` 第 3 步的指令回傳 0）。",
-  "連結歸零：專案的連結／引用檢查沒有報問題，且確認檢查器涵蓋新位置（見 `#/tool_gap`）。",
+  "連結歸零（跑了第 4 步才適用）：專案的連結／引用檢查沒有報問題，且確認檢查器涵蓋新位置（見 `#/tool_gap`）。",
   "CI 指令實跑過一次。"
  ],
- "iron_rule": "**複製，不要搬移，直到驗證完**：`cp -a` 進新位置 → 驗證 → 最後才清掉舊的。這樣不需要靠 tar 當救命繩，而且中途出錯不會兩邊都沒有。清舊的之前先確認**來源已 commit 且已 push**（push 是對外動作，要有授權來源，見工作區 `AGENTS.md` 的鐵律）。",
+ "iron_rule": "**複製，不要搬移，直到驗證完**：`cp -a` 進新位置 → 驗證 → 最後才清掉舊的。這樣不需要靠 tar 當救命繩，而且中途出錯不會兩邊都沒有。清舊的之前先確認**來源已 commit 且已 push**（push 是對外動作，要有授權來源，見 `kernel/iron-rules.json#/rules/authorization`；落地後在工作區 `AGENTS.md` 的鐵律段）。",
  "breakages": [
   {
    "kind": "硬編碼絕對路徑",
@@ -39,10 +39,12 @@
   {
    "kind": "執行期資料目錄",
    "scan": "",
-   "detail": "不進版控的東西（鎖、投遞區、DB 快照）不能跟著搬進 repo，但它們的路徑常寫在跟著搬的程式裡。路徑指向已經不存在的目錄時，**「已釋放／不存在」的檢查會恆真通過**。例：某個鎖檔檢查指著一個已被刪掉的目錄，於是每次收尾檢查都在檢查一個不可能存在的路徑。"
+   "detail": "不進版控的東西（鎖、投遞區、DB 快照）不能跟著搬進 repo，但它們的路徑常寫在跟著搬的程式裡。路徑指向已經不存在的目錄時，**「已釋放／不存在」的檢查會恆真通過**。例：某個鎖檔檢查指著一個已被刪掉的目錄，於是每次收尾檢查都在檢查一個不可能存在的路徑。（恆真檢查的通則見 `dev/green-is-not-checked.json`）"
   }
  ],
  "steps": [
+  "0. 碰原始碼前先讀工作區的 `wf/knowledge/conventions.json`（寫碼慣例）與 `wf/knowledge/code-map.json`（哪個檔負責什麼）；環境與指令看 `wf/knowledge/dev-env.json`（`dev/dispatch.json#/before_code`）。工作區還沒有 → 照 `dev/memory-conventions.json#/skeleton`、`dev/memory-code-map.json#/skeleton` 建。",
+  "",
   "驗證程序：",
   "",
   "```sh",
@@ -53,7 +55,7 @@
   "for f in <moved>/*.py; do python3 -c \"import ast;ast.parse(open('$f').read())\"; done",
   "python3 <tool>.py --help",
   "python3 -m unittest discover -s <dir> -p 'test_*.py'",
-  "# 4. 連結檢查（大量搬檔後擔心連結壞掉再跑），並確認檢查器涵蓋新位置",
+  "# 4. 連結檢查（可選，預設不跑；大量搬檔後擔心連結壞掉再跑），並確認檢查器涵蓋新位置",
   "<該專案的連結／引用檢查>",
   "# 5. CI 指令實跑一次",
   "```"
@@ -69,11 +71,11 @@
  "handoff": "搬完回 `dev/refactor.json` 接剩下的步驟（更新 code map 與引用）。",
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "flavors/dev/workflows/refactor/moving-things.md",
    "flavors/dev/WORKFLOWS.dev.md"
   ],
-  "notes": "done_when 原本是一行佔位式摘要，拆成五條；wf-lint 那行改成中性說法並記 tool_gap；push 補上授權來源一句（原文鐵律的意思）。"
+  "notes": "done_when 原本是一行佔位式摘要，拆成五條；wf-lint 那行改成中性說法並記 tool_gap；push 補上授權來源一句（原文鐵律的意思）。（2026-11-13 稽核修正：鐵律改指 kernel/iron-rules.json；第 4 步補回「可選，預設不跑」、done_when 連結歸零標「跑了第 4 步才適用」；執行期資料目錄反指 green-is-not-checked；steps 開頭補碰原始碼前先讀）"
  }
 }

@@ -58,8 +58,8 @@
    "to": "kernel/reply-style.json"
   },
   {
-   "from": "template/WORKFLOWS.md：kernel 內建派發表四列的觸發說法",
-   "to": "四個工作流節點的 when 與 kernel/_index.json 的 description"
+   "from": "template/WORKFLOWS.md：kernel 內建派發表五列的觸發說法",
+   "to": "四個工作流節點的 when 與 kernel/_index.json 的 description；五列（含 tidy 的去處）也在 kernel/dispatch.json#/kernel_triggers"
   },
   {
    "from": "template/WORKFLOWS.md：活狀態記哪裡",
@@ -79,7 +79,27 @@
   },
   {
    "from": "CHANGELOG.md 未發布段：decisions「舊列的理由欄可精簡或留著」",
-   "to": "kernel/memory-decisions.json#/rules"
+   "to": "不進節點（版本遷移，不是通用規則）；記在 `kernel/prep-report-notes.json#/unsure`"
+  },
+  {
+   "from": "template/AGENTS.md：鐵律 1–4",
+   "to": "kernel/iron-rules.json#/rules（keep_meaning、authorization、lists_in_json、flow_in_nodes）"
+  },
+  {
+   "from": "template/AGENTS.md：鐵律段的〔模板說明〕（3–5 條、任何時刻都適用才夠格）",
+   "to": "kernel/iron-rules.json#/adopt"
+  },
+  {
+   "from": "template/AGENTS.md：開場與入口三行（派發、結構、偏好）",
+   "to": "kernel/iron-rules.json#/agents_md_entry"
+  },
+  {
+   "from": "template/WORKFLOWS.md：開頭句、「可以跳流程」、「都不符 → 看 INDEX」、新開工作流、heartbeat／multi-agent",
+   "to": "kernel/dispatch.json#/route、#/skip、#/fallback"
+  },
+  {
+   "from": "flavors/dev/WORKFLOWS.dev.md：planning 那列（「討論方案」「寫動工計畫」）",
+   "to": "kernel/planning.json#/when、kernel/_index.json、kernel/dispatch.json#/kernel_triggers"
   }
  ],
  "key_renames": [

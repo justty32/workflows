@@ -11,5 +11,7 @@
  "",
  "怎麼用：導入到一個專案時，工作流節點進工作區的 `wf/workflows/`，記憶骨架的 `skeleton` 抄成工作區 `wf/knowledge/` 底下對應的檔再填。路徑寫法：`dev/<名>.json` 指本批、`kernel/<名>.json` 指 kernel 那批、「工作區的 `wf/…`」指專案工作區、「aos 知識庫的 `wf/…`／`aos/…`」指 knowledge 已有的節點。工作區佈局照 aos 知識庫的 `wf/layers.json`。",
  "",
- "轉換的對照、丟掉與改寫的、跟 aos 的重疊與待裁的在 `prep-report.json`。"
+ "**always-on（落地後放工作區 `AGENTS.md` 的入口行）**：碰原始碼前先讀工作區的 `wf/knowledge/conventions.json`（寫碼慣例）與 `wf/knowledge/code-map.json`（哪個檔負責什麼）；環境與指令看工作區的 `wf/knowledge/dev-env.json`（`dev/dispatch.json#/before_code`）。",
+ "",
+ "轉換的對照、丟掉與改寫的、跟 aos 的重疊與待裁的在 `prep-report.json`；2026-11-13 稽核修正在 `prep-report-fixes.json`（記錄時點 1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2）。"
 ]

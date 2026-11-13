@@ -7,7 +7,7 @@
  "fields": [
   {
    "key": "checks",
-   "meaning": "驗證表，物件陣列，一列一道驗證：`check`（驗證名稱，含何時跑，例「快速驗證（改完必跑）」「完整驗證（commit 前）」「lint／型別」）、`command`（指令或步驟）、`who`（誰跑）。"
+   "meaning": "驗證表，物件陣列，一列一道驗證：`check`（驗證名稱，含何時跑，例「快速驗證（改完必跑）」「完整驗證（commit 前）」「lint／型別」）、`command`（指令或步驟）、`who`（誰跑）。`done_when` 是靠 `check` 名稱裡的「改完必跑」四個字找到那一列，這幾個字不要省。"
   },
   {
    "key": "checks[].who",
@@ -43,10 +43,10 @@
  },
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "flavors/dev/workflows/testing.md"
   ],
-  "notes": "驗證表的佔位列改成 suggested_checks 範例；「導入判斷」段的離線子集改成 offline_subset 欄與一條規則，同步指示只留「dev-env 的跨機表」那條（feature-dev 那條在 json 形態下不必改）。"
+  "notes": "驗證表的佔位列改成 suggested_checks 範例；「導入判斷」段的離線子集改成 offline_subset 欄與一條規則，同步指示只留「dev-env 的跨機表」那條（feature-dev 那條在 json 形態下不必改）。（2026-11-13 稽核修正：checks 的 meaning 補「改完必跑」靠名稱認）"
  }
 }

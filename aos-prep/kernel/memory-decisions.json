@@ -27,8 +27,7 @@
   "記錄寫成物件陣列放在 `records`，用 json 工具讀寫。",
   "新的在上：新的一筆加在陣列最前。",
   "`decision`、`premise` 兩欄非空才算記完。",
-  "條目多到難讀 → 升級成資料夾（工作區的 `wf/knowledge/decisions/`）、一決策一檔，照 aos 知識庫的 `wf/nodes.json#/growth`。",
-  "舊版模板的第三欄是「未選方案與原因」；從舊版搬過來的記錄那欄照留，或照「只留現行結論」精簡，不硬改成來源。",
+  "條目多到難讀 → 升級成資料夾（工作區的 `wf/knowledge/decisions/`）、一決策一檔，拆法照 aos 知識庫的 `wf/tidying.json#/split_method`。",
   "`skeleton` 裡的路徑是工作區裡的路徑。"
  ],
  "skeleton": {
@@ -37,11 +36,10 @@
  },
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
-   "template/workflows/decisions.md",
-   "CHANGELOG.md"
+   "template/workflows/decisions.md"
   ],
-  "notes": "md 表頭四欄改成物件陣列四鍵；第三欄照現行模板（來源），鍵名取 `origin`，不沿用本 repo wf/ 的舊鍵 `rejected`；「舊列照留」一句取自 CHANGELOG 未發布段。"
+  "notes": "md 表頭四欄改成物件陣列四鍵；第三欄照現行模板（來源），鍵名取 `origin`，不沿用本 repo wf/ 的舊鍵 `rejected`；「舊列照留」一句取自 CHANGELOG 未發布段。（2026-11-13 稽核修正：升級資料夾改指 wf/tidying.json#/split_method；「舊版模板第三欄」的版本遷移句移出 rules（見報告 unsure））"
  }
 }

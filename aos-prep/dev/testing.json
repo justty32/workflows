@@ -7,7 +7,7 @@
   "「誰跑」是使用者的列，已在工作區的 `wf/WAIT_USER.md` 各留一行（寫明跑什麼、什麼算過）。"
  ],
  "steps": [
-  "1. 從工作區的 `wf/knowledge/verification.json` 挑這次要跑的：`#/checks` 標「改完必跑」的一定跑；再照 `#/categories` 依改動範圍加跑（改 producer／consumer／協定跑 contract、commit 前或大改後跑 full）；在離線或缺特殊環境的機器上只跑 `#/offline_subset`。",
+  "1. 從工作區的 `wf/knowledge/verification.json` 挑這次要跑的（還沒有 → 照 `dev/memory-verification.json#/skeleton` 建，先填一列「改完必跑」）：工作區的 `wf/knowledge/verification.json#/checks` 標「改完必跑」的一定跑；再照工作區的 `wf/knowledge/verification.json#/categories` 依改動範圍加跑（改 producer／consumer／協定跑 contract、commit 前或大改後跑 full）；在離線或缺特殊環境的機器上只跑工作區的 `wf/knowledge/verification.json#/offline_subset`。",
   "2. 「誰跑」是 **agent** 的（本機跑得動）：自己跑到回傳 0。",
   "3. 「誰跑」是 **使用者 → WAIT_USER** 的（要實機、外部服務、帳號、付費、目視）：在工作區的 `wf/WAIT_USER.md` 記一行，寫明跑什麼、什麼算過。**判不準就當後者。**",
   "4. 新增或修改一道檢查（測試、lint 規則、腳本裡的守門條件）時，照 `dev/green-is-not-checked.json` 證明它能變紅，沒做過的綠燈不算證據。",
@@ -19,11 +19,11 @@
  ],
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "flavors/dev/workflows/testing.md",
    "flavors/dev/WORKFLOWS.dev.md"
   ],
-  "notes": "驗證表、測試分類、「導入判斷」段的離線子集搬進記憶骨架 dev/memory-verification.json；「綠燈不等於有檢查」另成知識節點 dev/green-is-not-checked.json；流程段原本散在表下與各段，收成 steps 五步。"
+  "notes": "驗證表、測試分類、「導入判斷」段的離線子集搬進記憶骨架 dev/memory-verification.json；「綠燈不等於有檢查」另成知識節點 dev/green-is-not-checked.json；流程段原本散在表下與各段，收成 steps 五步。（2026-11-13 稽核修正：第 1 步光禿的 #/checks、#/categories、#/offline_subset 改成工作區完整路徑；補 verification.json 不存在時照骨架建）"
  }
 }

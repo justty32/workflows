@@ -1,0 +1,47 @@
+{
+ "_description": "派發通則（kernel）：使用者要做事時怎麼選工作流、什麼時候可以不走流程、派發表都不符時去哪、kernel 內建工作流的觸發說法與去處。各包自己的分辨寫在各包（開發包：`dev/dispatch.json`）；活狀態記哪裡在 `kernel/live-lists.json#/which`。",
+ "route": "使用者要做事 → 從工作區的 `wf/workflows/_index.json`（派發表：每格 description 含觸發說法）選工作流 → 讀那個工作流節點；細節都在節點裡。",
+ "skip": "**可以跳流程**：單行或小範圍、低風險、不跨 session 的修正；純查詢或一次性回答，不留 durable 知識；使用者明確要求快速處理；既有工作流只會增加同步成本而不降低風險。跳流程不等於跳過工程規矩——仍要讀必要上下文、不破壞使用者改動、能測就測。",
+ "kernel_triggers": [
+  {
+   "workflow": "gotchas",
+   "says": "「記 / 查踩坑」",
+   "node": "`kernel/gotchas.json`"
+  },
+  {
+   "workflow": "tidy",
+   "says": "「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」",
+   "node": "kernel 的 tidy 工作流（另行併入：不在備料裡，由 repo-aos 從 workflows repo 的 `wf/workflows/tidy.json` 一組併；整理規則在 aos 知識庫的 `wf/tidying.json`）"
+  },
+  {
+   "workflow": "planning",
+   "says": "「記個想法」「以後要做」「排進 roadmap」「幫我規劃」；開發專案另有「討論方案」「寫動工計畫」（spec／plan，直接進詳規）",
+   "node": "`kernel/planning.json`"
+  },
+  {
+   "workflow": "decisions",
+   "says": "「記個決定」「為什麼選 A 不選 B」",
+   "node": "`kernel/decisions.json`"
+  },
+  {
+   "workflow": "user",
+   "says": "「我的偏好是…」「以後直接做 / 先問」",
+   "node": "`kernel/user.json`"
+  }
+ ],
+ "fallback": [
+  "派發表都不符 → 看工作區的 `wf/_index.json`（wf 這層的 index，往下有 `wf/knowledge/_index.json`）。",
+  "新開工作流 → 照 aos 知識庫 `wf/nodes.json#/workflow_form` 的固定形式寫一個節點，並在工作區的 `wf/workflows/_index.json` 加一格（description 含觸發說法）。",
+  "要定期喚醒 → heartbeat 包；多 agent 協作 → multi-agent 包（都尚未備料）。"
+ ],
+ "live_state": "活狀態記哪裡（等使用者／等同 repo 另一個 session／等別資料夾的 agent）在 `kernel/live-lists.json#/which`；只列 open、完成即刪（aos 知識庫的 `wf/layers.json#/layers` 第 3 條），這裡不重抄。",
+ "source": {
+  "repo": "workflows",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
+  "files": [
+   "template/WORKFLOWS.md",
+   "flavors/dev/WORKFLOWS.dev.md"
+  ],
+  "notes": "2026-11-13 稽核後新增：派發器開頭句、「可以跳流程」（原放在 dev/dispatch.json#/skip，搬來這裡）、kernel 內建派發表五列（tidy 那列只寫去處）、「都不符 → 看 INDEX」改指工作區的 wf/_index.json、「新開工作流複製 TEMPLATE」改指 aos 知識庫 wf/nodes.json#/workflow_form、heartbeat／multi-agent 一句；「導入判斷」段的貼 flavor 派發表丟掉（純導入操作）；活狀態表已在 kernel/live-lists.json#/which，只指過去。"
+ }
+}

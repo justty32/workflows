@@ -3,7 +3,7 @@
  "split": [
   "通用規則與專案事實怎麼切：",
   "",
-  "- **通用規則 → 工作流節點或 knowledge 節點**：流程與 done_when 的形狀（「改完必跑的指令回傳 0」）；「誰跑」只有兩值、判不準當使用者；靜態全過不等於畫面對；綠燈不等於有檢查（knowledge）；code map 是導航不是規格、預設真相層優先序、維護鏈（knowledge `code-map-rules.json`）；搬檔鐵律與六類斷裂、改名注意（`moving-things.json`）；Level 3+ 模板、PATCH.md 必答、APPLY.md 結構、src 策略（留在工作流）；可以跳流程、幾條工作流的分辨（knowledge `dispatch.json`）。",
+  "- **通用規則 → 工作流節點或 knowledge 節點**：流程與 done_when 的形狀（「改完必跑的指令回傳 0」）；「誰跑」只有兩值、判不準當使用者；靜態全過不等於畫面對；綠燈不等於有檢查（knowledge）；code map 是導航不是規格、預設真相層優先序、維護鏈（knowledge `code-map-rules.json`）；搬檔鐵律與六類斷裂、改名注意（`moving-things.json`）；Level 3+ 模板、PATCH.md 必答、APPLY.md 結構、src 策略（留在工作流）；幾條工作流的分辨（knowledge `dispatch.json`；可以跳流程是 kernel 派發通則，稽核後搬到 `kernel/dispatch.json#/skip`）。",
   "- **專案事實 → 記憶骨架**：模板裡所有 `{{…}}`——驗證指令與誰跑、測試分類對到的指令、離線子集、fresh clone 步驟、冒煙指令、指令表、機器差異、外部工具與 env var、領域表、本專案的優先序、寫碼慣例、筆記與分析產物本身。",
   "- **夾在中間的**：測試分類四類的**定義**是通用的、對到的**指令**是專案的——定義寫在骨架 `fields` 的 meaning、值留空。寫作規則（分析產物、筆記、慣例「寫得出檢查才留」）是怎麼寫記錄，放骨架的 `rules`。"
  ],
@@ -60,18 +60,26 @@
  "unsure": [
   "_index.json 裡 `_description.json`、`prep-report*.json` 的 kind 寫 `meta`（契約只列 workflow／memory／knowledge 三種，這幾個不是節點，但不列 index_check 會報 IndexUnlisted）。",
   "跨批名字已對過 kernel 批現有的檔：planning 的記錄是工作區的 `wf/knowledge/ideas.json`（`kernel/memory-ideas.json`），活清單寫法 `kernel/live-lists.json`；kernel 批之後若改名要一起改。",
-  "「可以跳流程」出自 kernel 的 `template/WORKFLOWS.md`；kernel 批報告說它沒進 kernel 節點、該跟派發表那塊一起搬。這裡先放在 `dev/dispatch.json#/skip`，派發表那塊搬時可移過去。",
+  "「可以跳流程」出自 kernel 的 `template/WORKFLOWS.md`：稽核後已搬到 `kernel/dispatch.json#/skip`，本批的 feature-dev、investigation 指過去，`dev/dispatch.json` 不再有 skip。",
   "「誰跑」的兩值規則在 testing.json#/steps 與 memory-verification.json#/fields 各講一次（流程要用、欄位要定義）。",
   "Level 3+ 模板當通用參考留在 analysis.json，沒進骨架。",
   "「綠燈不等於有檢查」獨立成 knowledge 節點，而不是留在 testing.json——moving-things 與 testing 都用到。",
   "conventions 的例子「單檔超過 300 行」照留在 suggested_items；aos 知識庫 wf/source.json 記著它與使用者 10-09「原型階段不設行數上限」說法不同。只當例子，不是規則。",
   "aos repo 實際用法跟骨架有出入：它的 code map 由腳本從檔頭生成（不手寫領域表），testing 沒有統一自動測試、只要「build 得過」。骨架照模板是手寫 domains、至少一列改完必跑；生成式的專案 domains 怎麼寫沒處理。",
   "aos repo 的 feature-dev 多了「補文檔要補哪幾份依改動性質」表與「文件裡寫的指令都要真的跑過」——前者是 aos 專案的；後者像通用規則，但模板沒有，沒帶。",
-  "筆記夾的 `_index.json`：md 版沒有索引，這裡加了寫法，並照 docs/01 寫成「夾大或要靠 description 挑時才放」；本 repo 的實例是一直有。"
+  "筆記夾的 `_index.json`：md 版沒有索引，這裡加了寫法，並照 docs/01 寫成「夾大或要靠 description 挑時才放」；本 repo 的實例是一直有。",
+  "moving-things 的 done_when「連結歸零」原文就跟第 4 步「可選，預設不跑」矛盾；這裡標成「跑了第 4 步才適用」，要不要乾脆從 done_when 拿掉由 repo-aos 決定。",
+  "`dev/memory-analysis.json#/skeleton` 是 `[\"session_log.md\"]`（要建的檔名清單），不是可直接複製的 json 值；要改名成 `init_files` 拿掉 skeleton，還是保留，由 repo-aos 決定（跟產物留 md 還是改 json 一起定）。",
+  "「碰原始碼前先讀」照原文（conventions.md:5）寫進 feature-dev、refactor（含 moving-things）、investigation；testing 與 patch 沒寫——testing 不改原始碼，patch 改的是別的 repo。要不要也加由 repo-aos 決定。"
  ],
  "for_user": [
-  "commit／push：feature-dev 流程尾端的「→ commit」照搬；「直接 commit main 還是開 branch 走 PR」是使用者偏好，指到工作區的 `wf/knowledge/user.json`（kernel 的骨架）。本 repo 的實例另有「被派出去的不 commit、由主線驗收後 commit、push 一律先問」——模板沒有，沒帶；要不要變成通用規則？",
+  "commit／push：feature-dev 流程尾端照原文 commit；怎麼 commit（誰決定、分支慣例）看工作區的 `wf/knowledge/user.json`，那裡沒寫就照流程 commit；push 不在流程裡，另守 `kernel/iron-rules.json#/rules/authorization`。本 repo 的實例另有「被派出去的不 commit、由主線驗收後 commit、push 一律先問」——模板沒有，沒帶；要不要變成通用規則？",
   "analysis 產物（`session_log.md`、`architecture/` 等）與 patch 的 `PATCH.md`／`APPLY.md` 留 md 還是改 json：牽涉 aos「哪些檔留 md」（C-42）還沒裁；這裡照原文留 md。",
-  "patch 包的落點：寫成工作區的 `wf/patches/<patch>/`（非侵入式佈局下原本就在那）；它是交付物不是查的記錄，所以沒放 `wf/knowledge/`。要改嗎？"
- ]
+  "patch 包的落點：寫成工作區的 `wf/patches/<patch>/`（非侵入式佈局下原本就在那）；它是交付物不是查的記錄，所以沒放 `wf/knowledge/`。要改嗎？",
+  "analysis 原文就有的空白（沒自補規則）：「指定 Level」由誰指定、預設做到第幾級；Level 4–6 沒有定義；done_when「主要入口、核心模組與測試方式的表格」寫在產物夾的哪個檔；`session_log.md` 的條目格式；外部 repo 要 clone 到哪裡。",
+  "記憶檔不存在時照骨架建之後，要填多少：只填這次碰到的領域與指令，還是先把整份建好？節點目前只要求 verification.json 至少有一列「改完必跑」（done_when 要用）。"
+ ],
+ "audit_fixes": {
+  "$ref": "prep-report-fixes.json#/audit_fixes"
+ }
 }

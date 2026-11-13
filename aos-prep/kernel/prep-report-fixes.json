@@ -1,0 +1,90 @@
+{
+ "_description": "kernel 批次報告的稽核修正段（2026-11-13 稽核：高 1、中 9、低 20；本檔只列動到 kernel 批的項，dev 批的在 `dev/prep-report-fixes.json`）。",
+ "audit_fixes": [
+  {
+   "item": "1 高 鐵律沒有備料，卻被四處指過去",
+   "fix": "新增 kernel/iron-rules.json（四條鐵律、adopt、AGENTS.md 入口行）；user.json、memory-user.json 改成同時指到它；dropped／changed／mapping／overlaps 補登",
+   "nodes": "kernel/iron-rules.json（新）、kernel/user.json#/_description、#/not_when、kernel/memory-user.json#/holds、#/items/3"
+  },
+  {
+   "item": "2 中 planning 少 dev 派發表的「討論方案」「寫動工計畫」",
+   "fix": "when 加一條；_index 的 description 補這兩個說法",
+   "nodes": "kernel/planning.json#/when、kernel/_index.json"
+  },
+  {
+   "item": "7 中 「可以跳流程」放在 dev 批",
+   "fix": "新增 kernel/dispatch.json 收 skip、派發開頭句、都不符去哪、新開工作流、heartbeat／multi-agent；unsure 第 6 條更新",
+   "nodes": "kernel/dispatch.json（新）、kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "8 中 偏好骨架少預設句、defaults 鍵是中文",
+   "fix": "defaults 鍵改 reply_style；預設句放進 skeleton 回覆風格那格並標「出廠預設，使用者說了別的就改」；算通用還是個人偏好列 for_user",
+   "nodes": "kernel/memory-user.json#/defaults、#/rules/2、#/skeleton"
+  },
+  {
+   "item": "9 中 tidy 的觸發說法沒有去處",
+   "fix": "kernel/_description.json、aos-prep/_description.json 寫明 tidy 另由 repo-aos 從 wf/workflows/tidy.json 一組併；kernel/dispatch.json#/kernel_triggers 列觸發說法與去處；decisions.json 的「尚未備料」改「另行併入」",
+   "nodes": "kernel/_description.json、aos-prep/_description.json、kernel/dispatch.json、kernel/decisions.json#/steps/3"
+  },
+  {
+   "item": "低 C memory-decisions 升級資料夾指到 wf/nodes.json#/growth",
+   "fix": "改指 wf/tidying.json#/split_method",
+   "nodes": "kernel/memory-decisions.json#/rules/3"
+  },
+  {
+   "item": "低 H memory-decisions rules 第 5 條是模板版本遷移",
+   "fix": "從 rules 拿掉，原句記進 unsure；source.files 拿掉 CHANGELOG.md",
+   "nodes": "kernel/memory-decisions.json#/rules、kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "低 F spec／plan 寫 md 還是 json、done_when 怎麼認",
+   "fix": "列進 unsure（原文沒說，不自定）",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "低 I defaults 中文鍵",
+   "fix": "隨第 8 項改成 reply_style",
+   "nodes": "kernel/memory-user.json#/defaults"
+  },
+  {
+   "item": "低 A session_logs 按工作流拆沒涵蓋",
+   "fix": "session_log 末尾補一條；dropped 那筆的 why 更正",
+   "nodes": "kernel/live-lists.json#/session_log、kernel/prep-report.json#/dropped"
+  },
+  {
+   "item": "低 C aos_note 講知識庫沒有的方向與施工狀態",
+   "fix": "照稽核的句子改寫",
+   "nodes": "kernel/live-lists.json#/aos_note"
+  },
+  {
+   "item": "低 J 開場 grep 遇檔不存在回 2",
+   "fix": "補「檔不存在就當 0」",
+   "nodes": "kernel/live-lists.json#/session_start"
+  },
+  {
+   "item": "低 A WORKFLOWS.md:24「都不符 → INDEX」與 heartbeat／multi-agent 沒轉也沒報",
+   "fix": "收進 kernel/dispatch.json#/fallback；dropped 第 9 筆改寫",
+   "nodes": "kernel/dispatch.json#/fallback、kernel/prep-report.json#/dropped"
+  },
+  {
+   "item": "低 D _index 非節點格 kind 兩批不一致",
+   "fix": "沒改：要定一種寫法是新決定，列 unsure 給 repo-aos",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "低 D kernel unsure 第 2、6 條過時",
+   "fix": "第 2 條改「已對過，存在」；第 6 條改指 kernel/dispatch.json#/skip",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "F 節 done_when 原文就不太能觀察的兩條（user、gotchas）",
+   "fix": "沒改原文；列 unsure",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "J 節 空工作區第一次建記憶檔要不要建 _index",
+   "fix": "沒自定規則；列 unsure（docs/01 推得出）",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  }
+ ]
+}

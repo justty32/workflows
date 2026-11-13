@@ -14,13 +14,14 @@
    "where": "信件軸（multi-agent 包提供，尚未備料；在 aos 裡同一棵樹的 agent 之間是 mailbox，見 aos 知識庫的 `aos/mailbox.json`）"
   }
  ],
- "session_start": "每個 session 開場先數兩份清單的條目：`grep -c '^- \\[' wf/SESSION-LOG.md wf/WAIT_USER.md`；非 0 才打開那份讀。",
+ "session_start": "每個 session 開場先數兩份清單的條目：`grep -c '^- \\[' wf/SESSION-LOG.md wf/WAIT_USER.md`；非 0 才打開那份讀；檔不存在就當 0。",
  "session_log": [
   "寫入時機：",
   "1. 開始多步驟工作前先寫一行 open（不是做完才寫）；硬中斷時這份才有「進行中」。",
   "2. 每次 commit 後更新或刪除該行。",
   "條目格式：`- [工作流] 一句 open 狀態 → 下一步／指到哪`；完成即刪，歷史交給 git log，決策落到 `kernel/decisions.json` 那份記錄。",
-  "檔的形狀：一段「最新進度」放條目，沒有就寫「（目前無）」；一張「各工作流 session-log」導航表 `| 工作流 | session-log | open 摘要 |`——某工作流長出自己的 session-log 後加一列，空表很正常。"
+  "檔的形狀：一段「最新進度」放條目，沒有就寫「（目前無）」；一張「各工作流 session-log」導航表 `| 工作流 | session-log | open 摘要 |`——某工作流長出自己的 session-log 後加一列，空表很正常。",
+  "膨脹拆成 `session_logs/` 時按工作流拆檔，hub 留導航表。"
  ],
  "wait_user": [
   "記什麼：需要使用者親自做／驗證／決定的事——實機測試、外部服務登入、環境變數、權限、付費、需帳號的下載、去開另一個 agent。agent 做到結構性驗證的極限，跨不過的那關記這裡。",
@@ -29,16 +30,16 @@
   "檔的形狀：一段「待使用者項」放條目，沒有就寫「（目前無）」。",
   "膨脹拆成 `wait-user/` 時：按類別拆檔，hub 只留一張 `| 類別 | open | 清單 |` 導航表，每列指到 `wait-user/<類別>.md`。"
  ],
- "aos_note": "aos 的方向是「等使用者的事寄 `NEEDS-USER` 信給人」（aos 知識庫的 `aos/mailbox.json#/rules`），但目前還沒施工；現況照舊寫工作區的 `wf/WAIT_USER.md`。",
+ "aos_note": "aos 知識庫的 `aos/mailbox.json#/rules` 有 `NEEDS-USER` 狀態；要不要改成寄信給人待使用者裁（`kernel/prep-report-notes.json#/for_user`），現況寫工作區的 `wf/WAIT_USER.md`。",
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
   "files": [
    "template/SESSION-LOG.md",
    "template/WAIT_USER.md",
    "template/WORKFLOWS.md",
    "template/AGENTS.md"
   ],
-  "notes": "只收 aos 知識庫 wf/layers.json 沒涵蓋的部分（判別表、寫入時機、條目格式、要記的事例、開場 grep、兩份檔的形狀、wait-user hub 表頭）；開場 grep 的路徑加上 wf/ 前綴；模板說明段「空表很正常」併進 session_log。"
+  "notes": "只收 aos 知識庫 wf/layers.json 沒涵蓋的部分（判別表、寫入時機、條目格式、要記的事例、開場 grep、兩份檔的形狀、wait-user hub 表頭）；開場 grep 的路徑加上 wf/ 前綴；模板說明段「空表很正常」併進 session_log。（2026-11-13 稽核修正：開場 grep 補「檔不存在就當 0」；session_log 補「按工作流拆」；aos_note 改成只陳述知識庫有的與待裁）"
  }
 }

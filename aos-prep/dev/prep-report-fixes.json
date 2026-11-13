@@ -1,0 +1,105 @@
+{
+ "_description": "dev 批次報告的稽核修正段（2026-11-13 稽核：高 1、中 9、低 20；本檔只列動到 dev 批的項，kernel 批的在 `kernel/prep-report-fixes.json`）。",
+ "audit_fixes": [
+  {
+   "item": "1 高 鐵律沒有備料，dev-env、moving-things 指到工作區 AGENTS.md",
+   "fix": "kernel 批新增 kernel/iron-rules.json；兩處改成指 kernel/iron-rules.json#/rules/authorization（落地後在 AGENTS.md 鐵律段）；overlaps 第 8 筆的「（kernel 批）」改成實際節點",
+   "nodes": "dev/dev-env.json#/steps/5、dev/moving-things.json#/iron_rule、dev/prep-report-overlaps.json#/7"
+  },
+  {
+   "item": "3 中 碰原始碼前先讀從 always-on 變按需",
+   "fix": "feature-dev、refactor、moving-things、investigation 的 steps 開頭寫明；_description 加 always-on 一句；_index 與 before_code 標 always-on；testing、patch 沒加（理由見 unsure）",
+   "nodes": "dev/feature-dev.json、dev/refactor.json、dev/moving-things.json、dev/investigation.json 的 #/steps、dev/_description.json、dev/_index.json、dev/dispatch.json#/before_code"
+  },
+  {
+   "item": "4 中 記憶檔不存在時怎麼辦",
+   "fix": "用到工作區記憶檔的 steps 補「還沒有 → 照 dev/memory-<名>.json#/skeleton 建」；要填多少列 for_user",
+   "nodes": "dev/feature-dev.json、dev/testing.json、dev/refactor.json、dev/dev-env.json、dev/investigation.json、dev/analysis.json 的 #/steps"
+  },
+  {
+   "item": "5 中 SESSION-LOG 條目少 `- ` 前綴",
+   "fix": "改成 `- [feature-dev] [功能名] 文檔／code map 待同步 → commit 前對齊`；grows 的「`[feature-dev]` 開頭」也補前綴；兩批其餘示範條目已有前綴",
+   "nodes": "dev/feature-dev.json#/steps、#/grows"
+  },
+  {
+   "item": "6 中 光禿的 #/checks 等",
+   "fix": "testing 第 1 步與 dev-env 的 done_when、steps 改成工作區完整路徑；全兩批掃過，其餘單獨的 #/… 都指同檔存在的鍵",
+   "nodes": "dev/testing.json#/steps/0、dev/dev-env.json#/done_when、#/steps"
+  },
+  {
+   "item": "7 中 「可以跳流程」放錯批",
+   "fix": "搬到 kernel/dispatch.json#/skip；dev/dispatch.json 拿掉 skip、_description 指過去；feature-dev、investigation 的指法改指 kernel",
+   "nodes": "dev/dispatch.json、dev/feature-dev.json#/not_when、dev/investigation.json#/not_when"
+  },
+  {
+   "item": "9 中 tidy 的觸發說法沒有去處",
+   "fix": "refactor 的 not_when 列出 tidy 的五個說法，導到「kernel 的 tidy 工作流（另行併入）」；_index 的 refactor description 補一句（tidy 已由 aos repo commit dbefe6fd2 併進，見 kernel/prep-report-notes.json#/unsure）",
+   "nodes": "dev/refactor.json#/not_when、dev/_index.json"
+  },
+  {
+   "item": "10 中 偏好沒填時要不要 commit",
+   "fix": "commit 那條改成：流程尾端 commit；怎麼 commit 看 user.json，沒寫就照流程 commit；push 另守授權來源",
+   "nodes": "dev/feature-dev.json#/steps"
+  },
+  {
+   "item": "低 A feature-dev 跳流程少「不跨 session」",
+   "fix": "補上，並改指 kernel/dispatch.json#/skip",
+   "nodes": "dev/feature-dev.json#/not_when"
+  },
+  {
+   "item": "低 E 「改完必跑」靠名稱認",
+   "fix": "checks 的 meaning 補一句這幾個字不要省",
+   "nodes": "dev/memory-verification.json#/fields/0"
+  },
+  {
+   "item": "低 A moving-things 第 4 步少「可選，預設不跑」",
+   "fix": "補回；done_when 第 4 條標「跑了第 4 步才適用」；矛盾記 unsure",
+   "nodes": "dev/moving-things.json#/steps、#/done_when/3"
+  },
+  {
+   "item": "低 D green-is-not-checked 沒被反指",
+   "fix": "執行期資料目錄那類的 detail 末尾加指過去",
+   "nodes": "dev/moving-things.json#/breakages/5"
+  },
+  {
+   "item": "低 B analysis「建議」定死位置",
+   "fix": "沒改：aos 知識庫 wf/layers.json 已定位置，稽核判可接受",
+   "nodes": "（無）"
+  },
+  {
+   "item": "低 E memory-analysis 的 skeleton 是檔名清單",
+   "fix": "沒改：改名 init_files 還是保留是新決定，列 unsure",
+   "nodes": "dev/prep-report.json#/unsure"
+  },
+  {
+   "item": "低 J analysis 原文空白（Level、表格在哪、session_log 格式、clone 到哪）",
+   "fix": "沒自補規則；列 for_user",
+   "nodes": "dev/prep-report.json#/for_user"
+  },
+  {
+   "item": "低 B investigation 多了「為什麼會壞」",
+   "fix": "從 when 拿掉（原文是「查 bug 成因」，仍在）；changed 補登",
+   "nodes": "dev/investigation.json#/when"
+  },
+  {
+   "item": "低 F investigation done_when 第 2 條是新加的",
+   "fix": "沒改：稽核判可接受（說法照 knowledge docs/01）",
+   "nodes": "（無）"
+  },
+  {
+   "item": "低 A dev-env 單一環境那條少了具體方向",
+   "fix": "照 dev-env.md:40 改成「誰跑全部是 agent，並清掉 WAIT_USER 裡因環境而卡的條目」",
+   "nodes": "dev/memory-dev-env.json#/rules/1"
+  },
+  {
+   "item": "低 D patch 路徑沒寫「工作區的」",
+   "fix": "done_when、steps 補上（_description 原本就有）",
+   "nodes": "dev/patch.json#/done_when/0、#/steps"
+  },
+  {
+   "item": "低 D _index 非節點格 kind 兩批不一致",
+   "fix": "沒改：統一成哪種是新決定，列 kernel 的 unsure",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  }
+ ]
+}
