@@ -26,7 +26,7 @@
   "4. index 分公共（進 git、天然位置）與私有（wf/_index.local.json，gitignore、用到才建）。",
   "5. lint 次要、排最後；`wf/` 的結構檢查用 `wf/tools/index_check.py`。",
   "",
-  "之後的方向在同一天改了（見 `wf/knowledge/decisions.json#/records` 第一筆）：不回寫模板、不開 aos flavor；這套做法與內容一次一塊搬進 aos 當正本，本 repo 凍結。試點成果當作搬的素材與已驗證的形狀。"
+  "之後的方向在同一天改了（見 `wf/knowledge/decisions.json#/records` 裡 2026-11-13「workflows 併入 aos 的方式」那筆）：不回寫模板、不開 aos flavor；這套做法與內容一次一塊搬進 aos 當正本，本 repo 凍結。試點成果當作搬的素材與已驗證的形狀。"
  ],
  "sources": [
   "`git show add7744:wf/knowledge/notes/wf-to-aos-mapping.md`（完整底稿，每個斷言附出處）",
