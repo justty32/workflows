@@ -11,6 +11,7 @@
 
 ## 最新進度
 
+- [planning] 把 `wf/` 轉入 aos 體系：事實底稿已寫（[wf-to-aos-mapping.md](workflows/investigation/notes/wf-to-aos-mapping.md)），規劃已提給使用者、等他裁方向 → 裁完先在本 repo 的 `wf/` 試點，`template/` 不動
 - [planning] 可組合單元方案（中插契約進 `STRUCTURE.md`／`TEMPLATE.workflow.md`、`skills/` 定位、抽 `commit.md`）已定案但**未實作** → 方案全文見 [investigation/notes/composable-units.md](workflows/investigation/notes/composable-units.md)
 - [refactor] 精簡稽核已裁示待做：heartbeat README 的 Windows `TZ` 踩坑段下沉到 `workflows/`；`team-model.md` 升成正規 `team-model/README.md`（所有連結跟著改）；其餘 11 項「要人決定」仍待裁 → 稽核報告在 2026-09-02 的 session scratchpad，明天先重跑一次稽核再動
 - [feature-dev] `wf-lint.sh` 加 `--exclude a,b`／`.wf-lint-ignore`，讓 `--strict .` 對本 repo 跑時跳過 `template`、`flavors`、`examples`、`skills`；做法見 v0.6 CHANGELOG 未完成項 → 之後 CI 加一步對 `wf/` 跑 lint

@@ -51,6 +51,7 @@
 | Kami | 2026-09-02 | **不 vendor，掛 submodule** `skills/external/`：排版產品太重，vendor 不了 | [kami.md](notes/kami.md) |
 | caveman | 2026-09-02 | **不 vendor**：5 條電報體規則併進 kernel `reply-style.md` | [caveman.md](notes/caveman.md) |
 | stop-slop | 2026-09-02 | **不 vendor**：7 條去 AI 味規則併進 knowledge flavor 的 `writing.md` | [stop-slop.md](notes/stop-slop.md) |
+| wf 轉入 aos 對照底稿 | 2026-11-13 | **事實底稿，無推薦**：wf 各機制對 aos 的對應與落差、逐檔分流程／知識、json 化分型、已裁 17 條、待決 14 題；68 KB 單體超標保留 | [wf-to-aos-mapping.md](notes/wf-to-aos-mapping.md) |
 
 ## 交接
 
