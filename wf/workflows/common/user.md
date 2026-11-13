@@ -13,4 +13,10 @@ agent 不用重猜的事。always-on 鐵律在 AGENTS.md，這裡是**這位使�
 | 回覆風格 | 短、先結論；不要每段都 bullet。使用者問「要不要」時附**可執行判準**（門檻數字）與後果，讓他能改數字 |
 | 時區 | Asia/Taipei |
 
+## 派工與記憶
+
+**派工**（2026-11-13）：事情盡量交給子 agent；普通工作用 opus，簡單工作與雜活用 sonnet。子 agent 動手前要大致掌握 aos 體系，掌握到什麼程度依分配的工作決定；也要先讀過 `wf/` 規矩，簡單工作與雜活除外。
+
+**記憶**（2026-11-13）：不寫 Claude Code 自動記憶；要長期記住的事記進 `wf/`，照 [STRUCTURE](../../STRUCTURE.md) 歸到所屬那層。
+
 領域詞彙常猜錯 → 開 `glossary.md`（見 [common/README](README.md)）。
