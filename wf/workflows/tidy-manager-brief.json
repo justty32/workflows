@@ -1,6 +1,6 @@
 {
  "_description": "tidy 的管理線簡報：派管理線時把本節點路徑＋交接書路徑一起給它。流程上層是 `wf/workflows/tidy.json`。",
- "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
+ "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 584f3f5 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
  "when": "tidy 的調度者要把一個範圍交給管理線、由管理線再派工人時。",
  "not_when": "範圍小、不用再分一層 → 調度者直接派實作線（`wf/workflows/tidy.json#/steps`）。",
  "done_when": [

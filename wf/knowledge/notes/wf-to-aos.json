@@ -5,7 +5,7 @@
   "讀 aos 知識庫（`~/aos-home/knowledge/aos/`、`docs/01`、`docs/02`）、這台 daemon 的共用庫（`~/aos-home/ws/public/`）、`template/` 與七個 flavor 全部檔案。",
   "讀 repo-aos 的既有研究（`~/repo/aos/proto8/thinking/2026-11/12/wf-to-aos.md` 與同名夾、`13/main-session-in-aos.md`、`13/index-build.md`），並以 aos mail 向 repo-aos 查證。",
   "看兩個已導入 wf 又在 aos 樹裡的實例：ops-notes（手寫 index、路由線全建）、aos repo（`index_gen.py` 生成、照 15 門檻）。",
-  "完整底稿（68 KB，逐機制對照表、逐檔分類、已裁 17 條、矛盾 20 處、待決 14 題）不留在工作樹，在 git 歷史：`git show add7744:wf/knowledge/notes/wf-to-aos-mapping.md`。"
+  "完整底稿（68 KB，逐機制對照表、逐檔分類、已裁 17 條、矛盾 20 處、待決 14 題）不留在工作樹，在 git 歷史：`git show 318aff7:wf/knowledge/notes/wf-to-aos-mapping.md`。"
  ],
  "findings": [
   "**能對上的**：導航層（INDEX／README／派發表）對 `_index.json`＋`_description`＋`index_view`；資料檔的增刪改查對 `json_*` 工具；multi-agent 包的 inbox 對 mailbox（六個 STATUS 與信件格式幾乎相同，限同一棵樹）；heartbeat 對 `clock_register`／`on_clock` hook。",
@@ -29,7 +29,7 @@
   "之後的方向在同一天改了（見 `wf/knowledge/decisions.json#/records` 裡 2026-11-13「workflows 併入 aos 的方式」那筆）：不回寫模板、不開 aos flavor；這套做法與內容一次一塊搬進 aos 當正本，本 repo 凍結。試點成果當作搬的素材與已驗證的形狀。"
  ],
  "sources": [
-  "`git show add7744:wf/knowledge/notes/wf-to-aos-mapping.md`（完整底稿，每個斷言附出處）",
+  "`git show 318aff7:wf/knowledge/notes/wf-to-aos-mapping.md`（完整底稿，每個斷言附出處）",
   "`~/aos-home/knowledge/docs/01-樹長怎樣與多庫.md`、`02-寫入與節點怎麼寫.md`",
   "`~/repo/aos/proto8/thinking/2026-11/12/wf-to-aos.md`、`13/main-session-in-aos.md`、`13/index-build.md`、`13/裁定落地-1113.md`",
   "repo-aos 的 aos mail 回信（2026-11-13）"

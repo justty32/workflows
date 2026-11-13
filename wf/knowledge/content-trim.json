@@ -1,6 +1,6 @@
 {
  "_description": "content-trim — 內容精簡的判準（tidy 原則 5 的細則）：整理一份檔時，刪掉檔內的過往記錄，只留現行結論並寫精簡；**使用者原文逐字保留**；刪掉的靠 git 歷史找。整份過時的檔照原則 1 封存，這裡管的是**檔內**的段落（json 節點的鍵與元素、md 的段落）。現行結論的意思不能變（不改原意），只刪歷史、不改結論。怎麼做（派誰、commit、驗法）在 `wf/workflows/tidy.json#/content_trim`。",
- "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
+ "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 584f3f5 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
  "criterion": "判準：**拿掉這段，照這份檔做事的人會不會做錯？** 會 → 結論，留，改寫成現在式；不會、只是說明怎麼走到這裡 → 歷史，刪。",
  "keep": [
   "現在有效的規則、做法、決定、數值、路徑、欄位名、預設值；使用者說「照建議」採納的 AI 建議也算決定。",

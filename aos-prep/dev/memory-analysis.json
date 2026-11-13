@@ -47,7 +47,7 @@
  "skeleton_note": "`skeleton` 是初始化 `wf/knowledge/analysis/<project>/` 時要先建的檔。",
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "9eb8f20a6b5e35e5d278f06d30e9f5e0dab892c2",
   "files": [
    "flavors/dev/workflows/analysis.md"
   ],

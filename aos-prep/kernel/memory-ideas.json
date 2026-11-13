@@ -48,7 +48,7 @@
  },
  "source": {
   "repo": "workflows",
-  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "commit": "9eb8f20a6b5e35e5d278f06d30e9f5e0dab892c2",
   "files": [
    "template/workflows/planning.md"
   ],

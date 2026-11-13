@@ -16,7 +16,7 @@
    "date": "2026-11-13",
    "decision": "**併入 aos 的範圍到 kernel 與 dev 兩批為止，其餘五包（knowledge／research／teaching／ops／multi-agent／heartbeat）不併**，留在本 repo，之後要用再回來翻。連帶：通用版不寫「被派出去的不 commit、push 先問」（留給各工作區自己的偏好與鐵律，feature-dev 尾端照模板原文）；預填的回覆風格算個人偏好、從骨架拿掉；patch 包放工作區的 wf/patches/；JSON 是推薦，md 等別的格式照樣可以（分析產物、PATCH、APPLY 留 md）。",
    "rejected": "來源：使用者 2026-11-13 16:13 在 repo-aos 的收工待裁頁作答（W21＝B、W12＝B、W15＝B、W14＝A、W22＝A、W16＝A、W20＝A），經 repo-aos 的 aos mail 轉述；逐題原文與落地表在 aos repo 的 proto8/thinking/2026-11/13/收工待裁-回覆落地.md（aos commit 3cb2cb267）。還沒裁的：W11、W13、W17、W18、W19。",
-   "premise": "`aos-prep/` 不為這些裁定再改（本 repo commit f3d70ea 為最終版）；少落的東西由 repo-aos 落檔時處理。若之後要用到沒併的包，從本 repo 的 `flavors/` 取。"
+   "premise": "`aos-prep/` 不為這些裁定再改（本 repo commit 01959ce 為最終版）；少落的東西由 repo-aos 落檔時處理。若之後要用到沒併的包，從本 repo 的 `flavors/` 取。"
   },
   {
    "date": "2026-11-13",

@@ -1,6 +1,6 @@
 {
  "_description": "tidy 原則 5「內容精簡」的做法（從 `wf/workflows/tidy.json#/content_trim` `$ref` 過來；引用請寫入口的統一路徑）。判準（留什麼、刪什麼、使用者原文怎麼認、哪些檔適用）在 `wf/knowledge/content-trim.json`。",
- "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
+ "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 584f3f5 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
  "steps": [
   "這是改條文：派能改條文的模型，不派只做雜活的便宜模型；提示附 `wf/knowledge/content-trim.json`。",
   "跟搬檔、拆檔分開 commit；commit 訊息寫「內容精簡」與檔名，之後 `git log --grep 內容精簡 -- <檔>` 找得到。檔內不寫「舊版見某 commit」。commit 由調度者驗收後做，線與工人不 commit（`wf/knowledge/conventions.json#/git`）。",

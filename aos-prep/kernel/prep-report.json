@@ -1,5 +1,5 @@
 {
- "_description": "kernel 這一批的備料報告：來源檔與段對到哪個節點、丟了什麼、改寫了什麼、與 aos 既有的重疊、工具缺口、拿不準的、要使用者裁的。來源 commit 5d2d0f49533120151a7d1890724b6d1b55339ae7。 太大拆成五檔：mapping 與 key_renames 在 `prep-report-mapping.json`，changed 在 `prep-report-changed.json`，overlaps 以後各段在 `prep-report-notes.json`，2026-11-13 稽核修正在 `prep-report-fixes.json`。",
+ "_description": "kernel 這一批的備料報告：來源檔與段對到哪個節點、丟了什麼、改寫了什麼、與 aos 既有的重疊、工具缺口、拿不準的、要使用者裁的。來源 commit 9eb8f20a6b5e35e5d278f06d30e9f5e0dab892c2。 太大拆成五檔：mapping 與 key_renames 在 `prep-report-mapping.json`，changed 在 `prep-report-changed.json`，overlaps 以後各段在 `prep-report-notes.json`，2026-11-13 稽核修正在 `prep-report-fixes.json`。",
  "mapping": {
   "$ref": "prep-report-mapping.json#/mapping"
  },

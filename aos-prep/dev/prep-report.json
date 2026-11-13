@@ -1,5 +1,5 @@
 {
- "_description": "dev 批（備料第二批）的批次報告。來源 commit `5d2d0f49533120151a7d1890724b6d1b55339ae7`。mapping 太長，拆在 `prep-report-mapping.json`。",
+ "_description": "dev 批（備料第二批）的批次報告。來源 commit `9eb8f20a6b5e35e5d278f06d30e9f5e0dab892c2`。mapping 太長，拆在 `prep-report-mapping.json`。",
  "split": [
   "通用規則與專案事實怎麼切：",
   "",

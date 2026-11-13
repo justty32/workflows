@@ -11,5 +11,5 @@
  "",
  "路徑說法跟 aos 知識庫的 `wf/_description.json` 一致：「工作區的 `wf/…`」指專案工作區；`kernel/<名>.json`、`dev/<名>.json` 指備料節點；aos 知識庫的節點寫 knowledge 路徑並註明。",
  "",
- "來源 repo：workflows，commit 5d2d0f49533120151a7d1890724b6d1b55339ae7；2026-11-13 稽核修正（新增 iron-rules、dispatch 與各節點的修正）記在 1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2。"
+ "來源 repo：workflows，commit 9eb8f20a6b5e35e5d278f06d30e9f5e0dab892c2；2026-11-13 稽核修正（新增 iron-rules、dispatch 與各節點的修正）記在 ef0b1412a86d62804daab7fd53eb7a0650bbc80d。"
 ]

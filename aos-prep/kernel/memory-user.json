@@ -88,7 +88,7 @@
  },
  "source": {
   "repo": "workflows",
-  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
+  "commit": "ef0b1412a86d62804daab7fd53eb7a0650bbc80d",
   "files": [
    "template/workflows/common/user.md",
    "template/workflows/common/README.md"

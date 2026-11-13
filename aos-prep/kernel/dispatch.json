@@ -37,7 +37,7 @@
  "live_state": "活狀態記哪裡（等使用者／等同 repo 另一個 session／等別資料夾的 agent）在 `kernel/live-lists.json#/which`；只列 open、完成即刪（aos 知識庫的 `wf/layers.json#/layers` 第 3 條），這裡不重抄。",
  "source": {
   "repo": "workflows",
-  "commit": "1cedff997fd79b5e4d4fd89212ddb1b5acceb2b2",
+  "commit": "ef0b1412a86d62804daab7fd53eb7a0650bbc80d",
   "files": [
    "template/WORKFLOWS.md",
    "flavors/dev/WORKFLOWS.dev.md"
