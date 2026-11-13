@@ -19,9 +19,9 @@
  ],
  "roadmap": [
   {
-   "item": "workflows 併入 aos（使用者 2026-11-13：「以後這個workflow，應該會併入aos中。可能是submodule吧我猜。」）",
-   "when": "盡快（使用者 2026-11-13：「能愈快併入愈好，但不要因為趕工而喪失品質」）；併法與順序正在跟 repo-aos 討論",
-   "premise": "併入方式未定（submodule 是使用者的猜測）；模板要不要繼續服務不在 aos 裡的專案未定——回寫模板時別把這條路堵死"
+   "item": "workflows 的做法與內容搬成 aos 體系的東西（不是掛 repo；本 repo 之後幾乎不再更新）",
+   "when": "現在起，邊用邊併（使用者 2026-11-13：「能愈快併入愈好，但不要因為趕工而喪失品質」）",
+   "premise": "決定與原話見 `wf/knowledge/decisions.json#/records`；具體怎麼搬、第一步是什麼，跟 repo-aos 對方案中"
   }
  ]
 }

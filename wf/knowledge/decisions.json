@@ -3,6 +3,12 @@
  "records": [
   {
    "date": "2026-11-13",
+   "decision": "**workflows 併入 aos 的方式：這套做法與內容變成 aos 體系的東西，不是把 repo 掛進去**。workflows repo 仍在，只是幾乎不再更新；模板不用再服務不在 aos 裡的專案；邊用邊併。",
+   "rejected": "來源：使用者 2026-11-13 14:47 對 repo-aos 整理的九題的回覆（經 repo-aos 的 aos mail 轉述，逐字）：「1.變成aos的東西。2.都可以。3.都可以(也可以都要)。4.不用。workflows repo仍在，只是幾乎不再更新。5.邊用邊併。6.8kb上限可帶入(但只限.md)，檢查工具不留。7.拆。8.不用。9.不用」。題目全文在 aos repo 的 proto8/thinking/2026-11/13/workflows-into-aos.md。第 6 題兩處讀法（檢查工具不留的範圍、8 KB 是推薦還是硬規則）repo-aos 已請使用者確認，確認前不照任一種動手。",
+   "premise": "因此原計畫「回寫模板 v0.7、另開 aos flavor、顧 Windows 與別家工具」不走了；本 repo 的 `wf/` 試點成果改當作搬進 aos 的素材。併法、骨架／知識庫 subject／鋪工作區機制怎麼分，使用者交給 agent 定。"
+  },
+  {
+   "date": "2026-11-13",
    "decision": "**`wf/` 試點改成「index 組織的 json 節點、流程與知識分家」**（`wf/workflows/` 放流程、`wf/knowledge/` 放知識與記錄），`template/` 暫不動",
    "rejected": "先把 `wf/` 升到 v0.6 再轉（升完還是要轉，白工）；直接改模板（形狀還沒試過）",
    "premise": "試點形狀穩定後回寫模板 v0.7"
