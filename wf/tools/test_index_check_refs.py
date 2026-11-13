@@ -103,6 +103,37 @@ class TestRefBad(Base):
         self.assertIn("d.json", t)
 
 
+class TestLocalPointer(Base):
+    """反引號裡單獨的 `#/…`＝同一個檔裡的指標。"""
+
+    def tree(self, text):
+        sub = Dir({"e.json": {"sec": {"k": 1}}})
+        return {"wf": Dir({"a.json": {"k": text, "steps": ["x", "y"], "part": {"$ref": "sub/e.json#/sec"}},
+                           "sub": sub})}
+
+    def test_red_missing_key(self):
+        t = self.red(self.tree("照 `#/nope` 做"), "RefBad")
+        self.assertIn("#/nope", t)
+        self.red(self.tree("照 `#/steps/5`"), "RefBad")
+        self.red(self.tree("照 `#/part/zzz`"), "RefBad")  # 跟 $ref 後沒有
+
+    def test_green_same_file(self):
+        self.green(self.tree("照 `#/steps`、`#/steps/1`、`#/k`、`#/part/k`（跟 $ref）、`#/`"))
+
+    def test_skips_styles_and_fences(self):
+        self.green(self.tree("例 `#/<鍵>`、`#/x/*`、`#/a…`、`#/{k}`、`#/x/<N>`\n```\n`#/nope`\n```"))
+        fenced = {"wf": Dir({"a.json": {"k": ["```", "`#/nope`", "```"]}})}
+        self.green(fenced)
+        self.red({"wf": Dir({"a.json": {"k": ["一行", "`#/nope`"]}})}, "RefBad")
+
+    def test_no_refs_and_ignore(self):
+        self.green(self.tree("`#/nope`"), "--no-refs")
+        p = os.path.join(self.root, "ign.tsv")
+        with open(p, "w", encoding="utf-8") as f:
+            f.write("wf/a.json#/k\t#/nope\n")
+        self.green(self.tree("`#/nope`"), "--ignore=" + p)
+
+
 class TestCli(Base):
     def test_json_output(self):
         build(self.root, {"wf": Dir({"bad.json": Raw("{")})})

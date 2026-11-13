@@ -8,7 +8,7 @@
  ],
  "findings": [
   "48 個多行字串裡 32 個主要是 markdown 清單、7 個含程式碼圍籬、9 個是散文——多數「多行字串」其實是清單。md 本身一段也是一行，json 只在多行字串上比 md 差（〔實測〕）。",
-  "**字串陣列（一行一個元素）**：改一個詞 diff 只動那一行；blame 逐行準；兩分支改不同行 merge 自動合，同一行仍衝突。不用任何設定，GitHub 網頁、CI、Windows 都一樣有效。代價：陣列中間插一條，後面的 `#/x/N` 指標位移；尾端加一條會連帶改上一行（補逗號）（〔實測〕）。",
+  "**字串陣列（一行一個元素）**：改一個詞 diff 只動那一行；blame 逐行準；兩分支改不同行 merge 自動合，同一行仍衝突。不用任何設定，GitHub 網頁、CI、Windows 都一樣有效。代價：陣列中間插一條，後面的 `#/x/<N>` 指標位移；尾端加一條會連帶改上一行（補逗號）（〔實測〕）。",
   "**git textconv**（`.gitattributes` 指 driver、每個 clone 設一次）：`git diff`／`log -p`／`show` 展開成逐行，`git blame` 預設也吃（行號變成展開後的）。`add -p`、merge、rebase、format-patch、GitHub 網頁都不吃。沒設定的 clone 安靜退回整行 diff；設了但指令壞掉（例 Windows 的 Store 假 `python3`）`git diff` 整個 fatal。開著 textconv 產出的 patch `git apply` 套不回去（〔實測〕）。git 刻意不讀 repo 內的設定，所以「每個 clone 設一次」躲不掉。",
   "textconv 的陣列元素**不能印索引**：第一版印 `/split/10:`，插一筆後面全部改號、blame 錯歸屬；改成不印索引才對（〔實測〕）。repo-aos 的 `json_text.py` 陣列元素一律寫 `-`。",
   "**零設定退路**：`git diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]'` 英數一詞、其他每個字一單位，原始 json 也標得出只多了一個中文字；預設 `--word-diff` 以空白切詞，中文整段當一個詞，沒用（〔實測〕）。代價：仍印整行，只給人看。",

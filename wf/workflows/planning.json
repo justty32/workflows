@@ -35,5 +35,5 @@
   "詳規：開發先寫 spec 再寫 plan（位置見 `#/stages`）；動工完成後移各自的 `archive/`。",
   "執行：開發接 `wf/workflows/feature-dev.json`；非開發接 plan-a-thing 的執行段。"
  ],
- "handoff": "決定「為什麼選 A 不選 B」 → `wf/workflows/decisions.json`。卡在使用者 → `wf/WAIT_USER.md` 一行；跨 session → `wf/SESSION-LOG.md` 一行。"
+ "handoff": "定下的決定 → `wf/workflows/decisions.json`。卡在使用者 → `wf/WAIT_USER.md` 一行；跨 session → `wf/SESSION-LOG.md` 一行。"
 }

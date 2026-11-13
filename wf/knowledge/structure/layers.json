@@ -1,5 +1,5 @@
 {
- "_description": "structure 的一部分（入口 `wf/knowledge/structure.json`，各段由那裡 `$ref` 過來；引用請寫入口的統一路徑）：分層與歸屬：東西該放哪一層、skills 與 memory 怎麼分、公共／私有 index、哪些留 md。",
+ "_description": "structure 的一部分（入口 `wf/knowledge/structure.json`，各段由那裡 `$ref` 過來；引用請寫入口的統一路徑）：分層與歸屬：東西該放哪一層、skills 與 memory 怎麼分、公共／私有 index、哪些留 md、日誌寫法。",
  "layers": [
   "# 分層原則",
   "",
@@ -9,9 +9,9 @@
   "     → wf/workflows/_index.json（依意圖派發）／wf/knowledge/_index.json（查知識）",
   "     → 節點（<名稱>.json）→ 節點內的段／$ref 子檔…",
   "   ```",
-  "   往下走才找細節；下層節點**不向上連 AGENTS.md**（也讓非侵入式佈局自然成立）。想了解某個節點就看它上一層的 index；上一層沒 index＝夠小，直接讀。",
+  "   往下走才找細節；下層節點**不向上連 AGENTS.md**。想了解某個節點就看它上一層的 index；上一層沒 index＝夠小，直接讀。",
   "2. **durable 知識歸層**：每份長期知識歸到它所屬的那個工作流／那一層，**絕不往上堆**——AGENTS.md 因此永遠很薄。",
-  "3. **活狀態只列 open**：進度記 `wf/SESSION-LOG.md`、等使用者的記 `wf/WAIT_USER.md`，**完成即刪**；「改了什麼」交給 git log，「為什麼這樣選」記 `wf/knowledge/decisions.json#/records`。兩者膨脹就分別拆 `session_logs/`／`wait-user/`，hub 只留導航表。",
+  "3. **活狀態只列 open**：進度記 `wf/SESSION-LOG.md`、等使用者的記 `wf/WAIT_USER.md`，**完成即刪**；「改了什麼」交給 git log，決定記 `wf/knowledge/decisions.json#/records`；檔內只留現行結論（tidy 原則 5，判準 `wf/knowledge/content-trim.json`）。兩者膨脹就分別拆 `session_logs/`／`wait-user/`，hub 只留導航表；日誌寫法見 `wf/knowledge/structure.json#/logs`。",
   "4. **鐵律極少而 always-on**：3–5 條任何時刻都適用的規矩常駐 AGENTS.md，其餘一切按需取用。"
  ],
  "skills_vs_memory": [
@@ -24,7 +24,9 @@
   "",
   "舊檔常是「流程外殼包著一張記錄表或參考知識」：流程留在工作流節點，記錄與知識進 `knowledge/`，工作流用統一路徑指過去、不重抄。例：`wf/workflows/decisions.json` 只寫何時記、怎麼記，記錄在 `wf/knowledge/decisions.json#/records`。",
   "",
-  "planning 的 **spec／plan** 是記錄，進 `knowledge/`：放 wf/knowledge/specs/、wf/knowledge/plans/（第一份出現時才建資料夾；動工完成後移各自的 `archive/`，例 wf/knowledge/specs/archive/）。流程本身在 `wf/workflows/planning.json`。"
+  "planning 的 **spec／plan** 是記錄，進 `knowledge/`：放 wf/knowledge/specs/、wf/knowledge/plans/（第一份出現時才建資料夾；動工完成後移各自的 `archive/`，例 wf/knowledge/specs/archive/）。流程本身在 `wf/workflows/planning.json`。",
+  "",
+  "analysis 的**分析產物**也是記錄：放 wf/knowledge/analysis/<project>/（用到才建）。流程本身在 `wf/workflows/analysis.json`。"
  ],
  "index_convention": [
   "# 公共與私有 index",
@@ -42,5 +44,16 @@
   "- `wf/SESSION-LOG.md`、`wf/WAIT_USER.md`：給使用者看的活清單，格式不動。",
   "",
   "`wf/` 底下其他內容都是 json 節點。要看 json 時用 `python3 wf/tools/wf-view.py <路徑>` 印成 md。"
+ ],
+ "logs": [
+  "# 日誌寫法",
+  "",
+  "專案若記日誌（`session_logs/`，`wf/SESSION-LOG.md` 膨脹拆出來的那種），它只記「哪天做了什麼」，**不是第二份知識庫**：",
+  "",
+  "- **每日檔少寫**：`session_logs/<月>/<日期>` 每條一行「動了哪些檔／做了什麼」＋指到結論所在處。結論寫進它自己的節點，日誌只指過去；沒有別的家可放的（代定清單、當天交接）才寫在日誌裡。",
+  "- **總目錄**每天一條，寫一句「這天定下了什麼」（結論），不列做了哪些事；指到該日檔，已收月摘要的指月摘要的該日段。md 形態是 `session_logs/README.md` 的一列；json 形態是 `session_logs/_index.json` 的一條，description 就是那句結論。",
+  "- **月摘要**：月結後把該月每日檔濃縮成 `session_logs/<月>`：每天一段（json 形態一個鍵、md 形態 `## <日期>`），只留結論（別處已有就指過去）與使用者原文，判準與原文檢查照 `wf/knowledge/content-trim.json`（做法 `wf/workflows/tidy.json#/content_trim`），commit 訊息寫「內容精簡」。被指過的舊錨點／鍵在月摘要保留同名。每日原檔照 `wf/knowledge/structure.json#/archive` 封存到 `session_logs/archive/<月>/`，活文件裡指向它的路徑改指月摘要同名段。",
+  "",
+  "`wf/` 目前沒有日誌夾；第一次要開時，位置與每日檔用 json 節點還是 md 再定（`wf/SESSION-LOG.md` 本身照 `wf/knowledge/structure.json#/md_for_humans` 留 md）。"
  ]
 }

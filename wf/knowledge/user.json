@@ -8,7 +8,7 @@
   },
   {
    "item": "分支慣例",
-   "setting": "`main` 為主線；成塊的改動開 feature 分支 `feat/…`、重構開 `refactor/…`，做完併回 main。**commit 由使用者決定**，agent 不自行 commit／push"
+   "setting": "`main` 為主線；成塊的改動開 feature 分支 `feat/…`、重構開 `refactor/…`，做完併回 main。**commit 交給 agent 判斷**（使用者 2026-11-13：「git這塊隨你」）：驗證綠了、一個完整段落就 commit，訊息寫清楚；**push 仍要先問**（依鐵律 3）"
   },
   {
    "item": "直接做、不用問",
@@ -29,5 +29,7 @@
  ],
  "dispatch": "**派工**（2026-11-13）：事情盡量交給子 agent；普通工作用 opus，簡單工作與雜活用 sonnet。子 agent 動手前要大致掌握 aos 體系，掌握到什麼程度依分配的工作決定；也要先讀過 `wf/` 規矩，簡單工作與雜活除外。",
  "memory": "**記憶**（2026-11-13）：不寫 Claude Code 自動記憶；要長期記住的事記進 `wf/`，照 `wf/knowledge/structure.json` 歸到所屬那層。",
+ "pace": "**節奏**（2026-11-13，講 workflows 併入 aos 時說的）：「能愈快併入愈好，但不要因為趕工而喪失品質」。我的解讀：能平行就平行、不等不必要的確認；但每一段都要過驗證，重要的轉換要有獨立稽核。",
+ "aos_peers": "**aos 同伴**（2026-11-13）：需要 aos 改進、或想討論設計，可以直接寄 aos mail 給 repo-aos；通訊錄與這台機器的實況在 `~/aos-home/ws/public/`（唯讀，由 eca_main 保管）。",
  "glossary_hint": "領域詞彙常猜錯 → 開 wf/knowledge/glossary.json（用到才建，所以不寫成反引號路徑；領域詞彙 `詞｜意思｜別名`，寫成物件陣列；常猜錯的術語多才建），建了在 `wf/knowledge/_index.json` 加一條。"
 }

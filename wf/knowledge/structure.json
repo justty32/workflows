@@ -9,7 +9,7 @@
    "description": "分層原則：分層樹、durable 知識歸層、活狀態只列 open、鐵律極少；想知道東西該放哪一層時讀。"
   },
   "skills_vs_memory": {
-   "description": "skills 與 memory 分家：流程進 workflows/、知識與記錄進 knowledge/，判準一句話；spec／plan 的落點；拿不準一段內容歸哪棵時讀。"
+   "description": "skills 與 memory 分家：流程進 workflows/、知識與記錄進 knowledge/，判準一句話；spec／plan 與分析產物的落點；拿不準一段內容歸哪棵時讀。"
   },
   "names": {
    "description": "檔名語意：_description、_index 接手舊 README／INDEX 的角色，命名與統一路徑寫法；開新節點或寫引用時讀。"
@@ -28,6 +28,9 @@
   },
   "md_for_humans": {
    "description": "給人看的才留 md：現在留 md 的檔與理由、怎麼把 json 印成 md；想新增 md 前讀。"
+  },
+  "logs": {
+   "description": "日誌寫法：每日檔少寫、總目錄每天一句結論、月結收成月摘要並封存每日檔；要開或整理 session_logs/ 時讀。"
   },
   "growth": {
    "description": "一個工作流的四級成長軌跡（單節點 → 加 _index／$ref → 資料夾型 → 子工作流）；工作流膨脹時讀。"
@@ -71,6 +74,9 @@
  },
  "md_for_humans": {
   "$ref": "structure/layers.json#/md_for_humans"
+ },
+ "logs": {
+  "$ref": "structure/layers.json#/logs"
  },
  "growth": {
   "$ref": "structure/nodes.json#/growth"

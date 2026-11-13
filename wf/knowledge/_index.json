@@ -8,7 +8,7 @@
   "source": "kernel"
  },
  "conventions.json": {
-  "description": "寫作（md 形態）與程式碼（tools/）慣例、改 kernel／flavor 的六處同步義務、`wf/tools/` 副本要與 `tools/` 正本同步、flavor 包內連結寫法；動手改文件、腳本、`template/`、`flavors/`、`tools/` 前讀",
+  "description": "寫作（md 形態）與程式碼（tools/）慣例、改 kernel／flavor 的六處同步義務、`wf/tools/` 副本要與 `tools/` 正本同步、flavor 包內連結寫法、commit／push 誰來；動手改文件、腳本、`template/`、`flavors/`、`tools/` 前讀",
   "source": "dev"
  },
  "code-map.json": {
@@ -28,7 +28,7 @@
   "source": "kernel"
  },
  "decisions.json": {
-  "description": "決策記錄：為什麼選 A 不選 B，含未選方案與前提（新的在上）；被問「當初為什麼」或要翻案時讀",
+  "description": "決策記錄：定了什麼、來源與前提（新的在上；只記結論，舊記錄的未選方案照留）；被問「當初定的是什麼、還成立嗎」或要翻案時讀",
   "source": "kernel"
  },
  "ideas.json": {
@@ -55,6 +55,10 @@
  "structure": {
   "description": "structure.json 各段的正文子檔（layers／nodes／tidying／repo）；從 structure.json 進來，引用寫 structure.json 的統一路徑，不直接指子檔",
   "source": "project"
+ },
+ "content-trim.json": {
+  "description": "內容精簡的判準（tidy 原則 5）：留什麼刪什麼、使用者原文怎麼認怎麼留、哪些檔適用；整理時要刪檔內歷史只留結論、或寫規矩想知道該寫多少時讀",
+  "source": "kernel"
  },
  "workflow-template.json": {
   "description": "新工作流節點的骨架與各鍵填寫說明；要開新工作流時複製",

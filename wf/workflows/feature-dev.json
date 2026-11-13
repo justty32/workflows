@@ -18,6 +18,7 @@
   "",
   "- 自動驗證是 agent 自己跑的把關；跑不了的一律交使用者（見 `wf/knowledge/verification.json#/checks` 的「誰跑」（`who`）欄，流程在 `wf/workflows/testing.json`）。",
   "- 迭代期間 code map／文檔可暫時落後，**commit 前必須對齊**。",
+  "- commit 由主線 agent 判斷（驗證綠了、一個完整段落就 commit）；被派出去的子 agent 不 commit，push 先問——見 `wf/knowledge/conventions.json#/git`。",
   "- 跨 session 時在本工作流的 open 進度補一行 `[feature-dev] [功能名] 文檔 / code map 待同步`（記在 `wf/SESSION-LOG.md`），下個 session 才不會誤判已同步。"
  ],
  "grows": [

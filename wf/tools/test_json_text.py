@@ -1,4 +1,4 @@
-# 來源：/home/<user>/repo/aos/wf/tools/tests/test_json_text.py（repo-aos commit b374ac376）。本 repo 改的只有：路徑（測試與
+# 來源：aos repo 的 wf/tools/tests/test_json_text.py（repo-aos commit b374ac376）。本 repo 改的只有：路徑（測試與
 # json_text.py 同夾）、GitTests 搬到 test_json_text_git.py 並多抄一支 json_text_cli.py（都為了單檔 ≤ 8192 bytes）。
 # Verify json_text (expand JSON into line-oriented text for git textconv): shapes, escapes, bad input, --setup, and a real git diff on a throwaway repo.
 import json

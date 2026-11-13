@@ -16,7 +16,7 @@
   "source": "project"
  },
  "index_check_refs.py": {
-  "description": "index_check 的引用那半：RefBad（反引號路徑、`$ref`；字串陣列跨元素的圍籬照跳過）與忽略表；改引用規則時讀。",
+  "description": "index_check 的引用那半：RefBad（反引號路徑、反引號裡單獨的 `#/…` 同檔指標、`$ref`；字串陣列跨元素的圍籬照跳過）與忽略表；改引用規則時讀。",
   "source": "project"
  },
  "index_check.ignore": {
@@ -48,7 +48,7 @@
   "source": "project"
  },
  "test_index_check_refs.py": {
-  "description": "index_check 的單元測試續篇：RefBad（基本、第一段規則、指標跟 `$ref`）、忽略表、CLI；同上，動 `wf/tools/` 就跑。",
+  "description": "index_check 的單元測試續篇：RefBad（基本、第一段規則、指標跟 `$ref`、單獨的 `#/…` 同檔指標）、忽略表、CLI；同上，動 `wf/tools/` 就跑。",
   "source": "project"
  },
  "test_index_check_shape.py": {

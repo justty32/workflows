@@ -47,7 +47,7 @@
   {
    "domain": "json 節點檢查與檢視",
    "files": "`wf/tools/index_check.py`（CLI）、`wf/tools/index_check_tree.py`（index）、`wf/tools/index_check_refs.py`（引用）、`wf/tools/wfnode.py`、`wf/tools/wf-view.py`（CLI）、`wf/tools/wf_view_render.py`（排版）、`wf/tools/index_check.ignore`",
-   "role": "本層（`wf/`）試點專用，不是 kernel 工具、不在 repo 根 `tools/`：index_check 查 index 與統一路徑引用（index 那半在 tree、引用與忽略表在 refs，忽略表在 `.ignore`），wf-view 把 json 節點印成 md（字串陣列像拆成行的一段文字就接回去印），路徑解析（含跟 `$ref`）共用 wfnode",
+   "role": "本層（`wf/`）試點專用，不是 kernel 工具、不在 repo 根 `tools/`：index_check 查 index 與統一路徑引用（含反引號裡單獨的 `#/…` 同檔指標；index 那半在 tree、引用與忽略表在 refs，忽略表在 `.ignore`），wf-view 把 json 節點印成 md（字串陣列像拆成行的一段文字就接回去印），路徑解析（含跟 `$ref`）共用 wfnode",
    "tests": "`wf/tools/test_index_check.py`、`wf/tools/test_index_check_refs.py`、`wf/tools/test_index_check_shape.py`、`wf/tools/test_wf_view.py`、`wf/tools/test_wf_view_text.py`（`python3 -m unittest discover -s wf/tools -p 'test_*.py'`）"
   },
   {

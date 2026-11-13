@@ -83,5 +83,12 @@
   "- flavor 包（`flavors/<名>/`）內的連結**一律照合併後的路徑寫**（例：`workflows/common/conventions.md`，而不是 `../../template/...`）。在本 repo 內直接點會指不到 kernel，**這是預期行為**，不要「修好」它。",
   "- kernel 與 flavor 內部**不向上連 `AGENTS.md`**——這條讓非侵入式佈局自然成立（`AGENTS.md` 留在專案根、其餘進 `wf/`，內部連結一個都不用改）。",
   "- `wf-lint.sh --self` 是把 kernel ＋ 每個 flavor **合併後**才檢查，所以 flavor 包單獨看的 BROKEN 不算數；判準只看 `--self`。"
+ ],
+ "git": [
+  "**commit／push 誰來**（依 `wf/knowledge/user.json#/prefs` 的分支慣例；工作流尾端寫「→ commit」的都照這裡）：",
+  "",
+  "- **主線 agent**（直接跟使用者對話、負責這件事的那個）自己判斷 commit：驗證綠了、一個完整段落就 commit，訊息寫清楚。",
+  "- **被派出去的**（子 agent、tidy 的實作線／管理線、工人）**不 commit**：做完照交接書回報，由派工的人驗收；最後由主線 agent 驗收後 commit。",
+  "- **push 一律先問**（`AGENTS.md` 鐵律 3）。"
  ]
 }

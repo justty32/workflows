@@ -1,13 +1,13 @@
 {
- "_description": "記決定（為什麼選 A 不選 B）：留下「為什麼」——git log 找得回改了什麼，找不回**為什麼放棄方案 C**。記錄本身在 `wf/knowledge/decisions.json#/records`。",
- "when": "在兩個以上可行方案裡選一個，且日後可能被問「當初為什麼」；使用者說「記個決定」「為什麼選 A 不選 B」。",
+ "_description": "記決定（定了什麼、前提是什麼）：留下「定了什麼」——git log 找得回改了什麼，找不回**當時定下的規則與它成立的前提**。只記結論、前提與使用者原文；比較過的方案與 AI 寫的理由不記（`wf/knowledge/content-trim.json`），要查靠 git 歷史。記錄本身在 `wf/knowledge/decisions.json#/records`。",
+ "when": "在兩個以上可行方案裡選一個，且日後可能被問「當初定的是什麼、還成立嗎」；使用者說「記個決定」「為什麼選 A 不選 B」。",
  "not_when": "只有一條路，或隨時可回頭的小事。決策過程要結構化評估 → knowledge 包的 decide 工作流，結論再落到這裡。",
  "done_when": [
-  "`wf/knowledge/decisions.json#/records` 新增一筆，且 `rejected`（未選方案與原因）、`premise`（前提）兩欄非空。"
+  "`wf/knowledge/decisions.json#/records` 新增一筆，且 `decision`（決定）、`premise`（前提）兩欄非空。"
  ],
  "steps": [
   "在 `wf/knowledge/decisions.json#/records` 加一筆，**新的在上**（加在陣列最前）。",
-  "欄位：`date`（日期）、`decision`（決定）、`rejected`（未選方案與原因）、`premise`（前提，變了就重看）。",
+  "欄位：`date`（日期）、`decision`（決定）、`rejected`（來源：使用者原文或誰定的；鍵名沿用舊稱，舊記錄這欄寫的是未選方案與原因，照留）、`premise`（前提，變了就重看）。",
   "寫完照 `wf/knowledge/structure.json#/node_shape` 驗 json 語法，再跑 `python3 wf/tools/index_check.py wf`。",
   "細節與證據放對應的調查筆記 `wf/knowledge/notes/`（索引 `wf/knowledge/notes/_index.json`），記錄只寫結論。",
   "條目多到難讀就升級成資料夾、一決策一檔（照 `wf/knowledge/structure.json`）。"

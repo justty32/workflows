@@ -8,7 +8,7 @@
   "- **`_description`**＝節點自己的正文：資料夾是同夾的 `_description.json`（整檔一個 JSON 字串，或一個字串陣列，見 `wf/knowledge/structure.json#/node_shape`），json 物件是它的 `_description` 鍵。初入先讀它。",
   "- **`_index`**＝上一層對下一層的一句話：資料夾是 `_index.json`（整份是表 `{\"名字\": {\"description\": \"…\"}}`，列出夾裡每一個檔與子夾，`_index.json` 自己除外、`_description.json` 也列，子夾不帶尾斜線），json 物件是 `_index` 鍵。description 寫繁中「是什麼＋何時讀」，**維持一句字串**（aos 的 `index_view` 還不認陣列形）；工作流的 index 還要含觸發說法（使用者會怎麼說）。指到的節點自己有 index 時加 `\"index\": \"相對路徑\"`（從這份 index 所在的夾算）。",
   "- 其餘名字只用 `[a-z0-9_-]`（檔名加 `.json`），**檔名即其意義**；`_` 開頭保留給 `_index`、`_description`。",
-  "- 引用別的節點一律寫從 repo 根算的**統一路徑**，放反引號：`wf/knowledge/conventions.json`、`wf/knowledge/decisions.json#/records`（`#/` 後是 JSON Pointer）；指 repo 內非 json 檔也寫 repo 根相對路徑（`tools/wf-lint.sh`）。json 裡不寫 md 連結。"
+  "- 引用別的節點一律寫從 repo 根算的**統一路徑**，放反引號：`wf/knowledge/conventions.json`、`wf/knowledge/decisions.json#/records`（`#/` 後是 JSON Pointer）；同一個檔裡的段可以只寫 `#/<鍵>`；指 repo 內非 json 檔也寫 repo 根相對路徑（`tools/wf-lint.sh`）。`wf/tools/index_check.py` 都會驗走不走得到，含 `<` `>` `*` `…` `{` 的樣式字串與程式碼圍籬內不驗。json 裡不寫 md 連結。"
  ],
  "node_shape": [
   "# 節點怎麼寫",
@@ -25,19 +25,19 @@
  "workflow_form": [
   "# 工作流的統一形式",
   "",
-  "- **節點固定鍵**照 `wf/knowledge/workflow-template.json`：`_description`／`when`／`not_when`／`done_when`／`steps`／`handoff`，其餘專屬段自取英文鍵名。",
+  "- **節點固定鍵**照 `wf/knowledge/workflow-template.json`：`_description`／`when`／`not_when`／`done_when`／`steps`／`handoff`，其餘專屬段自取英文鍵名。既有工作流節點下次動到時再補齊，不為了補而改。",
   "- **`done_when` 是字串陣列，每條只准三類可觀察條件**：檔案存在、指令回傳、表格（物件陣列）填滿（✗「功能做好」這種不可觀察的）。",
-  "- 工作流節點只放流程；記錄表與參考知識放 `wf/knowledge/`，用統一路徑指過去。有哪些工作流看 `wf/workflows/_index.json`。"
+  "- 工作流節點只放流程；記錄表與參考知識放 `wf/knowledge/`，用統一路徑指過去。單節點撐大了照 `wf/knowledge/structure.json#/growth` 四級成長升級。有哪些工作流看 `wf/workflows/_index.json`。"
  ],
  "growth": [
   "# 一個工作流的成長軌跡（四級）",
   "",
   "工作流**按需要逐步長出來**，每升一級都是「膨脹即拆」的套用：",
   "",
-  "1. **單節點**：`wf/workflows/<名稱>.json` 一檔，**檔名即其意義**（如 `testing.json`），流程各段都是這個物件的鍵。最輕量，多數工作流停在這。",
+  "1. **單節點**：`wf/workflows/<名稱>.json` 一檔，**檔名即其意義**（如 `testing.json`），流程各段都是這個物件的鍵。多數工作流停在這。",
   "2. **單節點＋`_index`／`$ref`**：過了 `wf/knowledge/structure.json#/split` 的門檻 → 檔內加 `_index`，或把大段拆進同名資料夾 `<名稱>/` 的子檔、原位放 `$ref`；`<名稱>.json` 仍一肩扛入口。",
   "3. **資料夾型**：再膨脹 → `<名稱>/` 收各司其職的子檔（內容、模板…），資料夾正文放 `<名稱>/_description.json`，東西多才補 `_index.json`；`<名稱>.json` 退回只做入口。本工作流專屬的踩坑與記錄照 `wf/knowledge/structure.json#/skills_vs_memory` 放 `wf/knowledge/`（例 `wf/knowledge/gotchas.json` 該工作流那段），open 進度記 `wf/SESSION-LOG.md`（`[名稱]` 開頭）。",
-  "4. **資料夾內有子工作流**：大到內部得再開巢狀工作流，各子工作流自己又從第 1 級開始長。",
+  "4. **資料夾內有子工作流**：內部再開巢狀工作流，各子工作流自己又從第 1 級開始長。",
   "",
   "走到哪一級由「是否膨脹／雜亂」決定，不預先過度設計。**降級也成立**：子項消失就往回併級。"
  ]

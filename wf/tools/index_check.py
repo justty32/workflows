@@ -21,7 +21,8 @@
   IndexWanted    （warning）夾內超過 15 個東西沒有 `_index.json`；json 檔超過 8000 bytes 或頂層內容鍵超過 10 個沒有 `_index`。
   RefBad         字串值裡反引號包著的 repo 路徑（`#` 前含 `/`、不以 ./ ../ 開頭、副檔名 json|md|py|sh|tsv|csv|yml，可帶 `#/指標`）指不到；
                  含 `< > * … {` 的不驗、``` 圍籬裡的不驗（字串陣列跨元素的圍籬也算）；第一段不是 repo 根底下實際存在的項目（外部 repo、
-                 合併後的路徑、範例）也不驗。`{"$ref": …}` 指不到也是 RefBad。忽略表登記的不報。
+                 合併後的路徑、範例）也不驗。反引號裡單獨的 `#/指標` 驗同一個檔裡走不走得到（跟 `$ref`；樣式字元同上不驗）。
+                `{"$ref": …}` 指不到也是 RefBad。忽略表登記的不報。
   IgnoreUnused   （warning）忽略表的某行沒壓到任何 RefBad（只算 PATH 範圍內的檔）。
 程式分三支：本檔（CLI）、index_check_tree.py（走樹與 index）、index_check_refs.py（引用與忽略表）。
 路徑算法見 wfnode.py（`..` 走出 json 根＝回到檔所在的夾、`#/` 開頭＝本檔的根）。

@@ -1,5 +1,5 @@
 {
- "_description": "decisions — 決策記錄（為什麼選 A 不選 B）。留下「為什麼」：git log 找得回改了什麼，找不回**為什麼放棄方案 C**。新的在上。",
+ "_description": "decisions — 決策記錄（定了什麼、前提是什麼）。留下「定了什麼」：git log 找得回改了什麼，找不回**當時定下的規則與它成立的前提**。只記結論、來源與前提，比較過的方案與 AI 寫的理由不記，要查靠 git 歷史。欄位：`decision`（決定）、`rejected`（來源：使用者原文或誰定的；鍵名沿用舊稱，舊記錄這欄寫的是未選方案與原因，照留）、`premise`（前提，變了就重看）。新的在上；怎麼記見 `wf/workflows/decisions.json`。",
  "records": [
   {
    "date": "2026-11-13",

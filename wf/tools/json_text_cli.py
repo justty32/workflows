@@ -1,6 +1,6 @@
 """json_text_cli — json_text.py 的 HELP 與 --setup 那段（git、interpreter、setup），從上游原樣搬出來，只多了參數。
 
-來源：/home/<user>/repo/aos/wf/tools/json_text.py（repo-aos commit b374ac376）。拆出來只為了本 repo 單檔 ≤ 8192 bytes；
+來源：aos repo 的 wf/tools/json_text.py（repo-aos commit b374ac376）。拆出來只為了本 repo 單檔 ≤ 8192 bytes；
 差別：setup() 多收 script（json_text.py 的絕對路徑，原本用 __file__）、write、fail（原本是同檔的函式）。
 """
 import os

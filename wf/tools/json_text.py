@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 來源：/home/<user>/repo/aos/wf/tools/json_text.py（repo-aos commit b374ac376）。為守本 repo 單檔 ≤ 8192 bytes，
+# 來源：aos repo 的 wf/tools/json_text.py（repo-aos commit b374ac376）。為守本 repo 單檔 ≤ 8192 bytes，
 # HELP 與 --setup 那段（git／interpreter／setup）原樣搬到 json_text_cli.py，其餘未改；改行為先改上游再同步。
 """json_text — 把一份 json 展開成給人看、給 git 逐行比的文字（git textconv 用；純標準庫、自足，可整支抄到別的 repo）。
 

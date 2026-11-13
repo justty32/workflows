@@ -36,7 +36,7 @@
   "source": "kernel"
  },
  "decisions.json": {
-  "description": "記決定（kernel）：何時記、怎麼記進 wf/knowledge/decisions.json；使用者說「記個決定」「為什麼選 A 不選 B」時讀。",
+  "description": "記決定（kernel）：何時記、怎麼記進 wf/knowledge/decisions.json（只記結論、來源與前提）；使用者說「記個決定」「為什麼選 A 不選 B」時讀。",
   "source": "kernel"
  },
  "gotchas.json": {
@@ -48,11 +48,11 @@
   "source": "kernel"
  },
  "tidy.json": {
-  "description": "文件整理（kernel）：盤點 → 交接書 → 派工 → 核驗跑一輪；使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」時讀。",
+  "description": "文件整理（kernel）：盤點 → 交接書 → 派工 → 核驗跑一輪，含內容精簡（檔內只留現行結論）；使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」時讀。",
   "source": "kernel"
  },
  "tidy": {
-  "description": "tidy.json 的子檔（principles 四條原則）；從 tidy.json 進來，引用寫 tidy.json 的統一路徑。",
+  "description": "tidy.json 的子檔（principles 五條原則、content-trim 內容精簡的做法）；從 tidy.json 進來，引用寫 tidy.json 的統一路徑。",
   "source": "kernel"
  },
  "tidy-manager-brief.json": {

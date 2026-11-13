@@ -9,7 +9,7 @@
  "steps": [
   "先跑驗證指令記下基準；紅的先修掉，別和重構混在一起。",
   "照 `wf/knowledge/structure.json` 按職責拆／分類，不等分硬切。",
-  "一次搬一塊，搬完就跑驗證。",
+  "一次搬一塊，搬完就跑驗證；綠了、一塊完整就 commit（誰 commit、push 先問，見 `wf/knowledge/conventions.json#/git`）。",
   "更新 code map 與所有指向舊路徑的連結。"
  ],
  "parts": "搬檔／改目錄名／拆 repo：六類會斷的東西與驗證程序 → `wf/workflows/moving-things.json`。",
