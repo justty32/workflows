@@ -1,0 +1,13 @@
+{
+ "_description": "功能開發／修 bug：改變行為的工作，加一個功能、修一個 bug，從動手到 commit。碰原始碼前先讀 `wf/knowledge/conventions.json` 與 `wf/knowledge/code-map.json`。",
+ "when": "使用者說「我想開發／修改某個功能」「這裡壞了，修一下」——**修 bug 也走這條**，產出一樣是「行為改變＋驗證綠燈」。",
+ "not_when": "只是要查清楚原因、還不動碼 → `wf/workflows/investigation.json`；行為不變、只重排結構 → `wf/workflows/refactor.json`；還在討論要不要做、方案長怎樣 → `wf/workflows/planning.json`。",
+ "done_when": [
+  "`wf/knowledge/verification.json#/checks` 標「改完必跑」的驗證指令回傳 0。",
+  "`wf/knowledge/code-map.json#/domains` 中該領域的列已更新（新增／刪除的檔、職責變動、測試位置）。",
+  "要使用者實機驗證的在 `wf/WAIT_USER.md` 有一行；跨 session 沒收尾的在 `wf/SESSION-LOG.md` 有一行。"
+ ],
+ "steps": "```\n讀 code map 找到相關領域（只讀清單裡的檔）\n  → 增量修改（守 conventions）\n  → 跑 testing 的自動驗證，綠燈\n  → 要實機／實環境的交使用者驗證 → 回報問題 → 修 → 重複\n  → 全數通過後：更新 code map → 補文檔 → commit\n```\n\n- 自動驗證是 agent 自己跑的把關；跑不了的一律交使用者（見 `wf/knowledge/verification.json#/checks` 的「誰跑」（`who`）欄，流程在 `wf/workflows/testing.json`）。\n- 迭代期間 code map／文檔可暫時落後，**commit 前必須對齊**。\n- 跨 session 時在本工作流的 open 進度補一行 `[feature-dev] [功能名] 文檔 / code map 待同步`（記在 `wf/SESSION-LOG.md`），下個 session 才不會誤判已同步。",
+ "grows": "長出來才建：\n\n- 已落地功能目錄（功能在哪、實作細節指標）→ `wf/knowledge/` 底下新開一個節點（例 `landed.json`）。\n- 本工作流專屬踩坑 → `wf/knowledge/gotchas.json` 加 feature-dev 一段（共通的在共通段）。\n- 本工作流 open 進度 → hub 在 `wf/SESSION-LOG.md`。\n- 過時節點封存 → 規則見 `wf/knowledge/structure.json#/archive`。",
+ "handoff": "- 驗證怎麼跑 → `wf/workflows/testing.json`；改到一半發現該先整理結構 → `wf/workflows/refactor.json`。\n- 為什麼選這個做法 → `wf/workflows/decisions.json`；卡在使用者 → `wf/WAIT_USER.md`。"
+}

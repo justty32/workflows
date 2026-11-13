@@ -1,0 +1,1 @@
+"structure 的子檔：`wf/knowledge/structure.json` 各段的正文按語意分成四份（layers 分層與歸屬、nodes 節點寫法、tidying 整理規則、repo 佈局與試點）。從入口讀，引用寫入口的統一路徑（例 `wf/knowledge/structure.json#/split`），不要直接指子檔。"

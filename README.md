@@ -70,7 +70,7 @@ tools/wf-init.sh --target <你的專案根> --flavor dev,heartbeat [--skills <a,
 
 也可以讓 agent 代勞：把本 repo 路徑給它，說「照 [IMPORT.md](IMPORT.md) 用 dev flavor 幫我的專案建立工作流」。
 
-**本 repo 自己也用這套**：非侵入式導入在 [`wf/`](wf/INDEX.md)，調查筆記與決策記錄都在那裡。
+**本 repo 自己也用這套**：非侵入式導入在 `wf/`（入口 [wf/_index.json](wf/_index.json)），調查筆記與決策記錄都在那裡。
 
 ## template/ 與 tools/ 的內容
 

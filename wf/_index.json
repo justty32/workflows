@@ -1,0 +1,23 @@
+{
+ "_description.json": {
+  "description": "wf 是什麼、怎麼從這裡往下走（做事、查知識、看結構、看進度各去哪）；第一次進 wf/ 時讀。"
+ },
+ "SESSION-LOG.md": {
+  "description": "我的 open 進度（只列 open、完成即刪；給使用者看的活清單，留 md）；開場 grep 非 0、接手工作或開始多步驟工作前讀。"
+ },
+ "WAIT_USER.md": {
+  "description": "等使用者親自做／驗證／決定的事（只列 open、做完即刪；留 md）；開場 grep 非 0，或有事要交給使用者時讀。"
+ },
+ "workflows": {
+  "description": "做事的流程（skills）：一個工作流一個 json 節點，index 取代舊派發表、含觸發說法；使用者要你動手做事時從這裡選工作流。",
+  "index": "workflows/_index.json"
+ },
+ "knowledge": {
+  "description": "純知識與記錄（memory）：使用者偏好、慣例、code map、決策、踩坑、想法、驗證表、環境、組織原則、調查筆記；要查事實或往裡記錄時讀。",
+  "index": "knowledge/_index.json"
+ },
+ "tools": {
+  "description": "本層自帶的工具：kernel 工具副本（wf-lint.sh、tabledb.py、find_big_lists.py、fix_moved_links.py 等）與試點新增的 wf-view.py（json 印成 md）、index_check.py（index 與統一路徑檢查）、wfnode.py 與測試；改完 wf/ 要檢查或要讀寫資料檔時用。",
+  "index": "tools/_index.json"
+ }
+}

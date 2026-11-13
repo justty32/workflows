@@ -1,0 +1,50 @@
+{
+ "_description": "structure 的一部分（入口 `wf/knowledge/structure.json`，各段由那裡 `$ref` 過來；引用請寫入口的統一路徑）：repo 佈局與試點註記：repo 根各目錄是什麼、wf/ 試點形態。",
+ "repo_layout": [
+  {
+   "path": "template/",
+   "content": "共用 kernel：整包被複製到目標專案的骨架（逐檔清單見 `docs/kernel-contents.md`）"
+  },
+  {
+   "path": "flavors/",
+   "content": "七個領域包（dev / knowledge / teaching / research / ops / heartbeat / multi-agent），各含 `workflows/` 與貼入片段"
+  },
+  {
+   "path": "tools/（repo 根）",
+   "content": "導入與檢查腳本：`wf-init.sh`、`wf-lint.sh`、資料檔與搬檔工具；職責逐支列在 `wf/knowledge/code-map.json`"
+  },
+  {
+   "path": "examples/",
+   "content": "kernel ＋ flavor 的合併成品（generated，CI 會檢查）"
+  },
+  {
+   "path": "docs/",
+   "content": "本 repo 自己的文件（`docs/README.md`）"
+  },
+  {
+   "path": "skills/",
+   "content": "vendor 進來的 agent skill（受 8 KB 契約）；`skills/external/` 是 git submodule 掛的上游原樣資產，不受 8 KB 契約、`wf-init` 不複製"
+  },
+  {
+   "path": "wf/",
+   "content": "**本 repo 自己導入的工作流**（非侵入式佈局；入口 `wf/_index.json`）"
+  },
+  {
+   "path": "wf/workflows/",
+   "content": "工作流（派發見 `wf/workflows/_index.json`）"
+  },
+  {
+   "path": "wf/knowledge/",
+   "content": "知識與記錄（index 見 `wf/knowledge/_index.json`）"
+  },
+  {
+   "path": ".claude/commands/",
+   "content": "slash 指令適配層（可選）。Claude Code 只讀專案根的這層，非侵入式佈局也留在根；沒有 slash 機制的工具忽略本目錄，直接跑 `wf/tools/wf-lint.sh`"
+  },
+  {
+   "path": "wf/tools/",
+   "content": "本層自帶的 kernel 工具副本：`wf-lint.sh`（檢查）、`tabledb.py`（資料檔 CRUD／連結）、`find_big_lists.py`、`fix_moved_links.py`；資料檔契約見 `wf/knowledge/data-files.json`。試點新增 `wf-view.py`（json 印成 md）、`index_check.py`（index 與統一路徑檢查）；逐支用途見 `wf/tools/_index.json`"
+  }
+ ],
+ "pilot": "# 試點形態\n\n本檔描述的是 **2026-11-13 起** `wf/` 的試點形態（index＋json；使用者 2026-11-13 裁定先在本 repo 的 `wf/` 試點）。`template/` 仍是舊形態（md＋`wf-table/1`），所以 `template/STRUCTURE.md` 與本檔不同是**預期的**，不要拿一邊去改另一邊。`flavors/`、`examples/`、repo 根 `tools/`、`docs/` 也不在試點範圍。"
+}

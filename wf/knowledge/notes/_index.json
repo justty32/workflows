@@ -1,0 +1,32 @@
+{
+ "dashi-ppt-skill.json": {
+  "description": "2026-09-02 **不 vendor，掛 submodule** `skills/external/`：AGPL 撞 CC0、素材禁散布、60 MB／426 檔大量超標"
+ },
+ "effective-html.json": {
+  "description": "2026-09-02 **收進 `skills/`**：MIT 相容、零執行期相依、17 檔 51 KB、分層路由與本 repo 同向"
+ },
+ "i-have-adhd.json": {
+  "description": "2026-09-02 **不 vendor，重寫**：把回覆風格規則用自己的話寫成 kernel 的 `reply-style.md`"
+ },
+ "mattpocock-skills.json": {
+  "description": "2026-09-02 **借哲學不借檔**：吸收 context pointer／completion criterion 等寫法原則，不 vendor 檔案"
+ },
+ "composable-units.json": {
+  "description": "2026-09-02 **補「中插契約」**進 STRUCTURE／TEMPLATE.workflow，把既有中插實踐寫明；狀態：待做"
+ },
+ "archify.json": {
+  "description": "2026-09-02 **不 vendor，掛 submodule** `skills/external/`：MIT 但是 Node 程式庫，最小子集 55 檔就 29 檔超標"
+ },
+ "kami.json": {
+  "description": "2026-09-02 **不 vendor，掛 submodule** `skills/external/`：排版產品太重，vendor 不了"
+ },
+ "caveman.json": {
+  "description": "2026-09-02 **不 vendor**：5 條電報體規則併進 kernel `reply-style.md`"
+ },
+ "stop-slop.json": {
+  "description": "2026-09-02 **不 vendor**：7 條去 AI 味規則併進 knowledge flavor 的 `writing.md`"
+ },
+ "wf-to-aos-mapping.md": {
+  "description": "2026-11-13 **事實底稿，無推薦**：wf 各機制對 aos 的對應與落差、逐檔分流程／知識、json 化分型、已裁 17 條、待決 14 題；68 KB 單體超標保留"
+ }
+}

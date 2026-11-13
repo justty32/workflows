@@ -1,0 +1,27 @@
+{
+ "_description": "調查／解讀外部系統／可行性：只讀不改，查清楚「這怎麼運作／可不可行」，產出一篇可歸檔的筆記。筆記放 `wf/knowledge/notes/`，索引在 `wf/knowledge/notes/_index.json`。",
+ "when": "看懂外部系統或別人的碼、評估可行性、查 bug 成因、評估某個外部 repo 值不值得吸收；使用者說「查清楚這是怎麼運作的」「這樣做可不可行」。",
+ "not_when": "已知道怎麼改 → `wf/workflows/feature-dev.json`；只搬結構 → `wf/workflows/refactor.json`；初次接觸陌生專案、要建立可延續的分析產物 → `wf/workflows/analysis.json`。",
+ "done_when": [
+  "`wf/knowledge/notes/<主題>.json` 存在，且 `#/note_template` 的五段非空；單篇不超過 `wf/knowledge/structure.json#/split` 的檔案門檻（超了照它拆）。",
+  "`wf/knowledge/notes/_index.json` 有對應條目（description 寫主題、日期、一句結論）。",
+  "結論是「要動手」→ `wf/knowledge/ideas.json#/ideas` 有接手列。"
+ ],
+ "steps": [
+  "**收集事實**：只讀不改，一條一則，附出處。",
+  "**對照現有能力**：這件事現在能不能做、靠什麼做。",
+  "**分類**：可直接做／有缺口／不值得做／需使用者驗證。",
+  "**產出 finding**：照 `#/note_template` 寫成 `wf/knowledge/notes/<主題>.json`；缺口進 `wf/workflows/planning.json`，踩到的坑進 `wf/workflows/gotchas.json`，需使用者驗證的進 `wf/WAIT_USER.md`。",
+  "**登記**：在 `wf/knowledge/notes/_index.json` 加一條。"
+ ],
+ "rule": "**不把未驗證的猜測寫成結論**——不確定就寫「缺什麼證據」，不要補完。",
+ "note_template": {
+  "question": "**問題**：要回答什麼，一句話。",
+  "method": "**方法**：讀了哪些檔、跑了什麼指令。",
+  "findings": "**發現**：一條一則事實，附出處。",
+  "conclusion": "**結論**：直接回答問題；不確定就寫缺什麼。",
+  "sources": "**來源**：檔案路徑＋行號、指令輸出、連結（外部 repo 標 URL 與評估日期）。"
+ },
+ "contents": "- `wf/knowledge/notes/`：一主題一篇的調查筆記；索引見 `wf/knowledge/notes/_index.json`。\n- `archive/`（長出來才建）：過時筆記封存（見 `wf/knowledge/structure.json#/archive`）。",
+ "handoff": "要動手 → `wf/workflows/feature-dev.json`；同一坑第二次 → `wf/workflows/gotchas.json`；為什麼這樣選 → `wf/workflows/decisions.json`。"
+}

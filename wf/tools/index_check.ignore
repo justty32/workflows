@@ -1,0 +1,7 @@
+# index_check.py 的 RefBad 忽略表：一行「節點位置<TAB>被引用的字串」，位置從 repo 根算（`檔.json#/指標`，只寫檔＝整檔）。
+# 只登記「第一段剛好撞到本 repo 的夾名、其實在講外部 repo」的個案；本 repo 內的壞引用要修，不要登記。
+# 每筆上面一行寫原因。登記了卻沒壓到東西的，index_check 會報 IgnoreUnused（warning），該刪就刪。
+
+# 上游 caveman repo 的 skills/caveman/SKILL.md（本 repo 的 skills/ 沒有 vendor caveman，見 wf/knowledge/decisions.json）
+wf/knowledge/notes/caveman.json#/method	skills/caveman/SKILL.md
+wf/knowledge/notes/caveman.json#/findings/1	skills/caveman/SKILL.md

@@ -1,0 +1,14 @@
+{
+ "_description": "記使用者偏好與確認邊界：agent 不用重猜的事。偏好本身在 `wf/knowledge/user.json`。",
+ "when": "使用者說「我的偏好是…」「以後直接做／先問」，或改了語言、分支慣例、確認邊界、回覆風格、派工與記憶方式。",
+ "not_when": "always-on 鐵律在 `AGENTS.md`——這裡是**這位使用者**的偏好，改了改 `wf/knowledge/user.json`，不改鐵律。",
+ "done_when": [
+  "`wf/knowledge/user.json` 的對應項目已改成新設定，或新增了一項。"
+ ],
+ "steps": [
+  "讀 `wf/knowledge/user.json`，找到對應的項目（語言、分支慣例、直接做不用問、一定先問、回覆風格、時區、派工與記憶）。",
+  "改那一項，或新增一項；不動 `AGENTS.md` 的鐵律。",
+  "領域詞彙常猜錯 → 開 wf/knowledge/glossary.json（領域詞彙 `詞｜意思｜別名`，寫成物件陣列；常猜錯的術語多才建）。"
+ ],
+ "handoff": "記完回到原本的工作。"
+}

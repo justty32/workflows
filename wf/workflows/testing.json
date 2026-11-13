@@ -1,0 +1,18 @@
+{
+ "_description": "跑測試／驗證：改完怎麼確認沒壞——有哪些驗證、各自的指令、哪些 agent 自己跑得了、哪些得交給使用者。驗證表、測試分類與「綠燈不等於有檢查」在 `wf/knowledge/verification.json`。",
+ "when": "改完程式要驗、使用者說「跑測試／驗證」「這樣改有沒有壞」、重構前要記基準。",
+ "not_when": "環境還沒裝好、不知道指令哪來 → `wf/workflows/dev-env.json`；驗證紅了要查成因 → `wf/workflows/investigation.json`。",
+ "done_when": [
+  "`wf/knowledge/verification.json#/checks` 標「改完必跑」的列指令回傳 0。",
+  "改到 `wf/` 時 `python3 wf/tools/index_check.py wf` 回傳 0。",
+  "「誰跑」是使用者的列，已在 `wf/WAIT_USER.md` 各留一行（寫明跑什麼、什麼算過）。"
+ ],
+ "steps": [
+  "從 `wf/knowledge/verification.json#/checks`（驗證表）與 `wf/knowledge/verification.json#/categories`（測試分類）挑這次要跑的：標「改完必跑」的一定跑；動到 `tools/` 跑 `fast`；改 `template/` 或 `flavors/` 跑 `contract`；commit 前跑 `full`。改到 `wf/` 跑 `python3 wf/tools/index_check.py wf`（取代舊的 `bash wf/tools/wf-lint.sh --strict wf`）；動到 `wf/tools/` 再跑 `python3 -m unittest discover -s wf/tools -p 'test_*.py'`。",
+  "「誰跑」只有兩種值（`wf/knowledge/verification.json#/who_values`）：**agent**（本機跑得動）自己跑到回傳 0；**使用者 → WAIT_USER**（要實機、外部服務、帳號、付費、目視）記進 `wf/WAIT_USER.md`。判不準就當後者。",
+  "**CI 只跑 `contract`**，`fast` 沒有 CI 兜底：動 `tools/` 後必須本機跑過（`wf/knowledge/verification.json#/ci_note`；跨機差異見 `wf/knowledge/dev-env.json#/machines`）。",
+  "新增或修改一道檢查時，要證明它能變紅：先餵應該被擋的輸入確認 exit ≠ 0，再餵正確的輸入確認 exit = 0（規則與推論見 `wf/knowledge/verification.json#/green_is_not_checked`）。",
+  "靜態全過不等於畫面上是對的：方框、亂碼、截斷、手感這類記到 `wf/WAIT_USER.md`，不要自己宣稱通過。"
+ ],
+ "handoff": "- 綠燈後回 `wf/workflows/feature-dev.json` 接完剩下的步驟（code map → 文檔 → commit）。\n- 同一個紅燈第二次撞到 → `wf/workflows/gotchas.json`（記進 `wf/knowledge/gotchas.json`）。"
+}

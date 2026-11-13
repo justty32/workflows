@@ -1,0 +1,68 @@
+{
+ "_description": "dev-env — 開發環境、指令、外部工具。這台機器上要能開發需要什麼、怎麼裝、跑什麼指令；外部工具設定與 env var 也收在這裡。",
+ "fresh_clone": [
+  "`git clone` 後**不需要裝任何依賴**——本 repo 只用 bash ＋ python 標準庫（見 `wf/knowledge/conventions.json` 的相依規矩）。",
+  "確認 `bash --version` 與 `python --version`（3.x）都跑得動；Windows 上 bash 走 **Git Bash 或 WSL**，不要用 cmd/PowerShell 直接跑 `.sh`。",
+  "要跑測試才需要 `pytest`（`python -m pip install pytest`）；只改 md、只跑 lint 的話不用。",
+  "冒煙：`bash tools/wf-lint.sh --self`，回傳 0 表示環境沒問題。"
+ ],
+ "commands": [
+  {
+   "task": "安裝依賴",
+   "command": "無",
+   "note": "只用 bash／coreutils／python 標準庫；要跑測試才另裝 `pytest`"
+  },
+  {
+   "task": "build",
+   "command": "無",
+   "note": "本 repo 沒有 build 步驟，md ＋ 腳本即成品"
+  },
+  {
+   "task": "試導入（等同「跑起來」）",
+   "command": "`bash tools/wf-init.sh --target <暫存目錄> --flavor dev`",
+   "note": "**一定導到暫存目錄**，不要導到 repo 自己以外的地方；本 repo 自己那份已導在 `wf/`"
+  },
+  {
+   "task": "lint / 檢查",
+   "command": "`bash tools/wf-lint.sh --self`",
+   "note": "模板端合併後檢查；本層自己的用 `python3 wf/tools/index_check.py wf`"
+  }
+ ],
+ "commands_note": "驗證與測試指令不列這裡——連同「誰跑」一起在 `wf/workflows/testing.json`。",
+ "machines": [
+  {
+   "env": "Windows ＋ Git Bash / WSL（主力機）",
+   "can_run": "全部",
+   "cannot": "—"
+  },
+  {
+   "env": "GitHub Actions（ubuntu-latest）",
+   "can_run": "只跑 `bash tools/wf-lint.sh --self`（見 `.github/workflows/wf-lint.yml`）",
+   "cannot": "**CI 目前不跑 pytest**——`tools/test_*.py` 只有本機跑得到，動 `tools/` 後要自己在本機跑過；`wf/` 的 `python3 wf/tools/index_check.py wf` 與 `wf/tools/` 的單元測試也一樣只在本機"
+  }
+ ],
+ "offline_note": "全程離線可跑：沒有任何步驟需要連外。",
+ "tools": [
+  {
+   "name": "`bash`",
+   "purpose": "跑 `tools/*.sh`",
+   "how": "Windows 裝 Git for Windows（Git Bash）或 WSL；Linux／macOS 內建"
+  },
+  {
+   "name": "`python` 3",
+   "purpose": "跑 `tools/*.py` 與測試",
+   "how": "系統 python3 即可，未鎖定最低版本（只用標準庫）"
+  },
+  {
+   "name": "`pytest`",
+   "purpose": "跑 `tools/test_*.py`",
+   "how": "`python -m pip install pytest`；只有要動 `tools/` 才需要"
+  },
+  {
+   "name": "env var",
+   "purpose": "無",
+   "how": "本 repo 不讀任何環境變數，也沒有金鑰"
+  }
+ ],
+ "tools_note": "需要帳號、付費、授權才能取得的：守鐵律 3（授權來源），並在 `wf/WAIT_USER.md` 記一行。"
+}

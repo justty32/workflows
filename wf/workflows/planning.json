@@ -1,0 +1,39 @@
+{
+ "_description": "想法成熟管線（idea → roadmap → 詳規 → 執行）：從萌芽到動工的四階段收在**同一條管線**，不拆成四個工作流——免得卡在「這算 idea 還是 roadmap」。想法表與 roadmap 表在 `wf/knowledge/ideas.json`。",
+ "when": "使用者說「記個想法」「以後要做」「排進 roadmap」「幫我規劃」；或「討論方案」「寫動工計畫」（spec／plan，kernel 管線的後兩段）。",
+ "not_when": "三兩步的小事直接做；已有 spec／plan 且在動工 → 執行工作流（開發：`wf/workflows/feature-dev.json`）；只是要調查清楚 → `wf/workflows/investigation.json`（dev 包）。",
+ "done_when": [
+  "idea／roadmap：`wf/knowledge/ideas.json` 對應的表（`wf/knowledge/ideas.json#/ideas` 或 `wf/knowledge/ideas.json#/roadmap`）多一筆，或既有那筆的狀態欄更新。",
+  "詳規：spec 有「方案／取捨」段、plan 有「步驟／驗證」段；動工完成後移各自的 `archive/`（wf/knowledge/specs/archive/、wf/knowledge/plans/archive/）。"
+ ],
+ "stages": [
+  {
+   "stage": "idea",
+   "question": "要不要做？",
+   "where": "`wf/knowledge/ideas.json#/ideas`（想法表）"
+  },
+  {
+   "stage": "roadmap",
+   "question": "會做，何時？",
+   "where": "`wf/knowledge/ideas.json#/roadmap`（roadmap 表）"
+  },
+  {
+   "stage": "詳規",
+   "question": "怎麼做？",
+   "where": "開發：**spec**（方案）→ **plan**（動工前詳規），各一檔放 wf/knowledge/specs/、wf/knowledge/plans/（記錄進 knowledge，見 `wf/knowledge/structure.json#/skills_vs_memory`；第一份出現時才建資料夾）。非開發：接 plan-a-thing（knowledge 包）"
+  },
+  {
+   "stage": "執行",
+   "question": "—",
+   "where": "開發：feature-dev；非開發：plan-a-thing 的執行段"
+  }
+ ],
+ "steps": [
+  "照 `#/stages` 判斷這件事在哪一階段（回答的是哪個問題）。",
+  "idea：在 `wf/knowledge/ideas.json#/ideas` 加一筆（`idea` 想法、`summary` 一句話、`status` 狀態）。狀態只有：想想／會做→搬 roadmap／不做＋原因。",
+  "roadmap：狀態變「會做」就搬進 `wf/knowledge/ideas.json#/roadmap`，寫何時／順序與前提。",
+  "詳規：開發先寫 spec 再寫 plan（位置見 `#/stages`）；動工完成後移各自的 `archive/`。",
+  "執行：開發接 `wf/workflows/feature-dev.json`；非開發接 plan-a-thing 的執行段。"
+ ],
+ "handoff": "決定「為什麼選 A 不選 B」 → `wf/workflows/decisions.json`。卡在使用者 → `wf/WAIT_USER.md` 一行；跨 session → `wf/SESSION-LOG.md` 一行。"
+}

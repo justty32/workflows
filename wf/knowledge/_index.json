@@ -1,0 +1,48 @@
+{
+ "_description.json": {
+  "description": "本夾是什麼的說明：放 memory（純知識與記錄），流程在 `wf/workflows/`；第一次進本夾時讀"
+ },
+ "user.json": {
+  "description": "使用者偏好與確認邊界：語言、分支慣例、哪些直接做／一定先問、回覆風格、時區、派工與記憶規矩；不確定該不該問使用者、要怎麼回覆、怎麼派工時讀"
+ },
+ "conventions.json": {
+  "description": "寫作（md）與程式碼（tools/）慣例、改 kernel／flavor 的六處同步義務、flavor 包內連結寫法；動手改文件、腳本、`template/`、`flavors/` 前讀"
+ },
+ "code-map.json": {
+  "description": "程式碼導航：領域表（哪個檔負責什麼、測試在哪）、真相層優先序、維護鏈；碰 `tools/` 原始碼前讀，改完要回來更新"
+ },
+ "data-files.json": {
+  "description": "資料檔契約 `wf-table/1`：檔案格式、連結規則、md 端留什麼、`tabledb.py` 工具契約、lint 如何對待資料檔；抽 >1 KB 條列成資料檔或讀寫資料檔時讀"
+ },
+ "data-files-fmt.json": {
+  "description": "json 內路徑代號 `$fmt`（`wf-table/1` 附錄）：寫法、變數與算法、工具行為、與 aos 的對應；資料檔裡要寫跨兩層以上的路徑時讀"
+ },
+ "gotchas.json": {
+  "description": "共通踩坑（目前無）與 tidy 的坑（封存搬檔、拆檔與資料檔、派線與工人、執行環境）；整理、拆檔、派工遇到怪事，或要記新坑（第二次撞到才記）時讀"
+ },
+ "decisions.json": {
+  "description": "決策記錄：為什麼選 A 不選 B，含未選方案與前提（新的在上）；被問「當初為什麼」或要翻案時讀"
+ },
+ "ideas.json": {
+  "description": "planning 的想法表（要不要做）與 roadmap 表（會做，何時）；使用者說「記個想法」「以後要做」「排進 roadmap」，或要看有哪些想法時讀"
+ },
+ "verification.json": {
+  "description": "驗證表（指令與誰跑）、測試分類（fast／contract／wf／full／external）、「綠燈不等於有檢查」；改完要驗、跑測試、新增檢查時讀"
+ },
+ "dev-env.json": {
+  "description": "開發環境事實：fresh clone 步驟、指令表、跨機／離線差異、外部工具與 env var；換機器、裝不起來、忘了指令時讀"
+ },
+ "notes": {
+  "description": "調查筆記：九篇外部 skill／想法的評估（問題、方法、發現、結論、來源）加一份 wf 轉 aos 的對照底稿；要查某個外部 skill 為何收或不收、或做新調查前看有無舊筆記時讀",
+  "index": "notes/_index.json"
+ },
+ "structure.json": {
+  "description": "本 repo 文件的組織原則（入口；各段 `$ref` 到 structure/ 子檔）：分層、skills 與 memory 分家、膨脹即拆門檻、index 慣例、archive 規則；要整理結構或不知道東西該放哪時讀"
+ },
+ "structure": {
+  "description": "structure.json 各段的正文子檔（layers／nodes／tidying／repo）；從 structure.json 進來，引用寫 structure.json 的統一路徑，不直接指子檔"
+ },
+ "workflow-template.json": {
+  "description": "新工作流節點的骨架與各鍵填寫說明；要開新工作流時複製"
+ }
+}

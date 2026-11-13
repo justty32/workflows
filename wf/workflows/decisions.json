@@ -1,0 +1,15 @@
+{
+ "_description": "記決定（為什麼選 A 不選 B）：留下「為什麼」——git log 找得回改了什麼，找不回**為什麼放棄方案 C**。記錄本身在 `wf/knowledge/decisions.json#/records`。",
+ "when": "在兩個以上可行方案裡選一個，且日後可能被問「當初為什麼」；使用者說「記個決定」「為什麼選 A 不選 B」。",
+ "not_when": "只有一條路，或隨時可回頭的小事。決策過程要結構化評估 → knowledge 包的 decide 工作流，結論再落到這裡。",
+ "done_when": [
+  "`wf/knowledge/decisions.json#/records` 新增一筆，且 `rejected`（未選方案與原因）、`premise`（前提）兩欄非空。"
+ ],
+ "steps": [
+  "在 `wf/knowledge/decisions.json#/records` 加一筆，**新的在上**（加在陣列最前）。",
+  "欄位：`date`（日期）、`decision`（決定）、`rejected`（未選方案與原因）、`premise`（前提，變了就重看）。",
+  "細節與證據放對應的調查筆記 `wf/knowledge/notes/`（索引 `wf/knowledge/notes/_index.json`），記錄只寫結論。",
+  "條目多到難讀就升級成資料夾、一決策一檔（照 `wf/knowledge/structure.json`）。"
+ ],
+ "handoff": "記完回到觸發它的工作流繼續；前提變了 → 回頭重看那一筆。"
+}

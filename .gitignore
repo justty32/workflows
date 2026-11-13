@@ -3,3 +3,4 @@ __pycache__/
 
 # agent 用的臨時 git worktree（wf/ 本身要版控，不要 ignore）
 .claude/worktrees/
+wf/_index.local.json

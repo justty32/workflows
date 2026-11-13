@@ -1,0 +1,14 @@
+{
+ "_description": "記／查踩坑：不專屬任一工作流的坑與各工作流專屬的坑都記在 `wf/knowledge/gotchas.json`（分段）；本節點只管什麼時候記、記哪段。",
+ "when": "使用者說「記／查踩坑」；同一個坑**第二次撞到**、或使用者說「上次也是這樣」；動手整理文件前要先讀整理的坑。",
+ "not_when": "一次性的意外不記。",
+ "done_when": [
+  "`wf/knowledge/gotchas.json` 對應那段多一筆（共通坑記共通段，工作流專屬的記該工作流那段）。"
+ ],
+ "steps": [
+  "查：讀 `wf/knowledge/gotchas.json`，先看共通段 `wf/knowledge/gotchas.json#/common`，再看手上工作流那段（例：整理與拆檔的坑在 `tidy_` 開頭的幾段，動手整理前先讀一遍）。",
+  "**記錄門檻**：第二次撞到、或使用者說「上次也是這樣」才記；一次性的意外不記。",
+  "哪類坑記哪裡：共通坑 → `wf/knowledge/gotchas.json#/common`；工作流專屬的坑 → 該工作流那段（長出來後在 `wf/knowledge/gotchas.json` 的 index 加一條導流）。"
+ ],
+ "handoff": "記完回到撞坑的那個工作流繼續。"
+}

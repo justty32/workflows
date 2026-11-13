@@ -1,0 +1,47 @@
+{
+ "_description.json": {
+  "description": "派發通則：可以跳流程的四條件、analysis 與 investigation 怎麼分、活狀態記哪裡、都不符時去哪、新開工作流怎麼做；選不出工作流或想跳流程時讀。"
+ },
+ "feature-dev.json": {
+  "description": "功能開發／修 bug（dev）：改變行為、從動手到 commit；使用者說「開發／修改某個功能」「修 bug」「這裡壞了，修一下」時讀。"
+ },
+ "testing.json": {
+  "description": "跑測試／驗證（dev）：挑哪些驗證、誰跑、交使用者的怎麼記；使用者說「跑測試／驗證」「這樣改有沒有壞」、改完要驗或重構前記基準時讀。"
+ },
+ "refactor.json": {
+  "description": "重構（dev）：只改結構、不改行為的流程；使用者說「重構／拆檔／整理結構」（行為不變）或結構門檻超標時讀。"
+ },
+ "moving-things.json": {
+  "description": "refactor 的搬移專章（dev）：六類會斷的東西與驗證程序；使用者說「搬檔案／改目錄名／拆 repo」時讀。"
+ },
+ "analysis.json": {
+  "description": "陌生專案分析（dev）：建立可延續的架構與能力分析產物；使用者說「這個陌生專案是怎麼運作的」「幫我分析這個 repo」時讀。"
+ },
+ "investigation.json": {
+  "description": "調查／可行性（dev）：只讀不改、回答一個窄問題、產出一篇筆記；使用者說「查清楚這是怎麼運作的」「這樣做可不可行」或要查 bug 成因時讀。"
+ },
+ "dev-env.json": {
+  "description": "開發環境（dev）：fresh clone 流程、指令與外部工具去哪查；使用者說「環境怎麼裝」「fresh clone 後要做什麼」「指令是什麼」時讀。"
+ },
+ "planning.json": {
+  "description": "想法成熟管線（idea → roadmap → 詳規 → 執行）：使用者說「記個想法」「以後要做」「排進 roadmap」「幫我規劃」，或「討論方案」「寫動工計畫」（spec／plan）時讀。"
+ },
+ "decisions.json": {
+  "description": "記決定（kernel）：何時記、怎麼記進 wf/knowledge/decisions.json；使用者說「記個決定」「為什麼選 A 不選 B」時讀。"
+ },
+ "gotchas.json": {
+  "description": "記／查踩坑（kernel）：第二次撞到才記、記哪一段；使用者說「記／查踩坑」「上次也是這樣」時讀。"
+ },
+ "user.json": {
+  "description": "記使用者偏好（kernel）：改 wf/knowledge/user.json、不改鐵律；使用者說「我的偏好是…」「以後直接做／先問」時讀。"
+ },
+ "tidy.json": {
+  "description": "文件整理（kernel）：盤點 → 交接書 → 派工 → 核驗跑一輪；使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」時讀。"
+ },
+ "tidy": {
+  "description": "tidy.json 的子檔（principles 四條原則）；從 tidy.json 進來，引用寫 tidy.json 的統一路徑。"
+ },
+ "tidy-manager-brief.json": {
+  "description": "tidy 的管理線簡報：管理線怎麼切批、派工人、自己驗收與回報；tidy 調度者要派管理線時，連同交接書一起交給它。"
+ }
+}
