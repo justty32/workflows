@@ -1,7 +1,7 @@
 {
  "_description.json": {
   "description": "派發通則：可以跳流程的四條件、analysis 與 investigation 怎麼分、活狀態記哪裡、都不符時去哪、新開工作流怎麼做；選不出工作流或想跳流程時讀。",
-  "source": "project"
+  "source": "kernel"
  },
  "feature-dev.json": {
   "description": "功能開發／修 bug（dev）：改變行為、從動手到 commit；使用者說「開發／修改某個功能」「修 bug」「這裡壞了，修一下」時讀。",

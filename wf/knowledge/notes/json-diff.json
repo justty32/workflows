@@ -20,7 +20,7 @@
  "conclusion": [
   "今天採用（2026-11-13）：",
   "",
-  "1. **一段文字可寫字串或字串陣列，多行的推薦陣列**（清單一條一個元素；散文、圍籬就把原文一行一個元素拆開，讀時用換行接回去）；index 的 description 維持一句字串。`wf/` 現有 49 個含換行的字串已全部轉成陣列，內容一字不改。寫法見 `wf/knowledge/structure.json#/node_shape`。",
+  "1. **一段文字可寫字串或字串陣列，多行的推薦陣列**（清單一條一個元素；散文、圍籬就把原文一行一個元素拆開，讀時用換行接回去）；index 的 description 維持一句字串。`wf/` 當時含換行的字串已全部轉成陣列（第二次稽核核對 50 個：42 個逐字照搬，8 個在同一輪另有內容修改）。寫法見 `wf/knowledge/structure.json#/node_shape`。",
   "2. **textconv 用 repo-aos 的 `json_text.py`**（抄成 `wf/tools/json_text.py`），`.gitattributes` 對 `wf/**/*.json` 開，每個 clone 跑一次 `python3 wf/tools/json_text.py --setup`，選用；注意事項（patch 用 `--no-textconv`、blame 行號、Windows 的 `python3`）在 `wf/knowledge/dev-env.json#/json_diff`。",
   "3. **零設定退路**：`git diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]'`。",
   "4. **不做** merge driver（等真的常衝突再拿原型出來）、**不換格式**（YAML／JSON5／TOML、正文放 .md 都不做）。",

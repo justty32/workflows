@@ -49,19 +49,19 @@
   "source": "project"
  },
  "structure.json": {
-  "description": "`wf/`（試點形態）的組織原則（入口；各段 `$ref` 到 structure/ 子檔）：分層、skills 與 memory 分家、節點寫法（字串／字串陣列）、膨脹即拆門檻、index 慣例、archive 規則；要整理 `wf/` 的結構或不知道東西該放哪時讀（`template/`、`docs/` 等 md 形態照 `template/STRUCTURE.md`）",
-  "source": "project"
+  "description": "`wf/`（試點形態）的組織原則（入口；各段 `$ref` 到 structure/ 子檔）：分層、skills 與 memory 分家、節點寫法（字串／字串陣列）、膨脹即拆門檻、index 慣例、archive 規則；要整理 `wf/` 的結構或不知道東西該放哪時讀（md 形態的範圍——`template/`、`docs/` 等——原則照 `template/STRUCTURE.md`，tidy 用的門檻看 `wf/knowledge/structure.json#/data_files`）（試點改寫版；上游是模板的 `template/STRUCTURE.md`）",
+  "source": "kernel"
  },
  "structure": {
-  "description": "structure.json 各段的正文子檔（layers／nodes／tidying／repo）；從 structure.json 進來，引用寫 structure.json 的統一路徑，不直接指子檔",
-  "source": "project"
+  "description": "structure.json 各段的正文子檔（layers／nodes／tidying／repo）；從 structure.json 進來，引用寫 structure.json 的統一路徑，不直接指子檔（試點改寫版；上游是模板的 `template/STRUCTURE.md`）",
+  "source": "kernel"
  },
  "content-trim.json": {
   "description": "內容精簡的判準（tidy 原則 5）：留什麼刪什麼、使用者原文怎麼認怎麼留、哪些檔適用；整理時要刪檔內歷史只留結論、或寫規矩想知道該寫多少時讀",
   "source": "kernel"
  },
  "workflow-template.json": {
-  "description": "新工作流節點的骨架與各鍵填寫說明；要開新工作流時複製",
-  "source": "project"
+  "description": "新工作流節點的骨架與各鍵填寫說明；要開新工作流時複製（試點改寫版；上游是模板的 `template/workflows/TEMPLATE.workflow.md`）",
+  "source": "kernel"
  }
 }

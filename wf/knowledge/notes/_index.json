@@ -1,4 +1,7 @@
 {
+ "_description.json": {
+  "description": "本夾是什麼的說明：調查筆記（外部 skill／想法的評估與本 repo 自己的調查），逐篇看本夾 `_index.json`；第一次進本夾時讀。"
+ },
  "dashi-ppt-skill.json": {
   "description": "2026-09-02 **不 vendor，掛 submodule** `skills/external/`：AGPL 撞 CC0、素材禁散布、60 MB／426 檔大量超標；要不要收 dashi-ppt-skill、或評估同類 AGPL／大素材的 skill 時讀",
   "title": "dashi-ppt-skill",

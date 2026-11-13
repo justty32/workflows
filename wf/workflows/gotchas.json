@@ -8,7 +8,7 @@
  "steps": [
   "查：讀 `wf/knowledge/gotchas.json`，先看共通段 `wf/knowledge/gotchas.json#/common`，再看手上工作流那段（例：整理與拆檔的坑在 `tidy_` 開頭的幾段，動手整理前先讀一遍）。",
   "**記錄門檻**：第二次撞到、或使用者說「上次也是這樣」才記；一次性的意外不記。",
-  "哪類坑記哪裡：共通坑 → `wf/knowledge/gotchas.json#/common`；工作流專屬的坑 → 該工作流那段（長出來後在 `wf/knowledge/gotchas.json` 的 index 加一條導流）。"
+  "哪類坑記哪裡：共通坑 → `wf/knowledge/gotchas.json#/common`；工作流專屬的坑 → 該工作流那段（長出來成自己的坑記錄後，在 `wf/knowledge/gotchas.json` 的 `_description` 加一句導流指過去）。"
  ],
  "handoff": "記完回到撞坑的那個工作流繼續。"
 }

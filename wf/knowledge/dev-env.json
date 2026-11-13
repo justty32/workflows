@@ -42,13 +42,13 @@
  "machines": [
   {
    "env": "Windows ＋ Git Bash / WSL（主力機）",
-   "can_run": "全部",
-   "cannot": "—"
+   "can_run": "全部（2026-11-13 實況：WSL 這台沒有 `python` 指令、沒裝 pytest，`fast` 還跑不了，見 `wf/SESSION-LOG.md` 的 [testing] 條）",
+   "cannot_then": "WSL 上指令用 `python3`；要跑 `fast` 得先裝 pytest，安裝依賴要先問使用者（已記 `wf/WAIT_USER.md`）"
   },
   {
    "env": "GitHub Actions（ubuntu-latest）",
    "can_run": "只跑 `bash tools/wf-lint.sh --self`（見 `.github/workflows/wf-lint.yml`）",
-   "cannot": "**CI 目前不跑 pytest**——`tools/test_*.py` 只有本機跑得到，動 `tools/` 後要自己在本機跑過；`wf/` 的 `python3 wf/tools/index_check.py wf` 與 `wf/tools/` 的單元測試也一樣只在本機"
+   "cannot_then": "**CI 目前不跑 pytest**——`tools/test_*.py` 只有本機跑得到，動 `tools/` 後要自己在本機跑過；`wf/` 的 `python3 wf/tools/index_check.py wf` 與 `wf/tools/` 的單元測試也一樣只在本機"
   }
  ],
  "offline_note": "全程離線可跑：沒有任何步驟需要連外。",

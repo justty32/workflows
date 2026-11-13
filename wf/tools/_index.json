@@ -1,4 +1,8 @@
 {
+ "_description.json": {
+  "description": "本夾是什麼的說明：本層自帶的工具（kernel 工具副本與試點新增的節點工具），逐支用途看本夾 `_index.json`；第一次進本夾時讀。",
+  "source": "project"
+ },
  "wf-view.py": {
   "description": "試點新增：把 json 節點／資料夾印成人讀的 markdown（`--tree` 遞迴、`--follow` 展開 `$ref`、`--overlay` 疊私有 index）的命令列入口，排版在 `wf_view_render.py`；要給人看某個節點或整棵樹時用。",
   "source": "project"
@@ -64,7 +68,7 @@
   "source": "project"
  },
  "wf-lint.sh": {
-  "description": "kernel 工具副本（與 `tools/` 正本逐位元相同，改正本再同步，見 `wf/knowledge/conventions.json#/copies`）：md 形態的檢查（壞連結、超標檔、條列、殘留）；對 json 形態的 `wf/` 已改用 index_check，這支可選、預設不跑，見 `wf/knowledge/verification.json#/checks`。",
+  "description": "kernel 工具副本（與 `tools/` 正本逐位元相同，改正本再同步，見 `wf/knowledge/conventions.json#/copies`）：md 形態的檢查（壞連結、超標檔、條列、殘留）；json 形態的 `wf/` 改用 index_check，這支只用來查 `wf/` 留下的 md 與 `.claude/commands/` 的連結，見 `wf/knowledge/verification.json#/checks`。",
   "source": "kernel"
  },
  "wf-lint-checks.sh": {

@@ -10,4 +10,4 @@
 
 ## 待使用者項
 
-（目前無）
+- [testing] 請使用者決定要不要在 WSL 裝 pytest（`python3 -m pip install pytest`；這台沒有 `python` 指令）→ 裝好我跑 `python3 -m pytest tools -q`，綠了刪 SESSION-LOG 的 [testing] 條

@@ -17,6 +17,11 @@
    "who": "agent"
   },
   {
+   "check": "留在 `wf/` 的 md（`wf/SESSION-LOG.md`、`wf/WAIT_USER.md`）與 `.claude/commands/*.md` 的連結（改了這幾份就跑；`index_check` 不讀 md、`--self` 不掃這幾份，看 `TOTAL broken=0`，不是 0 就是沒做完；非 strict，SESSION-LOG 的 BIGLIST 只是 warning）",
+   "command": "`bash wf/tools/wf-lint.sh wf .claude/commands`",
+   "who": "agent"
+  },
+  {
    "check": "`wf/tools/` 單元測試（動到 `wf/tools/` 就跑）",
    "command": "`python3 -m unittest discover -s wf/tools -p 'test_*.py'`",
    "who": "agent"

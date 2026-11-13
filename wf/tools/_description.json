@@ -1,0 +1,1 @@
+"tools — 本層自帶的工具：kernel 工具副本（`wf-lint.sh`、`tabledb.py`、`find_big_lists.py`、`fix_moved_links.py` 等，要與 `tools/` 正本逐位元相同，見 `wf/knowledge/conventions.json#/copies`）與試點新增的 `wf-view.py`、`index_check.py`、`wfnode.py`、`json_text.py` 及其測試。逐支用途與 `source` 看 `wf/tools/_index.json`。"
