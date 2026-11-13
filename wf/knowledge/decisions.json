@@ -2,6 +2,42 @@
  "_description": "decisions — 決策記錄（為什麼選 A 不選 B）。留下「為什麼」：git log 找得回改了什麼，找不回**為什麼放棄方案 C**。新的在上。",
  "records": [
   {
+   "date": "2026-11-13",
+   "decision": "**`wf/` 試點改成「index 組織的 json 節點、流程與知識分家」**（`wf/workflows/` 放流程、`wf/knowledge/` 放知識與記錄），`template/` 暫不動",
+   "rejected": "先把 `wf/` 升到 v0.6 再轉（升完還是要轉，白工）；直接改模板（形狀還沒試過）",
+   "premise": "試點形狀穩定後回寫模板 v0.7"
+  },
+  {
+   "date": "2026-11-13",
+   "decision": "**工作流本體也轉 json**，固定鍵 `when`／`not_when`／`done_when`／`steps`／`handoff`",
+   "rejected": "只有記錄與知識轉 json、流程散文留 md（diff 好讀，但 when／done_when 不能當欄位用）",
+   "premise": "長文字的 diff 靠字串陣列＋textconv 夠用"
+  },
+  {
+   "date": "2026-11-13",
+   "decision": "**路由線三層（`wf/`、`wf/workflows/`、`wf/knowledge/`）不管幾項都建 index**，更深的照「超過 15 項」門檻",
+   "rejected": "全部照 15 項門檻（派發表會消失）",
+   "premise": "派發靠 `wf/workflows/_index.json`"
+  },
+  {
+   "date": "2026-11-13",
+   "decision": "**專案知識放 repo 內 `wf/knowledge/`**",
+   "rejected": "`~/aos-home/knowledge` 開 subject、`ws/public`（都不進 git、agent 不能直接寫）",
+   "premise": "知識要跟 repo 走、要進 git"
+  },
+  {
+   "date": "2026-11-13",
+   "decision": "**一段文字可寫字串或字串陣列，多行推薦陣列**；index 的 description 維持一句字串",
+   "rejected": "正文放旁邊的 .md（`$ref` 指不到）、換 YAML 等格式、自訂 merge driver（每個 clone 要設定）",
+   "premise": "aos 的 `index_view` 認陣列形說明後可放寬"
+  },
+  {
+   "date": "2026-11-13",
+   "decision": "**git 行尾釘 LF**（`.gitattributes`）",
+   "rejected": "各機自設 `core.autocrlf`（WSL 沒設就整檔變動、`.sh` 跑不動）",
+   "premise": "Windows 端工具都吃 LF"
+  },
+  {
    "date": "2026-09-02",
    "decision": "**本 repo 自己用非侵入式導入**：dev flavor 裝進 `wf/`，頂層只留 `AGENTS.md`／`CLAUDE.md`／`.claude/`",
    "rejected": "標準佈局＝kernel 攤在根目錄，會跟 `template/`／`flavors/`／`tools/` 撞名撞視線，模板 repo 尤其不能這樣",

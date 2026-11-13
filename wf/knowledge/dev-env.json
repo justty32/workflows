@@ -4,6 +4,7 @@
   "`git clone` 後**不需要裝任何依賴**——本 repo 只用 bash ＋ python 標準庫（見 `wf/knowledge/conventions.json` 的相依規矩）。",
   "確認 `bash --version` 與 `python --version`（3.x）都跑得動；Windows 上 bash 走 **Git Bash 或 WSL**，不要用 cmd/PowerShell 直接跑 `.sh`。",
   "要跑測試才需要 `pytest`（`python -m pip install pytest`）；只改 md、只跑 lint 的話不用。",
+  "（選用）每個 clone 跑一次 `python3 wf/tools/json_text.py --setup`：讓 `git diff`／`git log -p` 把 `wf/` 的 json 展開成逐行文字（只寫本 clone 的 `.git/config`；`--setup --check` 只看不改）。沒跑的 clone 行為照舊（整行比），注意事項見 `#/json_diff`。",
   "冒煙：`bash tools/wf-lint.sh --self`，回傳 0 表示環境沒問題。"
  ],
  "commands": [
@@ -28,7 +29,16 @@
    "note": "模板端合併後檢查；本層自己的用 `python3 wf/tools/index_check.py wf`"
   }
  ],
- "commands_note": "驗證與測試指令不列這裡——連同「誰跑」一起在 `wf/workflows/testing.json`。",
+ "commands_note": "驗證與測試指令不列這裡——連同「誰跑」一起在 `wf/knowledge/verification.json#/checks`（流程 `wf/workflows/testing.json`）。",
+ "json_diff": [
+  "設了 `json_text` textconv（`.gitattributes` 的 `wf/**/*.json diff=json_text`）之後要知道三件事：",
+  "",
+  "- **做 patch 要 `git diff --no-textconv`**：textconv 展開後的 diff 是給人看的，`git apply` 套不回去；`git format-patch`、`git add -p`、merge、rebase 本來就照原檔。",
+  "- **`git blame` 預設也吃 textconv**：行號是展開後的、不是檔案行號；要原檔行號加 `--no-textconv`。",
+  "- **Windows 上 `python3` 可能是 Microsoft Store 的假指令**：textconv 指令跑不動時 `git diff` 會整個 `fatal: unable to read files to diff`。`--setup` 會先試 `python3` 再試 `python`，挑跑得動的那個寫進設定；換機器或改 Python 後重跑一次 `--setup`。",
+  "",
+  "零設定的退路（沒跑 `--setup`、或在別台機器）：`git diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]'`——英數一詞、其他每個字一單位，中文長行也標得出只改了哪個字（預設的 `--word-diff` 以空白切詞，對中文沒用）。"
+ ],
  "machines": [
   {
    "env": "Windows ＋ Git Bash / WSL（主力機）",

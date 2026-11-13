@@ -11,12 +11,12 @@
 
 ## 最新進度
 
-- [planning] 把 `wf/` 轉入 aos 體系：事實底稿已寫（[wf-to-aos-mapping.md](knowledge/notes/wf-to-aos-mapping.md)），規劃已提給使用者、等他裁方向 → 裁完先在本 repo 的 `wf/` 試點，`template/` 不動
+- [planning] `wf/` 轉入 aos：試點已完成第 1 階段（index 組織的 json 節點、流程與知識分家；要點見 [knowledge/notes/wf-to-aos.json](knowledge/notes/wf-to-aos.json)）→ 下一步：用一陣子收集踩坑；私有 index（`wf/_index.local.json`）實際用起來；之後回寫 `template/`（v0.7）與 aos flavor
+- [refactor] 試點留下待決的小項：`wf-insert` 插入標記消失後 flavor 片段怎麼併；tidy 原則 5（content-trim）`wf/` 沒跟上；tidy 的坑還寫 md 時代的做法；「agent 不自行 commit」與 feature-dev 流程尾端「→ commit」寫法不一致；`analysis/<project>/` 沒說相對哪裡；`index_check` 不驗單獨的 `#/…` 局部指標 → 逐項裁或順手修
 - [planning] 可組合單元方案（中插契約進 `STRUCTURE.md`／`TEMPLATE.workflow.md`、`skills/` 定位、抽 `commit.md`）已定案但**未實作** → 方案全文見 [knowledge/notes/composable-units.json](knowledge/notes/composable-units.json)
 - [refactor] 精簡稽核已裁示待做：heartbeat README 的 Windows `TZ` 踩坑段下沉到 `workflows/`；`team-model.md` 升成正規 `team-model/README.md`（所有連結跟著改）；其餘 11 項「要人決定」仍待裁 → 稽核報告在 2026-09-02 的 session scratchpad，明天先重跑一次稽核再動
 - [feature-dev] `wf-lint.sh` 加 `--exclude a,b`／`.wf-lint-ignore`，讓 `--strict .` 對本 repo 跑時跳過 `template`、`flavors`、`examples`、`skills`；做法見 v0.6 CHANGELOG 未完成項 → 之後 CI 加一步對 `wf/` 跑 lint
-- [testing] `python -m pytest tools` 在 Windows 直接跑紅 23 條：subprocess 的 `bash` 解析到 WSL bash 且 checkout 是 CRLF；在 LF 正規化副本＋WSL 下 53 全綠 → 修法：`.gitattributes` 把 `*.sh` 釘 LF，或測試改用 Git Bash 路徑
-- [investigation] 9 篇筆記已寫；之後若有新 repo 一併走 investigation → 索引在 [knowledge/notes/_index.json](knowledge/notes/_index.json)
+- [testing] `.gitattributes` 已把行尾釘成 LF（2026-11-13），WSL 上 lint 跑得動；但 `python -m pytest tools` 還沒重驗：WSL 這台沒裝 pytest、Windows 端沒重跑 → 裝 pytest 要先問使用者；裝好後兩邊各跑一次，綠了就刪這條
 
 ## 各工作流 session-log
 

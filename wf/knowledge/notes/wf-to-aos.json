@@ -1,0 +1,37 @@
+{
+ "_description": "wf 轉入 aos 體系：對照調查的要點與 2026-11-13 定下的方向。",
+ "question": "`wf/` 這套分層工作流有哪些部分能用 aos 的機制取代、哪些要留、轉進去之後該長什麼樣。",
+ "method": [
+  "讀 aos 知識庫（`~/aos-home/knowledge/aos/`、`docs/01`、`docs/02`）、這台 daemon 的共用庫（`~/aos-home/ws/public/`）、`template/` 與七個 flavor 全部檔案。",
+  "讀 repo-aos 的既有研究（`~/repo/aos/proto8/thinking/2026-11/12/wf-to-aos.md` 與同名夾、`13/main-session-in-aos.md`、`13/index-build.md`），並以 aos mail 向 repo-aos 查證。",
+  "看兩個已導入 wf 又在 aos 樹裡的實例：ops-notes（手寫 index、路由線全建）、aos repo（`index_gen.py` 生成、照 15 門檻）。",
+  "完整底稿（68 KB，逐機制對照表、逐檔分類、已裁 17 條、矛盾 20 處、待決 14 題）不留在工作樹，在 git 歷史：`git show add7744:wf/knowledge/notes/wf-to-aos-mapping.md`。"
+ ],
+ "findings": [
+  "**能對上的**：導航層（INDEX／README／派發表）對 `_index.json`＋`_description`＋`index_view`；資料檔的增刪改查對 `json_*` 工具；multi-agent 包的 inbox 對 mailbox（六個 STATUS 與信件格式幾乎相同，限同一棵樹）；heartbeat 對 `clock_register`／`on_clock` hook。",
+  "**對不上的**：SESSION-LOG／WAIT_USER（eca 不掛 todo／goal，且 todo 存在 stack、不進 git、別人看不到）；always-on 鐵律（`CLAUDE.md`→`AGENTS.md` 由 CLI 依檔名載入，aos 的 hook 看不到 CLI 自己的工具）；結構檢查（壞連結、超標）；給人點的導航頁；進 git 的歷史。",
+  "**`_index.json` 只是普通檔案**：不在 aos 裡的 agent 也讀得到，`index_view` 只是比較方便的讀法。真正綁 aos 的只有信件與定時器。",
+  "**aos 的 index 規則**：夾內超過 15 個東西才補 `_index.json`；json 檔超過 8000 bytes 或頂層內容鍵超過 10 個才補 `_index`；條目是物件形 `{\"description\": …}`，可帶 `index` 路徑與任意額外鍵；`index_view` 可把一份私有 index 疊在天然位置那份上，同名項以疊上去的為準。",
+  "**模板內容的組成**：逐檔分類後純流程 24 檔、純知識 17 檔、混合 27 檔（多半是流程外殼包著一張記錄表或知識表）。",
+  "**知識庫的位置**：`~/aos-home/knowledge` 與 `ws/public` 都不在 git、agent 不能直接寫，不適合放專案知識；aos 的多庫規則是「另開一個資料夾、把路徑告訴 agent 即可」。",
+  "**tabledb 的連結查驗、`$fmt` 展開、csv** 在 aos 的 json 工具裡沒有對應。",
+  "**已導入的下游**：ops-notes、model_entry、gpt-soap（codex）、aos repo 自己的 wf。"
+ ],
+ "conclusion": [
+  "使用者 2026-11-13 定的方向（逐條理由在 `wf/knowledge/decisions.json#/records`）：",
+  "",
+  "1. 先在本 repo 的 `wf/` 試點，`template/` 暫不動；形狀穩定後回寫模板（v0.7）。",
+  "2. `wf/` 是「結構化的 memory／skills」：流程進 `wf/workflows/`、知識與記錄進 `wf/knowledge/`，用 `_index.json` 組織；路由線三層一律建 index。",
+  "3. 內容全面走 json，工作流本體也轉；給人看的才留 md。",
+  "4. index 分公共（進 git、天然位置）與私有（wf/_index.local.json，gitignore、用到才建）。",
+  "5. lint 次要、排最後；`wf/` 的結構檢查用 `wf/tools/index_check.py`。",
+  "",
+  "還沒做的：回寫模板（kernel 與 flavor 出廠公共 index、專案的列寫在疊加 index 以便 kernel 整檔覆蓋、新增 aos flavor 收 mailbox 與 on_clock）；`wf-table/1`／tabledb 的去留；下游四個導入的遷移；`wf-insert` 插入標記消失後 flavor 片段怎麼併進 index。"
+ ],
+ "sources": [
+  "`git show add7744:wf/knowledge/notes/wf-to-aos-mapping.md`（完整底稿，每個斷言附出處）",
+  "`~/aos-home/knowledge/docs/01-樹長怎樣與多庫.md`、`02-寫入與節點怎麼寫.md`",
+  "`~/repo/aos/proto8/thinking/2026-11/12/wf-to-aos.md`、`13/main-session-in-aos.md`、`13/index-build.md`、`13/裁定落地-1113.md`",
+  "repo-aos 的 aos mail 回信（2026-11-13）"
+ ]
+}

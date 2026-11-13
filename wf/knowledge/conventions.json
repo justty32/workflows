@@ -1,6 +1,10 @@
 {
- "_description": "conventions — 本 repo 的寫作與同步慣例",
- "intro": "碰原始碼（`tools/*.sh`、`tools/*.py`）與碰模板內容（`template/`、`flavors/`、`examples/`、`docs/`）的工作流共用這套規矩：**動手時要遵守什麼**。哪個檔負責什麼、測試在哪 → `wf/knowledge/code-map.json`；真相層優先序也在 `wf/knowledge/code-map.json`。結構整理原則 → `wf/knowledge/structure.json`。",
+ "_description": "conventions — 本 repo 的寫作與同步慣例。`#/md` 那張表只管 md 形態（`template/`、`flavors/`、`examples/`、`skills/`、`docs/`、根層 md）；`wf/` 的 json 節點照 `wf/knowledge/structure.json`。",
+ "intro": [
+  "碰原始碼（`tools/*.sh`、`tools/*.py`）與碰模板內容（`template/`、`flavors/`、`examples/`、`docs/`）的工作流共用這套規矩：**動手時要遵守什麼**。哪個檔負責什麼、測試在哪 → `wf/knowledge/code-map.json`；真相層優先序也在 `wf/knowledge/code-map.json`。結構整理原則 → `wf/knowledge/structure.json`。",
+  "",
+  "**適用範圍**：`#/md` 的文件規矩（≤ 8192 bytes、連結一律相對路徑、`README`／`INDEX`、kebab-case、搬 md 後用 `fix_moved_links`）只管 **md 形態**——`template/`、`flavors/`、`examples/`、`skills/`、`docs/`、根層 `README.md`／`IMPORT.md`／`CHANGELOG.md` 等；`wf/` 的 json 節點（檔名、統一路徑、大小門檻、`_description`／`_index`）照 `wf/knowledge/structure.json`，兩邊不同是預期的。"
+ ],
  "md": [
   {
    "item": "語言",
@@ -69,5 +73,15 @@
   "`examples/` 受影響就一起更新（它是合併成品，會被 CI 檢查）。",
   "分類是 kernel-owned 還是 project-owned → 見 `IMPORT.md` 附表；分類改了要同步該表。"
  ],
- "flavor_links": "- flavor 包（`flavors/<名>/`）內的連結**一律照合併後的路徑寫**（例：`workflows/common/conventions.md`，而不是 `../../template/...`）。在本 repo 內直接點會指不到 kernel，**這是預期行為**，不要「修好」它。\n- kernel 與 flavor 內部**不向上連 `AGENTS.md`**——這條讓非侵入式佈局自然成立（`AGENTS.md` 留在專案根、其餘進 `wf/`，內部連結一個都不用改）。\n- `wf-lint.sh --self` 是把 kernel ＋ 每個 flavor **合併後**才檢查，所以 flavor 包單獨看的 BROKEN 不算數；判準只看 `--self`。"
+ "copies": [
+  "**`wf/tools/` 的 kernel 工具副本要與 `tools/` 正本逐位元相同**：`wf-lint.sh`、`wf-lint-checks.sh`、`check_anchors.py`、`find_big_lists.py`、`fix_moved_links*.py`、`tabledb*.py`、`fmt-vars.json`（`wf/tools/_index.json` 裡 `source` 是 `kernel` 的那幾格）。",
+  "改了 `tools/` 的正本 → 同一個 commit 把副本抄過去（commit 訊息寫「wf/tools 同步」），不要只改副本。",
+  "核對：`for f in <副本檔名…>; do cmp tools/$f wf/tools/$f; done` 沒有輸出。",
+  "`source` 是 `project` 的（`index_check*.py`、`wf-view.py`、`wf_view_render.py`、`wfnode.py`、`json_text*.py` 與它們的測試、`index_check.ignore`）只在 `wf/tools/`，沒有正本；其中 `json_text*.py` 抄自 repo-aos，改行為先改上游。"
+ ],
+ "flavor_links": [
+  "- flavor 包（`flavors/<名>/`）內的連結**一律照合併後的路徑寫**（例：`workflows/common/conventions.md`，而不是 `../../template/...`）。在本 repo 內直接點會指不到 kernel，**這是預期行為**，不要「修好」它。",
+  "- kernel 與 flavor 內部**不向上連 `AGENTS.md`**——這條讓非侵入式佈局自然成立（`AGENTS.md` 留在專案根、其餘進 `wf/`，內部連結一個都不用改）。",
+  "- `wf-lint.sh --self` 是把 kernel ＋ 每個 flavor **合併後**才檢查，所以 flavor 包單獨看的 BROKEN 不算數；判準只看 `--self`。"
+ ]
 }

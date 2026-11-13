@@ -1,6 +1,6 @@
 {
  "_description": "code-map — 程式碼導航 index（哪個檔負責什麼）",
- "intro": "碰原始碼前先查這張表，只讀相關領域列出的檔；動完再照維護鏈把表更新回去。寫碼慣例本身在 `wf/knowledge/conventions.json`。本 repo 的「原始碼」＝ `tools/` 的 bash 與 python，加上 `wf/tools/` 試點新增的 json 節點工具（`wf/tools/` 其餘是 `tools/` 的副本）；`template/`、`flavors/` 是內容不是碼，導航見 `docs/kernel-contents.md`。",
+ "intro": "碰原始碼前先查這張表，只讀相關領域列出的檔；動完再照維護鏈把表更新回去。寫碼慣例本身在 `wf/knowledge/conventions.json`。本 repo 的「原始碼」＝ `tools/` 的 bash 與 python，加上 `wf/tools/` 試點新增的 json 節點工具與 json_text（`wf/tools/` 其餘是 `tools/` 的副本：必須與正本逐位元相同，改了正本要同步副本，見 `wf/knowledge/conventions.json#/copies`；哪支是副本看 `wf/tools/_index.json` 的 `source`）；`template/`、`flavors/` 是內容不是碼，導航見 `docs/kernel-contents.md`。",
  "domains": [
   {
    "domain": "導入",
@@ -46,9 +46,15 @@
   },
   {
    "domain": "json 節點檢查與檢視",
-   "files": "`wf/tools/index_check.py`、`wf/tools/wfnode.py`、`wf/tools/wf-view.py`、`wf/tools/index_check.ignore`",
-   "role": "本層（`wf/`）試點專用，不是 kernel 工具、不在 repo 根 `tools/`：index_check 查 index 與統一路徑引用（忽略表在 `.ignore`），wf-view 把 json 節點印成 md，路徑解析（含跟 `$ref`）共用 wfnode",
-   "tests": "`wf/tools/test_index_check.py`、`wf/tools/test_index_check_refs.py`、`wf/tools/test_wf_view.py`（`python3 -m unittest discover -s wf/tools -p 'test_*.py'`）"
+   "files": "`wf/tools/index_check.py`（CLI）、`wf/tools/index_check_tree.py`（index）、`wf/tools/index_check_refs.py`（引用）、`wf/tools/wfnode.py`、`wf/tools/wf-view.py`（CLI）、`wf/tools/wf_view_render.py`（排版）、`wf/tools/index_check.ignore`",
+   "role": "本層（`wf/`）試點專用，不是 kernel 工具、不在 repo 根 `tools/`：index_check 查 index 與統一路徑引用（index 那半在 tree、引用與忽略表在 refs，忽略表在 `.ignore`），wf-view 把 json 節點印成 md（字串陣列像拆成行的一段文字就接回去印），路徑解析（含跟 `$ref`）共用 wfnode",
+   "tests": "`wf/tools/test_index_check.py`、`wf/tools/test_index_check_refs.py`、`wf/tools/test_index_check_shape.py`、`wf/tools/test_wf_view.py`、`wf/tools/test_wf_view_text.py`（`python3 -m unittest discover -s wf/tools -p 'test_*.py'`）"
+  },
+  {
+   "domain": "json 的 git diff 展開",
+   "files": "`wf/tools/json_text.py`、`wf/tools/json_text_cli.py`（`--help`／`--setup`）",
+   "role": "git textconv：把 `wf/` 的 json 展開成逐行文字給 `git diff`／`log -p` 看（`.gitattributes` 的 `wf/**/*.json diff=json_text`，每個 clone 跑一次 `--setup`，選用）。抄自 repo-aos（來源 commit 在檔頭），改行為先改上游再同步；注意事項在 `wf/knowledge/dev-env.json#/json_diff`",
+   "tests": "`wf/tools/test_json_text.py`、`wf/tools/test_json_text_git.py`（同一條 unittest 指令）"
   },
   {
    "domain": "CI",
@@ -57,6 +63,25 @@
    "tests": "—"
   }
  ],
- "truth_order": "各專案可以改自己的優先序，但必須明確。本 repo：\n\n```text\ncode/tests > template/ 與 flavors/ 的內容 > code map > docs/ 與 README > generated\n```\n\n- 上層與下層衝突時，**以上層為準並修正下層**。\n- `examples/` 是**合併產物**（generated），永遠不是唯一真相；真相在 `template/` ＋ `flavors/`。\n- 原始來源與摘要衝突時，以**原始來源**為準（例：`docs/kernel-contents.md` 與實際檔案清單不合，以實際檔案為準）。\n- code map 是**導航不是規格**；行為以 code/tests 為準。",
- "maintenance_chain": "**優先級**（衝突或時間不夠時，依序保持一致）：程式碼 > code map > 文檔。\n**code map 與程式碼衝突時以程式碼為準，立刻改 code map。**\n\n1. **修改前**：先讀本表找到相關領域，只讀清單裡的檔——不讀無關領域的檔。\n2. **修改後**：新增／刪除了 `tools/` 的檔，或某檔職責顯著改變，必須同步更新本表**與** `docs/kernel-contents.md`（`wf/tools/` 試點專用的那幾支只更新本表與 `wf/tools/_index.json`）（見 `wf/knowledge/conventions.json#/sync` 的同步義務）。\n3. 原始碼裡**不加**「對應 code map」的註釋（維護成本過高）；反向查找直接 grep 本檔。\n4. 迭代期間本表可暫時落後，**commit 前必須對齊**（見 `wf/workflows/feature-dev.json`）。"
+ "truth_order": [
+  "各專案可以改自己的優先序，但必須明確。本 repo：",
+  "",
+  "```text",
+  "code/tests > template/ 與 flavors/ 的內容 > code map > docs/ 與 README > generated",
+  "```",
+  "",
+  "- 上層與下層衝突時，**以上層為準並修正下層**。",
+  "- `examples/` 是**合併產物**（generated），永遠不是唯一真相；真相在 `template/` ＋ `flavors/`。",
+  "- 原始來源與摘要衝突時，以**原始來源**為準（例：`docs/kernel-contents.md` 與實際檔案清單不合，以實際檔案為準）。",
+  "- code map 是**導航不是規格**；行為以 code/tests 為準。"
+ ],
+ "maintenance_chain": [
+  "**優先級**（衝突或時間不夠時，依序保持一致）：程式碼 > code map > 文檔。",
+  "**code map 與程式碼衝突時以程式碼為準，立刻改 code map。**",
+  "",
+  "1. **修改前**：先讀本表找到相關領域，只讀清單裡的檔——不讀無關領域的檔。",
+  "2. **修改後**：新增／刪除了 `tools/` 的檔，或某檔職責顯著改變，必須同步更新本表**與** `docs/kernel-contents.md`（`wf/tools/` 試點專用的那幾支只更新本表與 `wf/tools/_index.json`）（見 `wf/knowledge/conventions.json#/sync` 的同步義務）。",
+  "3. 原始碼裡**不加**「對應 code map」的註釋（維護成本過高）；反向查找直接 grep 本檔。",
+  "4. 迭代期間本表可暫時落後，**commit 前必須對齊**（見 `wf/workflows/feature-dev.json`）。"
+ ]
 }

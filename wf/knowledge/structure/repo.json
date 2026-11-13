@@ -43,8 +43,12 @@
   },
   {
    "path": "wf/tools/",
-   "content": "本層自帶的 kernel 工具副本：`wf-lint.sh`（檢查）、`tabledb.py`（資料檔 CRUD／連結）、`find_big_lists.py`、`fix_moved_links.py`；資料檔契約見 `wf/knowledge/data-files.json`。試點新增 `wf-view.py`（json 印成 md）、`index_check.py`（index 與統一路徑檢查）；逐支用途見 `wf/tools/_index.json`"
+   "content": "本層自帶的 kernel 工具副本：`wf-lint.sh`（檢查）、`tabledb.py`（資料檔 CRUD／連結）、`find_big_lists.py`、`fix_moved_links.py`；資料檔契約見 `wf/knowledge/data-files.json`。試點新增 `wf-view.py`（json 印成 md）、`index_check.py`（index 與統一路徑檢查）、`json_text.py`（git textconv，抄自 repo-aos）；副本要與 `tools/` 正本同步（`wf/knowledge/conventions.json#/copies`）；逐支用途見 `wf/tools/_index.json`"
   }
  ],
- "pilot": "# 試點形態\n\n本檔描述的是 **2026-11-13 起** `wf/` 的試點形態（index＋json；使用者 2026-11-13 裁定先在本 repo 的 `wf/` 試點）。`template/` 仍是舊形態（md＋`wf-table/1`），所以 `template/STRUCTURE.md` 與本檔不同是**預期的**，不要拿一邊去改另一邊。`flavors/`、`examples/`、repo 根 `tools/`、`docs/` 也不在試點範圍。"
+ "pilot": [
+  "# 試點形態",
+  "",
+  "本檔描述的是 **2026-11-13 起** `wf/` 的試點形態（index＋json；使用者 2026-11-13 裁定先在本 repo 的 `wf/` 試點）。`template/` 仍是舊形態（md＋`wf-table/1`），所以 `template/STRUCTURE.md` 與本檔不同是**預期的**，不要拿一邊去改另一邊。`flavors/`、`examples/`、repo 根 `tools/`、`docs/` 也不在試點範圍。"
+ ]
 }

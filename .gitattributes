@@ -1,2 +1,4 @@
 # 行尾一律 LF：index 本來就是 LF，工作樹跟著走，WSL／Git Bash／CI 才跑得動 .sh，wc -c 也才跟 CI 一致
 * text=auto eol=lf
+# wf/ 的 json 節點：git diff／log -p 用 wf/tools/json_text.py 展開成逐行文字（每個 clone 跑一次 `python3 wf/tools/json_text.py --setup`；沒跑照舊整行比）
+wf/**/*.json diff=json_text

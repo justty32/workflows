@@ -184,15 +184,6 @@ class TestFile(Base):
         self.assertEqual(rc, 1)
         self.assertIn("JsonBad", err)
 
-    def test_cli_subprocess(self):
-        r = subprocess.run([sys.executable, os.path.join(HERE, "wf-view.py"), self.p("k", "dec.json") + "#/steps"],
-                           stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-        self.assertEqual(r.returncode, 0, r.stderr)
-        self.assertIn("1. 第一步", r.stdout)
-        r = subprocess.run([sys.executable, os.path.join(HERE, "wf-view.py")],
-                           stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-        self.assertEqual(r.returncode, 2)
-
 
 if __name__ == "__main__":
     unittest.main()

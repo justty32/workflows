@@ -1,15 +1,16 @@
-"""index_check.py 的測試（續）：RefBad 的第一段規則、指標跟 `$ref`、忽略表——各有會紅與會綠。
+"""index_check.py 的測試（續）：RefBad（基本、第一段規則、指標跟 `$ref`）、忽略表、CLI——各有會紅與會綠。
 
   python3 -m unittest discover -s wf/tools -p 'test_*.py'
 """
 import contextlib
 import io
+import json
 import os
 import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from test_index_check import Base, Dir, Raw, build  # noqa: E402
+from test_index_check import Base, Dir, Raw, build, ic  # noqa: E402
 
 
 class TestRefScope(Base):
@@ -66,6 +67,55 @@ class TestRefScope(Base):
             "index_check.ignore": Raw("wf/a.json#/k\tskills/caveman/SKILL.md\n")})})})
         self.green(self.tree("上游的 `skills/caveman/SKILL.md`"))
 
+
+class TestRefBad(Base):
+    def tree(self, text, **more):
+        d = {"a.json": {"k": text}, "b.json": {"sec": {"x/y": 1, "t~": 2}}, "c.md": Raw("x")}
+        d.update((k if isinstance(v, Dir) else k + ".json", v) for k, v in more.items())
+        return {"wf": Dir(d)}
+
+    def test_red_missing_file(self):
+        t = self.red(self.tree("見 `wf/nope.json`"), "RefBad")
+        self.assertIn("wf/nope.json", t)
+
+    def test_red_bad_pointer(self):
+        self.red(self.tree("見 `wf/b.json#/sec/zzz`"), "RefBad")
+
+    def test_green_paths_and_pointers(self):
+        self.green(self.tree("見 `wf/b.json#/sec/x~1y`、`wf/b.json#/sec/t~0`、`wf/c.md` 與 `wf/b.json`"))
+
+    def test_skips_examples_and_fences(self):
+        self.green(self.tree("例 `wf/<name>.json`、`wf/*.md`、`wf/{x}.json`、`wf/a….json`、`../x.json`、`nope.json`\n"
+                             "```\n`wf/nope.json`\n```"))
+
+    def test_no_refs(self):
+        self.green(self.tree("見 `wf/nope.json`", d={"$ref": "gone.json"}), "--no-refs")
+
+    def test_ref_object(self):
+        self.red(self.tree("x", d={"sec": {"$ref": "gone.json"}}), "RefBad")
+        self.red(self.tree("x", d={"sec": {"$ref": "b.json#/nope"}}), "RefBad")
+        self.green(self.tree("x", d={"s1": {"$ref": "b.json#/sec"}, "s2": {"$ref": "#/s1"},
+                                     "s3": {"$ref": "sub/e.json"}, "s4": {"$ref": "#/../b.json#/sec"}},
+                             sub=Dir({"e.json": {"z": {"$ref": "../b.json"}}})))
+
+    def test_ref_in_list_and_index_desc(self):
+        t = self.red(self.tree("x", d=[{"$ref": "gone.json"}]), "RefBad")
+        self.assertIn("d.json", t)
+
+
+class TestCli(Base):
+    def test_json_output(self):
+        build(self.root, {"wf": Dir({"bad.json": Raw("{")})})
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            rc = ic.main(["--json", os.path.join(self.root, "wf")])
+        self.assertEqual(rc, 1)
+        self.assertEqual(json.loads(out.getvalue())["problems"][0]["code"], "JsonBad")
+
+    def test_bad_arg(self):
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            self.assertEqual(ic.main(["--nope"]), 2)
 
 
 if __name__ == "__main__":

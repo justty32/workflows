@@ -1,1 +1,15 @@
-"# wf：本 repo 自己導入的工作流\n\nworkflows repo＝**通用分層工作流模板 repo（kernel ＋ flavor 包 ＋ 導入／檢查腳本）**。`wf/` 是本 repo 自己用這套的那一層（非侵入式導入）。現在是試點形態：導航走 `_index.json`、內容走 json 節點，只留少數 md 給人看（見 `wf/knowledge/structure.json#/pilot`）。\n\n怎麼往下走：\n\n- 要動手做事 → `wf/workflows/_index.json` 依意圖選工作流，再讀那個節點。\n- 要查知識（慣例、code map、使用者偏好、決策、踩坑、想法、驗證表、環境、調查筆記）→ `wf/knowledge/_index.json`。\n- 想看專案結構與組織原則 → `wf/knowledge/structure.json`（repo 根各目錄在它的 `repo_layout`）。\n- 進度看 `wf/SESSION-LOG.md`、等使用者的看 `wf/WAIT_USER.md`（都只列 open）。\n\n想了解某個節點，就看它上一層的 index；沒列到的不管。在 aos 裡用 `index_view`（path 給 `wf`）看這層，其他工具直接讀 json；要印成 md 給人看用 `python3 wf/tools/wf-view.py <路徑>`。\n"
+[
+ "# wf：本 repo 自己導入的工作流",
+ "",
+ "workflows repo＝**通用分層工作流模板 repo（kernel ＋ flavor 包 ＋ 導入／檢查腳本）**。`wf/` 是本 repo 自己用這套的那一層（非侵入式導入）。現在是試點形態：導航走 `_index.json`、內容走 json 節點，只留少數 md 給人看（見 `wf/knowledge/structure.json#/pilot`）。",
+ "",
+ "怎麼往下走：",
+ "",
+ "- 要動手做事 → `wf/workflows/_index.json` 依意圖選工作流，再讀那個節點。",
+ "- 要查知識（慣例、code map、使用者偏好、決策、踩坑、想法、驗證表、環境、調查筆記）→ `wf/knowledge/_index.json`。",
+ "- 想看專案結構與組織原則 → `wf/knowledge/structure.json`（repo 根各目錄在它的 `repo_layout`）。",
+ "- 進度看 `wf/SESSION-LOG.md`、等使用者的看 `wf/WAIT_USER.md`（都只列 open）。",
+ "",
+ "想了解某個節點，就看它上一層的 index；沒列到的不管。在 aos 裡用 `index_view`（path 給 `wf`）看這層，其他工具直接讀 json；要印成 md 給人看用 `python3 wf/tools/wf-view.py <路徑>`。",
+ ""
+]

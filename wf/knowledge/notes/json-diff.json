@@ -1,0 +1,36 @@
+{
+ "_description": "json-diff — json 節點的長字串在 git diff 裡整行換掉，怎麼讓人一行一行看（2026-11-13）",
+ "question": "`wf/` 轉成 json 節點後，多行 markdown 字串在 git 裡是一整行：改一個字 diff 整段換掉、blame 只剩最後一次、不同句的修改 merge 也衝突。有哪些解法、各自代價，今天採用哪個？",
+ "method": [
+  "在 scratchpad 的臨時 repo 拿 `wf/workflows/tidy.json`、`wf/knowledge/structure.json` 的複本做實驗：改一個詞、加一步、兩分支改不同行／同一行前後半句／同一句，比較預設 diff、word-diff、textconv、blame、merge driver 原型（〔實測〕）。",
+  "讀 aos 的原始碼確認工具限制（`aos-json get --str` 遇陣列、`$ref` 能不能指 `.md`、寫入是否只改那一塊）（〔讀碼〕）；GitHub 網頁與 Windows 行為沒實際驗（〔推測〕）。",
+  "盤點 `wf/` 現況：42 份 json、772 個字串，含 `\\n` 的 48 個。"
+ ],
+ "findings": [
+  "48 個多行字串裡 32 個主要是 markdown 清單、7 個含程式碼圍籬、9 個是散文——多數「多行字串」其實是清單。md 本身一段也是一行，json 只在多行字串上比 md 差（〔實測〕）。",
+  "**字串陣列（一行一個元素）**：改一個詞 diff 只動那一行；blame 逐行準；兩分支改不同行 merge 自動合，同一行仍衝突。不用任何設定，GitHub 網頁、CI、Windows 都一樣有效。代價：陣列中間插一條，後面的 `#/x/N` 指標位移；尾端加一條會連帶改上一行（補逗號）（〔實測〕）。",
+  "**git textconv**（`.gitattributes` 指 driver、每個 clone 設一次）：`git diff`／`log -p`／`show` 展開成逐行，`git blame` 預設也吃（行號變成展開後的）。`add -p`、merge、rebase、format-patch、GitHub 網頁都不吃。沒設定的 clone 安靜退回整行 diff；設了但指令壞掉（例 Windows 的 Store 假 `python3`）`git diff` 整個 fatal。開著 textconv 產出的 patch `git apply` 套不回去（〔實測〕）。git 刻意不讀 repo 內的設定，所以「每個 clone 設一次」躲不掉。",
+  "textconv 的陣列元素**不能印索引**：第一版印 `/split/10:`，插一筆後面全部改號、blame 錯歸屬；改成不印索引才對（〔實測〕）。repo-aos 的 `json_text.py` 陣列元素一律寫 `-`。",
+  "**零設定退路**：`git diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]'` 英數一詞、其他每個字一單位，原始 json 也標得出只多了一個中文字；預設 `--word-diff` 以空白切詞，中文整段當一個詞，沒用（〔實測〕）。代價：仍印整行，只給人看。",
+  "**merge driver** 原型（逐鍵合併、字串按句段交給 `git merge-file`）能自動合「同字串不同句」，同一句才衝突；但每個 clone 要設、GitHub 網頁不用它、半套設定會 fatal、會重 dump 整檔；本 repo 歷史是直線、衝突很少（〔實測〕）。",
+  "**換格式／正文放旁邊的 .md**：`$ref` 不能指 `.md`（`aos-json check` 只認 json，〔讀碼〕）；YAML／JSON5 標準庫沒有、TOML 只能讀；違反「內容走 json」。",
+  "`aos-json get --str` 遇陣列報 `TargetBad`、aos 的 `index_view` 只認字串形的 description（〔讀碼〕）。使用者 2026-11-13 裁定：陣列可選、`--str` 不用支援；index 的 description 維持一句字串。",
+  "存檔正規化：`wf/` 的 json 幾乎都已是「縮排 1、非 ASCII 不轉義、結尾換行」的 canonical 形；aos-json 寫入只重寫改動那一塊，整檔重排的噪音本來就少（〔實測〕〔讀碼〕）。"
+ ],
+ "conclusion": [
+  "今天採用（2026-11-13）：",
+  "",
+  "1. **一段文字可寫字串或字串陣列，多行的推薦陣列**（清單一條一個元素；散文、圍籬就把原文一行一個元素拆開，讀時用換行接回去）；index 的 description 維持一句字串。`wf/` 現有 49 個含換行的字串已全部轉成陣列，內容一字不改。寫法見 `wf/knowledge/structure.json#/node_shape`。",
+  "2. **textconv 用 repo-aos 的 `json_text.py`**（抄成 `wf/tools/json_text.py`），`.gitattributes` 對 `wf/**/*.json` 開，每個 clone 跑一次 `python3 wf/tools/json_text.py --setup`，選用；注意事項（patch 用 `--no-textconv`、blame 行號、Windows 的 `python3`）在 `wf/knowledge/dev-env.json#/json_diff`。",
+  "3. **零設定退路**：`git diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]'`。",
+  "4. **不做** merge driver（等真的常衝突再拿原型出來）、**不換格式**（YAML／JSON5／TOML、正文放 .md 都不做）。",
+  "",
+  "沒驗到的：GitHub PR 網頁與 Windows＋Git Bash 上的實際行為、編輯器（VS Code／GitLens）吃不吃 textconv。"
+ ],
+ "sources": [
+  "調查底稿：本 session scratchpad 的 json-diff-options.md（2026-11-13，含實測輸出；不在 repo 內）。",
+  "repo-aos 的 wf/tools/json_text.py 與 wf/tools/tests/test_json_text.py（commit 55a82d79f），抄到 `wf/tools/json_text.py`、`wf/tools/test_json_text.py`。",
+  "aos 原始碼：impls/aos-json/src/cmd/read.cpp（`--str` 遇陣列）、impls/aos-json/src/cmd/check.cpp（`$ref` 只認 json）、impls/aos-json/src/doc/splice.cpp（寫入只改那一塊）。",
+  "使用者 2026-11-13 裁定（經 repo-aos 轉述）：「陣列這塊是可選的，AI 可以隨便寫，也可以按照推薦用字串陣列」「aos-json get --str 不用支援這個」。"
+ ]
+}

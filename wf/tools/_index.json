@@ -1,65 +1,122 @@
 {
  "wf-view.py": {
-  "description": "試點新增：把 json 節點／資料夾印成人讀的 markdown（`--tree` 遞迴、`--follow` 展開 `$ref`、`--overlay` 疊私有 index）；要給人看某個節點或整棵樹時用。"
+  "description": "試點新增：把 json 節點／資料夾印成人讀的 markdown（`--tree` 遞迴、`--follow` 展開 `$ref`、`--overlay` 疊私有 index）的命令列入口，排版在 `wf_view_render.py`；要給人看某個節點或整棵樹時用。",
+  "source": "project"
+ },
+ "wf_view_render.py": {
+  "description": "wf-view 的排版那半：資料夾、物件、物件陣列（表）、字串陣列（清單，或拆成行的一段文字就接回去原樣印）怎麼排成 markdown；改 wf-view 輸出時讀。",
+  "source": "project"
  },
  "index_check.py": {
-  "description": "試點新增：查 json 節點樹的 index 與統一路徑引用（IndexBad／IndexMissing／IndexUnlisted／IndexWanted／RefBad）；改完 `wf/` 一定跑 `python3 wf/tools/index_check.py wf`。"
+  "description": "試點新增：查 json 節點樹的 index 與統一路徑引用（IndexBad／IndexMissing／IndexUnlisted／IndexWanted／RefBad）的命令列入口，檢查本體在 `index_check_tree.py`、`index_check_refs.py`；改完 `wf/` 一定跑 `python3 wf/tools/index_check.py wf`。",
+  "source": "project"
+ },
+ "index_check_tree.py": {
+  "description": "index_check 的 index 那半：走樹、查 `_index.json`／檔內 `_index`／`_description` 的形狀（一段文字可以是字串或字串陣列，index 的 description 要一句字串）；改 index 規則時讀。",
+  "source": "project"
+ },
+ "index_check_refs.py": {
+  "description": "index_check 的引用那半：RefBad（反引號路徑、`$ref`；字串陣列跨元素的圍籬照跳過）與忽略表；改引用規則時讀。",
+  "source": "project"
  },
  "index_check.ignore": {
-  "description": "index_check 的 RefBad 忽略表（`位置<TAB>字串`，每筆附原因）；只登記第一段撞到本 repo 夾名、其實在講外部 repo 的個案，被報 IgnoreUnused 時清掉。"
+  "description": "index_check 的 RefBad 忽略表（`位置<TAB>字串`，每筆附原因）；只登記第一段撞到本 repo 夾名、其實在講外部 repo 的個案，被報 IgnoreUnused 時清掉。",
+  "source": "project"
  },
  "wfnode.py": {
-  "description": "試點新增：wf-view 與 index_check 共用的統一路徑解析（資料夾＋json＋JSON Pointer 一起走、跟 `$ref`）；改路徑算法或寫新的節點工具時讀。"
+  "description": "試點新增：wf-view 與 index_check 共用的統一路徑解析（資料夾＋json＋JSON Pointer 一起走、跟 `$ref`）；改路徑算法或寫新的節點工具時讀。",
+  "source": "project"
+ },
+ "json_text.py": {
+  "description": "抄自 repo-aos 的 git textconv（來源 commit 見檔頭；`--help`／`--setup` 拆到 `json_text_cli.py`）：把 json 展開成逐行文字，讓 `git diff`／`git log -p` 一行一行看；每個 clone 跑一次 `python3 wf/tools/json_text.py --setup`（選用），注意事項在 `wf/knowledge/dev-env.json#/json_diff`。",
+  "source": "project"
+ },
+ "json_text_cli.py": {
+  "description": "json_text 的 `--help` 文字與 `--setup`（寫本 repo `.git/config` 的 `diff.json_text.textconv`），從上游原樣搬出；改 setup 行為時讀，改了要回報上游。",
+  "source": "project"
+ },
+ "test_json_text.py": {
+  "description": "json_text 的單元測試（抄自上游：各種形狀、轉義、壞 json、參數）；動 `wf/tools/` 就跑 `python3 -m unittest discover -s wf/tools -p 'test_*.py'`。",
+  "source": "project"
+ },
+ "test_json_text_git.py": {
+  "description": "json_text 的單元測試續篇（抄自上游的 GitTests：`--setup` 冪等、暫存 repo 裡真的跑 `git diff`）；不碰本 repo 的 git 設定。",
+  "source": "project"
  },
  "test_index_check.py": {
-  "description": "index_check 的單元測試（每個代號都有會紅與會綠）；動 `index_check.py`／`wfnode.py` 就跑 `python3 -m unittest discover -s wf/tools -p 'test_*.py'`。"
+  "description": "index_check 的單元測試（每個代號都有會紅與會綠）；動 `index_check.py`／`wfnode.py` 就跑 `python3 -m unittest discover -s wf/tools -p 'test_*.py'`。",
+  "source": "project"
  },
  "test_index_check_refs.py": {
-  "description": "index_check 的單元測試續篇：RefBad 第一段規則、指標跟 `$ref`、忽略表；同上，動 `wf/tools/` 就跑。"
+  "description": "index_check 的單元測試續篇：RefBad（基本、第一段規則、指標跟 `$ref`）、忽略表、CLI；同上，動 `wf/tools/` 就跑。",
+  "source": "project"
+ },
+ "test_index_check_shape.py": {
+  "description": "index_check 的單元測試續二：IndexWanted 門檻、一段文字＝字串或字串陣列、index 的 description 要字串、多出來的鍵（source）不報；動 `wf/tools/` 就跑 `python3 -m unittest discover -s wf/tools -p 'test_*.py'`。",
+  "source": "project"
  },
  "test_wf_view.py": {
-  "description": "wf-view 的單元測試；動 `wf-view.py`／`wfnode.py` 就跑（同一條 unittest 指令）。"
+  "description": "wf-view 的單元測試；動 `wf-view.py`／`wfnode.py` 就跑（同一條 unittest 指令）。",
+  "source": "project"
+ },
+ "test_wf_view_text.py": {
+  "description": "wf-view 的單元測試續篇：字串陣列的兩種用法（清單照舊編號、拆成行的接回去）、表格儲存格、命令列；同一條 unittest 指令。",
+  "source": "project"
  },
  "wf-lint.sh": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：md 形態的檢查（壞連結、超標檔、條列、殘留）；對 json 形態的 `wf/` 已改用 index_check，這支可選、預設不跑，見 `wf/knowledge/verification.json#/checks`。"
+  "description": "kernel 工具副本（與 `tools/` 正本逐位元相同，改正本再同步，見 `wf/knowledge/conventions.json#/copies`）：md 形態的檢查（壞連結、超標檔、條列、殘留）；對 json 形態的 `wf/` 已改用 index_check，這支可選、預設不跑，見 `wf/knowledge/verification.json#/checks`。",
+  "source": "kernel"
  },
  "wf-lint-checks.sh": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：wf-lint.sh 用 `source` 載入的檢查函式庫；改 wf-lint 行為時讀。"
+  "description": "kernel 工具副本（同上）：wf-lint.sh 用 `source` 載入的檢查函式庫；改 wf-lint 行為時讀。",
+  "source": "kernel"
  },
  "check_anchors.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：驗 md 連結的 `#錨點` 在目標檔存不存在（wf-lint 呼叫）；查錨點壞掉時用。"
+  "description": "kernel 工具副本（同上）：驗 md 連結的 `#錨點` 在目標檔存不存在（wf-lint 呼叫）；查錨點壞掉時用。",
+  "source": "kernel"
  },
  "find_big_lists.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：列出 md 裡超標的表／清單，附連結數判斷是不是連結表；tidy 盤點 md 形態的範圍時用。"
+  "description": "kernel 工具副本（同上）：列出 md 裡超標的表／清單，附連結數判斷是不是連結表；tidy 盤點 md 形態的範圍時用。",
+  "source": "kernel"
  },
  "fix_moved_links.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：照 `moves.tsv` 重寫搬檔後的 md 連結與資料檔 cell（先 dry-run 再 `--apply`）；搬完檔要修連結時用。"
+  "description": "kernel 工具副本（同上）：照 `moves.tsv` 重寫搬檔後的 md 連結與資料檔 cell（先 dry-run 再 `--apply`）；搬完檔要修連結時用。",
+  "source": "kernel"
  },
  "fix_moved_links_scan.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：fix_moved_links 的掃描範圍與搬移表載入；改 fix_moved_links 時讀。"
+  "description": "kernel 工具副本（同上）：fix_moved_links 的掃描範圍與搬移表載入；改 fix_moved_links 時讀。",
+  "source": "kernel"
  },
  "fix_moved_links_fmt.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：fix_moved_links 的 `$fmt` 那半段（cell 值裡路徑代號的重寫）；改 fix_moved_links 時讀。"
+  "description": "kernel 工具副本（同上）：fix_moved_links 的 `$fmt` 那半段（cell 值裡路徑代號的重寫）；改 fix_moved_links 時讀。",
+  "source": "kernel"
  },
  "tabledb.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：`wf-table/1` 資料檔的 CRUD 與連結查驗 CLI（契約 `wf/knowledge/data-files.json`）；讀寫 md 形態那邊的 `.json`／`.csv` 資料檔時用。"
+  "description": "kernel 工具副本（同上）：`wf-table/1` 資料檔的 CRUD 與連結查驗 CLI（契約 `wf/knowledge/data-files.json`）；讀寫 md 形態那邊的 `.json`／`.csv` 資料檔時用。",
+  "source": "kernel"
  },
  "tabledb_table.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：tabledb 的資料模型（Table 型別、.json／.csv 讀寫）；改 tabledb 時讀。"
+  "description": "kernel 工具副本（同上）：tabledb 的資料模型（Table 型別、.json／.csv 讀寫）；改 tabledb 時讀。",
+  "source": "kernel"
  },
  "tabledb_links.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：tabledb 的連結欄抽取與解析；改連結查驗時讀。"
+  "description": "kernel 工具副本（同上）：tabledb 的連結欄抽取與解析；改連結查驗時讀。",
+  "source": "kernel"
  },
  "tabledb_fmt.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：資料檔 json 裡 `$fmt` 路徑代號的展開（契約 `wf/knowledge/data-files-fmt.json`）；改 `$fmt` 行為時讀。"
+  "description": "kernel 工具副本（同上）：資料檔 json 裡 `$fmt` 路徑代號的展開（契約 `wf/knowledge/data-files-fmt.json`）；改 `$fmt` 行為時讀。",
+  "source": "kernel"
  },
  "tabledb_fmt_expand.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：`$fmt` 變數解析（往上找目錄算出值、代換 `${…}`）；改 `$fmt` 算法時讀。"
+  "description": "kernel 工具副本（同上）：`$fmt` 變數解析（往上找目錄算出值、代換 `${…}`）；改 `$fmt` 算法時讀。",
+  "source": "kernel"
  },
  "tabledb_fmt_vars.py": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：`$fmt` 變數表（`fmt-vars.json`，契約 `wf-fmt-vars/1`）的載入與合併；加變數時讀。"
+  "description": "kernel 工具副本（同上）：`$fmt` 變數表（`fmt-vars.json`，契約 `wf-fmt-vars/1`）的載入與合併；加變數時讀。",
+  "source": "kernel"
  },
  "fmt-vars.json": {
-  "description": "kernel 工具副本（與 repo 根 `tools/` 同名檔逐位元相同，改 `tools/` 那份再同步過來）：`$fmt` 的變數表（不是節點，是工具資料；專案自加的放 `fmt-vars.local.json`）；加 `$fmt` 變數時改。"
+  "description": "kernel 工具副本（同上）：`$fmt` 的變數表（不是節點，是工具資料；專案自加的放 `fmt-vars.local.json`）；加 `$fmt` 變數時改。",
+  "source": "kernel"
  }
 }

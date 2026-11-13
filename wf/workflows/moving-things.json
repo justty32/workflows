@@ -43,7 +43,28 @@
    "detail": "不進版控的東西（鎖、投遞區、DB 快照）不能跟著搬進 repo，但它們的路徑常寫在跟著搬的程式裡。路徑指向已經不存在的目錄時，**「已釋放／不存在」的檢查會恆真通過**。例：某個鎖檔檢查指著一個已被刪掉的目錄，於是每次收尾檢查都在檢查一個不可能存在的路徑。"
   }
  ],
- "steps": "驗證程序：\n\n```sh\n# 1. 逐檔比對有沒有東西掉在半路（size + basename）\n#    刻意不搬的要明確列出來，不要靠「應該沒漏」\n# 2. 六類掃描（#/breakages）\n# 3. 每支搬過的工具冒煙測試\nfor f in <moved>/*.py; do python3 -c \"import ast;ast.parse(open('$f').read())\"; done\npython3 <tool>.py --help\npython3 -m unittest discover -s <dir> -p 'test_*.py'\n# 4. 連結檢查，並確認檢查器涵蓋新位置\nbash tools/wf-lint.sh <root>   # 或該專案的連結檢查器；wf/ 用 python3 wf/tools/index_check.py wf\n# 5. CI 指令實跑一次\n```",
- "renaming": "改名時額外注意：\n\n- **名字會不會跟別的東西撞。** 例：某個設定集一度改叫 `main`，與分支名和目錄名相撞，使 `git log main` 報 ambiguous；加前綴解掉。\n- **所有分支都要改。** 只改現役分支的話，切回其他分支時目錄名就對不上了。用 worktree 在別的分支上做，現役 checkout 全程不動。\n- **區分「同一個東西的路徑」與「當時的紀錄」。** 驗收報告、歷史 log 這類**當時的紀錄**裡的舊路徑**不要改**——那些記的是當時實際用的路徑，改了就是竄改紀錄。只改「還會再跑」的東西：活工具、spec、CI、現役文件。",
+ "steps": [
+  "驗證程序：",
+  "",
+  "```sh",
+  "# 1. 逐檔比對有沒有東西掉在半路（size + basename）",
+  "#    刻意不搬的要明確列出來，不要靠「應該沒漏」",
+  "# 2. 六類掃描（#/breakages）",
+  "# 3. 每支搬過的工具冒煙測試",
+  "for f in <moved>/*.py; do python3 -c \"import ast;ast.parse(open('$f').read())\"; done",
+  "python3 <tool>.py --help",
+  "python3 -m unittest discover -s <dir> -p 'test_*.py'",
+  "# 4. 連結檢查，並確認檢查器涵蓋新位置",
+  "bash tools/wf-lint.sh <root>   # 或該專案的連結檢查器；wf/ 用 python3 wf/tools/index_check.py wf",
+  "# 5. CI 指令實跑一次",
+  "```"
+ ],
+ "renaming": [
+  "改名時額外注意：",
+  "",
+  "- **名字會不會跟別的東西撞。** 例：某個設定集一度改叫 `main`，與分支名和目錄名相撞，使 `git log main` 報 ambiguous；加前綴解掉。",
+  "- **所有分支都要改。** 只改現役分支的話，切回其他分支時目錄名就對不上了。用 worktree 在別的分支上做，現役 checkout 全程不動。",
+  "- **區分「同一個東西的路徑」與「當時的紀錄」。** 驗收報告、歷史 log 這類**當時的紀錄**裡的舊路徑**不要改**——那些記的是當時實際用的路徑，改了就是竄改紀錄。只改「還會再跑」的東西：活工具、spec、CI、現役文件。"
+ ],
  "handoff": "搬完回 `wf/workflows/refactor.json` 接剩下的步驟（更新 code map 與連結）。"
 }

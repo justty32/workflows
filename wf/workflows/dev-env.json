@@ -7,11 +7,15 @@
   "`wf/knowledge/dev-env.json` 的三張表（`wf/knowledge/dev-env.json#/commands` 指令、`wf/knowledge/dev-env.json#/machines` 跨機／離線差異、`wf/knowledge/dev-env.json#/tools` 外部工具與 env var）沒有空欄；要使用者親自做的（帳號、授權、金鑰）在 `wf/WAIT_USER.md` 各佔一行。"
  ],
  "steps": [
-  "`git clone` 後**不需要裝任何依賴**——本 repo 只用 bash ＋ python 標準庫（見 `wf/knowledge/conventions.json#/code` 的「相依」）。",
-  "確認 `bash --version` 與 `python --version`（3.x）都跑得動；Windows 上 bash 走 **Git Bash 或 WSL**，不要用 cmd/PowerShell 直接跑 `.sh`。",
-  "要跑測試才需要 `pytest`（`python -m pip install pytest`）；只改 md、只跑 lint 的話不用。",
-  "冒煙：`bash tools/wf-lint.sh --self`，回傳 0 表示環境沒問題。"
+  "照 `wf/knowledge/dev-env.json#/fresh_clone` 逐條做（那裡是唯一出處：不用裝依賴、確認 bash 與 python 3、要跑測試才裝 `pytest`、選用的 `python3 wf/tools/json_text.py --setup`、最後冒煙 `bash tools/wf-lint.sh --self`）。",
+  "fresh clone 的步驟有變（加工具、換指令）→ 改 `wf/knowledge/dev-env.json#/fresh_clone`，本節點不重抄。"
  ],
- "rules": "- 驗證與測試指令不列在 dev-env——連同「誰跑」一起在 `wf/knowledge/verification.json#/checks`（流程 `wf/workflows/testing.json`）。\n- 要加外部工具或環境變數：在 `wf/knowledge/dev-env.json#/tools` 加一筆。需要帳號、付費、授權才能取得的：守 `AGENTS.md` 鐵律 3（授權來源），並在 `wf/WAIT_USER.md` 記一行。",
- "handoff": "- 環境就緒要開工 → `wf/workflows/feature-dev.json`；先確認驗證跑得動 → `wf/workflows/testing.json`。\n- 同一個裝機坑第二次撞到 → `wf/workflows/gotchas.json`。"
+ "rules": [
+  "- 驗證與測試指令不列在 dev-env——連同「誰跑」一起在 `wf/knowledge/verification.json#/checks`（流程 `wf/workflows/testing.json`）。",
+  "- 要加外部工具或環境變數：在 `wf/knowledge/dev-env.json#/tools` 加一筆。需要帳號、付費、授權才能取得的：守 `AGENTS.md` 鐵律 3（授權來源），並在 `wf/WAIT_USER.md` 記一行。"
+ ],
+ "handoff": [
+  "- 環境就緒要開工 → `wf/workflows/feature-dev.json`；先確認驗證跑得動 → `wf/workflows/testing.json`。",
+  "- 同一個裝機坑第二次撞到 → `wf/workflows/gotchas.json`。"
+ ]
 }

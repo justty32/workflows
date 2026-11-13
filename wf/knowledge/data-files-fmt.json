@@ -1,9 +1,23 @@
 {
  "_description": "data-files-fmt — json 內路徑代號 `$fmt`（契約 `wf-table/1` 附錄）。主契約見 `wf/knowledge/data-files.json`。",
  "intro": "資料檔裡跨好幾層的 `../../../x.md` 對寫它的 agent 是負擔，所以 **`.json` 的值**可以改寫成帶代號的模板，讀取時才展開。**md 連結永遠不用代號**（給人點的必須是真相對路徑）；**`.csv` 不做**（cell 放不下物件）。值域擴充、舊檔照舊合法，契約名仍是 `wf-table/1`。",
- "syntax": "```json\n{\"id\": \"7\", \"doc_path\": {\"$fmt\": \"${gitTop}/instance/deployment-scope.md#範圍\"},\n \"note\": {\"$fmt\": \"見 [部署](${gitParent}/docs/deploy.md) 與 [鎖](${gitRoot}/docs/locks.md)\"}}\n```\n\n- **指示詞**＝恰好一個鍵 `$fmt`、值是字串的物件；可放在 `rows` 任一字串位置（cell 頂層或巢狀物件／陣列裡）與 meta `source`。鍵不是 `$fmt`、或值不是字串 → 錯誤（`check` 算壞）。其他物件一律是普通巢狀值。\n- **不做字串簡寫**：純字串裡的 `${gitRoot}` 是字面值、永遠不展開——字面值不必跳脫，也不會誤展開。\n- 模板裡只有 `${名字}` 被代換；`$` 單獨出現是字面；未知的 `${…}` → 錯誤。展開一次、不再掃結果（變數值都是固定目錄，沒有巢狀與循環）。\n- 展開後的字串照 `wf/knowledge/data-files.json#/links` 的既有規則抽連結（所有欄掃 `[..](..)`、連結欄裸值整個當路徑）；絕對路徑一律**轉成相對本 json 目錄**再判 exists，所以 `links`／`check`／`open`／`resolve` 行為不變，只多一個 `raw` 欄位（原模板）。",
+ "syntax": [
+  "```json",
+  "{\"id\": \"7\", \"doc_path\": {\"$fmt\": \"${gitTop}/instance/deployment-scope.md#範圍\"},",
+  " \"note\": {\"$fmt\": \"見 [部署](${gitParent}/docs/deploy.md) 與 [鎖](${gitRoot}/docs/locks.md)\"}}",
+  "```",
+  "",
+  "- **指示詞**＝恰好一個鍵 `$fmt`、值是字串的物件；可放在 `rows` 任一字串位置（cell 頂層或巢狀物件／陣列裡）與 meta `source`。鍵不是 `$fmt`、或值不是字串 → 錯誤（`check` 算壞）。其他物件一律是普通巢狀值。",
+  "- **不做字串簡寫**：純字串裡的 `${gitRoot}` 是字面值、永遠不展開——字面值不必跳脫，也不會誤展開。",
+  "- 模板裡只有 `${名字}` 被代換；`$` 單獨出現是字面；未知的 `${…}` → 錯誤。展開一次、不再掃結果（變數值都是固定目錄，沒有巢狀與循環）。",
+  "- 展開後的字串照 `wf/knowledge/data-files.json#/links` 的既有規則抽連結（所有欄掃 `[..](..)`、連結欄裸值整個當路徑）；絕對路徑一律**轉成相對本 json 目錄**再判 exists，所以 `links`／`check`／`open`／`resolve` 行為不變，只多一個 `raw` 欄位（原模板）。"
+ ],
  "variables": {
-  "intro": "名字由 `tools/fmt-vars.json` 定義，以 `tabledb.py fmt --vars` 輸出為準。\n\n解析器**不寫死變數名**，只實作五個算法；名字→算法、說明、舊名（`aliases`，改名時保留相容）都從 **`tools/fmt-vars.json`**（契約 `wf-fmt-vars/1`，kernel-owned，隨 `wf-init` 複製）讀。專案要加自己的變數就放同目錄 **`fmt-vars.local.json`**（同格式，project-owned，kernel 升級不碰）：同名以 local 為準、多的追加。載入順序：json 所在 repo 根的 `wf/tools/` 或 `tools/`，找不到用腳本同目錄。",
+  "intro": [
+   "名字由 `tools/fmt-vars.json` 定義，以 `tabledb.py fmt --vars` 輸出為準。",
+   "",
+   "解析器**不寫死變數名**，只實作五個算法；名字→算法、說明、舊名（`aliases`，改名時保留相容）都從 **`tools/fmt-vars.json`**（契約 `wf-fmt-vars/1`，kernel-owned，隨 `wf-init` 複製）讀。專案要加自己的變數就放同目錄 **`fmt-vars.local.json`**（同格式，project-owned，kernel 升級不碰）：同名以 local 為準、多的追加。載入順序：json 所在 repo 根的 `wf/tools/` 或 `tools/`，找不到用腳本同目錄。"
+  ],
   "algorithms": [
    {
     "how": "`file-dir`",

@@ -13,7 +13,7 @@ workflows = **通用分層工作流模板 repo**：`template/` 是共用 kernel�
 ## 鐵律（always-on）
 
 1. 重構 / 整理**不改原意**：開發＝行為不變且驗證綠燈（`bash tools/wf-lint.sh --self`、`python -m pytest tools -q`）；非開發＝原意不變，照 `done_when` 驗收。
-2. **檢查過才算完成**：改 `template/`、`flavors/` 跑 `bash tools/wf-lint.sh --self`（CI 也跑）；改 `wf/` 跑 `python3 wf/tools/index_check.py wf`。有問題就是沒做完。
+2. **檢查過才算完成**：改 `wf/` 以外的任何 md 或 `tools/`（`template/`、`flavors/`、`examples/`、`skills/`、`docs/`、根層 md）跑 `bash tools/wf-lint.sh --self`（CI 也跑），有 BROKEN 就是沒做完；改 `wf/` 跑 `python3 wf/tools/index_check.py wf`，problems 不是 0 就是沒做完。
 3. **不可逆或對外的動作**（push、刪除、對外送出、動 DB）要有**授權來源**：使用者當場確認，或他親自登記在清單裡。都沒有就先問。
 4. **內容走 json、給人看的才留 md**：細節見 `wf/knowledge/structure.json`。
 5. **具體流程**在各工作流節點，不在頂層。

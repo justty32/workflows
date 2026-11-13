@@ -37,7 +37,7 @@
   {
    "key": "steps",
    "required": "必填",
-   "fill": "流程：markdown 字串，或字串陣列（一步一條）。"
+   "fill": "流程：一段 markdown 文字（字串，或拆成一行一個元素的字串陣列），或字串陣列（一步一條）；兩種陣列的寫法見 `wf/knowledge/structure.json#/node_shape`。"
   },
   {
    "key": "handoff",

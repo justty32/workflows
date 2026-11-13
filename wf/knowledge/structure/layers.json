@@ -1,7 +1,46 @@
 {
  "_description": "structure 的一部分（入口 `wf/knowledge/structure.json`，各段由那裡 `$ref` 過來；引用請寫入口的統一路徑）：分層與歸屬：東西該放哪一層、skills 與 memory 怎麼分、公共／私有 index、哪些留 md。",
- "layers": "# 分層原則\n\n1. **分層樹**：整個專案文檔是一棵樹，每層**只指向下一層、不存下層細節**：\n   ```\n   AGENTS.md（最頂，薄 md 路由器）→ wf/_index.json（wf 這層的 index）\n     → wf/workflows/_index.json（依意圖派發）／wf/knowledge/_index.json（查知識）\n     → 節點（<名稱>.json）→ 節點內的段／$ref 子檔…\n   ```\n   往下走才找細節；下層節點**不向上連 AGENTS.md**（也讓非侵入式佈局自然成立）。想了解某個節點就看它上一層的 index；上一層沒 index＝夠小，直接讀。\n2. **durable 知識歸層**：每份長期知識歸到它所屬的那個工作流／那一層，**絕不往上堆**——AGENTS.md 因此永遠很薄。\n3. **活狀態只列 open**：進度記 `wf/SESSION-LOG.md`、等使用者的記 `wf/WAIT_USER.md`，**完成即刪**；「改了什麼」交給 git log，「為什麼這樣選」記 `wf/knowledge/decisions.json#/records`。兩者膨脹就分別拆 `session_logs/`／`wait-user/`，hub 只留導航表。\n4. **鐵律極少而 always-on**：3–5 條任何時刻都適用的規矩常駐 AGENTS.md，其餘一切按需取用。",
- "skills_vs_memory": "# skills 與 memory 分家\n\n- `wf/workflows/`＝**skills**：做事的流程，一個工作流一個節點（何時用／何時不用／done_when／步驟／交接）。\n- `wf/knowledge/`＝**memory**：純知識與記錄（使用者偏好、慣例、code map、決策、踩坑、想法、驗證表、環境事實、調查筆記、本檔）。\n\n**判準一句話**：照著它**做事**的進 `workflows/`；拿來**查**、或做事時往裡**記**的進 `knowledge/`。\n\n舊檔常是「流程外殼包著一張記錄表或參考知識」：流程留在工作流節點，記錄與知識進 `knowledge/`，工作流用統一路徑指過去、不重抄。例：`wf/workflows/decisions.json` 只寫何時記、怎麼記，記錄在 `wf/knowledge/decisions.json#/records`。\n\nplanning 的 **spec／plan** 是記錄，進 `knowledge/`：放 wf/knowledge/specs/、wf/knowledge/plans/（第一份出現時才建資料夾；動工完成後移各自的 `archive/`，例 wf/knowledge/specs/archive/）。流程本身在 `wf/workflows/planning.json`。",
- "index_convention": "# 公共與私有 index\n\n- 寫進 repo 的 `_index.json`／`_index` 是**公共 index**：通用視角，給所有 agent 與人看。\n- agent 自己的看法（主觀、cache）放**私有 index** wf/_index.local.json（已 gitignore，用到才建，所以不寫成反引號路徑），用 `index_view` 的 `index` 參數疊在公共那份上。私有 index 不進版控、不給別人當依據。",
- "md_for_humans": "# 給人看的才留 md\n\n內容一律走 json；只有下列檔留 md：\n\n- `AGENTS.md`、`CLAUDE.md`：CLI 依檔名載入，只能是 md（保持薄路由）。\n- `wf/SESSION-LOG.md`、`wf/WAIT_USER.md`：給使用者看的活清單，格式不動。\n- `wf/knowledge/notes/wf-to-aos-mapping.md`：原樣保存的研究產物，不轉。\n\n`wf/` 底下其他內容都是 json 節點。要看 json 時用 `python3 wf/tools/wf-view.py <路徑>` 印成 md。"
+ "layers": [
+  "# 分層原則",
+  "",
+  "1. **分層樹**：整個專案文檔是一棵樹，每層**只指向下一層、不存下層細節**：",
+  "   ```",
+  "   AGENTS.md（最頂，薄 md 路由器）→ wf/_index.json（wf 這層的 index）",
+  "     → wf/workflows/_index.json（依意圖派發）／wf/knowledge/_index.json（查知識）",
+  "     → 節點（<名稱>.json）→ 節點內的段／$ref 子檔…",
+  "   ```",
+  "   往下走才找細節；下層節點**不向上連 AGENTS.md**（也讓非侵入式佈局自然成立）。想了解某個節點就看它上一層的 index；上一層沒 index＝夠小，直接讀。",
+  "2. **durable 知識歸層**：每份長期知識歸到它所屬的那個工作流／那一層，**絕不往上堆**——AGENTS.md 因此永遠很薄。",
+  "3. **活狀態只列 open**：進度記 `wf/SESSION-LOG.md`、等使用者的記 `wf/WAIT_USER.md`，**完成即刪**；「改了什麼」交給 git log，「為什麼這樣選」記 `wf/knowledge/decisions.json#/records`。兩者膨脹就分別拆 `session_logs/`／`wait-user/`，hub 只留導航表。",
+  "4. **鐵律極少而 always-on**：3–5 條任何時刻都適用的規矩常駐 AGENTS.md，其餘一切按需取用。"
+ ],
+ "skills_vs_memory": [
+  "# skills 與 memory 分家",
+  "",
+  "- `wf/workflows/`＝**skills**：做事的流程，一個工作流一個節點（何時用／何時不用／done_when／步驟／交接）。",
+  "- `wf/knowledge/`＝**memory**：純知識與記錄（使用者偏好、慣例、code map、決策、踩坑、想法、驗證表、環境事實、調查筆記、本檔）。",
+  "",
+  "**判準一句話**：照著它**做事**的進 `workflows/`；拿來**查**、或做事時往裡**記**的進 `knowledge/`。",
+  "",
+  "舊檔常是「流程外殼包著一張記錄表或參考知識」：流程留在工作流節點，記錄與知識進 `knowledge/`，工作流用統一路徑指過去、不重抄。例：`wf/workflows/decisions.json` 只寫何時記、怎麼記，記錄在 `wf/knowledge/decisions.json#/records`。",
+  "",
+  "planning 的 **spec／plan** 是記錄，進 `knowledge/`：放 wf/knowledge/specs/、wf/knowledge/plans/（第一份出現時才建資料夾；動工完成後移各自的 `archive/`，例 wf/knowledge/specs/archive/）。流程本身在 `wf/workflows/planning.json`。"
+ ],
+ "index_convention": [
+  "# 公共與私有 index",
+  "",
+  "- 寫進 repo 的 `_index.json`／`_index` 是**公共 index**：通用視角，給所有 agent 與人看。",
+  "- agent 自己的看法（主觀、cache）放**私有 index** wf/_index.local.json（已 gitignore，用到才建，所以不寫成反引號路徑），用 `index_view` 的 `index` 參數疊在公共那份上。私有 index 不進版控、不給別人當依據。",
+  "- index 條目除了 `description`（一句字串）與 `index`，可以多帶額外鍵：`source` 標內容來自 kernel／哪個 flavor（例 `dev`）／專案自己（`project`），升級時用來判斷哪些格要跟上游對照；筆記的 index 另有 `title`（顯示名）與 `date`。工具對多出來的鍵不報錯。"
+ ],
+ "md_for_humans": [
+  "# 給人看的才留 md",
+  "",
+  "內容一律走 json；只有下列檔留 md：",
+  "",
+  "- `AGENTS.md`、`CLAUDE.md`：CLI 依檔名載入，只能是 md（保持薄路由）。",
+  "- `wf/SESSION-LOG.md`、`wf/WAIT_USER.md`：給使用者看的活清單，格式不動。",
+  "",
+  "`wf/` 底下其他內容都是 json 節點。要看 json 時用 `python3 wf/tools/wf-view.py <路徑>` 印成 md。"
+ ]
 }

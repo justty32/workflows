@@ -1,5 +1,9 @@
 {
- "_description": "# structure：組織原則（被動／按需取用）\n\n只在你要**重構／整理結構**（拆大檔、分類雜亂資料夾、長出新工作流、封存過時節點）時取用。本檔（連同 `$ref` 指到的 `wf/knowledge/structure/` 子檔）是專案組織原則的**唯一出處**，其他節點只指過來、不重述；always-on 鐵律在 `AGENTS.md`。本檔描述 `wf/` 的試點形態（`#/pilot`）。",
+ "_description": [
+  "# structure：組織原則（被動／按需取用）",
+  "",
+  "只在你要**重構／整理結構**（拆大檔、分類雜亂資料夾、長出新工作流、封存過時節點）時取用。本檔（連同 `$ref` 指到的 `wf/knowledge/structure/` 子檔）是專案組織原則的**唯一出處**，其他節點只指過來、不重述；always-on 鐵律在 `AGENTS.md`。本檔描述 `wf/` 的試點形態（`#/pilot`）。"
+ ],
  "_index": {
   "layers": {
    "description": "分層原則：分層樹、durable 知識歸層、活狀態只列 open、鐵律極少；想知道東西該放哪一層時讀。"
@@ -11,7 +15,7 @@
    "description": "檔名語意：_description、_index 接手舊 README／INDEX 的角色，命名與統一路徑寫法；開新節點或寫引用時讀。"
   },
   "node_shape": {
-   "description": "節點怎麼寫：一檔一物件、值的三種形狀（同質記錄一律物件陣列）、檔案格式；寫或改 json 節點時讀。"
+   "description": "節點怎麼寫：一檔一物件、值的形狀（一段文字＝字串或字串陣列、同質記錄一律物件陣列）、檔案格式；寫或改 json 節點時讀。"
   },
   "split": {
    "description": "膨脹即拆／雜亂即分類的兩個觸發與門檻數字；檔太大、鍵太多、夾太擠時讀。"
@@ -20,7 +24,7 @@
    "description": "兩種觸發共用的拆法五步（原路徑保留當入口）；決定要拆之後讀。"
   },
   "index_convention": {
-   "description": "公共 index 與私有 index（wf/_index.local.json）的慣例；要寫自己的看法時讀。"
+   "description": "公共 index 與私有 index（wf/_index.local.json）的慣例，條目的額外鍵（`source`、筆記的 `title`／`date`）；要寫自己的看法或判斷某格來自 kernel 還是專案時讀。"
   },
   "md_for_humans": {
    "description": "給人看的才留 md：現在留 md 的檔與理由、怎麼把 json 印成 md；想新增 md 前讀。"

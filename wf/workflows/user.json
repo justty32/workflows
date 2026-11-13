@@ -8,7 +8,7 @@
  "steps": [
   "讀 `wf/knowledge/user.json`，找到對應的項目（語言、分支慣例、直接做不用問、一定先問、回覆風格、時區、派工與記憶）。",
   "改那一項，或新增一項；不動 `AGENTS.md` 的鐵律。",
-  "領域詞彙常猜錯 → 開 wf/knowledge/glossary.json（領域詞彙 `詞｜意思｜別名`，寫成物件陣列；常猜錯的術語多才建）。"
+  "領域詞彙常猜錯 → 照 `wf/knowledge/user.json#/glossary_hint` 開詞彙表。"
  ],
  "handoff": "記完回到原本的工作。"
 }

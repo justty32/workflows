@@ -75,6 +75,13 @@
    "focus": "module、environment、CI/CD、secret、observability"
   }
  ],
- "writing_rules": "- 技術結論附來源位置：`path:line`、函式名、URL、論文 id 或命令摘要。\n- 教學文件要包含：前置知識、原始碼導航、實作步驟、驗證方式。\n- 圖表用 Mermaid、表格、列點；不要用 ASCII 框線圖。",
- "handoff": "- 可行功能或缺口 → `wf/workflows/planning.json`。\n- 窄問題 → `wf/workflows/investigation.json`；需使用者驗證 → `wf/WAIT_USER.md`。"
+ "writing_rules": [
+  "- 技術結論附來源位置：`path:line`、函式名、URL、論文 id 或命令摘要。",
+  "- 教學文件要包含：前置知識、原始碼導航、實作步驟、驗證方式。",
+  "- 圖表用 Mermaid、表格、列點；不要用 ASCII 框線圖。"
+ ],
+ "handoff": [
+  "- 可行功能或缺口 → `wf/workflows/planning.json`。",
+  "- 窄問題 → `wf/workflows/investigation.json`；需使用者驗證 → `wf/WAIT_USER.md`。"
+ ]
 }

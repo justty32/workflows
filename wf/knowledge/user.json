@@ -29,5 +29,5 @@
  ],
  "dispatch": "**派工**（2026-11-13）：事情盡量交給子 agent；普通工作用 opus，簡單工作與雜活用 sonnet。子 agent 動手前要大致掌握 aos 體系，掌握到什麼程度依分配的工作決定；也要先讀過 `wf/` 規矩，簡單工作與雜活除外。",
  "memory": "**記憶**（2026-11-13）：不寫 Claude Code 自動記憶；要長期記住的事記進 `wf/`，照 `wf/knowledge/structure.json` 歸到所屬那層。",
- "glossary_hint": "領域詞彙常猜錯 → 開 wf/knowledge/glossary.json（用到才建，所以不寫成反引號路徑；同質記錄寫物件陣列），建了在 `wf/knowledge/_index.json` 加一條。"
+ "glossary_hint": "領域詞彙常猜錯 → 開 wf/knowledge/glossary.json（用到才建，所以不寫成反引號路徑；領域詞彙 `詞｜意思｜別名`，寫成物件陣列；常猜錯的術語多才建），建了在 `wf/knowledge/_index.json` 加一條。"
 }
