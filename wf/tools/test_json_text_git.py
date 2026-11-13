@@ -1,4 +1,4 @@
-# 來源：/home/<user>/repo/aos/wf/tools/tests/test_json_text.py 的 GitTests（repo-aos commit 55a82d79f），原樣搬來；
+# 來源：/home/<user>/repo/aos/wf/tools/tests/test_json_text.py 的 GitTests（repo-aos commit b374ac376），原樣搬來；
 # 本 repo 只多抄一支 json_text_cli.py 進暫存 repo（json_text.py 的 --setup 拆到那裡）。
 # Verify json_text --setup and a real git diff on a throwaway repo; never touches this repo's git config.
 import json

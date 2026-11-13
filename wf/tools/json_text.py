@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 來源：/home/<user>/repo/aos/wf/tools/json_text.py（repo-aos commit 55a82d79f）。為守本 repo 單檔 ≤ 8192 bytes，
+# 來源：/home/<user>/repo/aos/wf/tools/json_text.py（repo-aos commit b374ac376）。為守本 repo 單檔 ≤ 8192 bytes，
 # HELP 與 --setup 那段（git／interpreter／setup）原樣搬到 json_text_cli.py，其餘未改；改行為先改上游再同步。
 """json_text — 把一份 json 展開成給人看、給 git 逐行比的文字（git textconv 用；純標準庫、自足，可整支抄到別的 repo）。
 
@@ -34,6 +34,7 @@ INDENT = "  "
 FOLD = "↪ "          # marks a folded continuation line (not a newline in the content)
 LONG = 100                # lines longer than this are folded at sentence ends
 _SENT = re.compile(r"(?<=[.!?]) +(?=\S)|(?<=[。！？])(?=\S)")
+_LIST = re.compile(r"[ \t]*\d+(?:\.\d+)*[.)] +")   # a list number at the start of a line ("1. ", "  12. ", "1.2. ", "1) "): never fold right after it
 _CTRL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f]")
 _CTRL_NL = re.compile(r"[\x00-\x08\x0a-\x1f\x7f]")      # for paths: a newline in a key is shown too
 
@@ -61,7 +62,11 @@ def token(key):
 def fold(line):
     if len(line) <= LONG:
         return [line]
-    return [p for p in _SENT.split(line) if p != ""] or [line]
+    m = _LIST.match(line)
+    head = m.group() if m else ""
+    parts = [p for p in _SENT.split(line[len(head):]) if p != ""] or [""]
+    parts[0] = head + parts[0]
+    return parts
 
 
 def is_text(v):

@@ -1,4 +1,4 @@
-# 來源：/home/<user>/repo/aos/wf/tools/tests/test_json_text.py（repo-aos commit 55a82d79f）。本 repo 改的只有：路徑（測試與
+# 來源：/home/<user>/repo/aos/wf/tools/tests/test_json_text.py（repo-aos commit b374ac376）。本 repo 改的只有：路徑（測試與
 # json_text.py 同夾）、GitTests 搬到 test_json_text_git.py 並多抄一支 json_text_cli.py（都為了單檔 ≤ 8192 bytes）。
 # Verify json_text (expand JSON into line-oriented text for git textconv): shapes, escapes, bad input, --setup, and a real git diff on a throwaway repo.
 import json
@@ -66,6 +66,20 @@ class JsonTextTests(unittest.TestCase):
         self.assertEqual(lines[2], '  ↪ Sentence number 1 is here.')
         self.assertIn('  第一句。', lines)
         self.assertIn('  ↪ 第三句', lines)
+
+    def test_long_line_keeps_list_number_with_its_text(self):
+        tail = ' '.join('Sentence number %d is here.' % i for i in range(5))
+        lines = ['1. First item is here. ' + tail, '12. Twelfth item. ' + tail, '   3. Indented item. ' + tail,
+                 '1.2. Nested item. ' + tail, '4) Paren item. ' + tail]
+        out, _ = self.text({'s': '\n'.join(lines)})
+        got = out.split('\n')
+        for head in ['  1. First item is here.', '  12. Twelfth item.', '     3. Indented item.',
+                     '  1.2. Nested item.', '  4) Paren item.']:
+            self.assertIn(head, got)
+        for bad in ['  1.', '  12.', '     3.', '  1.2.', '  ↪ First item is here.', '  ↪ Twelfth item.',
+                    '  ↪ Indented item.', '  ↪ Nested item.']:
+            self.assertNotIn(bad, got)
+        self.assertIn('  ↪ Sentence number 0 is here.', got)    # the rest of the line still folds
 
     def test_whole_file_is_a_string_and_duplicates_and_bom(self):
         out, _ = self.text('"one\\ntwo"')

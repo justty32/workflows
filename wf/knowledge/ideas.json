@@ -17,5 +17,11 @@
    "status": "想想"
   }
  ],
- "roadmap": []
+ "roadmap": [
+  {
+   "item": "workflows 併入 aos（使用者 2026-11-13：「以後這個workflow，應該會併入aos中。可能是submodule吧我猜。」）",
+   "when": "未定；在 `wf/` 試點形狀穩定、回寫模板（v0.7）之後",
+   "premise": "併入方式未定（submodule 是使用者的猜測）；模板要不要繼續服務不在 aos 裡的專案未定——回寫模板時別把這條路堵死"
+  }
+ ]
 }
