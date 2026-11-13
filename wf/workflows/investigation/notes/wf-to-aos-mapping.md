@@ -339,7 +339,7 @@
 相關事實：
 - 13 日寫手結論「不把 wf 規矩寫進 system.txt 或共用知識庫」（`T/13/main-session-in-aos.md`）——限制了放法 ①②【查】（非使用者裁定）。
 - 「內容語言英文」只管出廠 `knowledge/aos`；外部語料收進來的庫，節點名英文、內文照原文（`K/docs/02` 末段）【查】。
-- 知識庫的組織原則本來借自 wf：`K/README.md`「照 [wf/STRUCTURE 分層原則](../../wf/STRUCTURE.md)：上層只放簡介與目錄、不重講下層細節」【查】。
+- 知識庫的組織原則本來借自 wf：`K/README.md`「照 wf/STRUCTURE 分層原則：上層只放簡介與目錄、不重講下層細節」【查】。
 - 子 agent 只能讀不能用 aos 工具寫，寫要用 CLI Write（`P/howto.json#/daemon/claude_subagent_tools`）【查】。
 - 拆成「流程 vs 知識」兩棵後，混合型（3.4 的 27 檔）要先切開【推】；wf 的 STRUCTURE 原則「durable 知識歸到它所屬的那一層」與「知識另開一庫」方向不同（前者按工作流歸屬、後者按性質歸屬）【查：`W/template/STRUCTURE.md:18`；比較是推論】。
 
