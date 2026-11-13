@@ -3,6 +3,12 @@
  "records": [
   {
    "date": "2026-11-13",
+   "decision": "**併入 aos 的範圍到 kernel 與 dev 兩批為止，其餘五包（knowledge／research／teaching／ops／multi-agent／heartbeat）不併**，留在本 repo，之後要用再回來翻。連帶：通用版不寫「被派出去的不 commit、push 先問」（留給各工作區自己的偏好與鐵律，feature-dev 尾端照模板原文）；預填的回覆風格算個人偏好、從骨架拿掉；patch 包放工作區的 wf/patches/；JSON 是推薦，md 等別的格式照樣可以（分析產物、PATCH、APPLY 留 md）。",
+   "rejected": "來源：使用者 2026-11-13 16:13 在 repo-aos 的收工待裁頁作答（W21＝B、W12＝B、W15＝B、W14＝A、W22＝A、W16＝A、W20＝A），經 repo-aos 的 aos mail 轉述；逐題原文與落地表在 aos repo 的 proto8/thinking/2026-11/13/收工待裁-回覆落地.md（aos commit 3cb2cb267）。還沒裁的：W11、W13、W17、W18、W19。",
+   "premise": "`aos-prep/` 不為這些裁定再改（本 repo commit f3d70ea 為最終版）；少落的東西由 repo-aos 落檔時處理。若之後要用到沒併的包，從本 repo 的 `flavors/` 取。"
+  },
+  {
+   "date": "2026-11-13",
    "decision": "**workflows 併入 aos 的方式：這套做法與內容變成 aos 體系的東西，不是把 repo 掛進去**。workflows repo 仍在，只是幾乎不再更新；模板不用再服務不在 aos 裡的專案；邊用邊併。",
    "rejected": "來源：使用者 2026-11-13 14:47 對 repo-aos 整理的九題的回覆（經 repo-aos 的 aos mail 轉述，逐字）：「1.變成aos的東西。2.都可以。3.都可以(也可以都要)。4.不用。workflows repo仍在，只是幾乎不再更新。5.邊用邊併。6.8kb上限可帶入(但只限.md)，檢查工具不留。7.拆。8.不用。9.不用」。題目全文在 aos repo 的 proto8/thinking/2026-11/13/workflows-into-aos.md。第 6 題兩處讀法（檢查工具不留的範圍、8 KB 是推薦還是硬規則）repo-aos 已請使用者確認，確認前不照任一種動手。",
    "premise": "因此原計畫「回寫模板 v0.7、另開 aos flavor、顧 Windows 與別家工具」不走了；本 repo 的 `wf/` 試點成果改當作搬進 aos 的素材。併法、骨架／知識庫 subject／鋪工作區機制怎麼分，使用者交給 agent 定。"
