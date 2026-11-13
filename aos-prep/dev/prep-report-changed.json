@@ -112,7 +112,7 @@
  {
   "where": "refactor.json#/not_when",
   "from": "整理的是工作文檔 → 拆檔／整理工作流（tidy，aos 知識庫 wf/tidying.json 的規則）",
-  "to": "使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」而對象是工作文檔 → kernel 的 tidy 工作流（另行併入）"
+  "to": "使用者說「整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」而對象是工作文檔 → kernel 的 tidy 工作流（aos 知識庫的 `wf/workflows/tidy.json`）"
  },
  {
   "where": "moving-things.json#/steps 第 4 步、#/done_when 第 4 條",

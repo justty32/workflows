@@ -70,7 +70,8 @@
   "筆記夾的 `_index.json`：md 版沒有索引，這裡加了寫法，並照 docs/01 寫成「夾大或要靠 description 挑時才放」；本 repo 的實例是一直有。",
   "moving-things 的 done_when「連結歸零」原文就跟第 4 步「可選，預設不跑」矛盾；這裡標成「跑了第 4 步才適用」，要不要乾脆從 done_when 拿掉由 repo-aos 決定。",
   "`dev/memory-analysis.json#/skeleton` 是 `[\"session_log.md\"]`（要建的檔名清單），不是可直接複製的 json 值；要改名成 `init_files` 拿掉 skeleton，還是保留，由 repo-aos 決定（跟產物留 md 還是改 json 一起定）。",
-  "「碰原始碼前先讀」照原文（conventions.md:5）寫進 feature-dev、refactor（含 moving-things）、investigation；testing 與 patch 沒寫——testing 不改原始碼，patch 改的是別的 repo。要不要也加由 repo-aos 決定。"
+  "「碰原始碼前先讀」照原文（conventions.md:5）寫進 feature-dev、refactor（含 moving-things）、investigation；testing 與 patch 沒寫——testing 不改原始碼，patch 改的是別的 repo。要不要也加由 repo-aos 決定。",
+  "「還沒有就照骨架建」會建出空檔：investigation 只讀不改，建空檔沒用；feature-dev 建了空 code map，下一步「讀 code map 找相關領域」就做不下去（複核 N8，沒修，留給 repo-aos）。"
  ],
  "for_user": [
   "commit／push：feature-dev 流程尾端照原文 commit；怎麼 commit（誰決定、分支慣例）看工作區的 `wf/knowledge/user.json`，那裡沒寫就照流程 commit；push 不在流程裡，另守 `kernel/iron-rules.json#/rules/authorization`。本 repo 的實例另有「被派出去的不 commit、由主線驗收後 commit、push 一律先問」——模板沒有，沒帶；要不要變成通用規則？",

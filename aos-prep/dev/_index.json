@@ -25,7 +25,7 @@
   "source": "dev"
  },
  "refactor.json": {
-  "description": "行為不變的重構／拆檔／整理結構流程（程式碼）；使用者說「重構」「拆檔」「整理結構」或結構門檻超標時走它（整理工作文檔走 kernel 的 tidy，另行併入）",
+  "description": "行為不變的重構／拆檔／整理結構流程（程式碼）；使用者說「重構」「拆檔」「整理結構」或結構門檻超標時走它（整理工作文檔走 kernel 的 tidy，在 aos 知識庫的 `wf/workflows/tidy.json`）",
   "kind": "workflow",
   "source": "dev"
  },
@@ -111,6 +111,7 @@
  },
  "prep-report-fixes.json": {
   "description": "批次報告的稽核修正段：稽核項、怎麼修、動了哪個節點；核對稽核有沒有修完時讀",
-  "kind": "meta"
+  "kind": "meta",
+  "source": "dev"
  }
 }

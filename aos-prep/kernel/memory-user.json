@@ -47,12 +47,12 @@
   }
  ],
  "defaults": {
-  "reply_style": "通用風格見 `kernel/reply-style.json`（落地後的路徑由 repo-aos 定）；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。"
+  "reply_style": "通用風格見回覆風格節點；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。"
  },
  "rules": [
   "`prefs` 寫成物件陣列，用 json 工具讀寫；一項一筆，表外的長期偏好新增一筆。",
   "`items` 的 `examples` 只是常見寫法示範，不是事實；沒問過使用者就留空，不要照填。",
-  "`defaults` 記 kernel 出廠預填在偏好表那一格的句子（`reply_style`＝回覆風格那格），`skeleton` 已放進對應那格：這句是出廠預設，使用者說了別的就改。",
+  "`defaults.reply_style` 是 kernel 出廠預設的回覆風格句（「回覆風格節點」落地前是 `kernel/reply-style.json`，落地後的路徑由 repo-aos 定）；`skeleton` 回覆風格那格放的就是這句。這是出廠預設，使用者說了別的就改那格。",
   "改一項時，同檔裡跟新偏好矛盾的舊值一併改掉。",
   "`skeleton` 裡的路徑是工作區裡的路徑。"
  ],
@@ -78,7 +78,7 @@
    },
    {
     "item": "回覆風格",
-    "setting": "通用風格見回覆風格節點；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。（出廠預設，使用者說了別的就改）"
+    "setting": "通用風格見回覆風格節點；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字。"
    },
    {
     "item": "時區",
@@ -93,6 +93,6 @@
    "template/workflows/common/user.md",
    "template/workflows/common/README.md"
   ],
-  "notes": "佔位符的「例：…」移到 `items[].examples` 並標成示範；回覆風格格子裡非佔位的那句移到 `defaults`；glossary.md 改成工作區 wf/knowledge/glossary.json 物件陣列（欄 詞｜意思｜別名）。（2026-11-13 稽核修正：defaults 鍵改英文 reply_style；預設句放進 skeleton 回覆風格那格並標出廠預設；鐵律指到 kernel/iron-rules.json）"
+  "notes": "佔位符的「例：…」移到 `items[].examples` 並標成示範；回覆風格格子裡非佔位的那句存在 `defaults.reply_style`，skeleton 回覆風格那格放同一句（不夾註記）；glossary.md 改成工作區 wf/knowledge/glossary.json 物件陣列（欄 詞｜意思｜別名）。（2026-11-13 稽核修正：defaults 鍵改英文 reply_style；預設句放進 skeleton 回覆風格那格並標出廠預設；鐵律指到 kernel/iron-rules.json）（2026-11-13 複核修正：N5 skeleton 那格拿掉「（出廠預設…）」註記，出廠預設的說明只留在 rules/2 與 skeleton/_description）"
  }
 }

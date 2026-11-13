@@ -3,7 +3,7 @@
   "description": "這個夾是什麼、節點裡的路徑怎麼讀、併進 aos 之後怎麼標；第一次進來時讀。"
  },
  "kernel": {
-  "description": "kernel 的四條薄流程（記決定、規劃、記踩坑、記使用者偏好）、對應的記憶骨架、鐵律、派發通則、回覆風格與活清單寫法；來源 template/（tidy 一組不在這裡，另行併入）。",
+  "description": "kernel 的四條薄流程（記決定、規劃、記踩坑、記使用者偏好）、對應的記憶骨架、鐵律、派發通則、回覆風格與活清單寫法；來源 template/（tidy 一組不在這裡，已在 aos 知識庫的 `wf/workflows/tidy.json`）。",
   "index": "kernel/_index.json",
   "status": "備料完成 2026-11-13；獨立稽核的發現已修（高 1、中 9 全修），待 repo-aos 落檔"
  },

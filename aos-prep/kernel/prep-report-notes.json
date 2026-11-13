@@ -55,16 +55,18 @@
   "memory-ideas：「會做→搬 roadmap」時原想法那筆要刪還是留著標狀態，模板沒說；節點照字面寫「搬進」。",
   "template/WORKFLOWS.md 的「可以跳流程」：稽核後已收進 `kernel/dispatch.json#/skip`（dev/dispatch.json 只指過去）。派發表本身（工作區的 wf/workflows/_index.json）的寫法仍跟派發表那塊一起搬。",
   "live-lists 算 knowledge；兩份清單是 md 檔，沒給 skeleton。若 aos 之後要把它們也轉 json，再補成 memory 節點。",
-  "鐵律 3 改寫成「條列走 json、用 json 工具讀寫」：原文的 >1 KB 門檻與「導航留 md」綁 md 形態；aos 工作區是否還需要這條當鐵律（json 佈局下幾乎是預設），由 repo-aos 決定。",
   "memory-decisions 拿掉的一句：「舊版模板的第三欄是『未選方案與原因』；從舊版搬過來的記錄那欄照留，或照『只留現行結論』精簡，不硬改成來源」（出處 CHANGELOG）。aos 自己的工作區若要搬舊記錄，由 repo-aos 決定要不要留。",
   "planning 詳規的 spec／plan 寫成 md 還是 json、done_when 的「有『方案／取捨』段」怎麼認（md 標題還是 json 鍵），原文沒說，節點照字面。",
   "done_when 原文就不太能觀察、照搬的：kernel/user.json「沒有留下矛盾的舊值」、kernel/gotchas.json「或查到既有條目並照它處理」。",
   "_index.json 裡非節點那幾格（_description.json、prep-report*.json）：kernel 不寫 kind、dev 寫 kind meta；兩批要不要統一、統一成哪種，由 repo-aos 落檔時定（契約只列三種 kind）。",
-  "tidy 一組：稽核當時寫「另由 repo-aos 從 wf/workflows/tidy.json 一組併」；備料修正期間 repo-aos 已併進 aos（aos repo commit dbefe6fd2，落點 aos 知識庫的 wf/workflows/ 與 wf/knowledge/，本機的活樹還沒同步）。節點裡「kernel 的 tidy 工作流（另行併入）」落檔時可改成實際路徑。",
-  "工作區還沒有 wf/ 時，第一次建記憶檔要不要同時建 wf/knowledge/_index.json：aos 知識庫 docs/01 的門檻（超過 15 個東西才放）推得出來，節點沒寫。"
+  "tidy 一組已由 aos repo commit dbefe6fd2 併進 aos 知識庫（wf/workflows/、wf/knowledge/；本機活樹還沒同步）；節點已改指 aos 知識庫的 wf/workflows/tidy.json（複核 N1）。",
+  "工作區還沒有 wf/ 時，第一次建記憶檔要不要同時建 wf/knowledge/_index.json：aos 知識庫 docs/01 的門檻（超過 15 個東西才放）推得出來，節點沒寫。",
+  "活清單檔不存在時，要寫第一行該照 `kernel/live-lists.json#/session_log`、`kernel/live-lists.json#/wait_user` 的「檔的形狀」建檔，節點沒明說；feature-dev 跨 session 會用到（複核 N9，沒修）。",
+  "空工作區沒有 `wf/workflows/_index.json`（與 `wf/_index.json`）時，`kernel/dispatch.json#/route`、`kernel/dispatch.json#/fallback` 的派發起點落空。這屬於「怎麼給新工作區鋪初始檔案」的題，留給 repo-aos 落檔時處理（複核 N10，沒修）。"
  ],
  "for_user": [
   "等使用者的事：照現況寫檔案 wf/WAIT_USER.md；aos 方向是寄 NEEDS-USER 信。何時改、改了 WAIT_USER.md 還留不留（例如只留給樹外的 session），要使用者裁；裁之前節點不動。",
-  "回覆風格那格的出廠預設句「使用者問『要不要』時附可執行判準（門檻數字）與後果，讓他能改數字」：算 kernel 的通用預設（每個工作區都帶），還是當初某位使用者的個人偏好被寫進模板？前者就留在 skeleton，後者就從 skeleton 與 defaults 拿掉，或改放進 kernel/reply-style.json#/rules 當第 10 條。"
+  "回覆風格那格的出廠預設句「使用者問『要不要』時附可執行判準（門檻數字）與後果，讓他能改數字」：算 kernel 的通用預設（每個工作區都帶），還是當初某位使用者的個人偏好被寫進模板？前者就留在 skeleton，後者就從 skeleton 與 defaults 拿掉，或改放進 kernel/reply-style.json#/rules 當第 10 條。",
+  "模板鐵律「條列走資料檔、導航留 md」在 aos 的 json 佈局下沒帶——要不要有一條對應的鐵律（例如內容走 json、給人看的才留 md）？"
  ]
 }

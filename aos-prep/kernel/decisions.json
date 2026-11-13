@@ -15,7 +15,7 @@
   "工作區還沒有 `wf/knowledge/decisions.json` → 照 `kernel/memory-decisions.json#/skeleton` 建。",
   "在 `records` 加一筆，新的在上（加在陣列最前），用 json 工具寫。",
   "填四欄：`date`（日期）、`decision`（決定）、`origin`（來源：使用者原文，或誰定的）、`premise`（前提，變了就重看）；欄意見 `kernel/memory-decisions.json#/fields`。",
-  "只寫結論、前提與使用者原文：比較過的方案、AI 寫的理由不寫，要查靠 git 歷史（「只留現行結論」的判準在 kernel 的 tidy 工作流的內容精簡段（另行併入，不在備料裡））。",
+  "只寫結論、前提與使用者原文：比較過的方案、AI 寫的理由不寫，要查靠 git 歷史（「只留現行結論」的判準在 aos 知識庫的 `wf/knowledge/content-trim.json`）。",
   "條目多到難讀 → 升級成資料夾、一決策一檔，照 aos 知識庫的 `wf/nodes.json#/growth` 與 `wf/tidying.json#/split_method`。"
  ],
  "handoff": [
@@ -29,6 +29,6 @@
    "template/workflows/decisions.md",
    "template/WORKFLOWS.md"
   ],
-  "notes": "表格改成指到記憶骨架；欄名照現行模板（3d685ce 起「來源」取代「未選方案與原因」），新鍵 `origin`；模板說明段的升級資料夾一句改指 aos 知識庫的 wf/nodes.json；觸發說法取自 WORKFLOWS.md 派發表；handoff 是新寫的（模板這份沒有交接段）。（2026-11-13 稽核修正：tidy 的去處改寫成「另行併入」）"
+  "notes": "表格改成指到記憶骨架；欄名照現行模板（3d685ce 起「來源」取代「未選方案與原因」），新鍵 `origin`；模板說明段的升級資料夾一句改指 aos 知識庫的 wf/nodes.json；觸發說法取自 WORKFLOWS.md 派發表；handoff 是新寫的（模板這份沒有交接段）。（2026-11-13 稽核修正：tidy 的去處改寫）（2026-11-13 複核修正：N1「只留現行結論」的判準改指 aos 知識庫的 wf/knowledge/content-trim.json）"
  }
 }

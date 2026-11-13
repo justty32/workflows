@@ -40,6 +40,6 @@
   "files": [
    "template/workflows/decisions.md"
   ],
-  "notes": "md 表頭四欄改成物件陣列四鍵；第三欄照現行模板（來源），鍵名取 `origin`，不沿用本 repo wf/ 的舊鍵 `rejected`；「舊列照留」一句取自 CHANGELOG 未發布段。（2026-11-13 稽核修正：升級資料夾改指 wf/tidying.json#/split_method；「舊版模板第三欄」的版本遷移句移出 rules（見報告 unsure））"
+  "notes": "md 表頭四欄改成物件陣列四鍵；第三欄照現行模板（來源），鍵名取 `origin`，不沿用本 repo wf/ 的舊鍵 `rejected`。（2026-11-13 稽核修正：升級資料夾改指 wf/tidying.json#/split_method；「舊版模板第三欄」的版本遷移句移出 rules（見報告 unsure））（2026-11-13 複核修正：N6 notes 拿掉已不存在的 CHANGELOG 那句）"
  }
 }

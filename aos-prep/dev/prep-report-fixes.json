@@ -1,5 +1,5 @@
 {
- "_description": "dev 批次報告的稽核修正段（2026-11-13 稽核：高 1、中 9、低 20；本檔只列動到 dev 批的項，kernel 批的在 `kernel/prep-report-fixes.json`）。",
+ "_description": "dev 批次報告的稽核修正段（2026-11-13 稽核：高 1、中 9、低 20；本檔只列動到 dev 批的項，kernel 批的在 `kernel/prep-report-fixes.json`）。`audit2_fixes` 是 2026-11-13 複核（N1–N10）的處理。",
  "audit_fixes": [
   {
    "item": "1 高 鐵律沒有備料，dev-env、moving-things 指到工作區 AGENTS.md",
@@ -100,6 +100,23 @@
    "item": "低 D _index 非節點格 kind 兩批不一致",
    "fix": "沒改：統一成哪種是新決定，列 kernel 的 unsure",
    "nodes": "kernel/prep-report-notes.json#/unsure"
+  }
+ ],
+ "audit2_fixes": [
+  {
+   "item": "N1 中 tidy 的去處寫「另行併入」",
+   "fix": "改指 aos 知識庫的 wf/workflows/tidy.json",
+   "nodes": "dev/refactor.json#/not_when、dev/_index.json、dev/prep-report-changed.json、dev/prep-report-mapping.json"
+  },
+  {
+   "item": "N7 低 _index 的 fixes 那格少 source",
+   "fix": "補 \"source\": \"dev\"",
+   "nodes": "dev/_index.json"
+  },
+  {
+   "item": "N8 低 照骨架建會建出空檔",
+   "fix": "不修，登記 unsure",
+   "nodes": "dev/prep-report.json#/unsure"
   }
  ]
 }

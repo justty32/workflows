@@ -173,6 +173,6 @@
  },
  {
   "from": "template/WORKFLOWS.md tidy 那列的觸發說法",
-  "to": "refactor.json#/not_when（導到 kernel 的 tidy，另行併入）"
+  "to": "refactor.json#/not_when（導到 kernel 的 tidy，在 aos 知識庫的 wf/workflows/tidy.json）"
  }
 ]

@@ -83,7 +83,7 @@
   },
   {
    "from": "template/AGENTS.md：鐵律 1–4",
-   "to": "kernel/iron-rules.json#/rules（keep_meaning、authorization、lists_in_json、flow_in_nodes）"
+   "to": "kernel/iron-rules.json#/rules（keep_meaning、authorization、flow_in_nodes；鐵律 3 不帶，見 dropped）"
   },
   {
    "from": "template/AGENTS.md：鐵律段的〔模板說明〕（3–5 條、任何時刻都適用才夠格）",

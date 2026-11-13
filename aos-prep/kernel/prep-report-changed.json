@@ -11,7 +11,7 @@
   },
   {
    "from": "decisions.md「（tidy 內容精簡）」連結",
-   "to": "「kernel 的 tidy 工作流的內容精簡段，尚未備料」"
+   "to": "aos 知識庫的 `wf/knowledge/content-trim.json`（「只留現行結論」的判準）"
   },
   {
    "from": "planning.md「開發：spec→plan，各一檔放 planning/specs/、planning/plans/」",
@@ -55,11 +55,7 @@
   },
   {
    "from": "template/AGENTS.md 鐵律 1「（{{測試 / build / lint 指令}}）」",
-   "to": "「驗證指令是專案自己的…記在工作區的 wf/knowledge/verification.json，骨架 dev/memory-verification.json」"
-  },
-  {
-   "from": "template/AGENTS.md 鐵律 3「條列走資料檔、導航留 md：>1 KB 存 .json／.csv（wf-table/1），用 tabledb 讀寫」",
-   "to": "「條列走 json、不整份讀：寫成 json（同質記錄寫物件陣列），用 json 工具一處一處讀寫（aos/packs.json#/json）；導航交給 index，AGENTS.md 留 md」"
+   "to": "「驗證指令是專案自己的…記在工作區的 wf/knowledge/verification.json；裝了開發包的話骨架是 dev/memory-verification.json」"
   },
   {
    "from": "template/AGENTS.md 入口「→ WORKFLOWS.md」「→ INDEX.md」「→ workflows/common/user.md」",
@@ -71,7 +67,7 @@
   },
   {
    "from": "memory-user.json#/defaults/回覆風格（只在 defaults，skeleton 那格空）",
-   "to": "defaults/reply_style；同一句放進 skeleton 回覆風格那格，標「出廠預設，使用者說了別的就改」"
+   "to": "defaults/reply_style 存出廠預設句；skeleton 回覆風格那格放同一句（不夾註記），「出廠預設、使用者說了別的就改」寫在 rules 與 skeleton/_description"
   },
   {
    "from": "user.json、memory-user.json「見工作區 AGENTS.md 的鐵律」",
@@ -84,6 +80,14 @@
   {
    "from": "memory-decisions.json#/rules「照 aos 知識庫的 wf/nodes.json#/growth」",
    "to": "「拆法照 aos 知識庫的 wf/tidying.json#/split_method」"
+  },
+  {
+   "from": "template/AGENTS.md 鐵律 3「條列走資料檔、導航留 md」",
+   "to": "整條不帶，見 `kernel/prep-report.json#/dropped`（2026-11-13 複核 N2）"
+  },
+  {
+   "from": "flavors/dev/AGENTS.dev.md:1「環境與指令 → dev-env」",
+   "to": "agents_md_entry 開發包那行補回：環境與指令看 `dev/dev-env.json`、工作區的 `wf/knowledge/dev-env.json`（複核 N3）"
   }
  ]
 }

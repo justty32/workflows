@@ -68,12 +68,12 @@
   "source": "kernel"
  },
  "iron-rules.json": {
-  "description": "工作區的鐵律：always-on、極少、常駐工作區根 AGENTS.md 的四條（不改原意、不可逆或對外動作要有授權來源、條列走 json、流程在節點）與 AGENTS.md 入口行；寫或改 AGENTS.md、要做 push 等對外動作時讀。",
+  "description": "工作區的鐵律：always-on、極少、常駐工作區根 AGENTS.md 的三條（不改原意、不可逆或對外動作要有授權來源、流程在節點）與 AGENTS.md 入口行；寫或改 AGENTS.md、要做 push 等對外動作時讀。",
   "kind": "knowledge",
   "source": "kernel"
  },
  "dispatch.json": {
-  "description": "派發通則：怎麼從派發表選工作流、什麼時候可以跳流程、都不符去哪、kernel 內建工作流（含另行併入的 tidy）的觸發說法；不確定該走哪條、想跳流程時讀。",
+  "description": "派發通則：怎麼從派發表選工作流、什麼時候可以跳流程、都不符去哪、kernel 內建工作流（含 tidy，已在 aos 知識庫的 `wf/workflows/tidy.json`）的觸發說法；不確定該走哪條、想跳流程時讀。",
   "kind": "knowledge",
   "source": "kernel"
  }

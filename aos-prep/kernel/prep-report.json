@@ -48,8 +48,8 @@
    "why": "佔位與版本戳是導入用；路由器原則 aos 知識庫的 wf/layers.json#/layers 第 1 條已涵蓋"
   },
   {
-   "what": "template/AGENTS.md 鐵律 3 的 md 形態細節：>1 KB 門檻、`.csv`、契約 `wf-table/1`、`tools/tabledb.py`、data-files 連結",
-   "why": "契約：wf-table/1、tabledb 不帶；改寫成「條列走 json、用 json 工具讀寫」（kernel/iron-rules.json#/rules/lists_in_json）"
+   "what": "template/AGENTS.md 鐵律 3 整條：「條列走資料檔、導航留 md：給 AI 消化的表／清單 >1 KB 存 .json／.csv…給人點的導航連結留 md」",
+   "why": "md 形態專用的規矩；aos 的工作區內容本來就走 json、導航走 index，這條沒有對應的通用說法，硬改寫會加進原文沒有的規定（2026-11-13 複核 N2；要不要另立一條見 for_user）"
   },
   {
    "what": "template/workflows/decisions.md 相關：CHANGELOG「舊版模板第三欄是『未選方案與原因』，舊列照留」",

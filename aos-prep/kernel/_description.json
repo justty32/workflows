@@ -6,7 +6,7 @@
  "- 工作流（做事的流程，落地後放工作區的 `wf/workflows/`）：`kernel/decisions.json`、`kernel/planning.json`、`kernel/gotchas.json`、`kernel/user.json`。",
  "- 記憶骨架（專案自己填的記錄，`skeleton` 複製到工作區的 `wf/knowledge/<名>.json`，名字去掉 `memory-` 前綴）：`kernel/memory-decisions.json`、`kernel/memory-ideas.json`、`kernel/memory-gotchas.json`、`kernel/memory-user.json`。",
  "- 知識：`kernel/iron-rules.json`（工作區 `AGENTS.md` 的鐵律與入口行，always-on）、`kernel/dispatch.json`（派發通則：怎麼選工作流、可以跳流程、都不符去哪）、`kernel/reply-style.json`（對話回覆風格）、`kernel/live-lists.json`（兩份活清單怎麼寫）。",
- "- 不在備料裡：kernel 的 tidy（整理／封存／拆檔）一組，另由 repo-aos 從 workflows repo 的 `wf/workflows/tidy.json` 一組併；觸發說法與去處見 `kernel/dispatch.json#/kernel_triggers`。",
+ "- 不在備料裡：kernel 的 tidy 一組已另行併入 aos 知識庫（aos repo dbefe6fd2），不在備料裡；入口是 aos 知識庫的 `wf/workflows/tidy.json`（另有 `wf/workflows/tidy/`、`wf/workflows/tidy-manager-brief.json`、`wf/knowledge/content-trim.json`）；觸發說法與去處見 `kernel/dispatch.json#/kernel_triggers`。",
  "- `kernel/prep-report.json`（太大拆成五檔，另四份 `kernel/prep-report-mapping.json`、`kernel/prep-report-changed.json`、`kernel/prep-report-notes.json`、`kernel/prep-report-fixes.json`）：對照、丟掉的、改寫的、與 aos 的重疊、拿不準的、要使用者裁的。",
  "",
  "路徑說法跟 aos 知識庫的 `wf/_description.json` 一致：「工作區的 `wf/…`」指專案工作區；`kernel/<名>.json`、`dev/<名>.json` 指備料節點；aos 知識庫的節點寫 knowledge 路徑並註明。",

@@ -1,5 +1,5 @@
 {
- "_description": "kernel 批次報告的稽核修正段（2026-11-13 稽核：高 1、中 9、低 20；本檔只列動到 kernel 批的項，dev 批的在 `dev/prep-report-fixes.json`）。",
+ "_description": "kernel 批次報告的稽核修正段（2026-11-13 稽核：高 1、中 9、低 20；本檔只列動到 kernel 批的項，dev 批的在 `dev/prep-report-fixes.json`）。`audit2_fixes` 是 2026-11-13 複核（N1–N10）的處理。",
  "audit_fixes": [
   {
    "item": "1 高 鐵律沒有備料，卻被四處指過去",
@@ -84,6 +84,48 @@
   {
    "item": "J 節 空工作區第一次建記憶檔要不要建 _index",
    "fix": "沒自定規則；列 unsure（docs/01 推得出）",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  }
+ ],
+ "audit2_fixes": [
+  {
+   "item": "N1 中 tidy 的去處寫「另行併入」",
+   "fix": "改指 aos 知識庫的 wf/workflows/tidy.json（decisions 的判準改指 wf/knowledge/content-trim.json）；兩份 _description 改寫成已併入 aos 知識庫（aos repo dbefe6fd2）",
+   "nodes": "kernel/dispatch.json#/kernel_triggers/1、kernel/_index.json、kernel/decisions.json#/steps/3、kernel/_description.json、_description.json、_index.json、kernel/prep-report-changed.json、kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "N2 中 鐵律 3 的改寫超出原文",
+   "fix": "rules/lists_in_json 整條拿掉，剩三條、編號重排；dropped 登記、changed 改指 dropped、for_user 加一題",
+   "nodes": "kernel/iron-rules.json#/rules、kernel/_index.json、kernel/prep-report.json#/dropped、kernel/prep-report-changed.json、kernel/prep-report-mapping.json、kernel/prep-report-notes.json"
+  },
+  {
+   "item": "N3 低 入口段開發包那行少了 dev-env",
+   "fix": "補回「環境與指令 → 工作區的 wf/knowledge/dev-env.json（dev/dev-env.json）」",
+   "nodes": "kernel/iron-rules.json#/agents_md_entry/5"
+  },
+  {
+   "item": "N4 低 kernel 鐵律指到 dev 批骨架",
+   "fix": "改成「記在工作區的 wf/knowledge/verification.json；裝了開發包的話骨架是 dev/memory-verification.json」",
+   "nodes": "kernel/iron-rules.json#/rules/keep_meaning"
+  },
+  {
+   "item": "N5 低 memory-user 預設句兩份且夾註記",
+   "fix": "skeleton 那格只放預設句本身，跟 defaults/reply_style 相同；出廠預設的說明寫在 rules/2",
+   "nodes": "kernel/memory-user.json#/defaults、#/rules/2、#/skeleton/prefs/4"
+  },
+  {
+   "item": "N6 低 memory-decisions 的 notes 過時",
+   "fix": "拿掉 CHANGELOG 那句",
+   "nodes": "kernel/memory-decisions.json#/source/notes"
+  },
+  {
+   "item": "N9 低 活清單檔不存在時的寫法",
+   "fix": "不修，登記 unsure",
+   "nodes": "kernel/prep-report-notes.json#/unsure"
+  },
+  {
+   "item": "N10 低 空工作區沒有派發表",
+   "fix": "不修，登記 unsure（鋪初始檔案的題，留給 repo-aos）",
    "nodes": "kernel/prep-report-notes.json#/unsure"
   }
  ]
