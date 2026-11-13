@@ -31,6 +31,10 @@
   "description": "決策記錄：定了什麼、來源與前提（新的在上；只記結論，舊記錄的未選方案照留）；被問「當初定的是什麼、還成立嗎」或要翻案時讀",
   "source": "kernel"
  },
+ "decisions": {
+  "description": "決策記錄拆出來的舊月份（目前只有 2026-09）；主檔 decisions.json 用 $ref 掛著，平常從主檔進。",
+  "source": "project"
+ },
  "ideas.json": {
   "description": "planning 的想法表（要不要做）與 roadmap 表（會做，何時）；使用者說「記個想法」「以後要做」「排進 roadmap」，或要看有哪些想法時讀",
   "source": "kernel"

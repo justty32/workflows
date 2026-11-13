@@ -1,5 +1,16 @@
 {
  "_description": "decisions — 決策記錄（定了什麼、前提是什麼）。留下「定了什麼」：git log 找得回改了什麼，找不回**當時定下的規則與它成立的前提**。只記結論、來源與前提，比較過的方案與 AI 寫的理由不記，要查靠 git 歷史。欄位：`decision`（決定）、`rejected`（來源：使用者原文或誰定的；鍵名沿用舊稱，舊記錄這欄寫的是未選方案與原因，照留）、`premise`（前提，變了就重看）。新的在上；怎麼記見 `wf/workflows/decisions.json`。",
+ "_index": {
+  "records": {
+   "description": "2026-11 起的決策記錄，新的在上；每筆 date／decision／rejected（現在的意思是來源）／premise。要查當初定了什麼、前提還成不成立時讀。"
+  },
+  "records_2026_09": {
+   "description": "2026-09 的舊記錄（外部 skill 收不收、非侵入式導入等），拆在 decisions/2026-09.json；`rejected` 寫的是未選方案與原因。"
+  },
+  "evidence": {
+   "description": "舊記錄的細節與證據在哪。"
+  }
+ },
  "records": [
   {
    "date": "2026-11-13",
@@ -48,55 +59,10 @@
    "decision": "**git 行尾釘 LF**（`.gitattributes`）",
    "rejected": "各機自設 `core.autocrlf`（WSL 沒設就整檔變動、`.sh` 跑不動）",
    "premise": "Windows 端工具都吃 LF"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**本 repo 自己用非侵入式導入**：dev flavor 裝進 `wf/`，頂層只留 `AGENTS.md`／`CLAUDE.md`／`.claude/`",
-   "rejected": "標準佈局＝kernel 攤在根目錄，會跟 `template/`／`flavors/`／`tools/` 撞名撞視線，模板 repo 尤其不能這樣",
-   "premise": "`wf/` 納入版控（不 ignore）；`wf-init` 的非侵入式改寫可靠"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**`skills/` 進契約**：vendor 進來的 skill 受 `wf-lint` 檢查，導入後落在 `wf/skills/`",
-   "rejected": "放在契約外＝多一塊沒人檢查的區域，違反「機械兜底」",
-   "premise": "`wf-lint` 的掃描範圍涵蓋 `skills/`"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**8 KB 上限對 `skills/` 不豁免**",
-   "rejected": "為單一外部 skill 開豁免＝拆掉 `wf-lint --self` 對全 repo 的機械保證，之後每個 skill 都會來要豁免",
-   "premise": "收進來的 skill 是 md 為主、拆得動"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**外部大型 skill 不 vendor，改以 git submodule 掛 `skills/external/<name>/`**：上游原樣、授權歸上游、**不受 8 KB 契約**、`wf-init` 導入時不複製。已定案走這條：dashi-ppt-skill、archify、Kami",
-   "rejected": "vendor（授權／體積／超標檔過不了 CI）；只在 README 放外部連結（評估白做、拿不到內容）；在 `skills/` 開「教你 `npx skills add`」的薄指引（模糊 vendor 契約，且等於背書執行期下載未審查程式碼）",
-   "premise": "submodule 是本 repo 自己的參考資產，不發給下游；`wf-init` 確實不複製它"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**effective-html 收進 `skills/`**",
-   "rejected": "不收（MIT 相容、17 檔 51 KB、零執行期相依，沒有不收的理由）",
-   "premise": "授權聲明留在 `skills/LICENSES/`；超標檔（`design-artifact/SKILL.md`）已拆"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**i-have-adhd 與 caveman 不 vendor，用自己的話重寫成 kernel 的 `reply-style.md`**（caveman 的 5 條併入同一份）",
-   "rejected": "vendor 原檔（要吸收的是回覆風格規則，不是檔案；重寫可繁中化並與鐵律對齊）；不收（規則本身有用）",
-   "premise": "`reply-style.md` 屬 kernel；`template/workflows/common/user.md` 的「回覆風格」欄改指向它"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**stop-slop 的 7 條併進 knowledge flavor 的 `writing.md`**，不 vendor",
-   "rejected": "vendor 原檔；另開新工作流（`writing.md` 本來就是這個題目的歸屬層，另開會分裂）",
-   "premise": "knowledge 包保留 `writing.md`"
-  },
-  {
-   "date": "2026-09-02",
-   "decision": "**mattpocock/skills 借哲學不借檔**",
-   "rejected": "整包 vendor（會撞 8192 bytes 契約、混入另一套授權）",
-   "premise": "哲學要點已寫進 investigation 筆記，之後落到 `STRUCTURE.md` 與 `TEMPLATE.workflow.md`"
   }
  ],
+ "records_2026_09": {
+  "$ref": "decisions/2026-09.json#/records"
+ },
  "evidence": "細節與證據在對應的調查筆記：`wf/knowledge/notes/`（索引在 `wf/knowledge/notes/_index.json`）。"
 }
