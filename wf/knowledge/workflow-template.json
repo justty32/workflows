@@ -1,5 +1,6 @@
 {
  "_description": "新工作流節點的骨架：複製 `#/skeleton` 存成 `wf/workflows/<名稱>.json`，照 `#/fields` 逐鍵填；固定鍵順序不動，用不到的專屬段刪掉。改完在 `wf/workflows/_index.json` 加一條（description 含觸發說法；`source` 本 repo 自己寫的標 `project`，從 kernel／flavor 搬來的標來源，見 `wf/knowledge/structure.json#/index_convention`）。形式規則在 `wf/knowledge/structure.json#/workflow_form`。",
+ "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
  "skeleton": {
   "_description": "<一句話：這工作流做什麼、產出什麼>",
   "when": "<觸發情境；index 那句「你說…」的展開>",

@@ -9,7 +9,9 @@
   "",
   "- `#/layers`、`#/skills_vs_memory`、`#/index_convention`（私有 index 那半）、`#/names`（wf 多出來的約定）、`#/workflow_form`、`#/growth`、`#/split`、`#/split_method`、`#/archive`、`#/logs`。",
   "",
-  "沒帶過去、仍以本 repo 為準的：`#/node_shape` 裡「同質記錄寫物件陣列」與檔案格式、程式碼單檔 300 行、`#/md_for_humans`、路由線三層一律建 index、字串陣列的判斷規則、`#/repo_layout`、`#/pilot`、`#/data_files`。"
+  "沒帶過去、仍以本 repo 為準的：`#/node_shape` 裡「同質記錄寫物件陣列」與檔案格式、程式碼單檔 300 行、`#/md_for_humans`、路由線三層一律建 index、字串陣列的判斷規則、`#/repo_layout`、`#/pilot`、`#/data_files`。",
+  "",
+  "**第 2 塊**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc）：工作流範本與 tidy 一組。整份搬走的：`wf/knowledge/workflow-template.json`、`wf/workflows/tidy.json`、`wf/workflows/tidy/`（三份）、`wf/workflows/tidy-manager-brief.json`、`wf/knowledge/content-trim.json`；只搬幾段的：`wf/knowledge/gotchas.json` 的四段 tidy 踩坑。各檔自己也有 `moved` 鍵（`wf/workflows/tidy/_description.json` 是整檔一段文字，沒有鍵可加，以這裡為準）。落點是 aos 知識庫的 proto8/knowledge/wf/workflows/ 與 proto8/knowledge/wf/knowledge/。"
  ],
  "_index": {
   "moved": {

@@ -1,5 +1,6 @@
 {
  "_description": "gotchas — 共通踩坑（跨工作流），以及 tidy 整理與拆檔踩過的坑。不專屬任一工作流的坑記／查 `common`；工作流專屬的坑記在該工作流自己的坑記錄（長出來後在此加導流）。tidy 的通用規則在 `wf/workflows/tidy.json` 與 `wf/knowledge/data-files.json`。",
+ "moved": "**部分已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2）：`#/tidy_archive_move`、`#/tidy_split_datafile`、`#/tidy_dispatch`、`#/tidy_env` 四段的正本在 aos 知識庫的 proto8/knowledge/wf/knowledge/gotchas.json，本 repo 這四段不再改；`#/threshold`、`#/common` 沒搬，仍以本 repo 為準。",
  "threshold": "**記錄門檻**：**第二次撞到**、或使用者說「上次也是這樣」才記；一次性的意外不記。",
  "common": [],
  "tidy_archive_move": [

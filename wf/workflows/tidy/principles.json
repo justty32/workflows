@@ -1,5 +1,6 @@
 {
  "_description": "tidy 的五條原則（從 `wf/workflows/tidy.json#/principles` `$ref` 過來；引用請寫入口的統一路徑）：封存、分類、合併小檔、抽記錄、內容精簡。門檻數字依形態查 `wf/knowledge/structure.json`。",
+ "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
  "principles": [
   "**過時的就封存，把指向它的連結清乾淨，當做它不存在**：活文件裡的連結是**拿掉**（改純文字或整句刪），不是改指到 `archive/` 路徑；只有所屬 `archive/` 的索引（json 形態 `archive/_index.json`、md 形態 `<資料夾>/archive/README.md`）可以連過去（細則 `wf/knowledge/structure.json#/archive`）。「過時」的判準：文件自述歷史／被取代／前提作廢；文件描述的目標（計畫、批次、環境配置）已不存在；結論已整份被某現役文件吸收。",
   "**一個資料夾別擠太多檔，但同類檔案可以放鬆**：同一系列 log／報告／記錄不必為了檔數硬拆；不同用途混放才拆。",

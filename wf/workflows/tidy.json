@@ -4,6 +4,7 @@
   "",
   "範圍可以是 **json 形態**（本 repo 的 `wf/`：`_index.json`＋json 節點）或 **md 形態**（`template/`、下游專案等仍是 md 的地方）；原則兩邊一樣，門檻與載體依形態查 `wf/knowledge/structure.json` 的對應段，標「md 形態時」的命令只在 md 形態的範圍跑。"
  ],
+ "moved": "**已搬走、正本在 aos**（2026-11-13，aos repo commit dbefe6fd2，照本 repo 7db5ccc 的內容）：正本在 aos 知識庫的 proto8/knowledge/wf/。本 repo 這份不再改，要改寄 aos mail 給 repo-aos。",
  "when": "「幫我整理 X」「封存過時的」「檔案太多／太雜」「太大要拆」「只留結論」；一個資料夾幾十個檔扁平混放；某份表格被歷史項塞到幾十 KB；log／inbox 堆了一堆沒消化；文件自述「歷史」「已被取代」卻還被活文件連著；檔內堆著決策過程、改過幾版、作廢方案。",
  "not_when": "改程式碼結構（行為不變的搬檔／拆模組）→ `wf/workflows/refactor.json`；只搬一兩個檔且不涉及封存或拆表 → 直接 `git mv`，不必走本流程；只是骨架版本升級（沒有封存或拆表）→ 不走本流程，照上游變動記錄手動套。",
  "principles": {
