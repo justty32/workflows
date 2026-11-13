@@ -13,8 +13,8 @@
 
 ## 最新進度
 
-- [planning] workflows 併入 aos（使用者 2026-11-13 裁：做法與內容變成 aos 的東西、repo 不掛進去、本 repo 之後幾乎不再更新；見 [knowledge/decisions.json](knowledge/decisions.json) 第一筆）：一次一塊由 repo-aos 的線抄進 aos 當正本，我備料與判斷。**第一塊＝`wf/knowledge/structure.json` 與 `structure/`，併完前凍結不改** → 下一步：把「哪些綁 aos」的表與我的搬法寄給 repo-aos；收到它的 commit 與清單後在本 repo 標「已搬走」
-- [refactor] 試點留下的小項：凍結解除後補 `structure/tidying.json` 兩處（`#/data_files` 補回「走一般 8 KB 上限（超了就分層，上層只列子層入口）」；`#/split` 的 `#/split_method` 改成完整路徑）；`wf/tools/` 的檢查工具不帶進 aos（使用者裁），已知的假綠案例已交給 repo-aos，本 repo 這套維持現狀不再修
+- [planning] workflows 併入 aos（使用者 2026-11-13 裁：做法與內容變成 aos 的東西、repo 不掛進去、本 repo 之後幾乎不再更新；見 [knowledge/decisions.json](knowledge/decisions.json) 第一筆）：一次一塊由 repo-aos 的線抄進 aos 當正本，我備料與判斷，併完的在本 repo 標「已搬走」、不兩邊同時改。**第 1 塊（組織原則）已搬**，清單在 [knowledge/structure.json](knowledge/structure.json) 的 `moved`；下一塊 repo-aos 想併 `workflow-template.json`，再來 tidy 一組 → 下一步：把「哪些綁 aos」的表與我的搬法寄給 repo-aos；flavors/ 裡還是 md 的通用工作流要先備料
+- [refactor] `wf/tools/` 的檢查工具不帶進 aos（使用者裁），已知的假綠案例已交給 repo-aos，本 repo 這套維持現狀不再修；`structure/tidying.json#/split` 裡的 `#/split_method` 該是完整路徑（已搬走的段，已告知 repo-aos，本 repo 不改）
 - [planning] 可組合單元方案（中插契約進 `STRUCTURE.md`／`TEMPLATE.workflow.md`、`skills/` 定位、抽 `commit.md`）已定案但**未實作** → 方案全文見 [knowledge/notes/composable-units.json](knowledge/notes/composable-units.json)
 - [refactor] 精簡稽核已裁示待做：heartbeat README 的 Windows `TZ` 踩坑段下沉到 `workflows/`；`team-model.md` 升成正規 `team-model/README.md`（所有連結跟著改）；其餘 11 項「要人決定」仍待裁 → 稽核報告在 2026-09-02 的 session scratchpad，明天先重跑一次稽核再動
 - [feature-dev] `wf-lint.sh` 加 `--exclude a,b`／`.wf-lint-ignore`，讓 `--strict .` 對本 repo 跑時跳過 `template`、`flavors`、`examples`、`skills`；做法見 v0.6 CHANGELOG 未完成項（tidy 已改成對範圍跑，這條動機變弱，做不做待定）→ 之後 CI 加一步檢查 `wf/`（現在是 `python3 wf/tools/index_check.py wf`）
