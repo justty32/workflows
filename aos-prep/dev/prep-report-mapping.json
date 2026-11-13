@@ -1,0 +1,174 @@
+[
+ {
+  "from": "flavors/dev/README.md「這個包有什麼」表",
+  "to": "_index.json 各格"
+ },
+ {
+  "from": "flavors/dev/README.md「怎麼合進 kernel」",
+  "to": "丟（見 prep-report.json#/dropped）"
+ },
+ {
+  "from": "flavors/dev/README.md「可選工作流菜單」",
+  "to": "dispatch.json#/menu"
+ },
+ {
+  "from": "flavors/dev/README.md「混合型專案」段",
+  "to": "dispatch.json#/disambiguation"
+ },
+ {
+  "from": "flavors/dev/README.md「移除某工作流要動的地方」",
+  "to": "丟（見 dropped）"
+ },
+ {
+  "from": "flavors/dev/AGENTS.dev.md",
+  "to": "dispatch.json#/before_code；feature-dev.json#/_description"
+ },
+ {
+  "from": "flavors/dev/COMMON.dev.md 兩列",
+  "to": "_index.json 的 memory-conventions.json、memory-code-map.json 兩格；兩份骨架的 _description"
+ },
+ {
+  "from": "flavors/dev/WORKFLOWS.dev.md 表前那句",
+  "to": "dispatch.json#/before_code"
+ },
+ {
+  "from": "flavors/dev/WORKFLOWS.dev.md 派發表（觸發說法）",
+  "to": "_index.json 各工作流的 description；各工作流的 when"
+ },
+ {
+  "from": "flavors/dev/WORKFLOWS.dev.md planning 那列",
+  "to": "dispatch.json#/disambiguation；feature-dev.json#/not_when"
+ },
+ {
+  "from": "flavors/dev/WORKFLOWS.dev.md 表後分辨句（analysis／investigation、patch）",
+  "to": "dispatch.json#/disambiguation；analysis.json、investigation.json、patch.json、feature-dev.json 的 not_when"
+ },
+ {
+  "from": "template/WORKFLOWS.md「可以跳流程」",
+  "to": "dispatch.json#/skip；feature-dev.json、investigation.json 的 not_when 指過去"
+ },
+ {
+  "from": "template/STRUCTURE.md（dev 包指過去的原則）",
+  "to": "改指 aos 知識庫 wf/tidying.json#/split、#/split_method、#/archive、wf/nodes.json#/growth、wf/layers.json#/skills_vs_memory"
+ },
+ {
+  "from": "flavors/dev/workflows/feature-dev/README.md 開頭、何時用／不用",
+  "to": "feature-dev.json#/_description、#/when、#/not_when"
+ },
+ {
+  "from": "flavors/dev/workflows/feature-dev/README.md Done when",
+  "to": "feature-dev.json#/done_when"
+ },
+ {
+  "from": "flavors/dev/workflows/feature-dev/README.md 流程（碼塊＋三條）",
+  "to": "feature-dev.json#/steps"
+ },
+ {
+  "from": "flavors/dev/workflows/feature-dev/README.md 內容表＋「模板說明」段",
+  "to": "feature-dev.json#/grows（「長出來才建、不預建空檔」）；其餘丟"
+ },
+ {
+  "from": "flavors/dev/workflows/feature-dev/README.md 交接",
+  "to": "feature-dev.json#/handoff"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md 開頭、何時用／不用、Done when",
+  "to": "testing.json#/_description、#/when、#/not_when、#/done_when"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md 驗證表",
+  "to": "memory-verification.json#/fields（checks）、#/suggested_checks；testing.json#/steps 第 1 步"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md「誰跑」兩值",
+  "to": "memory-verification.json#/fields（checks[].who）；testing.json#/steps 第 2、3 步"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md 測試分類",
+  "to": "memory-verification.json#/fields（categories）、#/skeleton；testing.json#/steps 第 1 步"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md 測試分類的「導入判斷」段",
+  "to": "memory-verification.json#/fields（offline_subset）、#/rules"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md 綠燈不等於有檢查",
+  "to": "green-is-not-checked.json#/rule、#/corollaries；testing.json#/steps 第 4、5 步"
+ },
+ {
+  "from": "flavors/dev/workflows/testing.md 交接",
+  "to": "testing.json#/handoff"
+ },
+ {
+  "from": "flavors/dev/workflows/refactor/README.md 全部",
+  "to": "refactor.json 各鍵（內容表併進 _description）"
+ },
+ {
+  "from": "flavors/dev/workflows/refactor/moving-things.md Done when 碼塊",
+  "to": "moving-things.json#/done_when（拆五條）"
+ },
+ {
+  "from": "flavors/dev/workflows/refactor/moving-things.md 鐵律、六類、驗證程序、改名",
+  "to": "moving-things.json#/iron_rule、#/_description（「只 grep 連結不夠」）、#/breakages、#/steps、#/renaming"
+ },
+ {
+  "from": "flavors/dev/workflows/analysis.md 開頭、何時、Done when、流程、Level 3+、交接",
+  "to": "analysis.json 各鍵（#/level3_templates）"
+ },
+ {
+  "from": "flavors/dev/workflows/analysis.md 產物結構、寫作規則",
+  "to": "memory-analysis.json#/fields、#/rules、#/skeleton"
+ },
+ {
+  "from": "flavors/dev/workflows/investigation.md 開頭、何時、Done when、流程、警語、交接",
+  "to": "investigation.json 各鍵（警語在 #/steps 末段）"
+ },
+ {
+  "from": "flavors/dev/workflows/investigation.md 筆記模板",
+  "to": "memory-notes.json#/fields、#/skeleton；警語另抄一份在 #/rules"
+ },
+ {
+  "from": "flavors/dev/workflows/dev-env.md 開頭、何時、Done when、交接",
+  "to": "dev-env.json 各鍵"
+ },
+ {
+  "from": "flavors/dev/workflows/dev-env.md 流程（fresh clone 後）四步",
+  "to": "memory-dev-env.json#/fields（fresh_clone、smoke）；dev-env.json#/steps 第 1、2 步"
+ },
+ {
+  "from": "flavors/dev/workflows/dev-env.md 指令表＋表下那句",
+  "to": "memory-dev-env.json#/fields（commands）、#/rules；dev-env.json#/steps 末段"
+ },
+ {
+  "from": "flavors/dev/workflows/dev-env.md 跨機／離線差異＋「導入判斷」段",
+  "to": "memory-dev-env.json#/fields（machines）、#/rules"
+ },
+ {
+  "from": "flavors/dev/workflows/dev-env.md 外部工具與 env var＋授權那句",
+  "to": "memory-dev-env.json#/fields（tools）、#/rules；dev-env.json#/steps 第 4、5 步"
+ },
+ {
+  "from": "flavors/dev/workflows/patch.md 全部",
+  "to": "patch.json 各鍵（#/steps（前置條件在開頭）、#/outputs、#/patch_md、#/src_strategy、#/apply_md）"
+ },
+ {
+  "from": "flavors/dev/workflows/common/conventions.md 開頭",
+  "to": "dispatch.json#/before_code；memory-conventions.json#/_description、#/holds"
+ },
+ {
+  "from": "flavors/dev/workflows/common/conventions.md 慣例表＋「模板說明」段",
+  "to": "memory-conventions.json#/fields、#/suggested_items、#/rules"
+ },
+ {
+  "from": "flavors/dev/workflows/common/code-map.md 開頭、領域表＋「模板說明」段",
+  "to": "memory-code-map.json#/fields（domains）、#/rules"
+ },
+ {
+  "from": "flavors/dev/workflows/common/code-map.md 真相層優先序",
+  "to": "code-map-rules.json#/truth_order；memory-code-map.json#/fields（truth_order）"
+ },
+ {
+  "from": "flavors/dev/workflows/common/code-map.md 維護鏈",
+  "to": "code-map-rules.json#/maintenance_chain；memory-code-map.json#/rules 第 4 條"
+ }
+]

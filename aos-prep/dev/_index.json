@@ -1,0 +1,112 @@
+{
+ "_description.json": {
+  "description": "這一批是什麼、三種節點、怎麼用；第一次讀這批時先看",
+  "kind": "meta",
+  "source": "dev"
+ },
+ "prep-report.json": {
+  "description": "批次報告：通用與專案怎麼切、丟掉的、工具缺口、拿不準與待使用者裁的（mapping、changed、overlaps 各拆一檔）；落檔前對照時讀",
+  "kind": "meta",
+  "source": "dev"
+ },
+ "prep-report-mapping.json": {
+  "description": "批次報告的 mapping 段：每個來源檔的每一段進了哪個節點的哪個鍵；要逐段核對時讀",
+  "kind": "meta",
+  "source": "dev"
+ },
+ "feature-dev.json": {
+  "description": "功能開發／修 bug 的流程，從讀 code map、增量修改、驗證綠燈到 commit；使用者說「我想開發／修改某個功能」「這裡壞了，修一下」「修 bug」時走它",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "testing.json": {
+  "description": "跑測試／驗證的流程：挑要跑的驗證、agent 自己跑或交使用者；使用者說「跑測試」「驗證一下」「這樣改有沒有壞」、改完程式或重構前記基準時走它",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "refactor.json": {
+  "description": "行為不變的重構／拆檔／整理結構流程；使用者說「重構」「拆檔」「整理結構」或結構門檻超標時走它",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "moving-things.json": {
+  "description": "refactor 的搬移專章：搬檔、改目錄名、拆 repo 的鐵律、六類會斷的東西與驗證程序；使用者說「搬檔案」「改目錄名」「拆 repo」時走它",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "analysis.json": {
+  "description": "陌生專案分析：初次接觸外部 repo 時分 Level 建立可延續的分析產物；使用者說「這個陌生專案是怎麼運作的」「幫我分析這個 repo」時走它（只回答一個窄問題走 investigation）",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "investigation.json": {
+  "description": "調查／解讀外部系統／可行性：只讀不改、回答一個窄問題、留一篇筆記；使用者說「查清楚這是怎麼運作的」「這樣做可不可行」時走它（初次接觸、要整套產物走 analysis）",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "dev-env.json": {
+  "description": "開發環境、指令、外部工具與 env var 的流程；使用者說「環境怎麼裝」「fresh clone 後要做什麼」「指令是什麼」或要加工具、環境變數時走它",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "patch.json": {
+  "description": "獨立 patch 包：做一包交給冷啟動 agent 套用到別的 repo 的修改，含產物結構、PATCH.md 必答、APPLY.md 結構；使用者說「做一包 patch 給別的專案／別的 agent 套」時走它",
+  "kind": "workflow",
+  "source": "dev"
+ },
+ "memory-verification.json": {
+  "description": "驗證表的記憶骨架（驗證、指令、誰跑、測試分類、離線子集），落在工作區的 wf/knowledge/verification.json；建或填這份時讀",
+  "kind": "memory",
+  "source": "dev"
+ },
+ "memory-dev-env.json": {
+  "description": "開發環境的記憶骨架（fresh clone 步驟、冒煙指令、指令表、跨機差異、外部工具與 env var），落在工作區的 wf/knowledge/dev-env.json；建或填這份時讀",
+  "kind": "memory",
+  "source": "dev"
+ },
+ "memory-code-map.json": {
+  "description": "code map 的記憶骨架（領域、檔案、職責、測試在哪，與本專案的真相層優先序），落在工作區的 wf/knowledge/code-map.json；建或填這份時讀",
+  "kind": "memory",
+  "source": "dev"
+ },
+ "memory-conventions.json": {
+  "description": "寫碼慣例的記憶骨架（碰原始碼的工作流共用的規矩，每條附怎麼檢查），落在工作區的 wf/knowledge/conventions.json；建或填這份時讀",
+  "kind": "memory",
+  "source": "dev"
+ },
+ "memory-notes.json": {
+  "description": "調查筆記的記憶骨架（單篇五段的形狀與筆記夾索引怎麼寫），落在工作區的 wf/knowledge/notes/；寫調查筆記時讀",
+  "kind": "memory",
+  "source": "dev"
+ },
+ "memory-analysis.json": {
+  "description": "陌生專案分析產物的記憶骨架（資料夾結構與寫作規則），落在工作區的 wf/knowledge/analysis/<project>/；建分析產物時讀",
+  "kind": "memory",
+  "source": "dev"
+ },
+ "code-map-rules.json": {
+  "description": "code map 的通用規則：預設真相層優先序、衝突時誰為準、維護鏈；改碼前後要讀或更新 code map 時讀",
+  "kind": "knowledge",
+  "source": "dev"
+ },
+ "green-is-not-checked.json": {
+  "description": "綠燈不等於有檢查：新增或修改一道檢查要證明它能變紅，涵蓋範圍跟著結構走；寫或改檢查、搬完目錄後讀",
+  "kind": "knowledge",
+  "source": "dev"
+ },
+ "dispatch.json": {
+  "description": "開發包怎麼派：碰原始碼前先讀什麼、analysis／investigation／patch／feature-dev／planning 怎麼分、什麼時候可以跳流程、本包沒附的工作流；不確定該走哪條時讀",
+  "kind": "knowledge",
+  "source": "dev"
+ },
+ "prep-report-changed.json": {
+  "description": "批次報告的 changed 段：改寫了什麼（原句 → 新句）；核對改寫時讀",
+  "kind": "meta",
+  "source": "dev"
+ },
+ "prep-report-overlaps.json": {
+  "description": "批次報告的 overlaps 段：與 aos 既有機制的重疊（這邊、aos 那邊的路徑、差在哪）；對 aos 既有東西時讀",
+  "kind": "meta",
+  "source": "dev"
+ }
+}

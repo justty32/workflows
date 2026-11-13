@@ -1,0 +1,14 @@
+[
+ "# kernel 備料：四條薄工作流、它們的記憶骨架、回覆風格與活清單寫法",
+ "",
+ "從 workflows 模板 repo 的 kernel（`template/`）轉成的 json 節點，給 aos 取用；最後落在 aos 哪裡由 repo-aos 決定。",
+ "",
+ "- 工作流（做事的流程，落地後放工作區的 `wf/workflows/`）：`kernel/decisions.json`、`kernel/planning.json`、`kernel/gotchas.json`、`kernel/user.json`。",
+ "- 記憶骨架（專案自己填的記錄，`skeleton` 複製到工作區的 `wf/knowledge/<名>.json`，名字去掉 `memory-` 前綴）：`kernel/memory-decisions.json`、`kernel/memory-ideas.json`、`kernel/memory-gotchas.json`、`kernel/memory-user.json`。",
+ "- 知識：`kernel/reply-style.json`（對話回覆風格）、`kernel/live-lists.json`（兩份活清單怎麼寫）。",
+ "- `kernel/prep-report.json`（太大拆成三檔，另兩份 `kernel/prep-report-mapping.json`、`kernel/prep-report-notes.json`）：對照、丟掉的、改寫的、與 aos 的重疊、拿不準的、要使用者裁的。",
+ "",
+ "路徑說法跟 aos 知識庫的 `wf/_description.json` 一致：「工作區的 `wf/…`」指專案工作區；`kernel/<名>.json`、`dev/<名>.json` 指備料節點；aos 知識庫的節點寫 knowledge 路徑並註明。",
+ "",
+ "來源 repo：workflows，commit 5d2d0f49533120151a7d1890724b6d1b55339ae7。"
+]

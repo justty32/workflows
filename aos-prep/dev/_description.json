@@ -1,0 +1,15 @@
+[
+ "# dev：軟體開發用的工作流與知識骨架（備料第二批）",
+ "",
+ "從 workflows 模板 repo 的 dev flavor 包（`flavors/dev/`，另參 `template/WORKFLOWS.md`、`template/STRUCTURE.md`）轉來的 json 節點，給 aos 取用。來源 commit `5d2d0f49533120151a7d1890724b6d1b55339ae7`。",
+ "",
+ "三種節點（kind 見 `_index.json`）：",
+ "",
+ "- **workflow**：做事的流程（feature-dev、testing、refactor、moving-things、analysis、investigation、dev-env、patch）。專案自己的事實不寫在這裡，只說「去工作區的哪份記憶查」。",
+ "- **memory**：記憶骨架（`memory-*.json`）——每個專案自己填的知識與記錄：放什麼、欄位、規則、一份可直接複製進工作區的空 `skeleton`。各自寫明落在工作區的哪裡（`wf/knowledge/<名>.json`、`wf/knowledge/notes/`、`wf/knowledge/analysis/<project>/`）。",
+ "- **knowledge**：每個專案都一樣的通用規則（`code-map-rules.json`、`green-is-not-checked.json`、`dispatch.json`）。",
+ "",
+ "怎麼用：導入到一個專案時，工作流節點進工作區的 `wf/workflows/`，記憶骨架的 `skeleton` 抄成工作區 `wf/knowledge/` 底下對應的檔再填。路徑寫法：`dev/<名>.json` 指本批、`kernel/<名>.json` 指 kernel 那批、「工作區的 `wf/…`」指專案工作區、「aos 知識庫的 `wf/…`／`aos/…`」指 knowledge 已有的節點。工作區佈局照 aos 知識庫的 `wf/layers.json`。",
+ "",
+ "轉換的對照、丟掉與改寫的、跟 aos 的重疊與待裁的在 `prep-report.json`。"
+]

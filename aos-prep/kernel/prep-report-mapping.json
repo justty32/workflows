@@ -1,0 +1,135 @@
+{
+ "_description": "kernel 批次報告的來源對照（拆自 `prep-report.json`）。",
+ "mapping": [
+  {
+   "from": "template/workflows/decisions.md：開頭兩段、何時用／何時不用",
+   "to": "kernel/decisions.json#/_description、#/when、#/not_when"
+  },
+  {
+   "from": "template/workflows/decisions.md：Done when",
+   "to": "kernel/decisions.json#/done_when"
+  },
+  {
+   "from": "template/workflows/decisions.md：記錄表（表頭四欄）",
+   "to": "kernel/memory-decisions.json#/fields、#/skeleton"
+  },
+  {
+   "from": "template/workflows/decisions.md：模板說明段的升級成 decisions/ 資料夾",
+   "to": "kernel/decisions.json#/steps、kernel/memory-decisions.json#/rules"
+  },
+  {
+   "from": "template/workflows/planning.md：開頭、何時用／何時不用、Done when",
+   "to": "kernel/planning.json#/_description、#/when、#/not_when、#/done_when"
+  },
+  {
+   "from": "template/workflows/planning.md：階段表",
+   "to": "kernel/planning.json#/stages"
+  },
+  {
+   "from": "template/workflows/planning.md：想法表、roadmap 表",
+   "to": "kernel/memory-ideas.json"
+  },
+  {
+   "from": "template/workflows/planning.md：交接",
+   "to": "kernel/planning.json#/handoff"
+  },
+  {
+   "from": "template/workflows/common/gotchas.md：全段",
+   "to": "kernel/gotchas.json"
+  },
+  {
+   "from": "template/workflows/common/gotchas.md：「哪類坑記哪裡」表、模板說明段的條目格式",
+   "to": "kernel/memory-gotchas.json#/skeleton/routes、#/rules"
+  },
+  {
+   "from": "template/workflows/common/user.md：開頭、何時用／何時不用、Done when",
+   "to": "kernel/user.json"
+  },
+  {
+   "from": "template/workflows/common/user.md：偏好表與佔位",
+   "to": "kernel/memory-user.json#/items、#/defaults、#/skeleton"
+  },
+  {
+   "from": "template/workflows/common/user.md 末句＋common/README.md 的 glossary 列",
+   "to": "kernel/memory-user.json#/glossary"
+  },
+  {
+   "from": "template/workflows/common/reply-style.md：全文",
+   "to": "kernel/reply-style.json"
+  },
+  {
+   "from": "template/WORKFLOWS.md：kernel 內建派發表四列的觸發說法",
+   "to": "四個工作流節點的 when 與 kernel/_index.json 的 description"
+  },
+  {
+   "from": "template/WORKFLOWS.md：活狀態記哪裡",
+   "to": "kernel/live-lists.json#/which"
+  },
+  {
+   "from": "template/SESSION-LOG.md：寫入時機、條目格式、各工作流 session-log 表",
+   "to": "kernel/live-lists.json#/session_log"
+  },
+  {
+   "from": "template/WAIT_USER.md：記什麼、條目格式、膨脹拆法",
+   "to": "kernel/live-lists.json#/wait_user"
+  },
+  {
+   "from": "template/AGENTS.md：開場 grep 那條",
+   "to": "kernel/live-lists.json#/session_start"
+  },
+  {
+   "from": "CHANGELOG.md 未發布段：decisions「舊列的理由欄可精簡或留著」",
+   "to": "kernel/memory-decisions.json#/rules"
+  }
+ ],
+ "key_renames": [
+  {
+   "table": "decisions 記錄",
+   "template_column": "日期",
+   "new_key": "date",
+   "wf_instance_key": "date"
+  },
+  {
+   "table": "decisions 記錄",
+   "template_column": "決定",
+   "new_key": "decision",
+   "wf_instance_key": "decision"
+  },
+  {
+   "table": "decisions 記錄",
+   "template_column": "來源（使用者原文或誰定的）",
+   "new_key": "origin",
+   "wf_instance_key": "rejected（舊語意：未選方案與原因；沒沿用）"
+  },
+  {
+   "table": "decisions 記錄",
+   "template_column": "前提（變了就重看）",
+   "new_key": "premise",
+   "wf_instance_key": "premise"
+  },
+  {
+   "table": "ideas",
+   "template_column": "想法／一句話／狀態",
+   "new_key": "idea／summary／status",
+   "wf_instance_key": "同"
+  },
+  {
+   "table": "roadmap",
+   "template_column": "事項／何時・順序／前提",
+   "new_key": "item／when／premise",
+   "wf_instance_key": "同"
+  },
+  {
+   "table": "user 偏好",
+   "template_column": "項目／設定",
+   "new_key": "item／setting（放在 prefs）",
+   "wf_instance_key": "同"
+  },
+  {
+   "table": "glossary",
+   "template_column": "詞／意思／別名",
+   "new_key": "term／meaning／aliases",
+   "wf_instance_key": "（wf 實例沒建）"
+  }
+ ]
+}

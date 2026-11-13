@@ -1,0 +1,52 @@
+[
+ {
+  "here": "分析產物、調查筆記、驗證表、環境事實、code map 歸 memory",
+  "aos": "wf/layers.json#/skills_vs_memory",
+  "diff": "aos 已講落點（analysis 產物 wf/knowledge/analysis/<project>/），本批指過去不重講"
+ },
+ {
+  "here": "feature-dev 的 grows（長出來才建）",
+  "aos": "wf/nodes.json#/growth",
+  "diff": "四級成長指過去；這裡只列 feature-dev 會長出的東西"
+ },
+ {
+  "here": "refactor 的拆法、門檻；筆記可超標；封存",
+  "aos": "wf/tidying.json#/split、#/split_method、#/archive",
+  "diff": "aos 沒帶「程式碼單檔 > 300 行」，改成專案在 conventions 自己定"
+ },
+ {
+  "here": "記錄的讀寫",
+  "aos": "aos/packs.json#/json",
+  "diff": "取代模板的 tabledb；沒有新規則"
+ },
+ {
+  "here": "筆記夾的 index 何時放",
+  "aos": "docs/01（knowledge 的共用規則）",
+  "diff": "門檻照 docs/01，不另訂"
+ },
+ {
+  "here": "工作區的 wf/SESSION-LOG.md（跨 session 的 open 進度）",
+  "aos": "aos/packs.json#/todo、#/goal",
+  "diff": "不重疊：todo／goal 存在 agent 自己的 stack、不跨 session、別人看不到，eca 也不掛這兩個；SESSION-LOG 在工作區、跨 session。沒指過去"
+ },
+ {
+  "here": "patch 交給冷啟動 agent",
+  "aos": "aos/agents.json（subagent、agent_def）、aos/mailbox.json",
+  "diff": "不重疊：patch 是交付物的形狀，aos 那邊是派工與通信的機制，可以搭配（派一個 subagent 去套、用信通知），沒指過去；eca 沒有 subagent"
+ },
+ {
+  "here": "push／對外動作要有授權來源",
+  "aos": "aos/rules.json",
+  "diff": "不重疊：aos 的 rules 管 definition、stack、refusal、刪除範圍，沒有 push 授權；仍指工作區 AGENTS.md 的鐵律（kernel 批）"
+ },
+ {
+  "here": "工作區的 wf/WAIT_USER.md（等使用者）",
+  "aos": "（無）",
+  "diff": "aos 沒有等使用者的機制；mailbox 是 agent 之間"
+ },
+ {
+  "here": "self_* 工具",
+  "aos": "aos/me.json",
+  "diff": "查過，與 dev 包無關"
+ }
+]

@@ -1,0 +1,116 @@
+{
+ "_description": "kernel 這一批的備料報告：來源檔與段對到哪個節點、丟了什麼、改寫了什麼、與 aos 既有的重疊、工具缺口、拿不準的、要使用者裁的。來源 commit 5d2d0f49533120151a7d1890724b6d1b55339ae7。 太大拆成三檔：mapping 與 key_renames 在 `prep-report-mapping.json`，overlaps 以後各段在 `prep-report-notes.json`。",
+ "mapping": {
+  "$ref": "prep-report-mapping.json#/mapping"
+ },
+ "key_renames": {
+  "$ref": "prep-report-mapping.json#/key_renames"
+ },
+ "dropped": [
+  {
+   "what": "各檔的麵包屑導航行（`[WORKFLOWS]｜[INDEX]`、`[common/README]`）與 common/README 的 `<!-- wf-nav -->`、`<!-- wf-insert:COMMON -->`",
+   "why": "契約：導航行與插入點丟掉"
+  },
+  {
+   "what": "common/README.md 的導覽表本身、「過時文檔封存進 common/archive/」一句",
+   "why": "導覽由 kernel/_index.json 接手；封存規則 aos 知識庫的 wf/tidying.json#/archive 已有"
+  },
+  {
+   "what": "common/README.md 的 data-files.md、data-files-fmt.md 兩列（wf-table/1、tabledb、$fmt）",
+   "why": "契約：不帶；同質記錄直接寫物件陣列"
+  },
+  {
+   "what": "user.md 一定先問那格的「依鐵律 2」編號",
+   "why": "鐵律編號是模板 AGENTS.md 的，工作區各自不同；改說「push 與對外動作另由鐵律管」"
+  },
+  {
+   "what": "SESSION-LOG.md「膨脹就拆：開 session_logs/ 按工作流拆檔＋index」與「記成日誌照 STRUCTURE 日誌寫法」",
+   "why": "aos 知識庫的 wf/layers.json#/layers 第 3 條、#/logs 已涵蓋，只指過去"
+  },
+  {
+   "what": "planning.md「第一份出現時升級成資料夾型」",
+   "why": "json 佈局下 spec／plan 進工作區的 wf/knowledge/specs/、plans/（aos 知識庫的 wf/layers.json#/skills_vs_memory 已定），planning 本身不用升級"
+  },
+  {
+   "what": "SESSION-LOG.md 的〔模板說明〕裡「加一列」的操作語氣、WAIT_USER／SESSION-LOG 的空清單「（目前無）」",
+   "why": "前者併進 session_log 的檔形狀說明；後者是 md 檔的內容，照留在檔形狀說明裡"
+  },
+  {
+   "what": "wf/ 實例裡本 repo 加的東西：decisions 的「跑 index_check」「細節放 wf/knowledge/notes/」、gotchas 的 tidy_ 各段、user 的 dispatch／memory／pace／aos_peers、ideas 與 decisions 的記錄",
+   "why": "專案內容，不是 kernel 通用內容"
+  },
+  {
+   "what": "template/WORKFLOWS.md 的「可以跳流程」四條、tidy 那一列、〔導入判斷〕貼 flavor 派發表、新開工作流複製 TEMPLATE 一句",
+   "why": "不在本批範圍（派發表與 tidy、工作流範本是別塊）；沒丟，只是沒轉，見 unsure"
+  }
+ ],
+ "changed": [
+  {
+   "from": "decisions.md 欄「來源（使用者原文或誰定的）」",
+   "to": "鍵 `origin`（不用 wf 實例的舊鍵 `rejected`，也不用 `source` 以免跟節點的 source 鍵混）"
+  },
+  {
+   "from": "decisions.md「條目多到表格難讀就升級成 decisions/ 資料夾、一決策一檔（照 STRUCTURE）」",
+   "to": "「升級成資料夾（工作區的 wf/knowledge/decisions/）、一決策一檔，照 aos 知識庫的 wf/nodes.json#/growth」"
+  },
+  {
+   "from": "decisions.md「（tidy 內容精簡）」連結",
+   "to": "「kernel 的 tidy 工作流的內容精簡段，尚未備料」"
+  },
+  {
+   "from": "planning.md「開發：spec→plan，各一檔放 planning/specs/、planning/plans/」",
+   "to": "「各一檔放工作區的 wf/knowledge/specs/、wf/knowledge/plans/」"
+  },
+  {
+   "from": "planning.md「已有 spec / plan 且在動工 → 執行工作流」「→ investigation（dev 包）」「feature-dev」",
+   "to": "`dev/feature-dev.json`、`dev/investigation.json`；plan-a-thing 寫「knowledge 包的 plan-a-thing 工作流（尚未備料）」"
+  },
+  {
+   "from": "gotchas.md「工作流專屬的坑記在該工作流自己的 gotchas.md（長出來後在下表加一列導流）」",
+   "to": "「記在它自己的踩坑記錄（工作區 wf/knowledge/ 裡，照 wf/nodes.json#/growth 第 3 級），在 routes 加一筆」"
+  },
+  {
+   "from": "user.md 佔位「{{回覆與文件語言，例：繁中；程式註解英文}}」等六格",
+   "to": "memory-user.json#/items 的 meaning＋examples（標示範），skeleton 的 setting 留空"
+  },
+  {
+   "from": "user.md 回覆風格格「通用風格見 reply-style.md；…；使用者問「要不要」時附可執行判準（門檻數字）與後果，讓他能改數字」",
+   "to": "memory-user.json#/defaults/回覆風格（kernel 預填句，建檔時放進那格）"
+  },
+  {
+   "from": "user.md「領域詞彙常猜錯 → 開 glossary.md」＋README「詞 | 意思 | 別名」",
+   "to": "工作區的 wf/knowledge/glossary.json，物件陣列 term／meaning／aliases"
+  },
+  {
+   "from": "template/AGENTS.md「grep -c '^- \\[' SESSION-LOG.md WAIT_USER.md」",
+   "to": "「grep -c '^- \\[' wf/SESSION-LOG.md wf/WAIT_USER.md」（工作區佈局在 wf/ 下）"
+  },
+  {
+   "from": "reply-style.md「各自照它所屬工作流的文風規則走（writing.md，若有的話）」",
+   "to": "「各自照它所屬工作流的文風規則走（若有的話）」"
+  },
+  {
+   "from": "（新加）四個工作流的 handoff：decisions、gotchas、user 模板沒有交接段",
+   "to": "「記完回到觸發它／原本的工作流」；decisions 的「前提變了重看」取自欄名"
+  },
+  {
+   "from": "（新加）steps 裡「工作區還沒有這份檔 → 照骨架建」「用 json 工具寫」",
+   "to": "md 表格原本就在流程檔裡，拆開後要說檔從哪來"
+  }
+ ],
+ "overlaps": {
+  "$ref": "prep-report-notes.json#/overlaps"
+ },
+ "tool_gaps": {
+  "$ref": "prep-report-notes.json#/tool_gaps"
+ },
+ "commit_push": {
+  "$ref": "prep-report-notes.json#/commit_push"
+ },
+ "unsure": {
+  "$ref": "prep-report-notes.json#/unsure"
+ },
+ "for_user": {
+  "$ref": "prep-report-notes.json#/for_user"
+ }
+}

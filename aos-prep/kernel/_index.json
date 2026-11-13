@@ -1,0 +1,64 @@
+{
+ "_description.json": {
+  "description": "這一批是什麼、有哪些節點、路徑怎麼讀。"
+ },
+ "prep-report.json": {
+  "description": "批次報告入口：丟掉的、改寫的；其餘段用 $ref 指到另兩份報告檔。"
+ },
+ "prep-report-mapping.json": {
+  "description": "批次報告的來源對照（來源檔與段 → 節點與鍵）與欄名對照。"
+ },
+ "prep-report-notes.json": {
+  "description": "批次報告的與 aos 的重疊、工具缺口、commit／push、拿不準的、要使用者裁的。"
+ },
+ "decisions.json": {
+  "description": "記決定的流程（只記結論、來源與前提）；使用者說「記個決定」「為什麼選 A 不選 B」、或選定方案後日後可能被問時讀。",
+  "kind": "workflow",
+  "source": "kernel"
+ },
+ "planning.json": {
+  "description": "想法成熟管線（idea → roadmap → 詳規 → 執行）；使用者說「記個想法」「以後要做」「排進 roadmap」「幫我規劃」時讀。",
+  "kind": "workflow",
+  "source": "kernel"
+ },
+ "gotchas.json": {
+  "description": "記／查踩坑的流程（第二次撞到才記）；使用者說「記個踩坑」「記／查踩坑」「上次也是這樣」、或動手前要查以前撞過沒時讀。",
+  "kind": "workflow",
+  "source": "kernel"
+ },
+ "user.json": {
+  "description": "記使用者偏好與確認邊界的流程；使用者說「我的偏好是…」「以後直接做／先問」、或講定語言、分支慣例、時區時讀。",
+  "kind": "workflow",
+  "source": "kernel"
+ },
+ "memory-decisions.json": {
+  "description": "決策記錄表的骨架與欄位（date／decision／origin／premise），落在工作區的 wf/knowledge/decisions.json；建檔或寫記錄時讀。",
+  "kind": "memory",
+  "source": "kernel"
+ },
+ "memory-ideas.json": {
+  "description": "想法表與 roadmap 表的骨架與欄位，落在工作區的 wf/knowledge/ideas.json；建檔或寫想法、排 roadmap 時讀。",
+  "kind": "memory",
+  "source": "kernel"
+ },
+ "memory-gotchas.json": {
+  "description": "踩坑記錄的骨架、導流表與條目格式，落在工作區的 wf/knowledge/gotchas.json；建檔或記坑時讀。",
+  "kind": "memory",
+  "source": "kernel"
+ },
+ "memory-user.json": {
+  "description": "使用者偏好與確認邊界的骨架（六個常見項目、示範寫法、詞彙表），落在工作區的 wf/knowledge/user.json；建檔或記偏好時讀。",
+  "kind": "memory",
+  "source": "kernel"
+ },
+ "reply-style.json": {
+  "description": "對話回覆風格的九條規則、範例、何時破例與送出前自檢；always-on，寫對話回覆時照它。",
+  "kind": "knowledge",
+  "source": "kernel"
+ },
+ "live-lists.json": {
+  "description": "工作區兩份活清單 SESSION-LOG／WAIT_USER 怎麼寫：誰記哪份、何時寫、條目格式、開場怎麼看；要記進度或等使用者的事時讀。",
+  "kind": "knowledge",
+  "source": "kernel"
+ }
+}

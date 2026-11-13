@@ -1,0 +1,57 @@
+{
+ "_description": "planning 的兩張表的骨架：想法表（要不要做）與 roadmap 表（會做，何時）。落點是工作區的 `wf/knowledge/ideas.json`；怎麼用在 `kernel/planning.json`。",
+ "holds": [
+  "放：還在想要不要做的想法（`ideas`）、決定會做的事與它的時機和前提（`roadmap`）。",
+  "不放：spec／plan——各一檔放工作區的 `wf/knowledge/specs/`、`wf/knowledge/plans/`（aos 知識庫的 `wf/layers.json#/skills_vs_memory`）。",
+  "不放：定下的決定——進工作區的 `wf/knowledge/decisions.json`。"
+ ],
+ "fields": {
+  "ideas": [
+   {
+    "key": "idea",
+    "meaning": "想法（短名）"
+   },
+   {
+    "key": "summary",
+    "meaning": "一句話說它是什麼"
+   },
+   {
+    "key": "status",
+    "meaning": "狀態，只有三種：想想／會做→搬 roadmap／不做＋原因"
+   }
+  ],
+  "roadmap": [
+   {
+    "key": "item",
+    "meaning": "事項"
+   },
+   {
+    "key": "when",
+    "meaning": "何時／順序"
+   },
+   {
+    "key": "premise",
+    "meaning": "前提"
+   }
+  ]
+ },
+ "rules": [
+  "兩張表都寫成物件陣列，用 json 工具讀寫。",
+  "想法狀態變「會做」→ 搬進 `roadmap`；「不做」要寫原因。",
+  "更新狀態就改既有那筆，不另開一筆。",
+  "`skeleton` 裡的路徑是工作區裡的路徑。"
+ ],
+ "skeleton": {
+  "_description": "planning 的想法表（`ideas`：要不要做）與 roadmap 表（`roadmap`：會做，何時）。想法狀態：想想／會做→搬 roadmap／不做＋原因。怎麼用見 `wf/workflows/planning.json`。",
+  "ideas": [],
+  "roadmap": []
+ },
+ "source": {
+  "repo": "workflows",
+  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "files": [
+   "template/workflows/planning.md"
+  ],
+  "notes": "「想法」「roadmap」兩張 md 表改成兩個物件陣列；英文鍵名照本 repo wf/knowledge/ideas.json 的形狀（idea／summary／status、item／when／premise）。"
+ }
+}

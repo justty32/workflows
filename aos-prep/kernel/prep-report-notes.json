@@ -1,0 +1,57 @@
+{
+ "_description": "kernel 批次報告的重疊、工具缺口、commit／push、拿不準的、要使用者裁的（拆自 `prep-report.json`）。",
+ "overlaps": [
+  {
+   "here": "kernel/live-lists.json 的「只列 open、完成即刪、膨脹拆 session_logs/、wait-user/、hub 只留導航表、日誌寫法」",
+   "aos": "aos 知識庫的 wf/layers.json#/layers（第 3 條）、#/logs",
+   "diff": "已涵蓋的不重講，只指過去；這邊只補判別表、寫入時機、條目格式、要記的事例、開場 grep、兩份檔的形狀、wait-user hub 表頭"
+  },
+  {
+   "here": "kernel/live-lists.json#/wait_user（等使用者記在檔案 wf/WAIT_USER.md）",
+   "aos": "aos 知識庫的 aos/mailbox.json#/rules 的 NEEDS-USER；aos repo proto8/thinking/2026-11/13/main-session-in-aos.md「『等使用者的事』現在不改寄人的信箱：D4 定了方向…wf/WAIT_USER.md 照舊」",
+   "diff": "張力：方向是寄 NEEDS-USER 信給人，現況照舊用檔案。節點照現況寫，另放 aos_note 一句；改走信箱時要改 wait_user 與 planning 的 handoff"
+  },
+  {
+   "here": "kernel/live-lists.json#/which 第三列「等別資料夾的 agent → 信件軸」",
+   "aos": "aos 知識庫的 aos/mailbox.json",
+   "diff": "模板的信件軸是 multi-agent 包的 inbox；aos 同一棵樹裡走 mailbox，不在樹裡的照舊 inbox（main-session-in-aos.md）。只指過去"
+  },
+  {
+   "here": "kernel/planning.json#/stages 詳規的 spec／plan 落點",
+   "aos": "aos 知識庫的 wf/layers.json#/skills_vs_memory",
+   "diff": "落點照它寫、指過去；archive 規則指 wf/tidying.json#/archive"
+  },
+  {
+   "here": "kernel/decisions.json、planning.json、user.json、gotchas.json",
+   "aos": "aos repo 自己的 wf/workflows/decisions.md、planning.md、common/user.md、common/gotchas.md（md 形態、已客製：decisions 與 planning 改路由到 proto8/thinking、CONCEPTS、NORMS）",
+   "diff": "aos 自己的工作區這幾份客製多，換形態時以 aos 那份為準；這批是給其他工作區的通用版"
+  },
+  {
+   "here": "kernel/memory-user.json 的「一定先問」「push 與對外動作另由鐵律管」",
+   "aos": "aos 知識庫的 aos/rules.json（第 7 條：工作區外不刪、工作區內只刪自己建的）",
+   "diff": "範圍不同（aos rules 管系統邊界，這裡是使用者偏好），不算重講；沒指過去"
+  }
+ ],
+ "tool_gaps": [
+  {
+   "what": "本批來源的 Done when 都沒要求跑檢查工具",
+   "aos": "無需對應；wf/ 實例 decisions 的「跑 index_check」是本 repo 加的，沒帶，所以節點裡沒有 tool_gap 鍵"
+  }
+ ],
+ "commit_push": [
+  "kernel/memory-user.json#/items 的「分支慣例」（直接 commit main／開 branch 走 PR）與「一定先問」（push 與對外動作另由鐵律管）：這是使用者偏好，落在工作區的 wf/knowledge/user.json。",
+  "kernel/live-lists.json#/session_log「每次 commit 後更新或刪除該行」：照搬原意；誰 commit 依工作區的 user.json。"
+ ],
+ "unsure": [
+  "decisions 第三欄新鍵名取 `origin`；也可以叫 `source`（字面最近），但會跟每個節點的 source 鍵撞名。repo-aos 落檔時可改。",
+  "跨包引用 `dev/feature-dev.json`、`dev/investigation.json` 是照 dev 包的來源檔名猜的；dev 線若取別名要改。",
+  "user.md 回覆風格格的「使用者問「要不要」時附可執行判準與後果」不在佔位裡，算 kernel 預設；放成 `defaults`，沒當成事實寫進 skeleton。若它其實是本 repo 使用者的偏好被寫進模板，就該拿掉。",
+  "gotchas 條目寫成字串陣列（一條一個坑，`**標題**：現象與對策`），沒拆成 {title, body} 物件；照模板「一條一行」的格式。",
+  "memory-ideas：「會做→搬 roadmap」時原想法那筆要刪還是留著標狀態，模板沒說；節點照字面寫「搬進」。",
+  "template/WORKFLOWS.md 的「可以跳流程」四條（派發層的通用判準）沒進本批任何節點；該跟派發表那塊（wf/workflows/_index.json 的寫法）一起搬。",
+  "live-lists 算 knowledge；兩份清單是 md 檔，沒給 skeleton。若 aos 之後要把它們也轉 json，再補成 memory 節點。"
+ ],
+ "for_user": [
+  "等使用者的事：照現況寫檔案 wf/WAIT_USER.md；aos 方向是寄 NEEDS-USER 信。何時改、改了 WAIT_USER.md 還留不留（例如只留給樹外的 session），要使用者裁；裁之前節點不動。"
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "_description": "開發包怎麼派：碰原始碼前先讀什麼、幾條容易混的工作流怎麼分、什麼時候可以跳流程、本包沒附的工作流去哪。各工作流的觸發說法在本夾 `_index.json`。",
+ "before_code": "**碰原始碼前**：慣例與 code map → 工作區的 `wf/knowledge/conventions.json`、`wf/knowledge/code-map.json`；環境與指令 → 工作區的 `wf/knowledge/dev-env.json`。碰原始碼的工作流（feature-dev、testing、refactor、investigation…）都共用這兩份慣例與 code map。",
+ "disambiguation": [
+  "- **analysis** ＝初次接觸陌生專案、要建立可延續的分析產物；**investigation** ＝回答一個窄問題。",
+  "- **patch** ＝跨 repo、原專案無 git 或不能直接 push、要交給冷啟動 agent 套用時才用；同一個 repo 內能改能測就走 feature-dev。",
+  "- 「討論方案」「寫動工計畫」（spec／plan）→ `kernel/planning.json`（planning 管線的後兩段），定案後動工走 feature-dev。",
+  "- **混合型專案**（同時用了 knowledge 包）：dev 的 spec／plan 與 knowledge 的 plan-a-thing 觸發詞都是「規劃」，以**產出是否為程式碼**分流——是程式碼走 planning → feature-dev，不是就走 plan-a-thing。"
+ ],
+ "skip": "**可以跳流程**：單行或小範圍、低風險、不跨 session 的修正；純查詢或一次性回答，不留 durable 知識；使用者明確要求快速處理；既有工作流只會增加同步成本而不降低風險。跳流程不等於跳過工程規矩——仍要讀必要上下文、不破壞使用者改動、能測就測。",
+ "menu": [
+  "本包沒附、需要時才建的開發工作流（新工作流照 aos 知識庫 `wf/nodes.json#/workflow_form` 從單節點長起，並在工作區的 `wf/workflows/_index.json` 加一格）：",
+  "",
+  "- idea（要不要做）／roadmap（會做，何時）／spec（討論後方案）／plan（動工前詳規）：已合成一條 planning 管線（`kernel/planning.json`）。四個是同一個想法的四個階段，分四份會讓 agent 卡在「這算 idea 還是 roadmap」。",
+  "- tooling（工具設定、env var、依賴）：併在 `dev/dev-env.json`——那些本來就是環境的一部分。",
+  "- release／deploy／incident（維運類）、review／benchmark／migration：不在本包，需要就自建。"
+ ],
+ "source": {
+  "repo": "workflows",
+  "commit": "5d2d0f49533120151a7d1890724b6d1b55339ae7",
+  "files": [
+   "flavors/dev/AGENTS.dev.md",
+   "flavors/dev/WORKFLOWS.dev.md",
+   "flavors/dev/README.md",
+   "template/WORKFLOWS.md"
+  ],
+  "notes": "AGENTS.dev 的一行、派發片段的開頭句與分辨句、README 的可選工作流菜單與混合型專案段、kernel 派發器的「可以跳流程」收成一個知識節點；派發表本身轉成本夾 _index.json 的 description。"
+ }
+}

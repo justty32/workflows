@@ -13,7 +13,7 @@
 
 ## 最新進度
 
-- [planning] workflows 併入 aos（使用者 2026-11-13 裁：做法與內容變成 aos 的東西、repo 不掛進去、本 repo 之後幾乎不再更新；見 [knowledge/decisions.json](knowledge/decisions.json) 第一筆）：一次一塊由 repo-aos 的線抄進 aos 當正本，我備料與判斷，併完的在本 repo 標「已搬走」、不兩邊同時改。**第 1 塊（組織原則）已搬**，清單在 [knowledge/structure.json](knowledge/structure.json) 的 `moved`；下一塊 repo-aos 想併 `workflow-template.json`，再來 tidy 一組 → 下一步：把「哪些綁 aos」的表與我的搬法寄給 repo-aos；flavors/ 裡還是 md 的通用工作流要先備料
+- [planning] workflows 併入 aos（使用者 2026-11-13 裁：做法與內容變成 aos 的東西、repo 不掛進去、本 repo 之後幾乎不再更新；見 [knowledge/decisions.json](knowledge/decisions.json) 第一筆）：一次一塊由 repo-aos 的線抄進 aos 當正本，我備料與判斷，併完的在本 repo 標「已搬走」、不兩邊同時改。**第 1 塊（組織原則）已搬**（清單在 [knowledge/structure.json](knowledge/structure.json) 的 `moved`）；repo-aos 接著併 `workflow-template.json` 與 tidy 一組。**備料**放 repo 根的 `aos-prep/`：`kernel/`、`dev/` 兩批已備好（2026-11-13），獨立稽核中 → 下一步：稽核結果寄 repo-aos；其餘五包（knowledge／research／teaching／ops／multi-agent／heartbeat）等 repo-aos 問過使用者再做；某批被併走後在 `aos-prep/_index.json` 的 `status` 標已搬走
 - [refactor] `wf/tools/` 的檢查工具不帶進 aos（使用者裁），已知的假綠案例已交給 repo-aos，本 repo 這套維持現狀不再修；`structure/tidying.json#/split` 裡的 `#/split_method` 該是完整路徑（已搬走的段，已告知 repo-aos，本 repo 不改）
 - [planning] 可組合單元方案（中插契約進 `STRUCTURE.md`／`TEMPLATE.workflow.md`、`skills/` 定位、抽 `commit.md`）已定案但**未實作** → 方案全文見 [knowledge/notes/composable-units.json](knowledge/notes/composable-units.json)
 - [refactor] 精簡稽核已裁示待做：heartbeat README 的 Windows `TZ` 踩坑段下沉到 `workflows/`；`team-model.md` 升成正規 `team-model/README.md`（所有連結跟著改）；其餘 11 項「要人決定」仍待裁 → 稽核報告在 2026-09-02 的 session scratchpad，明天先重跑一次稽核再動

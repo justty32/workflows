@@ -1,0 +1,97 @@
+[
+ {
+  "where": "feature-dev.json#/steps",
+  "from": "全數通過後：更新 code map → 補文檔 → commit",
+  "to": "照搬，另加一條：commit 方式照使用者偏好（工作區的 wf/knowledge/user.json）"
+ },
+ {
+  "where": "feature-dev.json#/steps",
+  "from": "在本工作流 `session-log.md` 補一行 `[功能名] 文檔 / code map 待同步`",
+  "to": "在工作區的 `wf/SESSION-LOG.md` 補一行 `[feature-dev] [功能名] 文檔／code map 待同步`"
+ },
+ {
+  "where": "testing.json#/done_when",
+  "from": "下表標「改完必跑」的列指令回傳 0",
+  "to": "工作區的 `wf/knowledge/verification.json#/checks` 標「改完必跑」的列，指令回傳 0"
+ },
+ {
+  "where": "testing.json#/steps 第 1 步",
+  "from": "（原文沒有挑選步驟，散在分類定義裡）",
+  "to": "標改完必跑的一定跑，再照分類依改動範圍加跑；離線機只跑 offline_subset"
+ },
+ {
+  "where": "refactor.json#/when",
+  "from": "STRUCTURE 門檻超標（單檔過大、資料夾雜亂）",
+  "to": "aos 知識庫 wf/tidying.json#/split；程式碼單檔的行數門檻由專案記在 conventions"
+ },
+ {
+  "where": "refactor.json#/steps",
+  "from": "照 STRUCTURE 按職責拆／分類；更新 code map 與所有指向舊路徑的連結",
+  "to": "照 aos 知識庫 wf/tidying.json#/split_method；更新 code map 與所有指向舊路徑的引用（統一路徑、連結）"
+ },
+ {
+  "where": "moving-things.json#/steps 第 4 步",
+  "from": "bash tools/wf-lint.sh <root>   # 或該專案的連結檢查器",
+  "to": "<該專案的連結／引用檢查>（tool_gap）"
+ },
+ {
+  "where": "moving-things.json#/done_when",
+  "from": "<逐檔比對已落地、六類斷裂已掃、工具冒煙測試過、連結歸零、CI 實測過>",
+  "to": "拆成五條可觀察條件；「連結歸零」改成「專案的連結／引用檢查沒有報問題，且涵蓋新位置」"
+ },
+ {
+  "where": "moving-things.json#/iron_rule",
+  "from": "清舊的之前先確認來源已 commit 且已 push",
+  "to": "照搬，加「push 是對外動作，要有授權來源」"
+ },
+ {
+  "where": "investigation.json#/done_when",
+  "from": "（佔位：筆記位置，如 docs/investigations/）`<主題>.md` 存在，且下列五段非空",
+  "to": "工作區的 `wf/knowledge/notes/<主題>.json` 存在，且五段非空；有 `_index.json` 就有這篇的條目"
+ },
+ {
+  "where": "investigation.json#/done_when",
+  "from": "結論是「要動手」→ planning 有接手列",
+  "to": "工作區的 `wf/knowledge/ideas.json` 的 ideas 或 roadmap 有接手的一條（對齊 kernel 批的 memory-ideas.json）"
+ },
+ {
+  "where": "analysis.json",
+  "from": "`analysis/<project>/`；README 指定的 build／run／test 指令",
+  "to": "工作區的 `wf/knowledge/analysis/<project>/`；被分析專案的 README 指定的指令"
+ },
+ {
+  "where": "patch.json",
+  "from": "`patches/<patch>/`",
+  "to": "工作區的 `wf/patches/<patch>/`"
+ },
+ {
+  "where": "dev-env.json#/done_when",
+  "from": "（佔位：冒煙指令，如 `npm run build`） 回傳 0",
+  "to": "工作區 dev-env.json 的 `#/smoke` 記的冒煙指令回傳 0"
+ },
+ {
+  "where": "dev-env.json#/steps 第 5 步",
+  "from": "守鐵律 2（授權來源）",
+  "to": "要有授權來源（使用者當場確認，或他親自登記在清單裡；見工作區 AGENTS.md 的鐵律）"
+ },
+ {
+  "where": "memory-code-map.json#/rules",
+  "from": "表大到難讀就按領域拆成 `common/code-map/` 資料夾＋一個 index（照 STRUCTURE 四級成長軌跡）",
+  "to": "拆成工作區的 `wf/knowledge/code-map/` 夾，上層留入口（拆法見 aos 知識庫 wf/tidying.json#/split_method）"
+ },
+ {
+  "where": "code-map-rules.json#/maintenance_chain",
+  "from": "先讀本表…同步更新本表…反向查找直接 grep 本檔",
+  "to": "「本表／本檔」改成「code map」，grep 改成「搜」"
+ },
+ {
+  "where": "memory-conventions.json",
+  "from": "慣例表兩欄（項目、規矩）",
+  "to": "三欄 item、rule、check（同檔「模板說明」段要求寫得出怎麼檢查）"
+ },
+ {
+  "where": "各骨架 rules",
+  "from": "（md 表格）",
+  "to": "記錄是物件陣列，用 json 工具讀寫（aos 知識庫 aos/packs.json#/json）"
+ }
+]

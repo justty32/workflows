@@ -1,0 +1,15 @@
+{
+ "_description.json": {
+  "description": "這個夾是什麼、節點裡的路徑怎麼讀、併進 aos 之後怎麼標；第一次進來時讀。"
+ },
+ "kernel": {
+  "description": "kernel 的四條薄流程（記決定、規劃、記踩坑、記使用者偏好）、對應的記憶骨架、回覆風格與活清單寫法；來源 template/。",
+  "index": "kernel/_index.json",
+  "status": "備料完成 2026-11-13，待 repo-aos 取用"
+ },
+ "dev": {
+  "description": "dev 包：八條開發流程（功能開發、測試、重構、搬檔、分析、調查、環境、patch）、對應的記憶骨架與通用規則；來源 flavors/dev/。",
+  "index": "dev/_index.json",
+  "status": "備料完成 2026-11-13，待 repo-aos 取用"
+ }
+}
