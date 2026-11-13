@@ -4,3 +4,6 @@ __pycache__/
 # agent 用的臨時 git worktree（wf/ 本身要版控，不要 ignore）
 .claude/worktrees/
 wf/_index.local.json
+
+# 本機留底的研究報告與稽核報告（不進 git；重開機後 scratchpad 會消失）
+wf/.local/
